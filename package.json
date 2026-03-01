@@ -1,6 +1,6 @@
 {
     "name": "reykit",
-    "version": "1.0.16",
+    "version": "1.0.27",
     "description": "Kit method set.",
     "author": "reyxbo",
     "keywords": [
@@ -17,12 +17,15 @@
         "url": "https://github.com/reyxbo/reykit-js.git"
     },
     "license": "MIT",
-    "files": [
-        "dist"
-    ],
+    "files": ["./dist"],
     "type": "module",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
+    "exports": {
+        ".": "./dist/index.js",
+        "./shadcn": { "style": "./dist/style/shadcn.css" },
+        "./*": "./dist/*"
+    },
     "dependencies": {
         "@base-ui/react": "^1.2.0",
         "@fontsource-variable/inter": "^5.2.8",
