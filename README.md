@@ -1,2 +1,10 @@
-# reykit-js
-Kit method set.
+
+# reykit
+
+> Kit method set.
+
+## Install
+
+```
+npm install reykit
+```
