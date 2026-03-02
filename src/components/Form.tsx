@@ -19,10 +19,10 @@ export default function Form(
         link,
         onSubmit,
         ...props
-    }: ComponentProps<'form'> & {
+    }: {
         handleFormData?: ( formData: FormData ) => void,
         link?: string
-    }
+    } & ComponentProps<'form'>
 ) {
 
     // Parameter.
@@ -36,7 +36,7 @@ export default function Form(
 
         // Handle submit.
         if (onSubmit) {
-            onSubmit(event) // 为什么提示类型“SyntheticEvent<HTMLFormElement, Event>”的参数不能赋给类型“SubmitEvent<HTMLFormElement>”的参数，明明event: SyntheticEvent<HTMLFormElement>，不是SyntheticEvent<HTMLFormElement, Event>
+            onSubmit(event)
         }
 
         // Handle form data.

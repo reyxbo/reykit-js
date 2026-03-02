@@ -11,7 +11,7 @@ import { ComponentProps } from 'react';
  * -------
  * @returns React element.
  */
-export default function Form({ handleFormData, link, onSubmit, ...props }: ComponentProps<'form'> & {
+export default function Form({ handleFormData, link, onSubmit, ...props }: {
     handleFormData?: (formData: FormData) => void;
     link?: string;
-}): import("react/jsx-runtime").JSX.Element;
+} & ComponentProps<'form'>): import("react/jsx-runtime").JSX.Element;

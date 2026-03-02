@@ -5,6 +5,8 @@ import tailwindcss from '@tailwindcss/vite'
 import { resolve } from 'path'
 import { mkdirSync, copyFileSync } from 'fs'
 
+import pkg from './package.json'
+
 export default defineConfig({
     plugins: [
         dts(),
@@ -13,7 +15,7 @@ export default defineConfig({
         {
             name: 'copy-shadcn-css',
             closeBundle() {
-                mkdirSync('./dist/style')
+                mkdirSync('./dist/style', { recursive: true })
                 copyFileSync('./src/style/shadcn.css', './dist/style/shadcn.css')
             }
         }
@@ -31,7 +33,7 @@ export default defineConfig({
             formats: ['es']
         },
         rollupOptions: {
-            external: ['react', 'react-dom', 'react-router-dom', 'clsx', 'tailwind-merge']
+            external: Object.keys(pkg.dependencies || {})
         }
     }
 })

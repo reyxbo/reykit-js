@@ -13,7 +13,9 @@ export default class Storager<Data extends Record<string, any>> {
     constructor(public name: string) {
 
         // Build.
-        localStorage.setItem(name, '{}')
+        if (!localStorage.getItem(name)) {
+            localStorage.setItem(name, '{}')
+        }
     }
 
     /**
