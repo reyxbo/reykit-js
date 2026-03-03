@@ -1,8 +1,6 @@
 /**
  * Hook of toggle.
  *
- * Parameters
- * ----------
  * @param array Array.
  * @param loop Whether to loop count.
  *
@@ -14,12 +12,10 @@ export declare function useOpen(defaultOpen?: boolean): [boolean, () => void];
 /**
  * Hook of count number.
  *
- * Parameters
- * ----------
- * @param start Start number.
- * @param step Count step.
- * @param stop Stop number.
- * @param loop Whether to loop count.
+ * @param start - Start number.
+ * @param step - Count step.
+ * @param stop - Stop number.
+ * @param loop - Whether to loop count.
  *
  * Returns
  * -------
@@ -29,8 +25,6 @@ export declare function useCount(start?: number, step?: number, stop?: number, l
 /**
  * Hook of count array index.
  *
- * Parameters
- * ----------
  * @param array Array.
  * @param loop Whether to loop count.
  *

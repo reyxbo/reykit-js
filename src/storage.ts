@@ -6,9 +6,7 @@ export default class Storager<Data extends Record<string, any>> {
     /**
      * Build instance.
      * 
-     * Parameters
-     * ----------
-     * @param name Local storage key.
+     * @param name - Local storage key.
      */
     constructor(public name: string) {
 
@@ -21,8 +19,6 @@ export default class Storager<Data extends Record<string, any>> {
     /**
      * Get all data.
      * 
-     * Returns
-     * -------
      * @returns All data.
      */
     get data(): Data {
@@ -37,9 +33,7 @@ export default class Storager<Data extends Record<string, any>> {
     /**
      * Update data.
      * 
-     * Parameters
-     * ----------
-     * @param data New data.
+     * @param data - New data.
      */
     update(data: Partial<Data>) {
 
@@ -61,12 +55,7 @@ export default class Storager<Data extends Record<string, any>> {
     /**
      * Get a item value.
      * 
-     * Parameters
-     * ----------
-     * @param key Item key.
-     * 
-     * Returns
-     * -------
+     * @param key - Item key.
      * @returns Item value.
      */
     get<K extends keyof Data>(key: K): Data[K] {
@@ -80,10 +69,8 @@ export default class Storager<Data extends Record<string, any>> {
     /**
      * Set a item.
      * 
-     * Parameters
-     * ----------
-     * @param key Item key.
-     * @param value Item value.
+     * @param key - Item key.
+     * @param value - Item value.
      */
     set<K extends keyof Data>(key: K, value: Data[K]) {
 
@@ -95,9 +82,7 @@ export default class Storager<Data extends Record<string, any>> {
     /**
      * Delete a item.
      * 
-     * Parameters
-     * ----------
-     * @param key Item key.
+     * @param key - Item key.
      */
     del<K extends keyof Data>(key: K) {
 

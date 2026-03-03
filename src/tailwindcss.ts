@@ -4,12 +4,7 @@ import { twMerge } from "tailwind-merge"
 /**
  * Merge TailwindCSS class style string array.
  * 
- * Parameters
- * ----------
- * @param inputs TailwindCSS class style string array.
- * 
- * Returns
- * -------
+ * @param inputs - TailwindCSS class style string array.
  * @returns Merged string.
  */
 export function cn(...inputs: ClassValue[]) {

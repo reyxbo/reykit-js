@@ -4,10 +4,8 @@ import { useNavigate } from 'react-router-dom'
 /**
  * Form component of prevent access link.
  * 
- * Parameters
- * ----------
- * @param handleFormData Handle submited form data.
- * @param link Access router link.
+ * @param handleFormData - Handle submited form data.
+ * @param link - Access router link.
  */
 export default function Form(
     {

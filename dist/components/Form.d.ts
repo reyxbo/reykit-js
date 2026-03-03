@@ -2,8 +2,6 @@ import { ComponentProps } from 'react';
 /**
  * Form component of prevent access link.
  *
- * Parameters
- * ----------
  * @param handleFormData Handle submited form data.
  * @param link Access router link.
  *

@@ -5,10 +5,8 @@ import { useIndex } from '../hook'
 /**
  * Button component of cycle display children.
  * 
- * Parameters
- * ----------
- * @param childrens Children array.
- * @param handleCycle Handle cycle.
+ * @param childrens - Children array.
+ * @param handleCycle - Handle cycle.
  */
 export function CycleButton(
     {

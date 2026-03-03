@@ -2,8 +2,6 @@ import { ReactNode, ComponentProps, MouseEvent } from 'react';
 /**
  * Button component of cycle display children.
  *
- * Parameters
- * ----------
  * @param childrens Children array.
  * @param handleCycle Handle cycle.
  *
