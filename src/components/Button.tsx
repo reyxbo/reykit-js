@@ -9,10 +9,6 @@ import { useIndex } from '../hook'
  * ----------
  * @param childrens Children array.
  * @param handleCycle Handle cycle.
- * 
- * Returns
- * -------
- * @returns React element.
  */
 export function CycleButton(
     {

@@ -8,10 +8,6 @@ import { useNavigate } from 'react-router-dom'
  * ----------
  * @param handleFormData Handle submited form data.
  * @param link Access router link.
- * 
- * Returns
- * -------
- * @returns React element.
  */
 export default function Form(
     {
