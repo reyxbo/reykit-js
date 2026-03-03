@@ -27536,17 +27536,14 @@ var AE = EE();
 let dS = null;
 function zE(Z, ft = "root") {
   const it = document.getElementById(ft);
-  if (!it)
-    throw new Error("element ID not found");
+  if (!it) throw new Error("element ID not found");
   dS || (dS = AE.createRoot(it)), dS.render(Z);
 }
 class DE {
   /**
    * Build instance.
    * 
-   * Parameters
-   * ----------
-   * @param name Local storage key.
+   * @param name - Local storage key.
    */
   constructor(ft) {
     this.name = ft, localStorage.getItem(ft) || localStorage.setItem(ft, "{}");
@@ -27554,8 +27551,6 @@ class DE {
   /**
    * Get all data.
    * 
-   * Returns
-   * -------
    * @returns All data.
    */
   get data() {
@@ -27565,9 +27560,7 @@ class DE {
   /**
    * Update data.
    * 
-   * Parameters
-   * ----------
-   * @param data New data.
+   * @param data - New data.
    */
   update(ft) {
     const it = Object.assign(this.data, ft), _ = JSON.stringify(it);
@@ -27582,12 +27575,7 @@ class DE {
   /**
    * Get a item value.
    * 
-   * Parameters
-   * ----------
-   * @param key Item key.
-   * 
-   * Returns
-   * -------
+   * @param key - Item key.
    * @returns Item value.
    */
   get(ft) {
@@ -27596,10 +27584,8 @@ class DE {
   /**
    * Set a item.
    * 
-   * Parameters
-   * ----------
-   * @param key Item key.
-   * @param value Item value.
+   * @param key - Item key.
+   * @param value - Item value.
    */
   set(ft, it) {
     const _ = { [ft]: it };
@@ -27608,9 +27594,7 @@ class DE {
   /**
    * Delete a item.
    * 
-   * Parameters
-   * ----------
-   * @param key Item key.
+   * @param key - Item key.
    */
   del(ft) {
     const it = this.data;

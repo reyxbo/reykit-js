@@ -2,12 +2,8 @@ import { ReactNode, ComponentProps, MouseEvent } from 'react';
 /**
  * Button component of cycle display children.
  *
- * @param childrens Children array.
- * @param handleCycle Handle cycle.
- *
- * Returns
- * -------
- * @returns React element.
+ * @param childrens - Children array.
+ * @param handleCycle - Handle cycle.
  */
 export declare function CycleButton({ childrens, handleCycle, onClick, ...props }: {
     childrens: ReactNode[];
