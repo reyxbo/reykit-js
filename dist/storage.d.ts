@@ -1,3 +1,4 @@
+import { Key, Value, KeyByValue } from './type';
 /**
  * Manage local storage data.
  */
@@ -15,6 +16,18 @@ export default class Storager<Data extends Record<string, any>> {
      * @returns All data.
      */
     get data(): Data;
+    /**
+     * Get all keys.
+     *
+     * @returns All keys.
+     */
+    get keys(): Key<Data>[];
+    /**
+     * Get all values.
+     *
+     * @returns All values.
+     */
+    get values(): Value<Data>[];
     /**
      * Update data.
      *
@@ -45,4 +58,10 @@ export default class Storager<Data extends Record<string, any>> {
      * @param key - Item key.
      */
     del<K extends keyof Data>(key: K): void;
+    /**
+     * Toggle boolean value.
+     *
+     * @param key - Item key.
+     */
+    toggle<K extends KeyByValue<Data, boolean>>(key: K): void;
 }

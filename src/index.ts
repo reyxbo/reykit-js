@@ -4,8 +4,10 @@ import { useOpen, useCount, useIndex, useIsMobile } from './hook'
 import { renderReact } from './react'
 import { default as Storager } from './storage'
 import { cn } from './tailwindcss'
+import * as types from './type'
 
 export default {
+    types,
     CycleButton,
     Form,
     useOpen,

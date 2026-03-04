@@ -39,7 +39,7 @@ export default function Form(
             handleFormData(formdata)
         }
 
-        // Router.
+        // Navigate.
         if (link) {
             navigate(link)
         }

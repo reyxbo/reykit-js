@@ -4,7 +4,9 @@ import { useOpen, useCount, useIndex, useIsMobile } from './hook';
 import { renderReact } from './react';
 import { default as Storager } from './storage';
 import { cn } from './tailwindcss';
+import * as types from './type';
 declare const _default: {
+    types: typeof types;
     CycleButton: typeof CycleButton;
     Form: typeof Form;
     useOpen: typeof useOpen;

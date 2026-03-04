@@ -13,7 +13,7 @@ export function renderReact(app: ReactNode, elementId: string = 'root') {
 
     // Render.
     const element = document.getElementById(elementId)
-    if (!element) throw new Error('element ID not found')
+    if (!element) throw new Error(`Element ID "${elementId}" not found`)
     if (!root) {
         root = createRoot(element)
     }

@@ -1,3 +1,5 @@
+import { Key, Value, KeyByValue } from './type'
+
 /**
  * Manage local storage data.
  */
@@ -28,6 +30,32 @@ export default class Storager<Data extends Record<string, any>> {
         const data = JSON.parse(dataString)
 
         return data
+    }
+
+    /**
+     * Get all keys.
+     * 
+     * @returns All keys.
+     */
+    get keys(): Key<Data>[] {
+
+        // Get.
+        const keys = Object.keys(this.data)
+
+        return keys
+    }
+
+    /**
+     * Get all values.
+     * 
+     * @returns All values.
+     */
+    get values(): Value<Data>[] {
+
+        // Get.
+        const values = Object.values(this.data)
+
+        return values
     }
 
     /**
@@ -91,5 +119,22 @@ export default class Storager<Data extends Record<string, any>> {
         delete data[key]
         const newDataString = JSON.stringify(data)
         localStorage.setItem(this.name, newDataString)
+    }
+
+    /**
+     * Toggle boolean value.
+     * 
+     * @param key - Item key.
+     */
+    toggle<K extends KeyByValue<Data, boolean>>(key: K) {
+
+        // Parameter.
+        const data = this.data
+        if (!(key in data)) throw new Error(`Key "${key as string}" not found`)
+        const value = data[key]
+        if (typeof value !== 'boolean') throw new Error(`The value type of key "${key as string}" is not boolean`)
+
+        // Toggle.
+        this.set(key, !value as Data[typeof key])
     }
 }
