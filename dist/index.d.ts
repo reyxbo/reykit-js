@@ -2,6 +2,7 @@ import { CycleButton } from './components/Button';
 import { default as Form } from './components/Form';
 import { useOpen, useCount, useIndex, useIsMobile } from './hook';
 import { renderReact } from './react';
+import { default as request } from './request';
 import { default as Storager } from './storage';
 import { cn } from './tailwindcss';
 import * as types from './type';
@@ -14,6 +15,7 @@ declare const _default: {
     useIndex: typeof useIndex;
     useIsMobile: typeof useIsMobile;
     renderReact: typeof renderReact;
+    request: typeof request;
     Storager: typeof Storager;
     cn: typeof cn;
 };
