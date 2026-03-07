@@ -1,5 +1,6 @@
 import { CycleButton } from './components/Button';
 import { default as Form } from './components/Form';
+import { IconToggle } from './components/Toggle';
 import { useOpen, useCount, useIndex, useIsMobile } from './hook';
 import { renderReact } from './react';
 import { default as request } from './request';
@@ -10,6 +11,7 @@ declare const _default: {
     types: typeof types;
     CycleButton: typeof CycleButton;
     Form: typeof Form;
+    IconToggle: typeof IconToggle;
     useOpen: typeof useOpen;
     useCount: typeof useCount;
     useIndex: typeof useIndex;

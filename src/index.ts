@@ -1,5 +1,7 @@
+import './index.css'
 import { CycleButton } from './components/Button'
 import Form from './components/Form'
+import { IconToggle } from './components/Toggle'
 import { useOpen, useCount, useIndex, useIsMobile } from './hook'
 import { renderReact } from './react'
 import request from './request'
@@ -11,6 +13,7 @@ export default {
     types,
     CycleButton,
     Form,
+    IconToggle,
     useOpen,
     useCount,
     useIndex,
