@@ -1,6 +1,6 @@
 {
     "name": "reykit",
-    "version": "1.0.46",
+    "version": "1.0.47",
     "description": "Kit method set.",
     "author": "reyxbo",
     "keywords": [
@@ -22,9 +22,10 @@
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "exports": {
-        ".": "./dist/index.js",
-        "./debug": { "style": "./dist/style/debug.css" },
-        "./shadcn": { "style": "./dist/style/shadcn.css" },
+        ".": {"default": "./dist/index.js"},
+        "./base": {"style": "./dist/index.css"},
+        "./debug": {"style": "./dist/style/debug.css"},
+        "./shadcn": {"style": "./dist/style/shadcn.css"},
         "./*": "./dist/*"
     },
     "dependencies": {
