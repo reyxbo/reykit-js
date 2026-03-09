@@ -308,10 +308,10 @@ function gE({
   ...R
 }) {
   const Tt = sE();
-  let jt = (le) => {
+  let jt = async (le) => {
     if (le.preventDefault(), W && W(le), Z) {
       const L = new FormData(le.currentTarget);
-      Z(L);
+      await Z(L);
     }
     I && Tt(I);
   };
@@ -330,8 +330,8 @@ function SE({
   onClick: le,
   ...L
 }) {
-  const [se, il] = Y2(R), La = (ft) => {
-    le && le(ft), W(se), il();
+  const [se, il] = Y2(R), La = async (ft) => {
+    le && le(ft), await W(se), il();
   };
   return /* @__PURE__ */ op.jsxs(
     "button",

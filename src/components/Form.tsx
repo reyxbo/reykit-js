@@ -14,7 +14,7 @@ export default function Form(
         onSubmit,
         ...props
     }: {
-        handleFormData?: ( formData: FormData ) => void,
+        handleFormData?: ( formData: FormData ) => void | Promise<void>,
         link?: string
     } & ComponentProps<'form'>
 ) {
@@ -23,7 +23,7 @@ export default function Form(
     const navigate = useNavigate()
 
     // On submit.
-    let handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
+    let handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
 
         // Prevent.
         event.preventDefault()
@@ -36,7 +36,7 @@ export default function Form(
         // Handle form data.
         if (handleFormData) {
             const formdata = new FormData(event.currentTarget)
-            handleFormData(formdata)
+            await handleFormData(formdata)
         }
 
         // Navigate.

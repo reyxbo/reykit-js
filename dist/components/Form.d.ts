@@ -6,6 +6,6 @@ import { ComponentProps } from 'react';
  * @param link - Access router link.
  */
 export default function Form({ handleFormData, link, onSubmit, ...props }: {
-    handleFormData?: (formData: FormData) => void;
+    handleFormData?: (formData: FormData) => void | Promise<void>;
     link?: string;
 } & ComponentProps<'form'>): import("react/jsx-runtime").JSX.Element;
