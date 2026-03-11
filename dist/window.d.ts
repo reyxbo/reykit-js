@@ -1,8 +1,8 @@
-import { Key, Value, KeyByValue } from './type';
+import { Key, Value, KeyByValue } from './base';
 /**
  * Manage local storage data.
  */
-export default class Storager<Data extends Record<string, any>> {
+export declare class Storager<Data extends Record<string, any>> {
     name: string;
     /**
      * Build instance.

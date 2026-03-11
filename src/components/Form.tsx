@@ -1,3 +1,10 @@
+/**
+ * @Time    : 2026-03-11
+ * @Author  : Rey
+ * @Contact : reyxbo@163.com
+ * @Explain : Form components.
+ */
+
 import { ComponentProps, SubmitEvent } from 'react';
 import { useNavigate } from 'react-router-dom'
 
@@ -7,14 +14,14 @@ import { useNavigate } from 'react-router-dom'
  * @param handleFormData - Handle submited form data.
  * @param link - Access router link.
  */
-export default function Form(
+export function Form(
     {
         handleFormData,
         link,
         onSubmit,
         ...props
     }: {
-        handleFormData?: ( formData: FormData ) => void | Promise<void>,
+        handleFormData?: ( formData: FormData ) => any | Promise<any>,
         link?: string
     } & ComponentProps<'form'>
 ) {

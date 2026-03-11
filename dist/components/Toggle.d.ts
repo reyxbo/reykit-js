@@ -11,7 +11,7 @@ import { ReactNode, ComponentProps } from 'react';
 export declare function IconToggle({ openIcon, closeIcon, handleOpen, defaultOpen, rotate, className, onClick, ...props }: {
     openIcon: ReactNode;
     closeIcon: ReactNode;
-    handleOpen: (open: boolean) => void | Promise<void>;
+    handleOpen: (open: boolean) => any | Promise<any>;
     defaultOpen?: boolean;
     rotate?: boolean;
 } & ComponentProps<'button'>): import("react/jsx-runtime").JSX.Element;

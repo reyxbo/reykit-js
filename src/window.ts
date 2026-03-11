@@ -1,9 +1,16 @@
-import { Key, Value, KeyByValue } from './type'
+/**
+ * @Time    : 2026-03-11
+ * @Author  : Rey
+ * @Contact : reyxbo@163.com
+ * @Explain : Window methods.
+ */
+
+import { Key, Value, KeyByValue } from './base'
 
 /**
  * Manage local storage data.
  */
-export default class Storager<Data extends Record<string, any>> {
+export class Storager<Data extends Record<string, any>> {
 
     /**
      * Build instance.

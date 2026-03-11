@@ -1,4 +1,10 @@
 /**
+ * @Time    : 2026-03-11
+ * @Author  : Rey
+ * @Contact : reyxbo@163.com
+ * @Explain : Network methods.
+ */
+/**
  * Send request.
  *
  * @param url - Request URL.
@@ -14,7 +20,7 @@
  * @param option.method - Request method.
  *     - `undefined` : Automatic judge. When parameter `data` not has value, then is `get`, otherwise is `post`.
  */
-export default function request(url: string, { params, body, headers, method }: {
+export declare function request(url: string, { params, body, headers, method }: {
     params?: Record<string, string | number | boolean>;
     body?: URLSearchParams | File | FormData | Blob | Record<string, any> | string;
     headers?: Record<string, string | number | boolean>;

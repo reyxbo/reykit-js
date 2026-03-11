@@ -1,4 +1,11 @@
 /**
+ * @Time    : 2026-03-11
+ * @Author  : Rey
+ * @Contact : reyxbo@163.com
+ * @Explain : Network methods.
+ */
+
+/**
  * Send request.
  * 
  * @param url - Request URL.
@@ -14,7 +21,7 @@
  * @param option.method - Request method.
  *     - `undefined` : Automatic judge. When parameter `data` not has value, then is `get`, otherwise is `post`.
  */
-export default async function request(
+export async function request(
     url: string,
     {
         params,

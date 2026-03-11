@@ -1,6 +1,13 @@
+/**
+ * @Time    : 2026-03-11
+ * @Author  : Rey
+ * @Contact : reyxbo@163.com
+ * @Explain : Toggle components.
+ */
+
 import { ReactNode, ComponentProps, MouseEvent } from 'react';
 
-import { useOpen } from '../hook'
+import { useOpen } from '../react'
 import { cn } from '../tailwindcss'
 
 /**
@@ -25,7 +32,7 @@ export function IconToggle(
     }: {
         openIcon: ReactNode,
         closeIcon: ReactNode,
-        handleOpen: (open: boolean) => void | Promise<void>,
+        handleOpen: (open: boolean) => any | Promise<any>,
         defaultOpen?: boolean
         rotate?: boolean
     } & ComponentProps<'button'>

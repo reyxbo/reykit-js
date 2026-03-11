@@ -7,7 +7,7 @@ import { ReactNode, ComponentProps, MouseEvent } from 'react';
  */
 export declare function CycleButton({ childrens, handleCycle, onClick, ...props }: {
     childrens: ReactNode[];
-    handleCycle: (index: number) => void;
+    handleCycle: (index: number) => any | Promise<any>;
     data: {
         children: ReactNode;
         handleClick: (event: MouseEvent<HTMLButtonElement>) => void;

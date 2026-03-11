@@ -1,3 +1,10 @@
+/**
+ * @Time    : 2026-03-11
+ * @Author  : Rey
+ * @Contact : reyxbo@163.com
+ * @Explain : Base methods.
+ */
+
 export type Key<T> = keyof T
 export type Value<T> = T[keyof T]
 export type KeyByValue<T, V> = {
