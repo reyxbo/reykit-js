@@ -27636,7 +27636,7 @@ async function CE(Z, {
 const HE = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   request: CE
-}, Symbol.toStringTag, { value: "Module" })), BE = "^((25[0-5]|2[0-4]d|1dd|[1-9]?d).){3}(25[0-5]|2[0-4]d|1dd|[1-9]?d)$", NE = "^https?://[^s/$.?#].[^s]*$", xE = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,}$", qE = "^1[3-9]d{9}$", YE = "^[一-龥]+$", jE = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, Symbol.toStringTag, { value: "Module" })), BE = /^((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$/, NE = /^https?:\/\/[^\s/$.?#].[^\s]*$/, xE = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/, qE = /^1[3-9]\d{9}$/, YE = /^[\u4e00-\u9fa5]+$/, jE = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   PATTERN_CN: YE,
   PATTERN_EMAIL: xE,
