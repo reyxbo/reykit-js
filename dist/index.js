@@ -27643,8 +27643,11 @@ const HE = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   PATTERN_IP: BE,
   PATTERN_PHONE: qE,
   PATTERN_URL: NE
+}, Symbol.toStringTag, { value: "Module" })), GE = { BASE_URL: "/", DEV: !1, MODE: "production", PROD: !0, SSR: !1 }, XE = GE, QE = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  env: XE
 }, Symbol.toStringTag, { value: "Module" }));
-class GE {
+class VE {
   /**
    * Build instance.
    * 
@@ -27736,18 +27739,19 @@ class GE {
     this.set(I, !R);
   }
 }
-const XE = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const ZE = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  Storager: GE
-}, Symbol.toStringTag, { value: "Module" })), JE = {
+  Storager: VE
+}, Symbol.toStringTag, { value: "Module" })), WE = {
   component: UE,
   base: _E,
   net: HE,
   re: jE,
   react: zE,
+  sys: QE,
   tailwindcss: ME,
-  window: XE
+  window: ZE
 };
 export {
-  JE as default
+  WE as default
 };

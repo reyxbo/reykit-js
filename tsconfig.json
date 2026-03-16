@@ -5,8 +5,9 @@
             "@/*": ["./src/*"]
         },
         "jsx": "react-jsx",
-        "moduleResolution": "node",
         "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
         "strictNullChecks": true
     }
 }
