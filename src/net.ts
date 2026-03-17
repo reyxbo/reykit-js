@@ -20,6 +20,9 @@
  * @param option.headers - Request header data.
  * @param option.method - Request method.
  *     - `undefined` : Automatic judge. When parameter `data` not has value, then is `get`, otherwise is `post`.
+ * @param option.check - Whether to throw an error if the response is not in the 200–299 range.
+ *     Note: `Error.message` is response body string, `Error.cause` is `Response` instance.
+ *     - `undefined` : False.
  */
 export async function request(
     url: string,
@@ -27,12 +30,14 @@ export async function request(
         params,
         body,
         headers,
-        method
+        method,
+        check,
     }: {
         params?: Record<string, string | number | boolean>,
         body?: URLSearchParams | File | FormData | Blob | Record<string, any> | string,
         headers?: Record<string, string | number | boolean>,
-        method?: 'get' | 'post' | 'put' | 'patch' | 'delete' | 'options' | 'head'
+        method?: 'get' | 'post' | 'put' | 'patch' | 'delete' | 'options' | 'head',
+        check?: boolean
     }
 ) {
 
@@ -77,12 +82,19 @@ export async function request(
     if (body) {
         option['body'] = body
     }
+    check = check ?? false
 
     // Request.
     const response = await fetch(
         url,
         option
     )
+
+    // Check.
+    if (check && !response.ok) {
+        const text = await response.text()
+        throw new Error(text, {cause: response})
+    }
 
     return response
 }

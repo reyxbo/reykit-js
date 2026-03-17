@@ -8,7 +8,7 @@
 import { ReactNode, ComponentProps, MouseEvent } from 'react';
 
 import { useOpen } from '../react'
-import { cn } from '../tailwindcss'
+import { cn } from '../twc'
 
 /**
  * Toggle component of with icon.

@@ -19,10 +19,14 @@
  * @param option.headers - Request header data.
  * @param option.method - Request method.
  *     - `undefined` : Automatic judge. When parameter `data` not has value, then is `get`, otherwise is `post`.
+ * @param option.check - Whether to throw an error if the response is not in the 200–299 range.
+ *     Note: `Error.message` is response body string, `Error.cause` is `Response` instance.
+ *     - `undefined` : False.
  */
-export declare function request(url: string, { params, body, headers, method }: {
+export declare function request(url: string, { params, body, headers, method, check, }: {
     params?: Record<string, string | number | boolean>;
     body?: URLSearchParams | File | FormData | Blob | Record<string, any> | string;
     headers?: Record<string, string | number | boolean>;
     method?: 'get' | 'post' | 'put' | 'patch' | 'delete' | 'options' | 'head';
+    check?: boolean;
 }): Promise<Response>;

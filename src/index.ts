@@ -8,20 +8,20 @@
 import './index.css'
 import * as component from './components'
 import * as base from './base'
+import * as data from './data'
 import * as net from './net'
 import * as re from './re'
 import * as react from './react'
-import * as sys from './sys'
-import * as tailwindcss from './tailwindcss'
+import * as twc from './twc'
 import * as window from './window'
 
 export default {
     component,
     base,
+    data,
     net,
     re,
     react,
-    sys,
-    tailwindcss,
+    twc,
     window
 }
