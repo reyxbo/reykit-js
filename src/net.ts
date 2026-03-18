@@ -26,13 +26,7 @@
  */
 export async function request(
     url: string,
-    {
-        params,
-        body,
-        headers,
-        method,
-        check,
-    }: {
+    option?: {
         params?: Record<string, string | number | boolean>,
         body?: URLSearchParams | File | FormData | Blob | Record<string, any> | string,
         headers?: Record<string, string | number | boolean>,
@@ -42,6 +36,13 @@ export async function request(
 ) {
 
     // Parameter.
+    let {
+        params,
+        body,
+        headers,
+        method,
+        check,
+    } = option ?? {}
     if (params) {
         params = Object.fromEntries(
             Object.entries(params).map(
@@ -75,19 +76,19 @@ export async function request(
     else if (typeof body == 'string') {
         headers['Content-Type'] = headers['Content-Type'] ?? 'application/json'
     }
-    const option = {
+    const request_init = {
         'method': method ? method.toUpperCase() : body ? 'POST' : 'GET',
         'headers': headers as Record<string, string>
     }
     if (body) {
-        option['body'] = body
+        request_init['body'] = body
     }
     check = check ?? false
 
     // Request.
     const response = await fetch(
         url,
-        option
+        request_init
     )
 
     // Check.
