@@ -5,7 +5,7 @@
  * @Explain : Toggle components.
  */
 
-import { ReactNode, ComponentProps, MouseEvent } from 'react';
+import { ReactNode, ComponentProps, MouseEvent, useEffect } from 'react';
 
 import { useOpen } from '../react'
 import { cn } from '../twc'
@@ -18,6 +18,7 @@ import { cn } from '../twc'
  * @param handleOpen - Handle open.
  * @param defaultOpen - Default open state.
  * @param rotate - Whether rotate icon.
+ * @param listenOpen - Switch icon for listening status value.
  */
 export function IconToggle(
     {
@@ -26,6 +27,7 @@ export function IconToggle(
         handleOpen,
         defaultOpen = true,
         rotate = true,
+        listenOpen,
         className,
         onClick,
         ...props
@@ -33,13 +35,24 @@ export function IconToggle(
         openIcon: ReactNode,
         closeIcon: ReactNode,
         handleOpen: (open: boolean) => any | Promise<any>,
-        defaultOpen?: boolean
-        rotate?: boolean
+        defaultOpen?: boolean,
+        rotate?: boolean,
+        listenOpen?: boolean
     } & ComponentProps<'button'>
 ) {
 
     // Parameter.
     const [open, setOpen] = useOpen(defaultOpen)
+
+    // Effect.
+    if (listenOpen !== undefined) {
+        useEffect(
+            () => {
+                setOpen(listenOpen)
+            },
+            [listenOpen]
+        )
+    }
 
     // On click.
     const handleClick = async (event: MouseEvent<HTMLButtonElement>) => {

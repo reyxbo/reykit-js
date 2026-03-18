@@ -13,7 +13,7 @@ export declare function renderReact(app: ReactNode, elementId?: string): void;
  * @param loop - Whether to loop count.
  * @returns Returns a stateful open value, and a function to automatic count it.
  */
-export declare function useOpen(defaultOpen?: boolean): [boolean, () => void];
+export declare function useOpen(defaultOpen?: boolean): [boolean, (open?: boolean) => void];
 /**
  * Hook of count number.
  *

@@ -36,16 +36,17 @@ export function renderReact(app: ReactNode, elementId: string = 'root') {
  * @param loop - Whether to loop count.
  * @returns Returns a stateful open value, and a function to automatic count it.
  */
-export function useOpen(defaultOpen: boolean = true): [boolean, () => void] {
+export function useOpen(defaultOpen: boolean = true): [boolean, (open?: boolean) => void] {
 
     // Parameter.
     const [state, setState] = useState(defaultOpen)
 
     // Set function.
-    const setOpen = () => {
+    const setOpen = (open?: boolean) => {
 
         // Set.
-        setState(!state)
+        open = open === undefined ? !state : open
+        setState(open)
     }
 
     return [state, setOpen]
