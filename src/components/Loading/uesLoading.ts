@@ -23,14 +23,17 @@ export function useLoading() {
     const loadingParams = useContext(LoadingContext)
 
     // Check.
-    if (!loadingParams) throw new Error('not used in the context')
+    if (!loadingParams) throw new Error('must be used within Loading component')
 
     return {
         ...loadingParams,
-        withLoading: async <T>(fn: () => T | Promise<T>): Promise<T> => {
+        withLoading: async <T, Args extends any[]>(
+            fn: (...args: Args) => T | Promise<T>,
+            ...args: Args
+        ): Promise<T> => {
             loadingParams.setIsLoading(true)
             try {
-                return await fn()
+                return await fn(...args)
             }
             finally {
                 loadingParams.setIsLoading(false)

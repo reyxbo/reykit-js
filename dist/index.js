@@ -27562,13 +27562,13 @@ function GE({ children: j }) {
 }
 function XE() {
   const j = mE(L2);
-  if (!j) throw new Error("not used in the context");
+  if (!j) throw new Error("must be used within Loading component");
   return {
     ...j,
-    withLoading: async (K) => {
+    withLoading: async (K, ...W) => {
       j.setIsLoading(!0);
       try {
-        return await K();
+        return await K(...W);
       } finally {
         j.setIsLoading(!1);
       }

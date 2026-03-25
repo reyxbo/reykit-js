@@ -13,7 +13,7 @@
  *     - `withLoading` : Execute a function in the context.
  */
 export declare function useLoading(): {
-    withLoading: <T>(fn: () => T | Promise<T>) => Promise<T>;
+    withLoading: <T, Args extends any[]>(fn: (...args: Args) => T | Promise<T>, ...args: Args) => Promise<T>;
     isLoading: boolean;
     setIsLoading: (value: boolean) => void;
 };
