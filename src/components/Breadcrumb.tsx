@@ -13,7 +13,7 @@ import { ChevronRightIcon } from "lucide-react"
 
 import { cn } from '../twc'
 
-export type BreadcrumbDict = Record<string, { label: string; href?: string }[]>
+type BreadcrumbDict = Record<string, { label: string; href?: string }[]>
 
 /**
  * Breadcrumb components.
