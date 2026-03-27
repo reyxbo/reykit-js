@@ -4,6 +4,7 @@
  * @Contact : reyxbo@163.com
  * @Explain : Component index file.
  */
+export { Breadcrumb, type BreadcrumbDict } from './Breadcrumb';
 export { CycleButton } from './Button';
 export { Form } from './Form';
 export { Loading } from './Loading/Loading';
