@@ -6,6 +6,8 @@ type LoadingContextParams = {
 export declare const LoadingContext: import('react').Context<LoadingContextParams | null>;
 /**
  * Loading component of display rotate icon.
+ *
+ * @param props.children - The node tree of the mounting context.
  */
 export declare function Loading({ children }: {
     children: ReactNode;

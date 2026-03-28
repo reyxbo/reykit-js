@@ -14,6 +14,8 @@ export const LoadingContext = createContext<LoadingContextParams | null >(null)
 
 /**
  * Loading component of display rotate icon.
+ * 
+ * @param props.children - The node tree of the mounting context.
  */
 export function Loading({ children }: { children: ReactNode }) {
 

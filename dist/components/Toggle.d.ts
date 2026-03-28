@@ -2,12 +2,12 @@ import { ReactNode, ComponentProps } from 'react';
 /**
  * Toggle component of with icon.
  *
- * @param openIcon - Open icon.
- * @param closeIcon - Close icon.
- * @param handleOpen - Handle open.
- * @param defaultOpen - Default open state.
- * @param rotate - Whether rotate icon.
- * @param listenOpen - Switch icon for listening status value.
+ * @param props.openIcon - Open icon.
+ * @param props.closeIcon - Close icon.
+ * @param props.handleOpen - Handle open.
+ * @param props.defaultOpen - Default open state.
+ * @param props.rotate - Whether rotate icon.
+ * @param props.listenOpen - Switch icon for listening status value.
  */
 export declare function IconToggle({ openIcon, closeIcon, handleOpen, defaultOpen, rotate, listenOpen, className, onClick, ...props }: {
     openIcon: ReactNode;

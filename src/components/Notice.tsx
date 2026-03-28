@@ -56,6 +56,8 @@ const Toaster = ({ ...props }: ToasterProps) => {
 
 /**
  * Top banner notice component.
+ * 
+ * @param props.children - The node tree of the mounting context.
  */
 export function Notice({ children }: { children: ReactNode }) {
     return (

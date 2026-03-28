@@ -12,8 +12,8 @@ import { useIndex } from '../react'
 /**
  * Button component of cycle display children.
  * 
- * @param childrens - Children array.
- * @param handleCycle - Handle cycle.
+ * @param props.childrens - Children array.
+ * @param props.handleCycle - Handle cycle.
  */
 export function CycleButton(
     {
