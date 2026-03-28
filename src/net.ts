@@ -73,7 +73,7 @@ export async function request(
         body = JSON.stringify(body)
         headers['Content-Type'] = headers['Content-Type'] ?? 'application/json'
     }
-    else if (typeof body == 'string') {
+    else if (typeof body === 'string') {
         headers['Content-Type'] = headers['Content-Type'] ?? 'application/json'
     }
     const request_init = {

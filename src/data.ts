@@ -18,7 +18,7 @@ export function range(start: number, stop: number, step?: number): Generator<num
 export function* range(start_or_stop: number, stop?: number, step?: number) {
 
     // Check.
-    if (step == 0) throw new Error('the parameter "step" cannot be 0')
+    if (step === 0) throw new Error('the parameter "step" cannot be 0')
 
     // Parameter.
     let start: number
@@ -58,7 +58,7 @@ export function rangeArray(start_or_stop: number, stop?: number, step?: number) 
 
     // Create.
     let generator: Generator<number>
-    if (stop == undefined) {
+    if (stop === undefined) {
         generator = range(start_or_stop)
     }
     else {
