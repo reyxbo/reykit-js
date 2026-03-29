@@ -14,8 +14,8 @@
  * @param option.body - Request body data.
  *     - `URLSearchParams` : Form data. Automatic set `Content-Type` to `application/x-www-form-urlencoded`.
  *     - `FormData` : Multi form data. Automatic set `Content-Type` to `multipart/form-data`.
- *     - `File` : `file` item of multi form data. When no attribute `type`, then automatic set `Content-Type` to `multipart/form-data`.
- *     - `Blob` : Bytes data. When no attribute `type`, then automatic set `Content-Type` to `application/octet-stream`.
+ *     - `File` : `file` item of multi form data. Automatic set `Content-Type` to attribute `type` value.
+ *     - `Blob` : Bytes data. Automatic set `Content-Type` to attribute `type` value.
  *     - `Record<string, any> | string` : JSON data. Automatic set `Content-Type` to `application/json`.
  * @param option.headers - Request header data.
  * @param option.method - Request method.
