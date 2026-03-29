@@ -4,7 +4,7 @@
  * @Contact : reyxbo@163.com
  * @Explain : Breadcrumb components.
  */
-type BreadcrumbDict = Record<string, {
+export type BreadcrumbDict = Record<string, {
     label: string;
     href?: string;
 }[]>;
@@ -16,4 +16,3 @@ type BreadcrumbDict = Record<string, {
 export declare function Breadcrumb({ dict }: {
     dict: BreadcrumbDict;
 }): import("react/jsx-runtime").JSX.Element;
-export {};

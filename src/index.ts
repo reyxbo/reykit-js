@@ -5,9 +5,8 @@
  * @Explain : Main index file.
  */
 
-import './style/index.css'
+import './index.css'
 import * as component from './components'
-import * as ui from './components/ui'
 import * as base from './base'
 import * as data from './data'
 import * as net from './net'
@@ -18,7 +17,6 @@ import * as window from './window'
 
 export default {
     component,
-    ui,
     base,
     data,
     net,
@@ -27,3 +25,11 @@ export default {
     twc,
     window
 }
+export * as component from './components'
+export * as base from './base'
+export * as data from './data'
+export * as net from './net'
+export * as re from './re'
+export * as react from './react'
+export * as twc from './twc'
+export * as window from './window'

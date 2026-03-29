@@ -8,7 +8,6 @@ import * as twc from './twc';
 import * as window from './window';
 declare const _default: {
     component: typeof component;
-    ui: typeof component.ui;
     base: typeof base;
     data: typeof data;
     net: typeof net;
@@ -18,3 +17,11 @@ declare const _default: {
     window: typeof window;
 };
 export default _default;
+export * as component from './components';
+export * as base from './base';
+export * as data from './data';
+export * as net from './net';
+export * as re from './re';
+export * as react from './react';
+export * as twc from './twc';
+export * as window from './window';

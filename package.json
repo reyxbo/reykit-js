@@ -1,6 +1,6 @@
 {
     "name": "reykit",
-    "version": "1.0.81",
+    "version": "1.0.88",
     "description": "Kit method set.",
     "author": "reyxbo",
     "keywords": [
@@ -35,8 +35,7 @@
         },
         "./debug": {
             "style": "./dist/style/debug.css"
-        },
-        "./*": "./dist/*"
+        }
     },
     "dependencies": {
         "@base-ui/react": "^1.2.0",
