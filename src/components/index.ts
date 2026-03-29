@@ -5,6 +5,7 @@
  * @Explain : Component index file.
  */
 
+export * as ui from './ui'
 export { Breadcrumb } from './Breadcrumb'
 export { CycleButton } from './Button'
 export { Form } from './Form'
