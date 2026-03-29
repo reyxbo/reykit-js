@@ -16,8 +16,8 @@ export default defineConfig({
             name: 'copy-shadcn-css',
             closeBundle() {
                 mkdirSync('./dist/style', { recursive: true })
-                copyFileSync('./src/style/debug.css', './dist/style/debug.css')
                 copyFileSync('./src/style/shadcn.css', './dist/style/shadcn.css')
+                copyFileSync('./src/style/debug.css', './dist/style/debug.css')
             }
         }
     ],

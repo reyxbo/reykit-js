@@ -5,7 +5,7 @@
  * @Explain : Main index file.
  */
 
-import './index.css'
+import './style/index.css'
 import * as component from './components'
 import * as ui from './components/ui'
 import * as base from './base'

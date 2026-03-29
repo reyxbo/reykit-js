@@ -28,13 +28,13 @@
             "default": "./dist/index.js"
         },
         "./base": {
-            "style": "./dist/index.css"
-        },
-        "./debug": {
-            "style": "./dist/style/debug.css"
+            "style": "./dist/style/index.css"
         },
         "./shadcn": {
             "style": "./dist/style/shadcn.css"
+        },
+        "./debug": {
+            "style": "./dist/style/debug.css"
         },
         "./*": "./dist/*"
     },
