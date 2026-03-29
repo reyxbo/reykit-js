@@ -8,6 +8,7 @@ import * as twc from './twc';
 import * as window from './window';
 declare const _default: {
     component: typeof component;
+    ui: typeof component.ui;
     base: typeof base;
     data: typeof data;
     net: typeof net;
