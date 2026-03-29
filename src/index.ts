@@ -25,11 +25,3 @@ export default {
     twc,
     window
 }
-export * as component from './components'
-export * as base from './base'
-export * as data from './data'
-export * as net from './net'
-export * as re from './re'
-export * as react from './react'
-export * as twc from './twc'
-export * as window from './window'

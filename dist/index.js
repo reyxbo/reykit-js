@@ -28189,13 +28189,5 @@ const kA = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   window: kA
 };
 export {
-  YA as base,
-  qA as component,
-  XA as data,
-  u3 as default,
-  VA as net,
-  $A as re,
-  UA as react,
-  hA as twc,
-  kA as window
+  u3 as default
 };
