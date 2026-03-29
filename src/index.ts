@@ -7,6 +7,7 @@
 
 import './index.css'
 import * as component from './components'
+import * as ui from './components/ui'
 import * as base from './base'
 import * as data from './data'
 import * as net from './net'
@@ -17,6 +18,7 @@ import * as window from './window'
 
 export default {
     component,
+    ui,
     base,
     data,
     net,
