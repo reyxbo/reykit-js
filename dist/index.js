@@ -28015,8 +28015,13 @@ const qA = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   Notice: xA,
   notice: VT,
   useLoading: NA
-}, Symbol.toStringTag, { value: "Module" })), YA = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null
+}, Symbol.toStringTag, { value: "Module" }));
+function YA() {
+  document.documentElement.classList.add("debug");
+}
+const GA = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  debugCss: YA
 }, Symbol.toStringTag, { value: "Module" }));
 function* ES(g, U, j) {
   if (j === 0) throw new Error('the parameter "step" cannot be 0');
@@ -28028,16 +28033,16 @@ function* ES(g, U, j) {
     for (let J = T; J > U; J += j)
       yield J;
 }
-function GA(g, U, j) {
+function XA(g, U, j) {
   let T;
   return U === void 0 ? T = ES(g) : T = ES(g, U, j), Array.from(T);
 }
-const XA = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const QA = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   range: ES,
-  rangeArray: GA
+  rangeArray: XA
 }, Symbol.toStringTag, { value: "Module" }));
-async function QA(g, U) {
+async function VA(g, U) {
   let {
     params: j,
     body: T,
@@ -28072,18 +28077,18 @@ async function QA(g, U) {
   }
   return ue;
 }
-const VA = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const ZA = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  request: QA
-}, Symbol.toStringTag, { value: "Module" })), ZA = /^((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$/, LA = /^https?:\/\/[^\s/$.?#].[^\s]*$/, wA = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/, JA = /^1[3-9]\d{9}$/, KA = /^[\u4e00-\u9fa5]+$/, $A = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  request: VA
+}, Symbol.toStringTag, { value: "Module" })), LA = /^((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$/, wA = /^https?:\/\/[^\s/$.?#].[^\s]*$/, JA = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/, KA = /^1[3-9]\d{9}$/, $A = /^[\u4e00-\u9fa5]+$/, WA = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  PATTERN_CN: KA,
-  PATTERN_EMAIL: wA,
-  PATTERN_IP: ZA,
-  PATTERN_PHONE: JA,
-  PATTERN_URL: LA
+  PATTERN_CN: $A,
+  PATTERN_EMAIL: JA,
+  PATTERN_IP: LA,
+  PATTERN_PHONE: KA,
+  PATTERN_URL: wA
 }, Symbol.toStringTag, { value: "Module" }));
-class WA {
+class kA {
   /**
    * Build instance.
    * 
@@ -28175,19 +28180,19 @@ class WA {
     this.set(U, !T);
   }
 }
-const kA = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const FA = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  Storager: WA
-}, Symbol.toStringTag, { value: "Module" })), u3 = {
+  Storager: kA
+}, Symbol.toStringTag, { value: "Module" })), c3 = {
   component: qA,
-  base: YA,
-  data: XA,
-  net: VA,
-  re: $A,
+  base: GA,
+  data: QA,
+  net: ZA,
+  re: WA,
   react: UA,
   twc: hA,
-  window: kA
+  window: FA
 };
 export {
-  u3 as default
+  c3 as default
 };

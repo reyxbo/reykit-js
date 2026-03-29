@@ -10,3 +10,12 @@ export type Value<T> = T[keyof T]
 export type KeyByValue<T, V> = {
     [K in keyof T]: T[K] extends V ? K : never
 }[keyof T]
+
+/**
+ * Start debug CSS style, need to import 'reykit/debug' CSS style first.
+ */
+export function debugCss() {
+
+    // Start.
+    document.documentElement.classList.add('debug')
+}
