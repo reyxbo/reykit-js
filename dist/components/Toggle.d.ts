@@ -12,7 +12,7 @@ import { ReactNode, ComponentProps } from 'react';
 export declare function IconToggle({ openIcon, closeIcon, handleOpen, defaultOpen, rotate, listenOpen, className, onClick, ...props }: {
     openIcon: ReactNode;
     closeIcon: ReactNode;
-    handleOpen: (open: boolean) => any | Promise<any>;
+    handleOpen: (newOpen: boolean) => any | Promise<any>;
     defaultOpen?: boolean;
     rotate?: boolean;
     listenOpen?: boolean;

@@ -34,7 +34,7 @@ export function IconToggle(
     }: {
         openIcon: ReactNode,
         closeIcon: ReactNode,
-        handleOpen: (open: boolean) => any | Promise<any>,
+        handleOpen: (newOpen: boolean) => any | Promise<any>,
         defaultOpen?: boolean,
         rotate?: boolean,
         listenOpen?: boolean
@@ -61,7 +61,7 @@ export function IconToggle(
         if (onClick) {
             onClick(event)
         }
-        await handleOpen(open)
+        await handleOpen(!open)
         setOpen()
     }
 
