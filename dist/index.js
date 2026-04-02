@@ -27957,7 +27957,7 @@ function qA({
   closeIcon: U,
   handleOpen: j,
   defaultOpen: T = !0,
-  rotate: J = !0,
+  rotate: J = !1,
   listenOpen: P,
   className: At,
   onClick: K,

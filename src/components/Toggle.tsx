@@ -26,7 +26,7 @@ export function IconToggle(
         closeIcon,
         handleOpen,
         defaultOpen = true,
-        rotate = true,
+        rotate = false,
         listenOpen,
         className,
         onClick,
