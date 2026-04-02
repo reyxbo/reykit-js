@@ -66,7 +66,7 @@ export function Notice(
         children,
         position='top-center',
         richColors=true,
-        className,
+        toastOptions,
         ...props
     }: {
         children: ReactNode,
@@ -75,7 +75,15 @@ export function Notice(
     return (
         <>
             {children}
-            <Toaster position={position} richColors={richColors} className={cn('justify-center', className)} {...props} />
+            <Toaster
+                position={position}
+                richColors={richColors}
+                toastOptions={{
+                    className: cn('text-justify-center', toastOptions?.className),
+                    ...toastOptions
+                }}
+                {...props}
+            />
         </>
     )
 }

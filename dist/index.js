@@ -27950,12 +27950,23 @@ function jA({
   children: g,
   position: U = "top-center",
   richColors: j = !0,
-  className: E,
+  toastOptions: E,
   ...J
 }) {
   return /* @__PURE__ */ ue.jsxs(ue.Fragment, { children: [
     g,
-    /* @__PURE__ */ ue.jsx(xA, { position: U, richColors: j, className: dc("justify-center", E), ...J })
+    /* @__PURE__ */ ue.jsx(
+      xA,
+      {
+        position: U,
+        richColors: j,
+        toastOptions: {
+          className: dc("text-justify-center", E?.className),
+          ...E
+        },
+        ...J
+      }
+    )
   ] });
 }
 function qA({
