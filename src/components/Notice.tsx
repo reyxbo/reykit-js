@@ -10,6 +10,8 @@ import { useTheme } from 'next-themes'
 import { Toaster as Sonner, type ToasterProps } from 'sonner'
 import { CircleCheckIcon, InfoIcon, TriangleAlertIcon, OctagonXIcon, Loader2Icon } from 'lucide-react'
 
+import { cn } from '../twc'
+
 export { toast as notice } from 'sonner'
 
 const Toaster = ({ ...props }: ToasterProps) => {
@@ -59,11 +61,21 @@ const Toaster = ({ ...props }: ToasterProps) => {
  * 
  * @param props.children - The node tree of the mounting context.
  */
-export function Notice({ children }: { children: ReactNode }) {
+export function Notice(
+    {
+        children,
+        position='top-center',
+        richColors=true,
+        className,
+        ...props
+    }: {
+        children: ReactNode,
+    } & ToasterProps
+) {
     return (
         <>
             {children}
-            <Toaster position='top-center' richColors />
+            <Toaster position={position} richColors={richColors} className={cn('justify-center', className)} {...props} />
         </>
     )
 }
