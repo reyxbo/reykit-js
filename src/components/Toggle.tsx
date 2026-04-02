@@ -45,14 +45,13 @@ export function IconToggle(
     const [open, setOpen] = useOpen(defaultOpen)
 
     // Effect.
-    if (listenOpen !== undefined) {
-        useEffect(
-            () => {
-                setOpen(listenOpen)
-            },
-            [listenOpen]
-        )
-    }
+    useEffect(
+        () => {
+            if (listenOpen !== undefined && listenOpen !== open) {
+            setOpen(listenOpen)
+        }},
+        [listenOpen]
+    )
 
     // On click.
     const handleClick = async (event: MouseEvent<HTMLButtonElement>) => {
