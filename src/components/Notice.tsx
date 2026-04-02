@@ -79,7 +79,7 @@ export function Notice(
                 position={position}
                 richColors={richColors}
                 toastOptions={{
-                    className: cn('text-justify-center', toastOptions?.className),
+                    className: cn('justify-center', toastOptions?.className),
                     ...toastOptions
                 }}
                 {...props}

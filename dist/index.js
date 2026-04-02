@@ -27961,7 +27961,7 @@ function jA({
         position: U,
         richColors: j,
         toastOptions: {
-          className: dc("text-justify-center", E?.className),
+          className: dc("justify-center", E?.className),
           ...E
         },
         ...J
