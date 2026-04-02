@@ -5,7 +5,7 @@
  * @Explain : Breadcrumb components.
  */
 
-import { ComponentProps } from 'react'
+import { ComponentProps, Fragment } from 'react'
 import { useLocation } from 'react-router-dom'
 import { mergeProps } from '@base-ui/react/merge-props'
 import { useRender } from '@base-ui/react/use-render'
@@ -32,14 +32,16 @@ export function Breadcrumb({ dict } : { dict: BreadcrumbDict }) {
                 {
                     data.map(
                         (item, index) => (
-                            <UIBreadcrumbItem key={index}>
-                                {
-                                    item.href
-                                    ? <UIBreadcrumbLink href={item.href}>{item.label}</UIBreadcrumbLink>
-                                    : <UIBreadcrumbPage>{item.label}</UIBreadcrumbPage>
-                                }
+                            <Fragment key={index}>
+                                <UIBreadcrumbItem>
+                                    {
+                                        item.href
+                                        ? <UIBreadcrumbLink href={item.href}>{item.label}</UIBreadcrumbLink>
+                                        : <UIBreadcrumbPage>{item.label}</UIBreadcrumbPage>
+                                    }
+                                </UIBreadcrumbItem>
                                 {index < data.length - 1 && <UIBreadcrumbSeparator className='-mx-1 md:mx-0' />}
-                            </UIBreadcrumbItem>
+                            </Fragment>
                         )
                     )
                 }
