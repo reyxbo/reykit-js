@@ -38,3 +38,7 @@ export declare function useIndex(array: any[], loop?: boolean): [number, () => v
  * @returns Judgement.
  */
 export declare function useIsMobile(): boolean;
+/**
+ * Force update render.
+ */
+export declare function useRender(): () => void;

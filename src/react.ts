@@ -129,3 +129,14 @@ export function useIsMobile() {
 
     return !!isMobile
 }
+
+/**
+ * Force update render.
+ */
+export function useRender() {
+
+    // Parameter.
+    const [, setRenderCount] = useCount()
+
+    return setRenderCount
+}

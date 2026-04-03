@@ -4,16 +4,20 @@ import { ReactNode, ComponentProps } from 'react';
  *
  * @param props.openIcon - Open icon.
  * @param props.closeIcon - Close icon.
- * @param props.handleOpen - Handle open.
+ * @param props.tooltip - Tooltip text.
+ * @param props.tooltipSide - Tooltip text popup side.
+ * @param props.rotate - Whether to use rotating icon animation.
+ * @param props.open - Open state value.
+ * @param props.onChangeOpen - Open callback function.
  * @param props.defaultOpen - Default open state.
- * @param props.rotate - Whether rotate icon.
- * @param props.listenOpen - Switch icon for listening status value.
  */
-export declare function IconToggle({ openIcon, closeIcon, handleOpen, defaultOpen, rotate, listenOpen, className, onClick, ...props }: {
+export declare function IconToggle({ openIcon, closeIcon, tooltip, tooltipSide, rotate, open, onChangeOpen, defaultOpen, onClick, className, ...props }: {
     openIcon: ReactNode;
     closeIcon: ReactNode;
-    handleOpen: (newOpen: boolean) => any | Promise<any>;
-    defaultOpen?: boolean;
+    tooltip?: string;
+    tooltipSide?: 'top' | 'bottom' | 'left' | 'right';
     rotate?: boolean;
-    listenOpen?: boolean;
+    open?: boolean;
+    onChangeOpen?: (nextOpen: boolean) => any | Promise<any>;
+    defaultOpen?: boolean;
 } & ComponentProps<'button'>): import("react/jsx-runtime").JSX.Element;
