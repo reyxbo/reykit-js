@@ -33038,7 +33038,7 @@ function s4(r, d, p) {
 const r4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   range: cE,
-  rangeArray: s4
+  rangeArr: s4
 }, Symbol.toStringTag, { value: "Module" }));
 async function f4(r, d) {
   let {

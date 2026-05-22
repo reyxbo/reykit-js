@@ -6,5 +6,5 @@
  */
 export declare function range(stop: number): Generator<number>;
 export declare function range(start: number, stop: number, step?: number): Generator<number>;
-export declare function rangeArray(stop: number): number[];
-export declare function rangeArray(start: number, stop: number, step?: number): number[];
+export declare function rangeArr(stop: number): number[];
+export declare function rangeArr(start: number, stop: number, step?: number): number[];

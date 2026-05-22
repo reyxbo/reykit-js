@@ -44,8 +44,8 @@ export function* range(start_or_stop: number, stop?: number, step?: number) {
     }
 }
 
-export function rangeArray(stop: number): number[]
-export function rangeArray(start: number, stop: number, step?: number): number[]
+export function rangeArr(stop: number): number[]
+export function rangeArr(start: number, stop: number, step?: number): number[]
 /**
  * Create an array of generate index value by range.
  * 
@@ -54,7 +54,7 @@ export function rangeArray(start: number, stop: number, step?: number): number[]
  * @param step - Iteration step size.
  * @returns Array.
  */
-export function rangeArray(start_or_stop: number, stop?: number, step?: number) {
+export function rangeArr(start_or_stop: number, stop?: number, step?: number) {
 
     // Create.
     let generator: Generator<number>
