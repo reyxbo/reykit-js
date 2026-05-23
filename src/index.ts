@@ -6,7 +6,6 @@
  */
 
 import './index.css'
-declare module '*.css'
 import * as component from './components'
 import * as base from './base'
 import * as data from './data'

@@ -1,6 +1,6 @@
 {
     "name": "reykit",
-    "version": "1.0.105",
+    "version": "1.0.106",
     "description": "Kit method set.",
     "author": "reyxbo",
     "keywords": [
@@ -22,7 +22,7 @@
     ],
     "type": "module",
     "main": "./dist/index.js",
-    "types": "./dist/index.d.ts",
+    "types": "./dist/src/index.d.ts",
     "exports": {
         ".": {
             "default": "./dist/index.js"
