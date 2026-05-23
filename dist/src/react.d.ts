@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 /**
  * Render react note.
+ * Note: `react` and `react-dom` packages version must be `19.2.4`.
  *
  * @param app - React note.
  * @param elementId - Render HTML element ID.

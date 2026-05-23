@@ -10766,12 +10766,12 @@ Error generating stack: ` + o.message + `
     }
   };
   var oy = d.version;
-  if (oy !== "19.2.6")
+  if (oy !== "19.2.4")
     throw Error(
       g(
         527,
         oy,
-        "19.2.6"
+        "19.2.4"
       )
     );
   Z.findDOMNode = function(n) {
@@ -10782,10 +10782,10 @@ Error generating stack: ` + o.message + `
   };
   var Bv = {
     bundleType: 0,
-    version: "19.2.6",
+    version: "19.2.4",
     rendererPackageName: "react-dom",
     currentDispatcherRef: z,
-    reconcilerVersion: "19.2.6"
+    reconcilerVersion: "19.2.4"
   };
   if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u") {
     var sd = __REACT_DEVTOOLS_GLOBAL_HOOK__;
@@ -10831,7 +10831,7 @@ Error generating stack: ` + o.message + `
       A,
       iy
     ), a.context = Lc(null), u = a.current, o = na(), o = ds(o), r = qi(o), r.callback = null, va(u, r, o), u = o, a.current.lanes = u, Nu(a, u), ci(a), n[io] = a.current, of(n), new Tm(a);
-  }, t0.version = "19.2.6", t0;
+  }, t0.version = "19.2.4", t0;
 }
 var n0 = {};
 var uO;
@@ -27762,11 +27762,11 @@ Check the top-level render call using <` + i + ">.");
       }
     }, (function() {
       var e = nd.version;
-      if (e !== "19.2.6")
+      if (e !== "19.2.4")
         throw Error(
           `Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:
   - react:      ` + (e + `
-  - react-dom:  19.2.6
+  - react-dom:  19.2.4
 Learn more: https://react.dev/warnings/version-mismatch`)
         );
     })(), typeof Map == "function" && Map.prototype != null && typeof Map.prototype.forEach == "function" && typeof Set == "function" && Set.prototype != null && typeof Set.prototype.clear == "function" && typeof Set.prototype.forEach == "function" || console.error(
@@ -27781,10 +27781,10 @@ Learn more: https://react.dev/warnings/version-mismatch`)
     }, !(function() {
       var e = {
         bundleType: 1,
-        version: "19.2.6",
+        version: "19.2.4",
         rendererPackageName: "react-dom",
         currentDispatcherRef: le,
-        reconcilerVersion: "19.2.6"
+        reconcilerVersion: "19.2.4"
       };
       return e.overrideHookState = j2, e.overrideHookStateDeletePath = Y2, e.overrideHookStateRenamePath = q2, e.overrideProps = V2, e.overridePropsDeletePath = L2, e.overridePropsRenamePath = G2, e.scheduleUpdate = X2, e.scheduleRetry = Q2, e.setErrorHandler = Z2, e.setSuspenseHandler = J2, e.scheduleRefresh = C, e.scheduleRoot = w, e.setRefreshHandler = G, e.getCurrentFiber = Lt, $l(e);
     })() && Go && window.top === window.self && (-1 < navigator.userAgent.indexOf("Chrome") && navigator.userAgent.indexOf("Edge") === -1 || -1 < navigator.userAgent.indexOf("Firefox"))) {
@@ -27842,7 +27842,7 @@ You might need to use a local HTTP server (instead of file://): https://react.de
         y,
         Cv
       ), t.context = Ov(null), l = t.current, i = Al(l), i = hl(i), c = Ln(i), c.callback = null, Zu(l, c, i), Gu(i, "hydrateRoot()", null), l = i, t.current.lanes = l, It(t, l), ea(t), e[Fi] = t.current, No(e), new Eu(t);
-    }, n0.version = "19.2.6", typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
+    }, n0.version = "19.2.4", typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
   })()), n0;
 }
 var iO;

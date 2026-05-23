@@ -76,12 +76,12 @@ export async function request(
     else if (typeof body === 'string') {
         headers['Content-Type'] = headers['Content-Type'] ?? 'application/json'
     }
-    const request_init = {
+    const request_init: RequestInit = {
         'method': method ? method.toUpperCase() : body ? 'POST' : 'GET',
         'headers': headers as Record<string, string>
     }
     if (body) {
-        request_init['body'] = body
+        request_init['body'] = body as URLSearchParams | File | FormData | Blob | string
     }
     check = check ?? false
 
