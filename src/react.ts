@@ -114,20 +114,23 @@ export function useIndex(
 export function useIsMobile() {
 
     // Parameter.
-    const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined)
+    const mq = `(max-width: ${MOBILE_BREAKPOINT - 1}px)`
+    const [isMobile, setIsMobile] = useState<boolean>(() => {
+        if (typeof window === 'undefined') return false
+        return window.matchMedia(mq).matches
+    })
 
     // Effect.
     useEffect(() => {
-        const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
-        const onChange = () => {
-        setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
+        const mql = window.matchMedia(mq)
+        const onChange = (e: MediaQueryListEvent) => {
+            setIsMobile(e.matches)
         }
-        mql.addEventListener("change", onChange)
-        setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
-        return () => mql.removeEventListener("change", onChange)
+        mql.addEventListener('change', onChange)
+        return () => mql.removeEventListener('change', onChange)
     }, [])
 
-    return !!isMobile
+    return isMobile
 }
 
 /**
