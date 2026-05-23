@@ -108,6 +108,17 @@ export function useIndex(
 }
 
 /**
+ * Force update render.
+ */
+export function useRender() {
+
+    // Parameter.
+    const [, setRenderCount] = useCount()
+
+    return setRenderCount
+}
+
+/**
  * Whether is mobile.
  * 
  * @returns Judgement.
@@ -134,13 +145,13 @@ export function useIsMobile() {
     return isMobile
 }
 
-/**
- * Force update render.
- */
-export function useRender() {
+export function useValueByMobile<Value, MobileValue>(
+    value: Value,
+    mobileValue: MobileValue
+): Value | MobileValue {
 
     // Parameter.
-    const [, setRenderCount] = useCount()
+    const isMobile = useIsMobile()
 
-    return setRenderCount
+    return isMobile ? mobileValue : value
 }

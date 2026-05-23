@@ -34,12 +34,13 @@ export declare function useCount(start?: number, step?: number, stop?: number, l
  */
 export declare function useIndex(array: any[], loop?: boolean): [number, () => void];
 /**
+ * Force update render.
+ */
+export declare function useRender(): () => void;
+/**
  * Whether is mobile.
  *
  * @returns Judgement.
  */
 export declare function useIsMobile(): boolean;
-/**
- * Force update render.
- */
-export declare function useRender(): () => void;
+export declare function useValueByMobile<Value, MobileValue>(value: Value, mobileValue: MobileValue): Value | MobileValue;
