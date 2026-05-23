@@ -9,7 +9,7 @@ import pkg from './package.json'
 
 export default defineConfig({
     plugins: [
-        dts(),
+        dts({ rollupTypes: true }),
         react(),
         tailwindcss(),
         {
