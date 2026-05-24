@@ -32908,12 +32908,16 @@ function kM(f, d, p) {
   let g;
   return d === void 0 ? g = rE(f) : g = rE(f, d, p), Array.from(g);
 }
-const FM = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+function FM(f, d) {
+  return f.includes(d) ? f.filter((g) => g !== d) : [...f, d];
+}
+const WM = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   range: rE,
-  rangeArr: kM
+  rangeArr: kM,
+  toggleArr: FM
 }, Symbol.toStringTag, { value: "Module" }));
-async function WM(f, d) {
+async function IM(f, d) {
   let {
     params: p,
     body: g,
@@ -32948,18 +32952,18 @@ async function WM(f, d) {
   }
   return L;
 }
-const IM = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const PM = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  request: WM
-}, Symbol.toStringTag, { value: "Module" })), PM = /^((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$/, e4 = /^https?:\/\/[^\s/$.?#].[^\s]*$/, t4 = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/, n4 = /^1[3-9]\d{9}$/, l4 = /^[\u4e00-\u9fa5]+$/, a4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  request: IM
+}, Symbol.toStringTag, { value: "Module" })), e4 = /^((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$/, t4 = /^https?:\/\/[^\s/$.?#].[^\s]*$/, n4 = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/, l4 = /^1[3-9]\d{9}$/, a4 = /^[\u4e00-\u9fa5]+$/, u4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  PATTERN_CN: l4,
-  PATTERN_EMAIL: t4,
-  PATTERN_IP: PM,
-  PATTERN_PHONE: n4,
-  PATTERN_URL: e4
+  PATTERN_CN: a4,
+  PATTERN_EMAIL: n4,
+  PATTERN_IP: e4,
+  PATTERN_PHONE: l4,
+  PATTERN_URL: t4
 }, Symbol.toStringTag, { value: "Module" }));
-class u4 {
+class i4 {
   /**
    * Build instance.
    * 
@@ -33052,19 +33056,19 @@ class u4 {
     this.set(d, !g);
   }
 }
-const i4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const o4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  Storager: u4
-}, Symbol.toStringTag, { value: "Module" })), p4 = {
+  Storager: i4
+}, Symbol.toStringTag, { value: "Module" })), g4 = {
   component: JM,
   base: $M,
-  data: FM,
-  net: IM,
-  re: a4,
+  data: WM,
+  net: PM,
+  re: u4,
   react: gC,
   twc: ID,
-  window: i4
+  window: o4
 };
 export {
-  p4 as default
+  g4 as default
 };

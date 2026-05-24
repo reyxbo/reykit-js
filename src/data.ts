@@ -68,3 +68,22 @@ export function rangeArr(start_or_stop: number, stop?: number, step?: number) {
 
     return array
 }
+
+/**
+ * Toggle array element value.
+ * 
+ * @Param arr - Array.
+ * @Param value - Element value.
+ * @returns Array of toggled element.
+ */
+export function toggleArr<T>(arr: T[], value: T): T[]  {
+
+    // Toggle.
+    const newArr = (
+        arr.includes(value)
+        ? arr.filter(element => element !== value)
+        : [...arr, value]
+    )
+
+    return newArr
+}
