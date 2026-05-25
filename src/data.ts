@@ -87,3 +87,103 @@ export function toggleArr<T>(arr: T[], value: T): T[]  {
 
     return newArr
 }
+
+/**
+ * Compare the sizes of two values.
+ * 
+ * @param a - The first value.
+ * @param b - The second value.
+ * @param order - Sorting type.
+ * @returns Sorted result.
+ */
+export function compare(
+    a: any,
+    b: any,
+    order: 'asc' | 'desc' = 'asc'
+): 1 | 0 | -1 {
+
+    // Parameter.
+    let result = 0
+
+    // Unll.
+    if (a == null && b == null) return 0
+    if (a == null) return 1
+    if (b == null) return -1
+
+    // Number.
+    if (typeof a === 'number' && typeof b === 'number') {
+        result = a - b
+    }
+
+    // Date.
+    else if (a instanceof Date && b instanceof Date) {
+        result = a.getTime() - b.getTime()
+    }
+
+    // Boolean.
+    else if (typeof a === 'boolean' && typeof b === 'boolean') {
+        result = Number(a) - Number(b)
+    }
+
+    // String.
+    else if (typeof a === 'string' && typeof b === 'string') {
+
+        // Number string.
+        const na = Number(a)
+        const nb = Number(b)
+        const isNumA = !Number.isNaN(na)
+        const isNumB = !Number.isNaN(nb)
+        if (isNumA && isNumB) {
+            result = na - nb
+        }
+
+        // Chinese.
+        else {
+            result = a.localeCompare(b)
+        }
+    }
+
+    // Ohter.
+    else {
+        result = String(a).localeCompare(String(b))
+    }
+
+    // Result.
+    if (result > 0) {
+        result = 1
+    }
+    else if (result < 0) {
+        result = -1
+    }
+    if (order === 'desc') {
+        result = -result
+    }
+
+    return result as 1 | 0 | -1
+}
+
+/**
+ * Sorting array.
+ * 
+ * @param arr - Array.
+ * @param order - Sorting type.
+ * @param key - Element object index key.
+ * @returns Sorted array.
+ */
+export function sort<T>(
+    arr: T[],
+    order: 'asc' | 'desc' = 'asc',
+    key?: any
+): T[] {
+
+    // Sort.
+    const sortedArr = [...arr].sort(
+        (a, b) => compare(
+            key === undefined ? a : a[key],
+            key === undefined ? b : b[key],
+            order
+        )
+    )
+
+    return sortedArr
+}
