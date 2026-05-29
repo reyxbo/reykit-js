@@ -33,4 +33,11 @@ export declare function compare(a: any, b: any, order?: 'asc' | 'desc'): 1 | 0 |
  * @param key - Element object index key.
  * @returns Sorted array.
  */
-export declare function sort<T>(arr: T[], order?: 'asc' | 'desc', key?: any): T[];
+export declare function sort<T>(arr: T[], order?: 'asc' | 'desc', key?: keyof T): T[];
+/**
+ * Count elements of array.
+ *
+ * @param arr - Array.
+ * @returns Count result.
+ */
+export declare function countArr<T>(arr: T[]): Map<T, number>;

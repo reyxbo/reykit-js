@@ -173,17 +173,37 @@ export function compare(
 export function sort<T>(
     arr: T[],
     order: 'asc' | 'desc' = 'asc',
-    key?: any
+    key?: keyof T
 ): T[] {
 
     // Sort.
     const sortedArr = [...arr].sort(
         (a, b) => compare(
-            key === undefined ? a : a[key],
-            key === undefined ? b : b[key],
+            key !== undefined && typeof a === 'object' && a !== null ? a[key] : a,
+            key !== undefined && typeof a === 'object' && a !== null ? b[key] : b,
             order
         )
     )
 
     return sortedArr
+}
+
+/**
+ * Count elements of array.
+ * 
+ * @param arr - Array.
+ * @returns Count result.
+ */
+export function countArr<T>(arr: T[]) {
+
+    // Count.
+    const map = new Map<T, number>()
+    for (const element of arr) {
+        map.set(
+            element,
+            (map.get(element) ?? 0) + 1
+        )
+    }
+
+    return map
 }
