@@ -48775,11 +48775,13 @@ function rI({
             ) })
           ] }),
           /* @__PURE__ */ E.jsx(Ge.CommandSeparator, { className: "mb-1" }),
-          /* @__PURE__ */ E.jsx(Ge.CommandGroup, { className: "max-h-[50vh] overflow-y-auto scrollbar-thin p-0", children: [...N[_]].map(
+          /* @__PURE__ */ E.jsx(Ge.CommandGroup, { className: "max-h-[50vh] overflow-y-auto scrollbar-thin p-0", children: [...N[_]].sort(
+            (([I, q], [Z, ee]) => ee - q)
+          ).map(
             ([I, q], Z) => /* @__PURE__ */ E.jsxs(
               Ge.CommandItem,
               {
-                value: I,
+                value: String(I ?? ""),
                 onSelect: () => {
                   const ee = !!T[_]?.includes(I);
                   R({
@@ -48796,7 +48798,7 @@ function rI({
                       className: "[&_svg]:!text-primary-foreground"
                     }
                   ),
-                  /* @__PURE__ */ E.jsx("span", { className: "min-w-0 truncate whitespace-nowrap", children: I }),
+                  /* @__PURE__ */ E.jsx("span", { className: "min-w-0 truncate whitespace-nowrap", children: I ?? "" }),
                   /* @__PURE__ */ E.jsx("span", { className: "ml-auto text-muted-foreground", children: q })
                 ]
               },
@@ -48883,11 +48885,13 @@ function rI({
                       ) })
                     ] }),
                     /* @__PURE__ */ E.jsx(Ge.CommandSeparator, { className: "mb-1" }),
-                    /* @__PURE__ */ E.jsx(Ge.CommandGroup, { className: "max-h-[50vh] overflow-y-auto scrollbar-thin p-0", children: [...N[_]].map(
+                    /* @__PURE__ */ E.jsx(Ge.CommandGroup, { className: "max-h-[50vh] overflow-y-auto scrollbar-thin p-0", children: [...N[_]].sort(
+                      (([I, q], [Z, ee]) => ee - q)
+                    ).map(
                       ([I, q], Z) => /* @__PURE__ */ E.jsxs(
                         Ge.CommandItem,
                         {
-                          value: I,
+                          value: String(I ?? ""),
                           onSelect: () => {
                             const ee = !!T[_]?.includes(I);
                             R({
@@ -48904,7 +48908,7 @@ function rI({
                                 className: "[&_svg]:!text-primary-foreground"
                               }
                             ),
-                            /* @__PURE__ */ E.jsx("span", { className: "min-w-0 truncate whitespace-nowrap", children: I }),
+                            /* @__PURE__ */ E.jsx("span", { className: "min-w-0 truncate whitespace-nowrap", children: I ?? "" }),
                             /* @__PURE__ */ E.jsx("span", { className: "ml-auto text-muted-foreground", children: q })
                           ]
                         },

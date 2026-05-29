@@ -374,11 +374,13 @@ function TableMenu<Row extends Record<string, any>>(
                                             <ui.CommandSeparator className='mb-1'/>
                                             <ui.CommandGroup className='max-h-[50vh] overflow-y-auto scrollbar-thin p-0'>
                                                 {
-                                                    [...groupData[key]].map(
+                                                    [...groupData[key]].sort(
+                                                        (([_, aCount], [__, bCount]) => bCount - aCount)
+                                                    ).map(
                                                         ([value, count], index) => (
                                                             <ui.CommandItem
                                                                 key={index}
-                                                                value={value}
+                                                                value={String(value ?? '')}
                                                                 onSelect={() => {
                                                                     const checked = !!groupFilter[key]?.includes(value)
                                                                     setGroupFilter({
@@ -396,7 +398,7 @@ function TableMenu<Row extends Record<string, any>>(
                                                                     checked={!!groupFilter[key]?.includes(value)}
                                                                     className='[&_svg]:!text-primary-foreground'
                                                                 />
-                                                                <span className='min-w-0 truncate whitespace-nowrap'>{value}</span>
+                                                                <span className='min-w-0 truncate whitespace-nowrap'>{value ?? ''}</span>
                                                                 <span className='ml-auto text-muted-foreground'>{count}</span>
                                                             </ui.CommandItem>
                                                         )
@@ -492,11 +494,13 @@ function TableMenu<Row extends Record<string, any>>(
                                                     <ui.CommandSeparator className='mb-1'/>
                                                     <ui.CommandGroup className='max-h-[50vh] overflow-y-auto scrollbar-thin p-0'>
                                                         {
-                                                            [...groupData[key]].map(
+                                                            [...groupData[key]].sort(
+                                                                (([_, aCount], [__, bCount]) => bCount - aCount)
+                                                            ).map(
                                                                 ([value, count], index) => (
                                                                     <ui.CommandItem
                                                                         key={index}
-                                                                        value={value}
+                                                                        value={String(value ?? '')}
                                                                         onSelect={() => {
                                                                             const checked = !!groupFilter[key]?.includes(value)
                                                                             setGroupFilter({
@@ -514,7 +518,7 @@ function TableMenu<Row extends Record<string, any>>(
                                                                             checked={!!groupFilter[key]?.includes(value)}
                                                                             className='[&_svg]:!text-primary-foreground'
                                                                         />
-                                                                        <span className='min-w-0 truncate whitespace-nowrap'>{value}</span>
+                                                                        <span className='min-w-0 truncate whitespace-nowrap'>{value ?? ''}</span>
                                                                         <span className='ml-auto text-muted-foreground'>{count}</span>
                                                                     </ui.CommandItem>
                                                                 )
