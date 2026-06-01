@@ -5,12 +5,18 @@
  * @Explain : Image methods.
  */
 /**
- * Browser download qrcode file from text.
+ * Generate and browser open qrcode file.
+ *
+ * @param text - QRCode Text.
+ */
+export declare function openQrcode(text: string): Promise<void>;
+/**
+ * Generate and browser download qrcode file.
  *
  * @param text - QRCode Text.
  * @param fileName - File name.
  */
-export declare function downloadQrcode(text: string, fileName?: string): Promise<void>;
+export declare function downloadQrcode(text: string, fileName: string): Promise<void>;
 /**
  * Set qrcode URL to element `src` attribute.
  *

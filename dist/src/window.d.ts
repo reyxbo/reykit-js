@@ -66,9 +66,15 @@ export declare class Storager<Data extends Record<string, any>> {
     toggle<K extends KeyByValue<Data, boolean>>(key: K): void;
 }
 /**
+ * Browser open file from blob data.
+ *
+ * @param obj - Data or URL of with data.
+ */
+export declare function openFile(obj: Blob | string): void;
+/**
  * Browser download file from blob data.
  *
- * @param obj - Data or string of with data.
+ * @param obj - Data or URL of with data.
  * @param fileName - File name.
  */
-export declare function downloadFile(obj: Blob | string, fileName?: string): void;
+export declare function downloadFile(obj: Blob | string, fileName: string): void;

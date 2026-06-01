@@ -7,19 +7,35 @@
 
 import QRCode from 'qrcode'
 
-import { downloadFile } from './window'
+import { openFile, downloadFile } from './window'
 
 /**
- * Browser download qrcode file from text.
+ * Generate and browser open qrcode file.
+ * 
+ * @param text - QRCode Text.
+ */
+export async function openQrcode(text: string) {
+
+    // Download.
+    const url = await QRCode.toDataURL(text)
+    const response = await fetch(url)
+    const blob = await response.blob()
+    openFile(blob)
+}
+
+/**
+ * Generate and browser download qrcode file.
  * 
  * @param text - QRCode Text.
  * @param fileName - File name.
  */
-export async function downloadQrcode(text: string, fileName?: string) {
+export async function downloadQrcode(text: string, fileName: string) {
 
     // Download.
     const url = await QRCode.toDataURL(text)
-    downloadFile(url, fileName)
+    const response = await fetch(url)
+    const blob = await response.blob()
+    downloadFile(blob, fileName)
 }
 
 /**
