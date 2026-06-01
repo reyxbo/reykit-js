@@ -1,5 +1,5 @@
 import { default as useEmblaCarousel, UseEmblaCarouselType } from 'embla-carousel-react';
-import { Button } from './button';
+import { Button } from '../../../components/ui/button';
 import * as React from "react";
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;

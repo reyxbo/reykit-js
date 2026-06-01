@@ -7,7 +7,7 @@
 
 import QRCode from 'qrcode'
 
-import { downloadFile } from './base'
+import { downloadFile } from './window'
 
 /**
  * Browser download qrcode file from text.

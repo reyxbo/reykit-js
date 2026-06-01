@@ -305,7 +305,7 @@ function TableMenu<Row extends Record<string, any>>(
                                         key={index}
                                         checked={!isHide}
                                         onCheckedChange={
-                                            (checked) => {
+                                            checked => {
                                                 setHeaderOption(
                                                     headerOption.map((item) => ({
                                                         ...item,

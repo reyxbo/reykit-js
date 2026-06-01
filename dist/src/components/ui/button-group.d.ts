@@ -1,6 +1,6 @@
 import { useRender } from '@base-ui/react/use-render';
 import { VariantProps } from 'class-variance-authority';
-import { Separator } from './separator';
+import { Separator } from '../../../components/ui/separator';
 declare const buttonGroupVariants: (props?: ({
     orientation?: "horizontal" | "vertical" | null | undefined;
 } & import('class-variance-authority/dist/types').ClassProp) | undefined) => string;
