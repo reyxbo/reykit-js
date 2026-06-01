@@ -19,3 +19,29 @@ export function debugCss() {
     // Start.
     document.documentElement.classList.add('debug')
 }
+
+/**
+ * Browser download file from blob data.
+ * 
+ * @param obj - Data or string of with data.
+ * @param fileName - File name.
+ */
+export function downloadFile(obj: Blob | string, fileName?: string) {
+
+    // Download.
+    const url = obj instanceof Blob ? window.URL.createObjectURL(obj) : obj
+    const element = document.createElement('a')
+    if (fileName !== undefined) {
+        element.download = fileName
+    }
+    element.href = url
+    element.style.display = 'none'
+    document.body.appendChild(element)
+    element.click()
+    element.remove()
+
+    // Revoke.
+    if (obj instanceof Blob) {
+        URL.revokeObjectURL(url)
+    }
+}
