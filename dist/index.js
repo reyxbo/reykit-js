@@ -49436,7 +49436,7 @@ async function bI(a) {
   const i = await cC.toDataURL(a), d = await (await fetch(i)).blob();
   Yj(d);
 }
-async function xI(a, i) {
+async function xI(a, i = "qrcode.png") {
   const u = await cC.toDataURL(a), m = await (await fetch(u)).blob();
   kj(m, i);
 }

@@ -16,7 +16,7 @@ export declare function openQrcode(text: string): Promise<void>;
  * @param text - QRCode Text.
  * @param fileName - File name.
  */
-export declare function downloadQrcode(text: string, fileName: string): Promise<void>;
+export declare function downloadQrcode(text: string, fileName?: string): Promise<void>;
 /**
  * Set qrcode URL to element `src` attribute.
  *

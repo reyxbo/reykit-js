@@ -29,7 +29,7 @@ export async function openQrcode(text: string) {
  * @param text - QRCode Text.
  * @param fileName - File name.
  */
-export async function downloadQrcode(text: string, fileName: string) {
+export async function downloadQrcode(text: string, fileName: string = 'qrcode.png') {
 
     // Download.
     const url = await QRCode.toDataURL(text)
