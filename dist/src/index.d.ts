@@ -1,6 +1,7 @@
 import * as component from './components';
 import * as base from './base';
 import * as data from './data';
+import * as image from './image';
 import * as net from './net';
 import * as re from './re';
 import * as react from './react';
@@ -10,6 +11,7 @@ declare const _default: {
     component: typeof component;
     base: typeof base;
     data: typeof data;
+    image: typeof image;
     net: typeof net;
     re: typeof re;
     react: typeof react;

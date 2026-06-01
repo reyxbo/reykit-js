@@ -20,6 +20,7 @@ export default {
     component,
     base,
     data,
+    image,
     net,
     re,
     react,
