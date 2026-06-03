@@ -49440,23 +49440,23 @@ async function xI(a, i = "qrcode.png") {
   const u = await cC.toDataURL(a), m = await (await fetch(u)).blob();
   kj(m, i);
 }
-async function SI(a, i, {
-  width: u,
-  margin: d = 4
-}) {
-  if (typeof i == "string") {
-    const g = document.getElementById(i);
-    if (!g) throw new Error("element id not exists");
-    i = g;
+async function SI(a, i, u) {
+  const d = u && u.width, m = (u && u.margin) ?? 0, g = await cC.toDataURL(a, { width: d, margin: m });
+  if (i !== void 0) {
+    if (typeof i == "string") {
+      const v = document.getElementById(i);
+      if (!v) throw new Error("element id not exists");
+      i = v;
+    }
+    i.setAttribute("src", g);
   }
-  const m = await cC.toDataURL(a, { width: u, margin: d });
-  i.setAttribute("src", m);
+  return g;
 }
 const EI = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   downloadQrcode: xI,
-  openQrcode: bI,
-  setElementQrcode: SI
+  generateElementQrcode: SI,
+  openQrcode: bI
 }, Symbol.toStringTag, { value: "Module" }));
 async function RI(a, i) {
   let {
