@@ -42,7 +42,7 @@ export async function downloadQrcode(text: string, fileName: string = 'qrcode.pn
  * Generate QRCode URL and set to element `src` attribute.
  * 
  * @param text - QRCode Text.
- * @param element - Element instance or id.
+ * @param options.element - Element instance or id.
  *     - `undefined` : Not set.
  * @param options.width - Width of Minimum pixel.
  * @param options.margin - Number of margin blank square.
@@ -50,14 +50,15 @@ export async function downloadQrcode(text: string, fileName: string = 'qrcode.pn
  */
 export async function getQrcodeUrl(
     text: string,
-    element?: HTMLElement  | string,
     options?: {
+        element?: HTMLElement  | string,
         width?: number,
         margin?: number
     }
 ) {
 
     // Parameter.
+    let element = options && options.element
     const width = options && options.width
     const margin = (options && options.margin) ?? 0
 

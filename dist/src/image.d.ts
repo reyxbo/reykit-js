@@ -21,13 +21,14 @@ export declare function downloadQrcode(text: string, fileName?: string): Promise
  * Generate QRCode URL and set to element `src` attribute.
  *
  * @param text - QRCode Text.
- * @param element - Element instance or id.
+ * @param options.element - Element instance or id.
  *     - `undefined` : Not set.
  * @param options.width - Width of Minimum pixel.
  * @param options.margin - Number of margin blank square.
  * @returns QR code URL.
  */
-export declare function getQrcodeUrl(text: string, element?: HTMLElement | string, options?: {
+export declare function getQrcodeUrl(text: string, options?: {
+    element?: HTMLElement | string;
     width?: number;
     margin?: number;
 }): Promise<string>;
