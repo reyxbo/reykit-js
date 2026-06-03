@@ -22,5 +22,7 @@ export declare function downloadQrcode(text: string, fileName?: string): Promise
  *
  * @param text - QRCode Text.
  * @param element - Element instance or id.
+ * @param width - Width of Minimum pixel.
+ * @param margin - Number of margin blank square.
  */
-export declare function setElementQrcode(text: string, element: HTMLElement | string): Promise<void>;
+export declare function setElementQrcode(text: string, element: HTMLElement | string, width?: number, margin?: number): Promise<void>;

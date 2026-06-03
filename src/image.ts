@@ -43,8 +43,15 @@ export async function downloadQrcode(text: string, fileName: string = 'qrcode.pn
  * 
  * @param text - QRCode Text.
  * @param element - Element instance or id.
+ * @param width - Width of Minimum pixel.
+ * @param margin - Number of margin blank square.
  */
-export async function setElementQrcode(text: string, element: HTMLElement  | string) {
+export async function setElementQrcode(
+    text: string,
+    element: HTMLElement  | string,
+    width?: number,
+    margin: number = 4
+) {
 
     // Parameter.
     if (typeof element === 'string') {
@@ -52,9 +59,8 @@ export async function setElementQrcode(text: string, element: HTMLElement  | str
         if (!searchElement) throw new Error('element id not exists')
         element = searchElement
     }
-    if (!element.hasAttribute('src')) throw new Error('element not has "src" attribute')
 
     // Download.
-    const url = await QRCode.toDataURL(text)
+    const url = await QRCode.toDataURL(text, { width, margin })
     element.setAttribute('src', url)
 }

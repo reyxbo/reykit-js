@@ -49440,15 +49440,14 @@ async function xI(a, i = "qrcode.png") {
   const u = await cC.toDataURL(a), m = await (await fetch(u)).blob();
   kj(m, i);
 }
-async function SI(a, i) {
+async function SI(a, i, u, d = 4) {
   if (typeof i == "string") {
-    const d = document.getElementById(i);
-    if (!d) throw new Error("element id not exists");
-    i = d;
+    const g = document.getElementById(i);
+    if (!g) throw new Error("element id not exists");
+    i = g;
   }
-  if (!i.hasAttribute("src")) throw new Error('element not has "src" attribute');
-  const u = await cC.toDataURL(a);
-  i.setAttribute("src", u);
+  const m = await cC.toDataURL(a, { width: u, margin: d });
+  i.setAttribute("src", m);
 }
 const EI = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
