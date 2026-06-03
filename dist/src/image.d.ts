@@ -5,30 +5,53 @@
  * @Explain : Image methods.
  */
 /**
- * Generate and browser open QR code file.
+ * Generate QRCode URL.
  *
  * @param text - QRCode Text.
- */
-export declare function openQrcode(text: string): Promise<void>;
-/**
- * Generate and browser download qrcode file.
- *
- * @param text - QR code Text.
- * @param fileName - File name.
- */
-export declare function downloadQrcode(text: string, fileName?: string): Promise<void>;
-/**
- * Generate QRCode URL and set to element `src` attribute.
- *
- * @param text - QRCode Text.
- * @param options.element - Element instance or id.
- *     - `undefined` : Not set.
  * @param options.width - Width of Minimum pixel.
  * @param options.margin - Number of margin blank square.
  * @returns QR code URL.
  */
-export declare function getQrcodeUrl(text: string, options?: {
-    element?: HTMLElement | string;
+export declare function getQrcode(text: string, options?: {
+    width?: number;
+    margin?: number;
+}): Promise<string>;
+/**
+ * Generate QRCode URL and browser open file.
+ *
+ * @param text - QRCode Text.
+ * @param options.width - Width of Minimum pixel.
+ * @param options.margin - Number of margin blank square.
+ * @returns QR code URL.
+ */
+export declare function openQrcode(text: string, options?: {
+    width?: number;
+    margin?: number;
+}): Promise<string>;
+/**
+ * Generate QRCode URL and browser download file.
+ *
+ * @param text - QR code Text.
+ * @param options.fileName - File name.
+ * @param options.width - Width of Minimum pixel.
+ * @param options.margin - Number of margin blank square.
+ * @returns QR code URL.
+ */
+export declare function downloadQrcode(text: string, options?: {
+    fileName?: string;
+    width?: number;
+    margin?: number;
+}): Promise<string>;
+/**
+ * Generate QRCode URL and set to element `src` attribute.
+ *
+ * @param text - QRCode Text.
+ * @param element - Element instance or id.
+ * @param options.width - Width of Minimum pixel.
+ * @param options.margin - Number of margin blank square.
+ * @returns QR code URL.
+ */
+export declare function setQrcode(text: string, element: HTMLElement | string, options?: {
     width?: number;
     margin?: number;
 }): Promise<string>;
