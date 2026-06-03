@@ -43,14 +43,19 @@ export async function downloadQrcode(text: string, fileName: string = 'qrcode.pn
  * 
  * @param text - QRCode Text.
  * @param element - Element instance or id.
- * @param width - Width of Minimum pixel.
- * @param margin - Number of margin blank square.
+ * @param options.width - Width of Minimum pixel.
+ * @param options.margin - Number of margin blank square.
  */
 export async function setElementQrcode(
     text: string,
     element: HTMLElement  | string,
-    width?: number,
-    margin: number = 4
+    {
+        width,
+        margin = 4
+    }: {
+        width?: number,
+        margin?: number
+    }
 ) {
 
     // Parameter.

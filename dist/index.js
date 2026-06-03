@@ -49440,7 +49440,10 @@ async function xI(a, i = "qrcode.png") {
   const u = await cC.toDataURL(a), m = await (await fetch(u)).blob();
   kj(m, i);
 }
-async function SI(a, i, u, d = 4) {
+async function SI(a, i, {
+  width: u,
+  margin: d = 4
+}) {
   if (typeof i == "string") {
     const g = document.getElementById(i);
     if (!g) throw new Error("element id not exists");
