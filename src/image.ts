@@ -48,7 +48,7 @@ export async function downloadQrcode(text: string, fileName: string = 'qrcode.pn
  * @param options.margin - Number of margin blank square.
  * @returns QR code URL.
  */
-export async function generateElementQrcode(
+export async function getQrcodeUrl(
     text: string,
     element?: HTMLElement  | string,
     options?: {

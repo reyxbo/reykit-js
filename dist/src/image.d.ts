@@ -27,7 +27,7 @@ export declare function downloadQrcode(text: string, fileName?: string): Promise
  * @param options.margin - Number of margin blank square.
  * @returns QR code URL.
  */
-export declare function generateElementQrcode(text: string, element?: HTMLElement | string, options?: {
+export declare function getQrcodeUrl(text: string, element?: HTMLElement | string, options?: {
     width?: number;
     margin?: number;
 }): Promise<string>;
