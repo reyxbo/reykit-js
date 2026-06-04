@@ -632,12 +632,16 @@ function TableMain<Row extends Record<string, any>>(
 
     return (
         <div className='rounded-lg border overflow-hidden'>
-            <ui.Table className='[&_th:last-child]:w-16 [&_td:last-child]:w-16'>
+            <ui.Table className={cn(
+                '[&_th]:py-1.5 [&_td]:py-3 md:[&_th]:py-2 md:[&_td]:py-3.5',
+                selectRows && '[&_th:first-child]:w-8 [&_td:first-child]:w-8',
+                rowOption && '[&_th:last-child]:w-16 [&_td:last-child]:w-16'
+            )}>
                 <ui.TableHeader className='sticky top-0 z-10 bg-muted'>
                     <ui.TableRow>
                         {
                             selectRows && (
-                                <ui.TableHead>
+                                <ui.TableHead className='pl-2 md:pl-3'>
                                     <ui.Checkbox
                                         checked={pageData.length !== 0 && pageData.every(row => selectRows.includes(row))}
                                         onCheckedChange={(checked) => {
@@ -662,7 +666,7 @@ function TableMain<Row extends Record<string, any>>(
                                                         render={<ui.Button
                                                             variant='ghost'
                                                             size='sm'
-                                                            className='hover:bg-foreground hover:text-background dark:hover:bg-foreground dark:hover:text-background'
+                                                            className='relative right-1 pl-1 pr-0 gap-0 hover:bg-foreground hover:text-background dark:hover:bg-foreground dark:hover:text-background'
                                                         />}
                                                     >
                                                         <span>{name}</span>
@@ -715,7 +719,7 @@ function TableMain<Row extends Record<string, any>>(
                             >
                                 {
                                     selectRows && (
-                                        <ui.TableCell>
+                                        <ui.TableCell className='pl-2 md:pl-3'>
                                             <ui.Checkbox
                                                 checked={selectRows.includes(row)}
                                                 onCheckedChange={(checked) => {
@@ -745,12 +749,12 @@ function TableMain<Row extends Record<string, any>>(
                                 }
                                 {
                                     rowOption && (
-                                        <ui.TableCell className='overflow-hidden flex space-x-2'>
+                                        <ui.TableCell className='overflow-hidden'>
                                             <ui.DropdownMenu modal={false}>
                                                 <ui.DropdownMenuTrigger render={
                                                     <ui.Button
                                                         variant='ghost'
-                                                        className='flex size-8 text-muted-foreground data-[state=open]:bg-muted'
+                                                        className='flex size-4 text-muted-foreground data-[state=open]:bg-muted'
                                                         size='icon'
                                                     />
                                                 }>
