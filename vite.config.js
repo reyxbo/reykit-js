@@ -16,9 +16,8 @@ export default defineConfig({
             name: 'copy-shadcn-css',
             closeBundle() {
                 mkdirSync('./dist/style', { recursive: true })
+                copyFileSync('./src/style/base.css', './dist/style/base.css')
                 copyFileSync('./src/style/debug.css', './dist/style/debug.css')
-                copyFileSync('./src/style/shadcn.css', './dist/style/shadcn.css')
-                copyFileSync('./src/style/tailwind.css', './dist/style/tailwind.css')
             }
         }
     ],

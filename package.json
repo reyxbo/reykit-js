@@ -1,6 +1,6 @@
 {
     "name": "reykit",
-    "version": "1.0.157",
+    "version": "1.0.158",
     "description": "Kit method set.",
     "author": "reyxbo",
     "keywords": [
@@ -27,14 +27,11 @@
         ".": {
             "default": "./dist/index.js"
         },
+        "./base": {
+            "style": "./dist/style/base.css"
+        },
         "./debug": {
             "style": "./dist/style/debug.css"
-        },
-        "./shadcn": {
-            "style": "./dist/style/shadcn.css"
-        },
-        "./tailwind": {
-            "style": "./dist/style/tailwind.css"
         }
     },
     "devDependencies": {

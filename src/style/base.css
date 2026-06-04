@@ -7,6 +7,7 @@ Menu accent: Bold.
 */
 
 @import "tailwindcss";
+@source "../**/*.{js,ts,jsx,tsx}";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/inter";
