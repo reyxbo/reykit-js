@@ -49021,7 +49021,10 @@ function dI({
                 {
                   variant: "ghost",
                   size: "sm",
-                  className: "relative right-1 pl-1 pr-0 gap-0 hover:bg-foreground hover:text-background dark:hover:bg-foreground dark:hover:text-background"
+                  className: ie(
+                    "relative right-1 pl-1 pr-0 gap-0",
+                    "hover:bg-foreground hover:text-background dark:hover:bg-foreground dark:hover:text-background"
+                  )
                 }
               ),
               children: [
