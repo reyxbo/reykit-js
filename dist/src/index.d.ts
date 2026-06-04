@@ -1,3 +1,9 @@
+/**
+ * @Time    : 2026-03-11
+ * @Author  : Rey
+ * @Contact : reyxbo@163.com
+ * @Explain : Main index file.
+ */
 import * as component from './components';
 import * as ui from './components/ui';
 import * as base from './base';
