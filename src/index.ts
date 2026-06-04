@@ -19,6 +19,7 @@ import * as window from './window'
 
 export default {
     component,
+    ui,
     base,
     data,
     image,

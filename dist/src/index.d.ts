@@ -1,4 +1,5 @@
 import * as component from './components';
+import * as ui from './components/ui';
 import * as base from './base';
 import * as data from './data';
 import * as image from './image';
@@ -9,6 +10,7 @@ import * as twc from './twc';
 import * as window from './window';
 declare const _default: {
     component: typeof component;
+    ui: typeof ui;
     base: typeof base;
     data: typeof data;
     image: typeof image;
