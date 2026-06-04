@@ -7,6 +7,7 @@
 
 import './index.css'
 import * as component from './components'
+import * as ui from './components/ui'
 import * as base from './base'
 import * as data from './data'
 import * as image from './image'
