@@ -21,3 +21,4 @@ declare const _default: {
     window: typeof window;
 };
 export default _default;
+export { component, ui, base, data, image, net, re, react, twc, window };

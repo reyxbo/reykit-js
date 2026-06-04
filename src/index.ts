@@ -29,3 +29,15 @@ export default {
     twc,
     window
 }
+export {
+    component,
+    ui,
+    base,
+    data,
+    image,
+    net,
+    re,
+    react,
+    twc,
+    window
+}
