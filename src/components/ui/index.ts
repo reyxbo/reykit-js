@@ -1,4 +1,3 @@
-import * as lucide from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import { useIsMobile } from '../../react'
@@ -122,13 +121,7 @@ import {
 import { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemSeparator, ItemTitle } from './item'
 import { Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSeparator, FieldSet, FieldTitle } from './field'
 import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from './empty'
-
-const lucideIcons = lucide as unknown as Record<string, lucide.LucideIcon>
-const icon: Record<string, React.ComponentType<any>> = {
-    PythonIcon: () => <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' className='icon icon-tabler icons-tabler-outline icon-tabler-brand-python'><path stroke='none' d='M0 0h24v24H0z' fill='none' /><path d='M12 9h-7a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h3' /><path d='M12 15h7a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-3' /><path d='M8 9v-4a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v5a2 2 0 0 1 -2 2h-4a2 2 0 0 0 -2 2v5a2 2 0 0 0 2 2h4a2 2 0 0 0 2 -2v-4' /><path d='M11 6l0 .01' /><path d='M13 18l0 .01' /></svg>,
-    JavascriptIcon: () => <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' className='icon icon-tabler icons-tabler-outline icon-tabler-brand-javascript'><path stroke='none' d='M0 0h24v24H0z' fill='none' /><path d='M20 4l-2 14.5l-6 2l-6 -2l-2 -14.5l16 0' /><path d='M7.5 8h3v8l-2 -1' /><path d='M16.5 8h-2.5a.5 .5 0 0 0 -.5 .5v3a.5 .5 0 0 0 .5 .5h1.423a.5 .5 0 0 1 .495 .57l-.418 2.93l-2 .5' /></svg>,
-    ...lucideIcons
-}
+import icon from './icon'
 
 /**
  * Hook of return popup box component dictionary by media inquiries.

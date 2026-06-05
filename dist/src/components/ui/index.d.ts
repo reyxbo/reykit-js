@@ -50,7 +50,7 @@ import { ContextMenu, ContextMenuCheckboxItem, ContextMenuContent, ContextMenuGr
 import { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemSeparator, ItemTitle } from './item';
 import { Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSeparator, FieldSet, FieldTitle } from './field';
 import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from './empty';
-declare const icon: Record<string, React.ComponentType<any>>;
+import { default as icon } from './icon';
 /**
  * Hook of return popup box component dictionary by media inquiries.
  *
