@@ -148,7 +148,7 @@ import {
     SidebarMenuSubButton,
     useSidebar
 }  from './sidebar'
-import icon from './icon'
+import * as icon from './icon'
 
 /**
  * Hook of return popup box component dictionary by media inquiries.
