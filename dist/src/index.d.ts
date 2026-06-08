@@ -1,22 +1,15 @@
+import { base, data, image, net, re, react, twc, window } from '../lib';
 /**
  * @Time    : 2026-03-11
  * @Author  : Rey
  * @Contact : reyxbo@163.com
  * @Explain : Main index file.
  */
-import * as component from './components';
-import * as ui from './components/ui';
-import * as base from './base';
-import * as data from './data';
-import * as image from './image';
-import * as net from './net';
-import * as re from './re';
-import * as react from './react';
-import * as twc from './twc';
-import * as window from './window';
+import * as component from 'component';
+import * as ui from 'component/ui';
 declare const _default: {
     component: typeof component;
-    ui: typeof ui;
+    ui: typeof component.ui;
     base: typeof base;
     data: typeof data;
     image: typeof image;

@@ -5,16 +5,18 @@
  * @Explain : Main index file.
  */
 
-import * as component from './components'
-import * as ui from './components/ui'
-import * as base from './base'
-import * as data from './data'
-import * as image from './image'
-import * as net from './net'
-import * as re from './re'
-import * as react from './react'
-import * as twc from './twc'
-import * as window from './window'
+import * as component from 'component'
+import * as ui from 'component/ui'
+import {
+    base,
+    data,
+    image,
+    net,
+    re,
+    react,
+    twc,
+    window
+} from 'lib'
 
 export default {
     component,
