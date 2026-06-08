@@ -7,7 +7,7 @@
 
 import QRCode from 'qrcode'
 
-import { openFile, downloadFile } from 'lib/window'
+import { openFile, downloadFile } from '../lib/window'
 
 /**
  * Generate QRCode URL.

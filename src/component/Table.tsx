@@ -7,10 +7,10 @@
 
 import { ReactNode, useState, isValidElement } from 'react'
 
-import * as ui from 'ui'
-import { sort, rangeArr, countArr } from 'lib/data'
-import { useValueByMobile } from 'lib/react'
-import { cn } from 'lib/twc'
+import * as ui from './ui'
+import { sort, rangeArr, countArr } from '../lib/data'
+import { useValueByMobile } from '../lib/react'
+import { cn } from '../lib/twc'
 
 export type HeaderOption<Row extends Record<string, any>> = {
     key: string,

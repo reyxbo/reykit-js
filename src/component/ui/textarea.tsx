@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { cn } from 'lib/twc'
+import { cn } from '../../lib/twc'
 
 function Textarea({ className, ...props }: React.ComponentProps<'textarea'>) {
   return (

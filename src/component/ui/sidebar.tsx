@@ -4,11 +4,11 @@ import { useRender } from '@base-ui/react/use-render'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { PanelLeftIcon } from 'lucide-react'
 
-import { useIsMobile } from 'lib/react'
-import { cn } from 'lib/twc'
-import { Button } from 'ui/button'
-import { Input } from 'ui/input'
-import { Separator } from 'ui/separator'
+import { useIsMobile } from '../../lib/react'
+import { cn } from '../../lib/twc'
+import { Button } from './button'
+import { Input } from './input'
+import { Separator } from './separator'
 import {
   Sheet,
   SheetContent,
@@ -16,9 +16,9 @@ import {
   SheetTitle,
   SheetDescription,
 }
-from 'ui/sheet'
-import { Skeleton } from 'ui/skeleton'
-import { Tooltip, TooltipTrigger, TooltipContent } from 'ui/tooltip'
+from './sheet'
+import { Skeleton } from './skeleton'
+import { Tooltip, TooltipTrigger, TooltipContent } from './tooltip'
 
 const SIDEBAR_COOKIE_NAME = 'sidebar_state'
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7

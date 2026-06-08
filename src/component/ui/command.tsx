@@ -1,18 +1,18 @@
 import * as React from 'react'
 import { Command as CommandPrimitive } from 'cmdk'
 
-import { cn } from 'lib/twc'
+import { cn } from '../../lib/twc'
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from 'ui/dialog'
+} from './dialog'
 import {
   InputGroup,
   InputGroupAddon,
-} from 'ui/input-group'
+} from './input-group'
 import { SearchIcon, CheckIcon } from 'lucide-react'
 
 function Command({

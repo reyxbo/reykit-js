@@ -1,6 +1,6 @@
 import { useRender } from '@base-ui/react/use-render';
 import { VariantProps } from 'class-variance-authority';
-import { Separator } from '../../../component/ui/separator';
+import { Separator } from './separator';
 import * as React from 'react';
 declare function ItemGroup({ className, ...props }: React.ComponentProps<'div'>): import("react/jsx-runtime").JSX.Element;
 declare function ItemSeparator({ className, ...props }: React.ComponentProps<typeof Separator>): import("react/jsx-runtime").JSX.Element;

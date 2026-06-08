@@ -21,13 +21,6 @@ export default defineConfig({
             }
         }
     ],
-    resolve: {
-        alias: {
-            'component': resolve(__dirname, './src/component'),
-            'ui': resolve(__dirname, './src/component/ui'),
-            'lib': resolve(__dirname, './src/lib')
-        }
-    },
     build: {
         lib: {
             entry: resolve(__dirname, './src/index.ts'),

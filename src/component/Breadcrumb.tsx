@@ -8,7 +8,7 @@
 import { Fragment } from 'react'
 import { useLocation } from 'react-router-dom'
 
-import * as ui from 'ui'
+import * as ui from './ui'
 
 export type BreadcrumbDict = Record<string, { label: string; href?: string }[]>
 

@@ -5,8 +5,8 @@
  * @Explain : Main index file.
  */
 
-import * as component from 'component'
-import * as ui from 'component/ui'
+import * as component from './component'
+import * as ui from './component/ui'
 import {
     base,
     data,
@@ -16,7 +16,7 @@ import {
     react,
     twc,
     window
-} from 'lib'
+} from './lib'
 
 export default {
     component,

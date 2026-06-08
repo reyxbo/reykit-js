@@ -7,7 +7,7 @@
 
 import { ReactNode, ComponentProps, MouseEvent } from 'react';
 
-import { useIndex } from 'lib/react'
+import { useIndex } from '../lib/react'
 
 /**
  * Button component of cycle display children.

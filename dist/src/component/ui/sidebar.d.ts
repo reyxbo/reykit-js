@@ -1,9 +1,9 @@
 import { useRender } from '@base-ui/react/use-render';
 import { VariantProps } from 'class-variance-authority';
-import { Button } from '../../../component/ui/button';
-import { Input } from '../../../component/ui/input';
-import { Separator } from '../../../component/ui/separator';
-import { TooltipContent } from '../../../component/ui/tooltip';
+import { Button } from './button';
+import { Input } from './input';
+import { Separator } from './separator';
+import { TooltipContent } from './tooltip';
 import * as React from 'react';
 type SidebarContextProps = {
     state: 'expanded' | 'collapsed';

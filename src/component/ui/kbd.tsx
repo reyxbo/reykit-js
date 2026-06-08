@@ -1,4 +1,4 @@
-import { cn } from 'lib/twc'
+import { cn } from '../../lib/twc'
 
 function Kbd({ className, ...props }: React.ComponentProps<'kbd'>) {
   return (

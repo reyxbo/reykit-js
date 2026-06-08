@@ -1,14 +1,6 @@
 {
     "compilerOptions": {
         "baseUrl": ".",
-        "paths": {
-            "component": ["./src/component"],
-            "component/*": ["./src/component/*"],
-            "ui": ["./src/component/ui"],
-            "ui/*": ["./src/component/ui/*"],
-            "lib": ["./src/lib"],
-            "lib/*": ["./src/lib/*"]
-        },
         "jsx": "react-jsx",
         "target": "esnext",
         "module": "esnext",

@@ -4,13 +4,13 @@
  * @Contact : reyxbo@163.com
  * @Explain : Component index file.
  */
-import * as ui from 'ui';
+import * as ui from './ui';
 export { ui };
-export { type BreadcrumbDict, Breadcrumb } from '../../component/Breadcrumb';
-export { CycleButton } from '../../component/Button';
-export { Form } from '../../component/Form';
-export { Loading } from '../../component/Loading/Loading';
-export { useLoading } from '../../component/Loading/uesLoading';
-export { Notice, notice } from '../../component/Notice';
-export { type HeaderOption, type SearchOption, type ButtonOption, type OptionName, type RowOption, type SelectRowsOption, Table } from '../../component/Table';
-export { IconToggle } from '../../component/Toggle';
+export { type BreadcrumbDict, Breadcrumb } from './Breadcrumb';
+export { CycleButton } from './Button';
+export { Form } from './Form';
+export { Loading } from './Loading/Loading';
+export { useLoading } from './Loading/uesLoading';
+export { Notice, notice } from './Notice';
+export { type HeaderOption, type SearchOption, type ButtonOption, type OptionName, type RowOption, type SelectRowsOption, Table } from './Table';
+export { IconToggle } from './Toggle';

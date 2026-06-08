@@ -1,26 +1,26 @@
 import { Link } from 'react-router-dom'
 
-import { useIsMobile } from 'lib/react'
-import { Button } from 'ui/button'
-import { Badge } from 'ui/badge'
-import { Label } from 'ui/label'
-import { Input } from 'ui/input'
-import { Textarea } from 'ui/textarea'
-import { Checkbox } from 'ui/checkbox'
-import { RadioGroup, RadioGroupItem } from 'ui/radio-group'
-import { Switch } from 'ui/switch'
-import { Toggle } from 'ui/toggle'
-import { Kbd } from 'ui/kbd'
-import { Progress } from 'ui/progress'
-import { Slider } from 'ui/slider'
-import { Calendar } from 'ui/calendar'
-import { Spinner } from 'ui/spinner'
-import { Separator } from 'ui/separator'
-import { Skeleton } from 'ui/skeleton'
-import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea } from 'ui/input-group'
-import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from 'ui/button-group'
-import { ToggleGroup, ToggleGroupItem } from 'ui/toggle-group'
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectSeparator, SelectTrigger, SelectValue } from 'ui/select'
+import { useIsMobile } from '../../lib/react'
+import { Button } from './button'
+import { Badge } from './badge'
+import { Label } from './label'
+import { Input } from './input'
+import { Textarea } from './textarea'
+import { Checkbox } from './checkbox'
+import { RadioGroup, RadioGroupItem } from './radio-group'
+import { Switch } from './switch'
+import { Toggle } from './toggle'
+import { Kbd } from './kbd'
+import { Progress } from './progress'
+import { Slider } from './slider'
+import { Calendar } from './calendar'
+import { Spinner } from './spinner'
+import { Separator } from './separator'
+import { Skeleton } from './skeleton'
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea } from './input-group'
+import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from './button-group'
+import { ToggleGroup, ToggleGroupItem } from './toggle-group'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectSeparator, SelectTrigger, SelectValue } from './select'
 import {
     Combobox,
     ComboboxChip,
@@ -35,7 +35,7 @@ import {
     ComboboxLabel,
     ComboboxList,
     ComboboxSeparator
-} from 'ui/combobox'
+} from './combobox'
 import {
     DropdownMenu,
     DropdownMenuCheckboxItem,
@@ -51,19 +51,19 @@ import {
     DropdownMenuSubContent,
     DropdownMenuSubTrigger,
     DropdownMenuTrigger
-} from 'ui/dropdown-menu'
-import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from 'ui/input-otp'
-import { Avatar, AvatarBadge, AvatarFallback, AvatarGroup, AvatarGroupCount, AvatarImage } from 'ui/avatar'
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from 'ui/collapsible'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from 'ui/accordion'
-import { Alert, AlertDescription, AlertTitle } from 'ui/alert'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from 'ui/card'
-import { HoverCard, HoverCardContent, HoverCardTrigger } from 'ui/hover-card'
-import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from 'ui/command'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from 'ui/carousel'
-import { Popover, PopoverContent, PopoverTrigger } from 'ui/popover'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'ui/tooltip'
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, DialogTrigger } from 'ui/dialog'
+} from './dropdown-menu'
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from './input-otp'
+import { Avatar, AvatarBadge, AvatarFallback, AvatarGroup, AvatarGroupCount, AvatarImage } from './avatar'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './collapsible'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './accordion'
+import { Alert, AlertDescription, AlertTitle } from './alert'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card'
+import { HoverCard, HoverCardContent, HoverCardTrigger } from './hover-card'
+import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from './command'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './carousel'
+import { Popover, PopoverContent, PopoverTrigger } from './popover'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './tooltip'
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, DialogTrigger } from './dialog'
 import {
     AlertDialog,
     AlertDialogAction,
@@ -75,11 +75,11 @@ import {
     AlertDialogOverlay,
     AlertDialogTitle,
     AlertDialogTrigger
-} from 'ui/alert-dialog'
-import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from 'ui/sheet'
-import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerTitle, DrawerTrigger } from 'ui/drawer'
-import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from 'ui/table'
-import { Toaster } from 'ui/sonner'
+} from './alert-dialog'
+import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from './sheet'
+import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerTitle, DrawerTrigger } from './drawer'
+import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from './table'
+import { Toaster } from './sonner'
 import {
     Menubar,
     MenubarCheckboxItem,
@@ -96,14 +96,14 @@ import {
     MenubarSubContent,
     MenubarSubTrigger,
     MenubarTrigger
-} from 'ui/menubar'
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from 'ui/navigation-menu'
-import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from 'ui/breadcrumb'
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from 'ui/pagination'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from 'ui/tabs'
-import { ScrollArea, ScrollBar } from 'ui/scroll-area'
-import { AspectRatio } from 'ui/aspect-ratio'
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from 'ui/resizable'
+} from './menubar'
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from './navigation-menu'
+import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from './breadcrumb'
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from './pagination'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './tabs'
+import { ScrollArea, ScrollBar } from './scroll-area'
+import { AspectRatio } from './aspect-ratio'
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from './resizable'
 import {
     ContextMenu,
     ContextMenuCheckboxItem,
@@ -118,10 +118,10 @@ import {
     ContextMenuSubContent,
     ContextMenuSubTrigger,
     ContextMenuTrigger
-} from 'ui/context-menu'
-import { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemSeparator, ItemTitle } from 'ui/item'
-import { Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSeparator, FieldSet, FieldTitle } from 'ui/field'
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from 'ui/empty'
+} from './context-menu'
+import { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemSeparator, ItemTitle } from './item'
+import { Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSeparator, FieldSet, FieldTitle } from './field'
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from './empty'
 import {
     SidebarProvider,
     SidebarInset,
@@ -147,8 +147,8 @@ import {
     SidebarMenuSubItem,
     SidebarMenuSubButton,
     useSidebar
-}  from 'ui/sidebar'
-import icon from 'ui/icon'
+}  from './sidebar'
+import icon from './icon'
 
 /**
  * Hook of return popup box component dictionary by media inquiries.

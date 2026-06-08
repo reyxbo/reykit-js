@@ -8,8 +8,8 @@
 import { ReactNode } from 'react'
 import { Toaster as Sonner, type ToasterProps } from 'sonner'
 
-import * as ui from 'ui'
-import { cn } from 'lib/twc'
+import * as ui from './ui'
+import { cn } from '../lib/twc'
 
 export { toast as notice } from 'sonner'
 

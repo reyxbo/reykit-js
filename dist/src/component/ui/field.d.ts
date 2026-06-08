@@ -1,5 +1,5 @@
 import { VariantProps } from 'class-variance-authority';
-import { Label } from '../../../component/ui/label';
+import { Label } from './label';
 declare function FieldSet({ className, ...props }: React.ComponentProps<'fieldset'>): import("react/jsx-runtime").JSX.Element;
 declare function FieldLegend({ className, variant, ...props }: React.ComponentProps<'legend'> & {
     variant?: 'legend' | 'label';

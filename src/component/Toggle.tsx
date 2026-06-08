@@ -7,9 +7,9 @@
 
 import { ReactNode, ComponentProps, MouseEvent } from 'react'
 
-import * as ui from 'ui'
-import { useOpen } from 'lib/react'
-import { cn } from 'lib/twc'
+import * as ui from './ui'
+import { useOpen } from '../lib/react'
+import { cn } from '../lib/twc'
 
 /**
  * Toggle component of with icon.

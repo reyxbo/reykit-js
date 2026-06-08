@@ -1,4 +1,4 @@
-import { Key, Value, KeyByValue } from '../../lib/base';
+import { Key, Value, KeyByValue } from '../lib/base';
 /**
  * Manage local storage data.
  */

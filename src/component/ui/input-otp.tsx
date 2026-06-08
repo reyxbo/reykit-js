@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { OTPInput, OTPInputContext } from 'input-otp'
 
-import { cn } from 'lib/twc'
+import { cn } from '../../lib/twc'
 import { MinusIcon } from 'lucide-react'
 
 function InputOTP({

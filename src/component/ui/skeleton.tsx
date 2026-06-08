@@ -1,4 +1,4 @@
-import { cn } from 'lib/twc'
+import { cn } from '../../lib/twc'
 
 function Skeleton({ className, ...props }: React.ComponentProps<'div'>) {
   return (

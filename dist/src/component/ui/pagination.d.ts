@@ -1,4 +1,4 @@
-import { Button } from '../../../component/ui/button';
+import { Button } from './button';
 import * as React from 'react';
 declare function Pagination({ className, ...props }: React.ComponentProps<'nav'>): import("react/jsx-runtime").JSX.Element;
 declare function PaginationContent({ className, ...props }: React.ComponentProps<'ul'>): import("react/jsx-runtime").JSX.Element;

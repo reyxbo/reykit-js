@@ -1,6 +1,6 @@
 import { Separator as SeparatorPrimitive } from '@base-ui/react/separator'
 
-import { cn } from 'lib/twc'
+import { cn } from '../../lib/twc'
 
 function Separator({
   className,

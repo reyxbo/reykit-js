@@ -7,7 +7,7 @@
 
 import { useContext } from 'react'
 
-import { LoadingContext } from 'component/Loading/Loading'
+import { LoadingContext } from './Loading'
 
 /**
  * Hook of get loading component status parameters.

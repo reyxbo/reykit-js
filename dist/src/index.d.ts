@@ -1,12 +1,12 @@
-import { base, data, image, net, re, react, twc, window } from '../lib';
+import { base, data, image, net, re, react, twc, window } from './lib';
 /**
  * @Time    : 2026-03-11
  * @Author  : Rey
  * @Contact : reyxbo@163.com
  * @Explain : Main index file.
  */
-import * as component from 'component';
-import * as ui from 'component/ui';
+import * as component from './component';
+import * as ui from './component/ui';
 declare const _default: {
     component: typeof component;
     ui: typeof component.ui;

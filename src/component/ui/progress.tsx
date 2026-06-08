@@ -2,7 +2,7 @@
 
 import { Progress as ProgressPrimitive } from '@base-ui/react/progress'
 
-import { cn } from 'lib/twc'
+import { cn } from '../../lib/twc'
 
 function Progress({
   className,

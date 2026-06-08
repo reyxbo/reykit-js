@@ -1,5 +1,5 @@
 import { VariantProps } from 'class-variance-authority';
-import { Button } from '../../../component/ui/button';
+import { Button } from './button';
 import * as React from 'react';
 declare function InputGroup({ className, ...props }: React.ComponentProps<'div'>): import("react/jsx-runtime").JSX.Element;
 declare const inputGroupAddonVariants: (props?: ({
