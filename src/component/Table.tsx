@@ -901,7 +901,7 @@ function TablePagination<Row>(
                             showTrigger={false}
                             className='w-13 h-8'
                         />
-                        <ui.ComboboxContent side='top' className='max-h-60 overflow-y-auto'>
+                        <ui.ComboboxContent side='top' className='max-h-60'>
                             <ui.ComboboxList>
                                 {
                                     (page: string, index) => (
@@ -950,7 +950,7 @@ function TablePagination<Row>(
                                 showTrigger={false}
                                 className='w-13 h-8'
                             />
-                            <ui.ComboboxContent side='top' className='max-h-60 overflow-y-auto'>
+                            <ui.ComboboxContent side='top' className='max-h-60'>
                                 <ui.ComboboxList>
                                     {
                                         (pageItem: string, index) => (

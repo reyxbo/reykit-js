@@ -49763,7 +49763,7 @@ function uk({
                   className: "w-13 h-8"
                 }
               ),
-              /* @__PURE__ */ E.jsx(RC, { side: "top", className: "max-h-60 overflow-y-auto", children: /* @__PURE__ */ E.jsx(TC, { children: (z, D) => /* @__PURE__ */ E.jsx(CC, { value: z, children: z }, D) }) })
+              /* @__PURE__ */ E.jsx(RC, { side: "top", className: "max-h-60", children: /* @__PURE__ */ E.jsx(TC, { children: (z, D) => /* @__PURE__ */ E.jsx(CC, { value: z, children: z }, D) }) })
             ]
           }
         ),
@@ -49798,7 +49798,7 @@ function uk({
                   className: "w-13 h-8"
                 }
               ),
-              /* @__PURE__ */ E.jsx(RC, { side: "top", className: "max-h-60 overflow-y-auto", children: /* @__PURE__ */ E.jsx(TC, { children: (z, D) => /* @__PURE__ */ E.jsx(CC, { value: z, children: z }, D) }) })
+              /* @__PURE__ */ E.jsx(RC, { side: "top", className: "max-h-60", children: /* @__PURE__ */ E.jsx(TC, { children: (z, D) => /* @__PURE__ */ E.jsx(CC, { value: z, children: z }, D) }) })
             ]
           }
         ),
