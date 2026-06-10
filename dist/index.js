@@ -49932,11 +49932,20 @@ const fk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
 function dk() {
   document.documentElement.classList.add("debug");
 }
-const pk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+function pk(a) {
+  try {
+    const i = new URL(a);
+    return i.protocol === "http:" || i.protocol === "https:";
+  } catch {
+    return !1;
+  }
+}
+const mk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  debugCss: dk
+  debugCss: dk,
+  isUrl: pk
 }, Symbol.toStringTag, { value: "Module" }));
-class mk {
+class hk {
   /**
    * Build instance.
    * 
@@ -50037,9 +50046,9 @@ function A4(a, i) {
   const u = a instanceof Blob ? window.URL.createObjectURL(a) : a, d = document.createElement("a");
   d.download = i, d.href = u, d.style.display = "none", document.body.appendChild(d), d.click(), d.remove(), a instanceof Blob && URL.revokeObjectURL(u);
 }
-const hk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const gk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  Storager: mk,
+  Storager: hk,
   downloadFile: A4,
   openFile: M4
 }, Symbol.toStringTag, { value: "Module" }));
@@ -50047,15 +50056,15 @@ async function cR(a, i) {
   const u = i && i.width, d = (i && i.margin) ?? 0;
   return await Uj.toDataURL(a, { width: u, margin: d });
 }
-async function gk(a, i) {
+async function vk(a, i) {
   const u = await cR(a, i), m = await (await fetch(u)).blob();
   return M4(m), u;
 }
-async function vk(a, i) {
+async function yk(a, i) {
   const u = await cR(a, i), d = (i && i.fileName) ?? "qrcode.png", g = await (await fetch(u)).blob();
   return A4(g, d), u;
 }
-async function yk(a, i, u) {
+async function bk(a, i, u) {
   const d = await cR(a, u);
   if (typeof i == "string") {
     const m = document.getElementById(i);
@@ -50064,14 +50073,14 @@ async function yk(a, i, u) {
   }
   return i.setAttribute("src", d), d;
 }
-const bk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const xk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  downloadQrcode: vk,
+  downloadQrcode: yk,
   getQrcode: cR,
-  openQrcode: gk,
-  setQrcode: yk
+  openQrcode: vk,
+  setQrcode: bk
 }, Symbol.toStringTag, { value: "Module" }));
-async function xk(a, i) {
+async function Sk(a, i) {
   let {
     params: u,
     body: d,
@@ -50106,48 +50115,48 @@ async function xk(a, i) {
   }
   return C;
 }
-const Sk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Ek = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  request: xk
-}, Symbol.toStringTag, { value: "Module" })), Ek = /^((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$/, Rk = /^https?:\/\/[^\s/$.?#].[^\s]*$/, Tk = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/, Ck = /^1[3-9]\d{9}$/, Ok = /^[\u4e00-\u9fa5]+$/, wk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  request: Sk
+}, Symbol.toStringTag, { value: "Module" })), Rk = /^((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$/, Tk = /^https?:\/\/[^\s/$.?#].[^\s]*$/, Ck = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/, Ok = /^1[3-9]\d{9}$/, wk = /^[\u4e00-\u9fa5]+$/, Nk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  PATTERN_CN: Ok,
-  PATTERN_EMAIL: Tk,
-  PATTERN_IP: Ek,
-  PATTERN_PHONE: Ck,
-  PATTERN_URL: Rk
+  PATTERN_CN: wk,
+  PATTERN_EMAIL: Ck,
+  PATTERN_IP: Rk,
+  PATTERN_PHONE: Ok,
+  PATTERN_URL: Tk
 }, Symbol.toStringTag, { value: "Module" }));
-function Nk() {
+function Mk() {
   const a = /* @__PURE__ */ new Date();
   return a.getFullYear() + "-" + String(a.getMonth() + 1).padStart(2, "0") + "-" + String(a.getDate()).padStart(2, "0") + "T" + String(a.getHours()).padStart(2, "0") + ":" + String(a.getMinutes()).padStart(2, "0");
 }
-const Mk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Ak = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  datetimeLocal: Nk
-}, Symbol.toStringTag, { value: "Module" })), Xk = {
+  datetimeLocal: Mk
+}, Symbol.toStringTag, { value: "Module" })), Qk = {
   component: fk,
   ui: C4,
-  base: pk,
+  base: mk,
   data: lk,
-  image: bk,
-  net: Sk,
-  re: wk,
+  image: xk,
+  net: Ek,
+  re: Nk,
   react: Xj,
-  time: Mk,
+  time: Ak,
   twc: C6,
-  window: hk
+  window: gk
 };
 export {
-  pk as base,
+  mk as base,
   fk as component,
   lk as data,
-  Xk as default,
-  bk as image,
-  Sk as net,
-  wk as re,
+  Qk as default,
+  xk as image,
+  Ek as net,
+  Nk as re,
   Xj as react,
-  Mk as time,
+  Ak as time,
   C6 as twc,
   C4 as ui,
-  hk as window
+  gk as window
 };

@@ -19,3 +19,25 @@ export function debugCss() {
     // Start.
     document.documentElement.classList.add('debug')
 }
+
+/**
+ * Judge whether value is a URL.
+ * 
+ * @param value - Value.
+ * @returns Judgement result.
+ */
+export function isUrl(value: string) {
+
+    // Judge.
+    try {
+        const url = new URL(value)
+
+        return (
+            url.protocol === 'http:' ||
+            url.protocol === 'https:'
+        )
+    }
+    catch {
+        return false
+    }
+}

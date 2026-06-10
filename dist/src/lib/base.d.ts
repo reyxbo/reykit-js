@@ -13,3 +13,10 @@ export type KeyByValue<T, V> = {
  * Start debug CSS style, need to import 'reykit/debug' CSS style first.
  */
 export declare function debugCss(): void;
+/**
+ * Judge whether value is a URL.
+ *
+ * @param value - Value.
+ * @returns Judgement result.
+ */
+export declare function isUrl(value: string): boolean;
