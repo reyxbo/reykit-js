@@ -432,127 +432,129 @@ function TableMenu<Row extends Record<string, any>>(
                     ))
                 }
                 {
-                    <ui.DropdownMenu onOpenChange={()=>{setGroupOpenKey('')}}>
-                        <ui.DropdownMenuTrigger className='block lg:hidden' render={<ui.Button variant='outline' size='sm' />}>
-                            <ui.icon.GroupIcon />
-                        </ui.DropdownMenuTrigger>
-                        <ui.DropdownMenuContent className='w-48'>
-                        {
-                            headerOption.map(({ key, name, isGroup }, index) => (
-                                isGroup && (
-                                    <ui.DropdownMenuSub
-                                        key={index}
-                                        open={groupOpenKey === key}
-                                    >
-                                        <ui.DropdownMenuSubTrigger
-                                            className='[&>svg:last-child]:hidden'
-                                            onClick={e => {
-                                                e.preventDefault()
-                                                setGroupOpenKey(
-                                                    groupOpenKey === key
-                                                    ? ''
-                                                    : key
-                                                )
-                                            }}
+                    headerOption.some(({ isGroup }) => isGroup) && (
+                        <ui.DropdownMenu onOpenChange={()=>{setGroupOpenKey('')}}>
+                            <ui.DropdownMenuTrigger className='block lg:hidden' render={<ui.Button variant='outline' size='sm' />}>
+                                <ui.icon.GroupIcon />
+                            </ui.DropdownMenuTrigger>
+                            <ui.DropdownMenuContent className='w-48'>
+                            {
+                                headerOption.map(({ key, name, isGroup }, index) => (
+                                    isGroup && (
+                                        <ui.DropdownMenuSub
+                                            key={index}
+                                            open={groupOpenKey === key}
                                         >
-                                            <span>{name}</span>
-                                            <ui.icon.ChevronDown
-                                                className={cn(
-                                                    'ml-auto size-4 opacity-50 transition-transform duration-200',
-                                                    groupOpenKey === key && 'rotate-180'
-                                                )}
-                                            />
-                                        </ui.DropdownMenuSubTrigger>
-                                        <ui.DropdownMenuSubContent
-                                            side='bottom'
-                                            align='end'
-                                            sideOffset={4}
-                                            className='w-[75vw] max-w-[320px] p-0'
-                                        >
-                                            <ui.Command className='pt-0'>
-                                                <ui.CommandList className='max-h-full'>
-                                                    <ui.CommandEmpty>
-                                                        {{ 'en': 'No content', 'zh': '无内容' }[language]}
-                                                    </ui.CommandEmpty>
-                                                    <ui.CommandItem className='relative py-0.5'>
-                                                        <ui.Input
-                                                            placeholder={{'en': 'Search...', 'zh': '搜索...'}[language]}
-                                                            value={groupSearchData[key] ?? ''}
-                                                            onInput={e => {
-                                                                setGroupSearchData({
-                                                                    ...groupSearchData,
-                                                                    [key]: e.currentTarget.value
-                                                                })
-                                                            }}
-                                                            className='pl-6 bg-transparent border-0 shadow-none focus-visible:ring-0'
-                                                        />
-                                                        <ui.icon.Search className={cn(
-                                                                'group-data-[collapsible=icon]:hidden pointer-events-none size-4 -translate-y-1/2 opacity-50 select-none',
-                                                                'absolute top-1/2 left-2'
-                                                        )} />
-                                                    </ui.CommandItem>
-                                                    <ui.CommandSeparator className='mb-1'/>
-                                                    <ui.CommandGroup className='max-h-[50vh] overflow-y-auto scrollbar-thin p-0'>
+                                            <ui.DropdownMenuSubTrigger
+                                                className='[&>svg:last-child]:hidden'
+                                                onClick={e => {
+                                                    e.preventDefault()
+                                                    setGroupOpenKey(
+                                                        groupOpenKey === key
+                                                        ? ''
+                                                        : key
+                                                    )
+                                                }}
+                                            >
+                                                <span>{name}</span>
+                                                <ui.icon.ChevronDown
+                                                    className={cn(
+                                                        'ml-auto size-4 opacity-50 transition-transform duration-200',
+                                                        groupOpenKey === key && 'rotate-180'
+                                                    )}
+                                                />
+                                            </ui.DropdownMenuSubTrigger>
+                                            <ui.DropdownMenuSubContent
+                                                side='bottom'
+                                                align='end'
+                                                sideOffset={4}
+                                                className='w-[75vw] max-w-[320px] p-0'
+                                            >
+                                                <ui.Command className='pt-0'>
+                                                    <ui.CommandList className='max-h-full'>
+                                                        <ui.CommandEmpty>
+                                                            {{ 'en': 'No content', 'zh': '无内容' }[language]}
+                                                        </ui.CommandEmpty>
+                                                        <ui.CommandItem className='relative py-0.5'>
+                                                            <ui.Input
+                                                                placeholder={{'en': 'Search...', 'zh': '搜索...'}[language]}
+                                                                value={groupSearchData[key] ?? ''}
+                                                                onInput={e => {
+                                                                    setGroupSearchData({
+                                                                        ...groupSearchData,
+                                                                        [key]: e.currentTarget.value
+                                                                    })
+                                                                }}
+                                                                className='pl-6 bg-transparent border-0 shadow-none focus-visible:ring-0'
+                                                            />
+                                                            <ui.icon.Search className={cn(
+                                                                    'group-data-[collapsible=icon]:hidden pointer-events-none size-4 -translate-y-1/2 opacity-50 select-none',
+                                                                    'absolute top-1/2 left-2'
+                                                            )} />
+                                                        </ui.CommandItem>
+                                                        <ui.CommandSeparator className='mb-1'/>
+                                                        <ui.CommandGroup className='max-h-[50vh] overflow-y-auto scrollbar-thin p-0'>
+                                                            {
+                                                                [...groupData[key]].sort(
+                                                                    (([_, aCount], [__, bCount]) => bCount - aCount)
+                                                                ).map(
+                                                                    ([value, count], index) => (
+                                                                        <ui.CommandItem
+                                                                            key={index}
+                                                                            value={String(value ?? '')}
+                                                                            onSelect={() => {
+                                                                                const checked = !!groupFilter[key]?.includes(value)
+                                                                                setGroupFilter({
+                                                                                    ...groupFilter,
+                                                                                    [key]: (
+                                                                                        checked
+                                                                                            ? (groupFilter[key] ?? []).filter(v => v != value)
+                                                                                            : [...(groupFilter[key] ?? []), value]
+                                                                                    )
+                                                                                })
+                                                                            }}
+                                                                            className='[&>svg:last-child]:hidden'
+                                                                        >
+                                                                            <ui.Checkbox
+                                                                                checked={!!groupFilter[key]?.includes(value)}
+                                                                                className='[&_svg]:!text-primary-foreground'
+                                                                            />
+                                                                            <span className='min-w-0 truncate whitespace-nowrap'>{value ?? ''}</span>
+                                                                            <span className='ml-auto text-muted-foreground'>{count}</span>
+                                                                        </ui.CommandItem>
+                                                                    )
+                                                                )
+                                                            }
+                                                        </ui.CommandGroup>
                                                         {
-                                                            [...groupData[key]].sort(
-                                                                (([_, aCount], [__, bCount]) => bCount - aCount)
-                                                            ).map(
-                                                                ([value, count], index) => (
+                                                            groupFilter[key] && groupFilter[key].length !== 0 && (
+                                                                <>
+                                                                    <ui.CommandSeparator className='my-1' />
                                                                     <ui.CommandItem
-                                                                        key={index}
-                                                                        value={String(value ?? '')}
                                                                         onSelect={() => {
-                                                                            const checked = !!groupFilter[key]?.includes(value)
-                                                                            setGroupFilter({
-                                                                                ...groupFilter,
-                                                                                [key]: (
-                                                                                    checked
-                                                                                        ? (groupFilter[key] ?? []).filter(v => v != value)
-                                                                                        : [...(groupFilter[key] ?? []), value]
-                                                                                )
+                                                                            setGroupFilter({ ...groupFilter, [key]: []})
+                                                                            setGroupSearchData({
+                                                                                ...groupSearchData,
+                                                                                [key]: ''
                                                                             })
                                                                         }}
-                                                                        className='[&>svg:last-child]:hidden'
+                                                                        className='justify-center [&>svg:last-child]:hidden'
                                                                     >
-                                                                        <ui.Checkbox
-                                                                            checked={!!groupFilter[key]?.includes(value)}
-                                                                            className='[&_svg]:!text-primary-foreground'
-                                                                        />
-                                                                        <span className='min-w-0 truncate whitespace-nowrap'>{value ?? ''}</span>
-                                                                        <span className='ml-auto text-muted-foreground'>{count}</span>
+                                                                        {{ 'en': 'Reset', 'zh': '重置' }[language]}
                                                                     </ui.CommandItem>
-                                                                )
+                                                                </>
                                                             )
                                                         }
-                                                    </ui.CommandGroup>
-                                                    {
-                                                        groupFilter[key] && groupFilter[key].length !== 0 && (
-                                                            <>
-                                                                <ui.CommandSeparator className='my-1' />
-                                                                <ui.CommandItem
-                                                                    onSelect={() => {
-                                                                        setGroupFilter({ ...groupFilter, [key]: []})
-                                                                        setGroupSearchData({
-                                                                            ...groupSearchData,
-                                                                            [key]: ''
-                                                                        })
-                                                                    }}
-                                                                    className='justify-center [&>svg:last-child]:hidden'
-                                                                >
-                                                                    {{ 'en': 'Reset', 'zh': '重置' }[language]}
-                                                                </ui.CommandItem>
-                                                            </>
-                                                        )
-                                                    }
-                                                </ui.CommandList>
-                                            </ui.Command>
-                                        </ui.DropdownMenuSubContent>
-                                    </ui.DropdownMenuSub>
-                                )
-                            ))
-                        }
-                        </ui.DropdownMenuContent>
-                    </ui.DropdownMenu>
+                                                    </ui.CommandList>
+                                                </ui.Command>
+                                            </ui.DropdownMenuSubContent>
+                                        </ui.DropdownMenuSub>
+                                    )
+                                ))
+                            }
+                            </ui.DropdownMenuContent>
+                        </ui.DropdownMenu>
+                    )
                 }
                 {
                     (

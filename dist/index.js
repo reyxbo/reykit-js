@@ -49428,7 +49428,7 @@ function rk({
           ] })
         ] }) }) })
       ] }, P)),
-      /* @__PURE__ */ E.jsxs(Qf, { onOpenChange: () => {
+      i.some(({ isGroup: _ }) => _) && /* @__PURE__ */ E.jsxs(Qf, { onOpenChange: () => {
         D("");
       }, children: [
         /* @__PURE__ */ E.jsx(Zf, { className: "block lg:hidden", render: /* @__PURE__ */ E.jsx(ma, { variant: "outline", size: "sm" }), children: /* @__PURE__ */ E.jsx(hM, {}) }),
