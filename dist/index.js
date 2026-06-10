@@ -50116,7 +50116,15 @@ const Sk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   PATTERN_IP: Ek,
   PATTERN_PHONE: Ck,
   PATTERN_URL: Rk
-}, Symbol.toStringTag, { value: "Module" })), qk = {
+}, Symbol.toStringTag, { value: "Module" }));
+function Nk() {
+  const a = /* @__PURE__ */ new Date();
+  return a.getFullYear() + "-" + String(a.getMonth() + 1).padStart(2, "0") + "-" + String(a.getDate()).padStart(2, "0") + "T" + String(a.getHours()).padStart(2, "0") + ":" + String(a.getMinutes()).padStart(2, "0");
+}
+const Mk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  datetimeLocal: Nk
+}, Symbol.toStringTag, { value: "Module" })), Xk = {
   component: fk,
   ui: C4,
   base: pk,
@@ -50125,6 +50133,7 @@ const Sk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   net: Sk,
   re: wk,
   react: Xj,
+  time: Mk,
   twc: C6,
   window: hk
 };
@@ -50132,11 +50141,12 @@ export {
   pk as base,
   fk as component,
   lk as data,
-  qk as default,
+  Xk as default,
   bk as image,
   Sk as net,
   wk as re,
   Xj as react,
+  Mk as time,
   C6 as twc,
   C4 as ui,
   hk as window

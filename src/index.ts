@@ -14,6 +14,7 @@ import {
     net,
     re,
     react,
+    time,
     twc,
     window
 } from './lib'
@@ -27,6 +28,7 @@ export default {
     net,
     re,
     react,
+    time,
     twc,
     window
 }
@@ -39,6 +41,7 @@ export {
     net,
     re,
     react,
+    time,
     twc,
     window
 }
