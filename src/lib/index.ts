@@ -4,6 +4,7 @@ import * as image from '../lib/image'
 import * as net from '../lib/net'
 import * as re from '../lib/re'
 import * as react from '../lib/react'
+import * as time from '../lib/react'
 import * as twc from '../lib/twc'
 import * as window from '../lib/window'
 
@@ -14,6 +15,7 @@ export {
     net,
     re,
     react,
+    time,
     twc,
     window
 }
