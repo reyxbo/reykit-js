@@ -49036,7 +49036,7 @@ function O4(a) {
     return /* @__PURE__ */ E.jsxs(i, { value: b, children: [
       m,
       /* @__PURE__ */ E.jsx("div", { className: oe(
-        "fixed inset-0 z-50 flex justify-center items-center transition bg-black/5",
+        "fixed inset-0 z-50 flex justify-center items-center transition-opacity duration-300",
         g ? "opacity-100" : "opacity-0 pointer-events-none"
       ), children: g && a })
     ] });
@@ -49045,10 +49045,10 @@ function O4(a) {
     if (!m) throw new Error("must be used within cover component");
     return {
       ...m,
-      withCover: async (g, ...y) => {
+      withCover: async (y, ...b) => {
         m.setIsCovering(!0);
         try {
-          return await g(...y);
+          return await y(...b);
         } finally {
           m.setIsCovering(!1);
         }

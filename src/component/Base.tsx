@@ -5,7 +5,7 @@
  * @Explain : Loading components.
  */
 
-import { ReactNode, useState, createContext, useContext } from 'react'
+import { ReactNode, useState, createContext, useContext, useRef, useEffect } from 'react'
 
 import { cn } from '../lib/twc'
 
@@ -39,7 +39,7 @@ export function createCover(display: ReactNode) {
             <CoverContext value={coverParams}>
                 {children}
                 <div className={cn(
-                    'fixed inset-0 z-50 flex justify-center items-center transition bg-black/5',
+                    'fixed inset-0 z-50 flex justify-center items-center transition-opacity duration-300',
                     isCovering ? 'opacity-100' : 'opacity-0 pointer-events-none'
                 )}>
                     {isCovering && display}
@@ -52,20 +52,21 @@ export function createCover(display: ReactNode) {
     const useCover = () => {
         const coverParams = useContext(CoverContext)
         if (!coverParams) throw new Error('must be used within cover component')
+        const withCover = async <T, Args extends any[]>(
+            fn: (...args: Args) => T | Promise<T>,
+            ...args: Args
+        ): Promise<T> => {
+            coverParams.setIsCovering(true)
+            try {
+                return await fn(...args)
+            }
+            finally {
+                coverParams.setIsCovering(false)
+            }
+        }
         return {
             ...coverParams,
-            withCover: async <T, Args extends any[]>(
-                fn: (...args: Args) => T | Promise<T>,
-                ...args: Args
-            ): Promise<T> => {
-                coverParams.setIsCovering(true)
-                try {
-                    return await fn(...args)
-                }
-                finally {
-                    coverParams.setIsCovering(false)
-                }
-            }
+            withCover
         }
     }
 
