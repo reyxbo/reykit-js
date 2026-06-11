@@ -5,7 +5,7 @@
  * @Explain : Loading components.
  */
 
-import { ReactNode, useState, createContext, useContext, useRef, useEffect } from 'react'
+import { ReactNode, useState, createContext, useContext } from 'react'
 
 import { cn } from '../lib/twc'
 
