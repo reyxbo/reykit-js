@@ -49035,7 +49035,10 @@ function O4(a) {
     };
     return /* @__PURE__ */ E.jsxs(i, { value: b, children: [
       m,
-      g && /* @__PURE__ */ E.jsx("div", { className: "fixed inset-0 z-50 flex justify-center items-center bg-black/5", children: a })
+      /* @__PURE__ */ E.jsx("div", { className: oe(
+        "fixed inset-0 z-50 flex justify-center items-center transition bg-black/5",
+        g ? "opacity-100" : "opacity-0 pointer-events-none"
+      ), children: g && a })
     ] });
   }, () => {
     const m = ij(i);

@@ -7,6 +7,8 @@
 
 import { ReactNode, useState, createContext, useContext } from 'react'
 
+import { cn } from '../lib/twc'
+
 export type CoverContextParams = { isCovering: boolean, setIsCovering: (value: boolean) => void }
 
 /**
@@ -36,13 +38,12 @@ export function createCover(display: ReactNode) {
         return (
             <CoverContext value={coverParams}>
                 {children}
-                {
-                    isCovering && (
-                        <div className='fixed inset-0 z-50 flex justify-center items-center bg-black/5'>
-                            {display}
-                        </div>
-                    )
-                }
+                <div className={cn(
+                    'fixed inset-0 z-50 flex justify-center items-center transition bg-black/5',
+                    isCovering ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                )}>
+                    {isCovering && display}
+                </div>
             </CoverContext>
         )
     }
