@@ -8,11 +8,11 @@
 import * as ui from './ui'
 
 export { ui }
+export { type CoverContextParams, createCover } from './Base'
 export { type BreadcrumbDict, Breadcrumb } from './Breadcrumb'
 export { CycleButton } from './Button'
 export { Form } from './Form'
-export { Loading } from './Loading/Loading'
-export { useLoading } from './Loading/uesLoading'
+export { Loading, useLoading } from './Loading'
 export { Notice, notice } from './Notice'
 export {
     type HeaderOption,

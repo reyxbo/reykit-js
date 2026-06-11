@@ -37,7 +37,7 @@ export function renderReact(app: ReactNode, elementId: string = 'root') {
  * @param loop - Whether to loop count.
  * @returns Returns a stateful open value, and a function to automatic count it.
  */
-export function useOpen(defaultOpen: boolean = true): [boolean, (open?: boolean) => void] {
+export function useOpen(defaultOpen: boolean = true) {
 
     // Parameter.
     const [state, setState] = useState(defaultOpen)
@@ -50,7 +50,7 @@ export function useOpen(defaultOpen: boolean = true): [boolean, (open?: boolean)
         setState(open)
     }
 
-    return [state, setOpen]
+    return [state, setOpen] as [typeof state, typeof setOpen]
 }
 
 /**
@@ -67,7 +67,7 @@ export function useCount(
     step: number = 1,
     stop: number = Infinity,
     loop: boolean = true
-): [number, () => void] {
+) {
 
     // Parameter.
     const [state, setState] = useState(start)
@@ -85,7 +85,7 @@ export function useCount(
         setState(newState)
     }
 
-    return [state, setCount]
+    return [state, setCount] as [typeof state, typeof setCount]
 }
 
 /**
@@ -98,13 +98,13 @@ export function useCount(
 export function useIndex(
     array: any[],
     loop: boolean = true
-): [number, () => void] {
+) {
 
     // Parameter.
     const arrayLength = Object.keys(array).length
     const [index, setIndex] = useCount(0, 1, arrayLength - 1, loop)
 
-    return [index, setIndex]
+    return [index, setIndex] as [typeof index, typeof setIndex]
 }
 
 /**

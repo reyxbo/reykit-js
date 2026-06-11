@@ -1,6 +1,6 @@
 import { Link as W5, useLocation as ej, useNavigate as tj } from "react-router-dom";
 import * as S from "react";
-import lm, { useState as Yl, useEffect as nj, createElement as mM, useLayoutEffect as aj, useMemo as oj, Fragment as lj, createContext as ij, useContext as rj, isValidElement as sj } from "react";
+import lm, { useState as Yl, useEffect as nj, createElement as mM, useLayoutEffect as aj, useMemo as oj, createContext as lj, useContext as ij, Fragment as rj, isValidElement as sj } from "react";
 import * as Zo from "react-dom";
 import YA from "react-dom";
 import { cva as Pl } from "class-variance-authority";
@@ -49026,10 +49026,37 @@ const C4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   usePopupBox: T4,
   useSidebar: ax
 }, Symbol.toStringTag, { value: "Module" }));
+function O4(a) {
+  const i = lj(null);
+  return [({ children: m }) => {
+    const [g, y] = Yl(!1), b = {
+      isCovering: g,
+      setIsCovering: y
+    };
+    return /* @__PURE__ */ E.jsxs(i, { value: b, children: [
+      m,
+      g && /* @__PURE__ */ E.jsx("div", { className: "fixed inset-0 z-50 flex justify-center items-center bg-black/5", children: a })
+    ] });
+  }, () => {
+    const m = ij(i);
+    if (!m) throw new Error("must be used within cover component");
+    return {
+      ...m,
+      withCover: async (g, ...y) => {
+        m.setIsCovering(!0);
+        try {
+          return await g(...y);
+        } finally {
+          m.setIsCovering(!1);
+        }
+      }
+    };
+  }];
+}
 function JI({ dict: a }) {
   const { pathname: i } = ej(), u = a[i] || [];
   return /* @__PURE__ */ E.jsx(o4, { children: /* @__PURE__ */ E.jsx(l4, { children: u.map(
-    (d, m) => /* @__PURE__ */ E.jsxs(lj, { children: [
+    (d, m) => /* @__PURE__ */ E.jsxs(rj, { children: [
       /* @__PURE__ */ E.jsx(i4, { children: d.href ? /* @__PURE__ */ E.jsx(r4, { href: d.href, children: d.label }) : /* @__PURE__ */ E.jsx(s4, { children: d.label }) }),
       m < u.length - 1 && /* @__PURE__ */ E.jsx(u4, { className: "-mx-1 md:mx-0" })
     ] }, m)
@@ -49062,32 +49089,9 @@ function ek({
   };
   return /* @__PURE__ */ E.jsx("form", { onSubmit: g, ...d });
 }
-const O4 = ij(null);
-function tk({ children: a }) {
-  const [i, u] = Yl(!1), d = {
-    isLoading: i,
-    setIsLoading: u
-  };
-  return /* @__PURE__ */ E.jsxs(O4, { value: d, children: [
-    a,
-    i && /* @__PURE__ */ E.jsx("div", { className: "fixed inset-0 z-50 flex justify-center items-center bg-black/5", children: /* @__PURE__ */ E.jsx("div", { className: "flex justify-center items-center size-10 rounded-full bg-white shadow-md", children: /* @__PURE__ */ E.jsx(UC, { role: "status", "aria-label": "Loading", className: "size-full animate-spin" }) }) })
-  ] });
-}
-function nk() {
-  const a = rj(O4);
-  if (!a) throw new Error("must be used within Loading component");
-  return {
-    ...a,
-    withLoading: async (i, ...u) => {
-      a.setIsLoading(!0);
-      try {
-        return await i(...u);
-      } finally {
-        a.setIsLoading(!1);
-      }
-    }
-  };
-}
+const [tk, nk] = O4(
+  /* @__PURE__ */ E.jsx("div", { className: "flex justify-center items-center size-10 rounded-full bg-white shadow-md", children: /* @__PURE__ */ E.jsx(UC, { role: "status", "aria-label": "Loading", className: "size-full animate-spin" }) })
+);
 function ak({
   children: a,
   position: i = "top-center",
@@ -49925,6 +49929,7 @@ const fk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   Loading: tk,
   Notice: ak,
   Table: ik,
+  createCover: O4,
   notice: jj,
   ui: C4,
   useLoading: nk
