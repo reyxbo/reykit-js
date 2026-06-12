@@ -8,6 +8,7 @@
 import * as component from './component'
 import * as ui from './component/ui'
 import {
+    captcha,
     base,
     data,
     image,
@@ -22,6 +23,7 @@ import {
 export default {
     component,
     ui,
+    captcha,
     base,
     data,
     image,
@@ -35,6 +37,7 @@ export default {
 export {
     component,
     ui,
+    captcha,
     base,
     data,
     image,
