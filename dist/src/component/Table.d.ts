@@ -15,20 +15,28 @@ export type ButtonOption = {
     name: ReactNode;
     method: () => void;
 }[];
-export type OptionName = string;
+export type OptionName = ReactNode;
+export type RowOptionItem<Row extends Record<string, any>> = {
+    name: ReactNode;
+    fn: ((row: Row) => void) | null;
+};
 export type RowOption<Row extends Record<string, any>> = {
-    options?: Record<OptionName, ((row: Row) => void) | null>;
-    destructiveOptions?: Record<OptionName, ((row: Row) => void) | null>;
+    options?: RowOptionItem<Row>[];
+    destructiveOptions?: RowOptionItem<Row>[];
 } | ((row: Row) => {
-    options?: Record<OptionName, ((row: Row) => void) | null>;
-    destructiveOptions?: Record<OptionName, ((row: Row) => void) | null>;
+    options?: RowOptionItem<Row>[];
+    destructiveOptions?: RowOptionItem<Row>[];
 });
+export type SelectRowsOptionItem<Row extends Record<string, any>> = {
+    name: ReactNode;
+    fn: ((selectRows: Row[]) => void) | null;
+};
 export type SelectRowsOption<Row extends Record<string, any>> = {
-    options?: Record<OptionName, ((selectRows: Row[]) => void) | null>;
-    destructiveOptions?: Record<OptionName, ((selectRows: Row[]) => void) | null>;
+    options?: SelectRowsOptionItem<Row>[];
+    destructiveOptions?: SelectRowsOptionItem<Row>[];
 } | ((selectRows: Row[]) => {
-    options?: Record<OptionName, ((selectRows: Row[]) => void) | null>;
-    destructiveOptions?: Record<OptionName, ((selectRows: Row[]) => void) | null>;
+    options?: SelectRowsOptionItem<Row>[];
+    destructiveOptions?: SelectRowsOptionItem<Row>[];
 });
 /**
  * Table component.

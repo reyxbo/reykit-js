@@ -49288,8 +49288,8 @@ function sk({
           }[N]
         ] }),
         /* @__PURE__ */ E.jsx(rc, { align: "start", className: "w-auto", children: /* @__PURE__ */ E.jsxs(E.Fragment, { children: [
-          (U = typeof b == "function" ? b(C) : b).options && Object.entries(U.options).map(
-            ([_, V], H) => /* @__PURE__ */ E.jsx(
+          (U = typeof b == "function" ? b(C) : b).options && U.options.map(
+            ({ name: _, fn: V }, H) => /* @__PURE__ */ E.jsx(
               Kf,
               {
                 onClick: () => {
@@ -49302,8 +49302,8 @@ function sk({
             )
           ),
           U.options && U.destructiveOptions && /* @__PURE__ */ E.jsx(JE, {}),
-          U.destructiveOptions && Object.entries(U.destructiveOptions).map(
-            ([_, V], H) => /* @__PURE__ */ E.jsx(
+          U.destructiveOptions && U.destructiveOptions.map(
+            ({ name: _, fn: V }, H) => /* @__PURE__ */ E.jsx(
               Kf,
               {
                 variant: "destructive",
@@ -49690,8 +49690,8 @@ function uk({
               }
             ), children: /* @__PURE__ */ E.jsx(Tj, {}) }),
             /* @__PURE__ */ E.jsxs(rc, { align: "end", className: "w-auto", children: [
-              (T = typeof g == "function" ? g(N) : g).options && Object.entries(T.options).map(
-                ([M, w], z) => /* @__PURE__ */ E.jsx(
+              (T = typeof g == "function" ? g(N) : g).options && T.options.map(
+                ({ name: M, fn: w }, z) => /* @__PURE__ */ E.jsx(
                   Kf,
                   {
                     onClick: () => {
@@ -49704,8 +49704,8 @@ function uk({
                 )
               ),
               T.options && T.destructiveOptions && /* @__PURE__ */ E.jsx(JE, {}),
-              T.destructiveOptions && Object.entries(T.destructiveOptions).map(
-                ([M, w], z) => /* @__PURE__ */ E.jsx(
+              T.destructiveOptions && T.destructiveOptions.map(
+                ({ name: M, fn: w }, z) => /* @__PURE__ */ E.jsx(
                   Kf,
                   {
                     variant: "destructive",

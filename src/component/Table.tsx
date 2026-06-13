@@ -28,20 +28,28 @@ export type ButtonOption = {
     name: ReactNode,
     method: () => void
 }[]
-export type OptionName = string
+export type OptionName = ReactNode
+export type  RowOptionItem<Row extends Record<string, any>> = {
+    name: ReactNode,
+    fn: ((row: Row) => void) | null
+}
 export type RowOption<Row extends Record<string, any>> = {
-    options?: Record<OptionName, ((row: Row) => void) | null>,
-    destructiveOptions?: Record<OptionName, ((row: Row) => void) | null>
+    options?: RowOptionItem<Row>[],
+    destructiveOptions?: RowOptionItem<Row>[]
 } | ((row: Row) => {
-    options?: Record<OptionName, ((row: Row) => void) | null>,
-    destructiveOptions?: Record<OptionName, ((row: Row) => void) | null>
+    options?: RowOptionItem<Row>[],
+    destructiveOptions?: RowOptionItem<Row>[]
 })
+export type  SelectRowsOptionItem<Row extends Record<string, any>> = {
+    name: ReactNode,
+    fn: ((selectRows: Row[]) => void) | null
+}
 export type SelectRowsOption<Row extends Record<string, any>> = {
-    options?: Record<OptionName, ((selectRows: Row[]) => void) | null>,
-    destructiveOptions?: Record<OptionName, ((selectRows: Row[]) => void) | null>
+    options?: SelectRowsOptionItem<Row>[],
+    destructiveOptions?: SelectRowsOptionItem<Row>[]
 } | ((selectRows: Row[]) => {
-    options?: Record<OptionName, ((selectRows: Row[]) => void) | null>,
-    destructiveOptions?: Record<OptionName, ((selectRows: Row[]) => void) | null>
+    options?: SelectRowsOptionItem<Row>[],
+    destructiveOptions?: SelectRowsOptionItem<Row>[]
 })
 
 /**
@@ -249,12 +257,12 @@ function TableMenu<Row extends Record<string, any>>(
                                                     : selectRowsOption
                                                 )
                                             ).options && (
-                                                Object.entries(iterSelectRowsOption.options).map(
-                                                    ([name, execute], index) => (
+                                                iterSelectRowsOption.options.map(
+                                                    ({name, fn}, index) => (
                                                         <ui.DropdownMenuItem
                                                             key={index}
-                                                            onClick={() => {execute && execute(selectRows)}}
-                                                            disabled={selectRows.length === 0 || execute === null}
+                                                            onClick={() => {fn && fn(selectRows)}}
+                                                            disabled={selectRows.length === 0 || fn === null}
                                                         >
                                                             <span className='whitespace-nowrap'>{name}</span>
                                                         </ui.DropdownMenuItem>
@@ -265,13 +273,13 @@ function TableMenu<Row extends Record<string, any>>(
                                         {iterSelectRowsOption.options && iterSelectRowsOption.destructiveOptions && <ui.DropdownMenuSeparator />}
                                         {
                                             iterSelectRowsOption.destructiveOptions && (
-                                                Object.entries(iterSelectRowsOption.destructiveOptions).map(
-                                                    ([name, execute], index) => (
+                                                iterSelectRowsOption.destructiveOptions.map(
+                                                    ({name, fn}, index) => (
                                                         <ui.DropdownMenuItem
                                                             key={index}
                                                             variant='destructive'
-                                                            onClick={() => {execute && execute(selectRows)}}
-                                                            disabled={selectRows.length === 0 || execute === null}
+                                                            onClick={() => {fn && fn(selectRows)}}
+                                                            disabled={selectRows.length === 0 || fn === null}
                                                         >{name}</ui.DropdownMenuItem>
                                                     )
                                                 )
@@ -774,12 +782,12 @@ function TableMain<Row extends Record<string, any>>(
                                                                 : rowOption
                                                             )
                                                         ).options && (
-                                                            Object.entries(iterRowOptions.options).map(
-                                                                ([name, execute], index) => (
+                                                            iterRowOptions.options.map(
+                                                                ({name, fn}, index) => (
                                                                     <ui.DropdownMenuItem
                                                                         key={index}
-                                                                        onClick={() => {execute && execute(row)}}
-                                                                        disabled={execute === null}
+                                                                        onClick={() => {fn && fn(row)}}
+                                                                        disabled={fn === null}
                                                                     >
                                                                         <span className='whitespace-nowrap'>{name}</span>
                                                                     </ui.DropdownMenuItem>
@@ -790,13 +798,13 @@ function TableMain<Row extends Record<string, any>>(
                                                     {iterRowOptions.options && iterRowOptions.destructiveOptions && <ui.DropdownMenuSeparator />}
                                                     {
                                                         iterRowOptions.destructiveOptions && (
-                                                            Object.entries(iterRowOptions.destructiveOptions).map(
-                                                                ([name, execute], index) => (
+                                                            iterRowOptions.destructiveOptions.map(
+                                                                ({name, fn}, index) => (
                                                                     <ui.DropdownMenuItem
                                                                         key={index}
                                                                         variant='destructive'
-                                                                        onClick={() => {execute && execute(row)}}
-                                                                        disabled={execute === null}
+                                                                        onClick={() => {fn && fn(row)}}
+                                                                        disabled={fn === null}
                                                                     >{name}</ui.DropdownMenuItem>
                                                                 )
                                                             )
