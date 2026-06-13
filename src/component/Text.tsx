@@ -7,22 +7,45 @@
 
 import { ReactNode } from 'react'
 
+import { useIsMobile } from '../lib/react'
+
 /**
  * Text component of with icon.
  * 
  * @param icon - Icon content.
  * @param text - Text content.
+ * @param mobileHideIcon - Whether hide icon content on mobile devices.
+ * @param mobileHideText - Whether hide text content on mobile devices.
  */
 export function IconText(
-    icon: ReactNode,
-    text: string
+    {
+        icon,
+        text,
+        hideMobileIcon = false,
+        hideMobileText = false
+    }: {
+        icon: ReactNode,
+        text: string | ReactNode,
+        hideMobileIcon?: boolean,
+        hideMobileText?: boolean
+    }
 ) {
+
+    // Parameter.
+    const isMobile = useIsMobile()
+
     return (
         <div className='flex items-center gap-1'>
-            <div className='size-4 hidden min-[400px]:inline'>
-                {icon}
-            </div>
-            <span className='whitespace-nowrap'>{text}</span>
+            {
+                hideMobileIcon && isMobile || icon
+            }
+            {
+                hideMobileText && isMobile || (
+                    typeof text === 'string'
+                    ? <span className='whitespace-nowrap'>{text}</span>
+                    : text
+                )
+            }
         </div>
     )
 }
