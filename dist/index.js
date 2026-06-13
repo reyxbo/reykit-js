@@ -49870,7 +49870,13 @@ function ck({
 function YA(a) {
   return uj(a) ? a : a instanceof Date ? a.toLocaleString() : a == null ? "" : typeof a == "object" ? JSON.stringify(a) : String(a);
 }
-function fk({
+function fk(a, i) {
+  return /* @__PURE__ */ E.jsxs("div", { className: "flex items-center gap-1", children: [
+    /* @__PURE__ */ E.jsx("div", { className: "size-4 hidden min-[400px]:inline", children: a }),
+    /* @__PURE__ */ E.jsx("span", { className: "whitespace-nowrap", children: i })
+  ] });
+}
+function dk({
   openIcon: a,
   closeIcon: i,
   tooltip: u,
@@ -49923,12 +49929,13 @@ function fk({
     /* @__PURE__ */ E.jsx(Pw, { side: d, children: u })
   ] }) : D;
 }
-const dk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const pk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   Breadcrumb: WI,
   CycleButton: ek,
   Form: tk,
-  IconToggle: fk,
+  IconText: fk,
+  IconToggle: dk,
   Loading: nk,
   Notice: ok,
   Table: rk,
@@ -50210,10 +50217,10 @@ const jg = {
   appId: null,
   onError: null
 };
-function pk(a, i = null) {
+function mk(a, i = null) {
   jg.appId = a, jg.onError = i;
 }
-function mk(a, ...i) {
+function hk(a, ...i) {
   if (jg.appId === null) throw new Error('not configured with function "initAliGraphCaptcha"');
   const u = {
     captchaId: jg.appId,
@@ -50230,15 +50237,15 @@ function mk(a, ...i) {
     }
   );
 }
-const hk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const gk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  initAliGraphCaptcha: pk,
-  verifyAliGraphCaptcha: mk
+  initAliGraphCaptcha: mk,
+  verifyAliGraphCaptcha: hk
 }, Symbol.toStringTag, { value: "Module" }));
-function gk() {
+function vk() {
   document.documentElement.classList.add("debug");
 }
-function vk(a) {
+function yk(a) {
   try {
     const i = new URL(a);
     return i.protocol === "http:" || i.protocol === "https:";
@@ -50246,12 +50253,12 @@ function vk(a) {
     return !1;
   }
 }
-const yk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const bk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  debugCss: gk,
-  isUrl: vk
+  debugCss: vk,
+  isUrl: yk
 }, Symbol.toStringTag, { value: "Module" }));
-class bk {
+class xk {
   /**
    * Build instance.
    * 
@@ -50352,9 +50359,9 @@ function D4(a, i) {
   const u = a instanceof Blob ? window.URL.createObjectURL(a) : a, d = document.createElement("a");
   d.download = i, d.href = u, d.style.display = "none", document.body.appendChild(d), d.click(), d.remove(), a instanceof Blob && URL.revokeObjectURL(u);
 }
-const xk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Sk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  Storager: bk,
+  Storager: xk,
   downloadFile: D4,
   openFile: A4
 }, Symbol.toStringTag, { value: "Module" }));
@@ -50362,15 +50369,15 @@ async function fR(a, i) {
   const u = i && i.width, d = (i && i.margin) ?? 0;
   return await Vj.toDataURL(a, { width: u, margin: d });
 }
-async function Sk(a, i) {
+async function Ek(a, i) {
   const u = await fR(a, i), m = await (await fetch(u)).blob();
   return A4(m), u;
 }
-async function Ek(a, i) {
+async function Rk(a, i) {
   const u = await fR(a, i), d = (i && i.fileName) ?? "qrcode.png", g = await (await fetch(u)).blob();
   return D4(g, d), u;
 }
-async function Rk(a, i, u) {
+async function Tk(a, i, u) {
   const d = await fR(a, u);
   if (typeof i == "string") {
     const m = document.getElementById(i);
@@ -50379,14 +50386,14 @@ async function Rk(a, i, u) {
   }
   return i.setAttribute("src", d), d;
 }
-const Tk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Ck = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  downloadQrcode: Ek,
+  downloadQrcode: Rk,
   getQrcode: fR,
-  openQrcode: Sk,
-  setQrcode: Rk
+  openQrcode: Ek,
+  setQrcode: Tk
 }, Symbol.toStringTag, { value: "Module" }));
-async function Ck(a, i) {
+async function Ok(a, i) {
   let {
     params: u,
     body: d,
@@ -50421,50 +50428,50 @@ async function Ck(a, i) {
   }
   return C;
 }
-const Ok = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const wk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  request: Ck
-}, Symbol.toStringTag, { value: "Module" })), wk = /^((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$/, Nk = /^https?:\/\/[^\s/$.?#].[^\s]*$/, Mk = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/, Ak = /^1[3-9]\d{9}$/, Dk = /^[\u4e00-\u9fa5]+$/, zk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  request: Ok
+}, Symbol.toStringTag, { value: "Module" })), Nk = /^((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$/, Mk = /^https?:\/\/[^\s/$.?#].[^\s]*$/, Ak = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/, Dk = /^1[3-9]\d{9}$/, zk = /^[\u4e00-\u9fa5]+$/, _k = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  PATTERN_CN: Dk,
-  PATTERN_EMAIL: Mk,
-  PATTERN_IP: wk,
-  PATTERN_PHONE: Ak,
-  PATTERN_URL: Nk
+  PATTERN_CN: zk,
+  PATTERN_EMAIL: Ak,
+  PATTERN_IP: Nk,
+  PATTERN_PHONE: Dk,
+  PATTERN_URL: Mk
 }, Symbol.toStringTag, { value: "Module" }));
-function _k() {
+function jk() {
   const a = /* @__PURE__ */ new Date();
   return a.getFullYear() + "-" + String(a.getMonth() + 1).padStart(2, "0") + "-" + String(a.getDate()).padStart(2, "0") + "T" + String(a.getHours()).padStart(2, "0") + ":" + String(a.getMinutes()).padStart(2, "0");
 }
-const jk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Uk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  datetimeLocal: _k
-}, Symbol.toStringTag, { value: "Module" })), Fk = {
-  component: dk,
+  datetimeLocal: jk
+}, Symbol.toStringTag, { value: "Module" })), Jk = {
+  component: pk,
   ui: O4,
-  captcha: hk,
-  base: yk,
+  captcha: gk,
+  base: bk,
   data: ik,
-  image: Tk,
-  net: Ok,
-  re: zk,
+  image: Ck,
+  net: wk,
+  re: _k,
   react: Qj,
-  time: jk,
+  time: Uk,
   twc: O6,
-  window: xk
+  window: Sk
 };
 export {
-  yk as base,
-  hk as captcha,
-  dk as component,
+  bk as base,
+  gk as captcha,
+  pk as component,
   ik as data,
-  Fk as default,
-  Tk as image,
-  Ok as net,
-  zk as re,
+  Jk as default,
+  Ck as image,
+  wk as net,
+  _k as re,
   Qj as react,
-  jk as time,
+  Uk as time,
   O6 as twc,
   O4 as ui,
-  xk as window
+  Sk as window
 };

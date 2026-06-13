@@ -23,4 +23,5 @@ export {
     type SelectRowsOption,
     Table
 } from './Table'
+export { IconText } from './Text'
 export { IconToggle } from './Toggle'
