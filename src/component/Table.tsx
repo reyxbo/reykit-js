@@ -114,7 +114,7 @@ export function Table<Row extends Record<string, any>>(
     const [searchValue, setSearchValue] = useState('')
     const [groupFilter, setGroupFilter] = useState<Partial<Record<keyof Row, Row[keyof Row][]>>>({})
     const pageData = data.filter(row => (
-            (searchOption === undefined || searchOption.method(searchValue, row))
+            (searchValue === '' || searchOption === undefined || searchOption.method(searchValue, row))
             && Object.entries(row).every(([key, value]) => (
                 groupFilter[key] && groupFilter[key].length !== 0
                 ? groupFilter[key]?.includes(value)

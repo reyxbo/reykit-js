@@ -49205,7 +49205,7 @@ function rk({
     isSort: !1,
     isGroup: !1
   })));
-  const [z, D] = Yl(u), [U, _] = Yl(""), [V, H] = Yl({}), Z = a.filter(($) => (d === void 0 || d.method(U, $)) && Object.entries($).every(
+  const [z, D] = Yl(u), [U, _] = Yl(""), [V, H] = Yl({}), Z = a.filter(($) => (U === "" || d === void 0 || d.method(U, $)) && Object.entries($).every(
     ([ne, K]) => V[ne] && V[ne].length !== 0 ? V[ne]?.includes(K) : !0
   )).slice((M - 1) * N, M * N), [I, P] = Yl(y && []);
   return /* @__PURE__ */ E.jsxs("div", { className: "relative flex flex-col gap-4 size-full", children: [
