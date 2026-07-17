@@ -5,20 +5,21 @@
  * @Explain : Table components.
  */
 
-import { ReactNode, useState, isValidElement } from 'react'
+import { ReactNode, useState, isValidElement, useEffect } from 'react'
 
 import * as ui from './ui'
 import { sort, rangeArr, countArr } from '../lib/data'
 import { useValueByMobile } from '../lib/react'
 import { cn } from '../lib/twc'
 
-export type HeaderOption<Row extends Record<string, any>> = {
+export type FieldOption<Row extends Record<string, any>> = {
     key: string,
     name: string,
     isHide?: boolean,
     isSort?: boolean,
     isGroup?: boolean,
-    sortMethod?: (a: Row, b: Row) => number
+    sortMethod?: (a: Row, b: Row) => number,
+    defaultValue?: any
 }[]
 export type SearchOption<Row extends Record<string, any>> = {
     method: (value: string, row: Row) => boolean,
@@ -57,7 +58,7 @@ export type SelectRowsOption<Row extends Record<string, any>> = {
  * 
  * @param data - Table data state value.
  * @param setData - Function of set table data state value.
- * @param headerOption - Header option.
+ * @param fieldOption - Header option.
  * @param searchOption - Search option.
  * @param buttonOption - Custom buttons option.
  * @param rowOption - Each row option.
@@ -70,7 +71,7 @@ export function Table<Row extends Record<string, any>>(
     {
         data,
         setData,
-        headerOption,
+        fieldOption,
         searchOption,
         buttonOption,
         rowOption,
@@ -81,7 +82,7 @@ export function Table<Row extends Record<string, any>>(
     }: {
         data: Row[],
         setData: (value: Row[] | ((value: Row[]) => Row[])) => void,
-        headerOption?: HeaderOption<Row>,
+        fieldOption?: FieldOption<Row>,
         searchOption?: SearchOption<Row>,
         buttonOption?: ButtonOption,
         rowOption?: RowOption<Row>,
@@ -96,8 +97,8 @@ export function Table<Row extends Record<string, any>>(
     const pageSizeByMobile = useValueByMobile(pageSize, mobilePageSize)
     const [pageSizeState, setPageSizeState] = useState(pageSizeByMobile)
     const [page, setPage] = useState(1)
-    if (!headerOption) {
-        headerOption = Array.from(
+    if (!fieldOption) {
+        fieldOption = Array.from(
             new Set(
                 data.flatMap(row => Object.keys(row))
             )
@@ -110,10 +111,10 @@ export function Table<Row extends Record<string, any>>(
             isGroup: false
         }})
     }
-    const [headerOptionState, setHeaderOptionState] = useState(headerOption)
+    const [fieldOptionState, setFieldOptionState] = useState(fieldOption)
     const [searchValue, setSearchValue] = useState('')
     const [groupFilter, setGroupFilter] = useState<Partial<Record<keyof Row, Row[keyof Row][]>>>({})
-    const pageData = data.filter(row => (
+    const filteredData = data.filter(row => (
             (searchValue === '' || searchOption === undefined || searchOption.method(searchValue, row))
             && Object.entries(row).every(([key, value]) => (
                 groupFilter[key] && groupFilter[key].length !== 0
@@ -121,15 +122,17 @@ export function Table<Row extends Record<string, any>>(
                 : true
             )
         )
-    )).slice((page - 1) * pageSizeState, page * pageSizeState) as Row[]
+    ))
+    const pageData = filteredData.slice((page - 1) * pageSizeState, page * pageSizeState) as Row[]
     const [selectRows, setSelectRows] = useState<Row[] | undefined>(selectRowsOption && [])
 
     return (
         <div className='relative flex flex-col gap-4 size-full'>
             <TableMenu
                 data={data}
-                headerOption={headerOptionState}
-                setHeaderOption={setHeaderOptionState}
+                setPage={setPage}
+                fieldOption={fieldOptionState}
+                setFieldOption={setFieldOptionState}
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
                 searchOption={searchOption}
@@ -143,14 +146,14 @@ export function Table<Row extends Record<string, any>>(
             <TableMain
                 pageData={pageData}
                 setData={setData}
-                headerOption={headerOptionState}
+                fieldOption={fieldOptionState}
                 selectRows={selectRows}
                 setSelectRows={setSelectRows}
                 rowOption={rowOption}
                 language={language}
             />
             <TablePagination
-                total={data.length}
+                total={filteredData.length}
                 pageSize={pageSizeState}
                 setPageSize={setPageSizeState}
                 page={page}
@@ -166,8 +169,8 @@ export function Table<Row extends Record<string, any>>(
  * Table top menu component.
  * 
  * @param data - Table data state value.
- * @param headerOption - Header option state value.
- * @param setHeaderOption - Function of set header option state value.
+ * @param fieldOption - Header option state value.
+ * @param setFieldOption - Function of set field option state value.
  * @param searchValue - Search state value.
  * @param setSearchValue - Function of set Search state value.
  * @param searchOption - Search option.
@@ -181,8 +184,9 @@ export function Table<Row extends Record<string, any>>(
 function TableMenu<Row extends Record<string, any>>(
     {
         data,
-        headerOption,
-        setHeaderOption,
+        setPage,
+        fieldOption,
+        setFieldOption,
         searchValue,
         setSearchValue,
         searchOption,
@@ -194,8 +198,9 @@ function TableMenu<Row extends Record<string, any>>(
         language
     }: {
         data: Row[],
-        headerOption: HeaderOption<Row>,
-        setHeaderOption: (value: HeaderOption<Row>) => void,
+        setPage: (value: number) => void,
+        fieldOption: FieldOption<Row>,
+        setFieldOption: (value: FieldOption<Row>) => void,
         searchValue?: string,
         setSearchValue: (value: string) => void,
         searchOption?: SearchOption<Row>,
@@ -210,8 +215,8 @@ function TableMenu<Row extends Record<string, any>>(
 
     // Parameter.
     const [groupSearchData, setGroupSearchData] = useState<Partial<Record<keyof Row, string>>>({})
-    const groupData = Object.fromEntries(headerOption.filter(item => item.isGroup).map(
-        ({ key }) => [
+    const groupData = Object.fromEntries(fieldOption.filter(item => item.isGroup).map(
+        ({ key, defaultValue }) => [
             key,
             new Map(
                 [...countArr(data.map(item => item[key]))].filter(
@@ -307,15 +312,15 @@ function TableMenu<Row extends Record<string, any>>(
                     </ui.DropdownMenuTrigger>
                     <ui.DropdownMenuContent align='start' className='w-auto'>
                         {
-                            headerOption.map(
+                            fieldOption.map(
                                 ({ key, name, isHide }, index) => (
                                     <ui.DropdownMenuCheckboxItem
                                         key={index}
                                         checked={!isHide}
                                         onCheckedChange={
                                             checked => {
-                                                setHeaderOption(
-                                                    headerOption.map((item) => ({
+                                                setFieldOption(
+                                                    fieldOption.map((item) => ({
                                                         ...item,
                                                         isHide: (
                                                             item.key === key
@@ -349,230 +354,281 @@ function TableMenu<Row extends Record<string, any>>(
             </div>
             <div className='flex items-center gap-2'>
                 {
-                    headerOption.map(({ key, name, isGroup }, index) => (
-                        isGroup && (
-                            <ui.Popover key={index}>
-                                <ui.PopoverTrigger className='hidden lg:flex' render={<ui.Button variant='outline' size='sm' />}>
-                                    <ui.icon.GroupIcon />
-                                    <span>{name}</span>
-                                </ui.PopoverTrigger>
-                                <ui.PopoverContent align='start' className='w-[200px] p-0'>
-                                    <ui.Command className='pt-0'>
-                                        <ui.CommandList className='max-h-full'>
-                                            <ui.CommandEmpty>
-                                                {{ 'en': 'No content', 'zh': '无内容' }[language]}
-                                            </ui.CommandEmpty>
-                                            <ui.CommandItem className='relative py-0.5'>
-                                                <ui.Input
-                                                    placeholder={{'en': 'Search...', 'zh': '搜索...'}[language]}
-                                                    value={groupSearchData[key] ?? ''}
-                                                    onInput={e => {
-                                                        setGroupSearchData({
-                                                            ...groupSearchData,
-                                                            [key]: e.currentTarget.value
-                                                        })
-                                                    }}
-                                                    className='pl-6 bg-transparent border-0 shadow-none focus-visible:ring-0'
-                                                />
-                                                <ui.icon.Search className={cn(
-                                                        'group-data-[collapsible=icon]:hidden pointer-events-none size-4 -translate-y-1/2 opacity-50 select-none',
-                                                        'absolute top-1/2 left-2'
-                                                )} />
-                                            </ui.CommandItem>
-                                            <ui.CommandSeparator className='mb-1'/>
-                                            <ui.CommandGroup className='max-h-[50vh] overflow-y-auto scrollbar-thin p-0'>
-                                                {
-                                                    [...groupData[key]].sort(
-                                                        (([_, aCount], [__, bCount]) => bCount - aCount)
-                                                    ).map(
-                                                        ([value, count], index) => (
-                                                            <ui.CommandItem
-                                                                key={index}
-                                                                value={String(value ?? '')}
-                                                                onSelect={() => {
-                                                                    const checked = !!groupFilter[key]?.includes(value)
-                                                                    setGroupFilter({
-                                                                        ...groupFilter,
-                                                                        [key]: (
-                                                                            checked
-                                                                                ? (groupFilter[key] ?? []).filter(v => v != value)
-                                                                                : [...(groupFilter[key] ?? []), value]
-                                                                        )
-                                                                    })
-                                                                }}
-                                                                className='[&>svg:last-child]:hidden'
-                                                            >
-                                                                <ui.Checkbox
-                                                                    checked={!!groupFilter[key]?.includes(value)}
-                                                                    className='[&_svg]:!text-primary-foreground'
-                                                                />
-                                                                <span className='min-w-0 truncate whitespace-nowrap'>{value ?? ''}</span>
-                                                                <span className='ml-auto text-muted-foreground'>{count}</span>
-                                                            </ui.CommandItem>
-                                                        )
-                                                    )
-                                                }
-                                            </ui.CommandGroup>
-                                            {
-                                                groupFilter[key] && groupFilter[key].length !== 0 && (
-                                                    <>
-                                                        <ui.CommandSeparator className='my-1' />
-                                                        <ui.CommandItem
-                                                            onSelect={() => {
-                                                                setGroupFilter({ ...groupFilter, [key]: []})
-                                                                setGroupSearchData({
-                                                                    ...groupSearchData,
-                                                                    [key]: ''
-                                                                })
-                                                            }}
-                                                            className='justify-center [&>svg:last-child]:hidden'
-                                                        >
-                                                            {{ 'en': 'Reset', 'zh': '重置' }[language]}
-                                                        </ui.CommandItem>
-                                                    </>
-                                                )
-                                            }
-                                        </ui.CommandList>
-                                    </ui.Command>
-                                </ui.PopoverContent>
-                            </ui.Popover>
-                        )
-                    ))
-                }
-                {
-                    headerOption.some(({ isGroup }) => isGroup) && (
-                        <ui.DropdownMenu onOpenChange={()=>{setGroupOpenKey('')}}>
-                            <ui.DropdownMenuTrigger className='block lg:hidden' render={<ui.Button variant='outline' size='sm' />}>
-                                <ui.icon.GroupIcon />
-                            </ui.DropdownMenuTrigger>
-                            <ui.DropdownMenuContent className='w-48'>
-                            {
-                                headerOption.map(({ key, name, isGroup }, index) => (
-                                    isGroup && (
-                                        <ui.DropdownMenuSub
-                                            key={index}
-                                            open={groupOpenKey === key}
-                                        >
-                                            <ui.DropdownMenuSubTrigger
-                                                className='[&>svg:last-child]:hidden'
-                                                onClick={e => {
-                                                    e.preventDefault()
-                                                    setGroupOpenKey(
-                                                        groupOpenKey === key
-                                                        ? ''
-                                                        : key
-                                                    )
-                                                }}
-                                            >
-                                                <span>{name}</span>
-                                                <ui.icon.ChevronDown
-                                                    className={cn(
-                                                        'ml-auto size-4 opacity-50 transition-transform duration-200',
-                                                        groupOpenKey === key && 'rotate-180'
-                                                    )}
-                                                />
-                                            </ui.DropdownMenuSubTrigger>
-                                            <ui.DropdownMenuSubContent
-                                                side='bottom'
-                                                align='end'
-                                                sideOffset={4}
-                                                className='w-[75vw] max-w-[320px] p-0'
-                                            >
-                                                <ui.Command className='pt-0'>
-                                                    <ui.CommandList className='max-h-full'>
-                                                        <ui.CommandEmpty>
-                                                            {{ 'en': 'No content', 'zh': '无内容' }[language]}
-                                                        </ui.CommandEmpty>
-                                                        <ui.CommandItem className='relative py-0.5'>
-                                                            <ui.Input
-                                                                placeholder={{'en': 'Search...', 'zh': '搜索...'}[language]}
-                                                                value={groupSearchData[key] ?? ''}
-                                                                onInput={e => {
-                                                                    setGroupSearchData({
-                                                                        ...groupSearchData,
-                                                                        [key]: e.currentTarget.value
-                                                                    })
-                                                                }}
-                                                                className='pl-6 bg-transparent border-0 shadow-none focus-visible:ring-0'
-                                                            />
-                                                            <ui.icon.Search className={cn(
-                                                                    'group-data-[collapsible=icon]:hidden pointer-events-none size-4 -translate-y-1/2 opacity-50 select-none',
-                                                                    'absolute top-1/2 left-2'
-                                                            )} />
-                                                        </ui.CommandItem>
-                                                        <ui.CommandSeparator className='mb-1'/>
-                                                        <ui.CommandGroup className='max-h-[50vh] overflow-y-auto scrollbar-thin p-0'>
-                                                            {
-                                                                [...groupData[key]].sort(
-                                                                    (([_, aCount], [__, bCount]) => bCount - aCount)
-                                                                ).map(
-                                                                    ([value, count], index) => (
-                                                                        <ui.CommandItem
-                                                                            key={index}
-                                                                            value={String(value ?? '')}
-                                                                            onSelect={() => {
-                                                                                const checked = !!groupFilter[key]?.includes(value)
-                                                                                setGroupFilter({
-                                                                                    ...groupFilter,
-                                                                                    [key]: (
-                                                                                        checked
-                                                                                            ? (groupFilter[key] ?? []).filter(v => v != value)
-                                                                                            : [...(groupFilter[key] ?? []), value]
-                                                                                    )
-                                                                                })
-                                                                            }}
-                                                                            className='[&>svg:last-child]:hidden'
-                                                                        >
-                                                                            <ui.Checkbox
-                                                                                checked={!!groupFilter[key]?.includes(value)}
-                                                                                className='[&_svg]:!text-primary-foreground'
-                                                                            />
-                                                                            <span className='min-w-0 truncate whitespace-nowrap'>{value ?? ''}</span>
-                                                                            <span className='ml-auto text-muted-foreground'>{count}</span>
-                                                                        </ui.CommandItem>
-                                                                    )
-                                                                )
-                                                            }
-                                                        </ui.CommandGroup>
-                                                        {
-                                                            groupFilter[key] && groupFilter[key].length !== 0 && (
-                                                                <>
-                                                                    <ui.CommandSeparator className='my-1' />
-                                                                    <ui.CommandItem
-                                                                        onSelect={() => {
-                                                                            setGroupFilter({ ...groupFilter, [key]: []})
+                    fieldOption.some(({ isGroup }) => isGroup) && (
+                        <>
+                            <div className='hidden lg:flex gap-2'>
+                                {
+                                    fieldOption.map(({ key, name, isGroup, defaultValue }, index) => (
+                                        isGroup && (
+                                            <ui.DropdownMenu key={index}>
+                                                <ui.DropdownMenuTrigger render={
+                                                    <ui.Button
+                                                        variant={groupFilter[key] && groupFilter[key].length !== 0 ? 'default' : 'outline'}
+                                                        size='sm'
+                                                        />
+                                                }>
+                                                    <ui.icon.GroupIcon />
+                                                    <span>{name}</span>
+                                                </ui.DropdownMenuTrigger>
+                                                <ui.DropdownMenuContent align='start' className='w-[200px] p-0'>
+                                                    <ui.Command className='pt-0'>
+                                                        <ui.CommandList className='max-h-full'>
+                                                            <ui.CommandEmpty>
+                                                                {{ 'en': 'No content', 'zh': '无内容' }[language]}
+                                                            </ui.CommandEmpty>
+                                                            <ui.CommandItem className='relative py-0.5'>
+                                                                <div onKeyDown={(e) => {e.stopPropagation()}}>
+                                                                    <ui.Input
+                                                                        placeholder={{'en': 'Search...', 'zh': '搜索...'}[language]}
+                                                                        value={groupSearchData[key] ?? ''}
+                                                                        onInput={e => {
                                                                             setGroupSearchData({
                                                                                 ...groupSearchData,
-                                                                                [key]: ''
+                                                                                [key]: e.currentTarget.value
                                                                             })
                                                                         }}
-                                                                        className='justify-center [&>svg:last-child]:hidden'
-                                                                    >
-                                                                        {{ 'en': 'Reset', 'zh': '重置' }[language]}
+                                                                        className='pl-6 bg-transparent border-0 shadow-none focus-visible:ring-0'
+                                                                    />
+                                                                </div>
+                                                                <ui.icon.Search className={cn(
+                                                                        'group-data-[collapsible=icon]:hidden pointer-events-none size-4 -translate-y-1/2 opacity-50 select-none',
+                                                                        'absolute top-1/2 left-2'
+                                                                )} />
+                                                            </ui.CommandItem>
+                                                            <ui.CommandSeparator className='mb-1'/>
+                                                            <ui.CommandGroup className='max-h-[50vh] overflow-y-auto scrollbar-thin p-0'>
+                                                                {
+                                                                    [...groupData[key]].sort(
+                                                                        (([_, aCount], [__, bCount]) => bCount - aCount)
+                                                                    ).map(
+                                                                        ([value, count], index) => (
+                                                                            <ui.CommandItem
+                                                                                key={index}
+                                                                                value={String(value ?? '')}
+                                                                                onSelect={() => {
+                                                                                    const checked = !!groupFilter[key]?.includes(value)
+                                                                                    setGroupFilter({
+                                                                                        ...groupFilter,
+                                                                                        [key]: (
+                                                                                            checked
+                                                                                                ? (groupFilter[key] ?? []).filter(v => v != value)
+                                                                                                : [...(groupFilter[key] ?? []), value]
+                                                                                        )
+                                                                                    })
+                                                                                    setPage(1)
+                                                                                }}
+                                                                                className='[&>svg:last-child]:hidden'
+                                                                            >
+                                                                                <ui.Checkbox
+                                                                                    checked={!!groupFilter[key]?.includes(value)}
+                                                                                    className='[&_svg]:!text-primary-foreground'
+                                                                                />
+                                                                                <span className='min-w-0 truncate whitespace-nowrap'>{value ?? defaultValue ?? ''}</span>
+                                                                                <span className='ml-auto text-muted-foreground'>{count}</span>
+                                                                            </ui.CommandItem>
+                                                                        )
+                                                                    )
+                                                                }
+                                                            </ui.CommandGroup>
+                                                            {
+                                                                groupFilter[key] && groupFilter[key].length !== 0 && (
+                                                                    <>
+                                                                        <ui.CommandSeparator className='my-1' />
+                                                                        <ui.CommandItem
+                                                                            onSelect={() => {
+                                                                                setGroupFilter({ ...groupFilter, [key]: []})
+                                                                                setGroupSearchData({
+                                                                                    ...groupSearchData,
+                                                                                    [key]: ''
+                                                                                })
+                                                                                setPage(1)
+                                                                            }}
+                                                                            className='justify-center [&>svg:last-child]:hidden'
+                                                                        >
+                                                                            {{ 'en': 'Reset', 'zh': '重置' }[language]}
+                                                                        </ui.CommandItem>
+                                                                    </>
+                                                                )
+                                                            }
+                                                        </ui.CommandList>
+                                                    </ui.Command>
+                                                </ui.DropdownMenuContent>
+                                            </ui.DropdownMenu>
+                                        )
+                                    ))
+                                }
+                            </div>
+                            <div className='block lg:hidden' >
+                                <ui.DropdownMenu onOpenChange={()=>{setGroupOpenKey('')}}>
+                                    <ui.DropdownMenuTrigger 
+                                        render={
+                                            <ui.Button
+                                                variant={Object.values(groupFilter).some((value) => value?.length !== 0) ? 'default' : 'outline'}
+                                                size='sm'
+                                            />
+                                        }
+                                    >
+                                        <ui.icon.GroupIcon />
+                                    </ui.DropdownMenuTrigger>
+                                    <ui.DropdownMenuContent className='w-48'>
+                                        {
+                                            fieldOption.map(({ key, name, isGroup, defaultValue }, index) => (
+                                                isGroup && (
+                                                    <ui.DropdownMenuSub
+                                                        key={index}
+                                                        open={groupOpenKey === key}
+                                                    >
+                                                        <ui.DropdownMenuSubTrigger
+                                                            className={cn(
+                                                                'size-full [&>svg:last-child]:hidden',
+                                                                ui.buttonVariants({
+                                                                    variant: groupFilter[key] && groupFilter[key].length !== 0 ? 'default' : 'ghost'
+                                                                }),
+                                                            )}
+                                                            onClick={e => {
+                                                                e.preventDefault()
+                                                                setGroupOpenKey(
+                                                                    groupOpenKey === key
+                                                                    ? ''
+                                                                    : key
+                                                                )
+                                                            }}
+                                                        >
+                                                            <span>{name}</span>
+                                                            <ui.icon.ChevronDown
+                                                                className={cn(
+                                                                    'ml-auto size-4 opacity-50 transition-transform duration-200',
+                                                                    groupOpenKey === key && 'rotate-180'
+                                                                )}
+                                                            />
+                                                        </ui.DropdownMenuSubTrigger>
+                                                        <ui.DropdownMenuSubContent
+                                                            side='bottom'
+                                                            align='end'
+                                                            sideOffset={4}
+                                                            className='w-[75vw] max-w-[320px] p-0'
+                                                        >
+                                                            <ui.Command className='pt-0'>
+                                                                <ui.CommandList className='max-h-full'>
+                                                                    <ui.CommandEmpty>
+                                                                        {{ 'en': 'No content', 'zh': '无内容' }[language]}
+                                                                    </ui.CommandEmpty>
+                                                                    <ui.CommandItem className='relative py-0.5'>
+                                                                        <div onKeyDown={(e) => {e.stopPropagation()}}>
+                                                                            <ui.Input
+                                                                                placeholder={{'en': 'Search...', 'zh': '搜索...'}[language]}
+                                                                                value={groupSearchData[key] ?? ''}
+                                                                                onInput={e => {
+                                                                                    setGroupSearchData({
+                                                                                        ...groupSearchData,
+                                                                                        [key]: e.currentTarget.value
+                                                                                    })
+                                                                                }}
+                                                                                className='pl-6 bg-transparent border-0 shadow-none focus-visible:ring-0'
+                                                                            />
+                                                                        </div>
+                                                                        <ui.icon.Search className={cn(
+                                                                                'group-data-[collapsible=icon]:hidden pointer-events-none size-4 -translate-y-1/2 opacity-50 select-none',
+                                                                                'absolute top-1/2 left-2'
+                                                                        )} />
                                                                     </ui.CommandItem>
-                                                                </>
-                                                            )
-                                                        }
-                                                    </ui.CommandList>
-                                                </ui.Command>
-                                            </ui.DropdownMenuSubContent>
-                                        </ui.DropdownMenuSub>
-                                    )
-                                ))
-                            }
-                            </ui.DropdownMenuContent>
-                        </ui.DropdownMenu>
+                                                                    <ui.CommandSeparator className='mb-1'/>
+                                                                    <ui.CommandGroup className='max-h-[50vh] overflow-y-auto scrollbar-thin p-0'>
+                                                                        {
+                                                                            [...groupData[key]].sort(
+                                                                                (([_, aCount], [__, bCount]) => bCount - aCount)
+                                                                            ).map(
+                                                                                ([value, count], index) => (
+                                                                                    <ui.CommandItem
+                                                                                        key={index}
+                                                                                        value={String(value ?? '')}
+                                                                                        onSelect={() => {
+                                                                                            const checked = !!groupFilter[key]?.includes(value)
+                                                                                            setGroupFilter({
+                                                                                                ...groupFilter,
+                                                                                                [key]: (
+                                                                                                    checked
+                                                                                                        ? (groupFilter[key] ?? []).filter(v => v != value)
+                                                                                                        : [...(groupFilter[key] ?? []), value]
+                                                                                                )
+                                                                                            })
+                                                                                            setPage(1)
+                                                                                        }}
+                                                                                        className='[&>svg:last-child]:hidden'
+                                                                                    >
+                                                                                        <ui.Checkbox
+                                                                                            checked={!!groupFilter[key]?.includes(value)}
+                                                                                            className='[&_svg]:!text-primary-foreground'
+                                                                                        />
+                                                                                        <span className='min-w-0 truncate whitespace-nowrap'>{value ?? defaultValue ?? ''}</span>
+                                                                                        <span className='ml-auto text-muted-foreground'>{count}</span>
+                                                                                    </ui.CommandItem>
+                                                                                )
+                                                                            )
+                                                                        }
+                                                                    </ui.CommandGroup>
+                                                                    {
+                                                                        groupFilter[key] && groupFilter[key].length !== 0 && (
+                                                                            <>
+                                                                                <ui.CommandSeparator className='my-1' />
+                                                                                <ui.CommandItem
+                                                                                    onSelect={() => {
+                                                                                        setGroupFilter({ ...groupFilter, [key]: []})
+                                                                                        setGroupSearchData({
+                                                                                            ...groupSearchData,
+                                                                                            [key]: ''
+                                                                                        })
+                                                                                        setPage(1)
+                                                                                    }}
+                                                                                    className='justify-center [&>svg:last-child]:hidden'
+                                                                                >
+                                                                                    {{ 'en': 'Reset', 'zh': '重置' }[language]}
+                                                                                </ui.CommandItem>
+                                                                            </>
+                                                                        )
+                                                                    }
+                                                                </ui.CommandList>
+                                                            </ui.Command>
+                                                        </ui.DropdownMenuSubContent>
+                                                    </ui.DropdownMenuSub>
+                                                )
+                                            ))
+                                        }
+                                        {
+                                            Object.values(groupFilter).some((value) => value?.length !== 0) && (
+                                                <>
+                                                    <ui.DropdownMenuSeparator className='my-1' />
+                                                    <ui.DropdownMenuItem
+                                                        onClick={() => {
+                                                            setGroupFilter({})
+                                                            setGroupSearchData({})
+                                                            setPage(1)
+                                                        }}
+                                                        className='justify-center [&>svg:last-child]:hidden'
+                                                    >
+                                                        {{ 'en': 'Reset', 'zh': '重置' }[language]}
+                                                    </ui.DropdownMenuItem>
+                                                </>
+                                            )
+                                        }
+                                    </ui.DropdownMenuContent>
+                                </ui.DropdownMenu>
+                            </div>
+                        </>
                     )
                 }
                 {
                     (
                         searchOption && (
                             <>
-                                <div className='relative py-0.5 hidden lg:block'>
+                                <div className='hidden lg:block relative py-0.5'>
                                     <ui.Input
                                         placeholder={searchOption.placeholder || {'en': 'Search...', 'zh': '搜索...'}[language]}
                                         value={searchValue}
-                                        onInput={e => {setSearchValue(e.currentTarget.value)}}
+                                        onInput={e => {
+                                            setSearchValue(e.currentTarget.value)
+                                            setPage(1)
+                                        }}
                                         className='h-8 pl-[1.95rem]'
                                     />
                                     <ui.icon.Search className={cn(
@@ -580,23 +636,30 @@ function TableMenu<Row extends Record<string, any>>(
                                             'absolute top-1/2 left-2'
                                     )} />
                                 </div>
-                                <ui.DropdownMenu>
-                                    <ui.DropdownMenuTrigger className='block lg:hidden' render={<ui.Button variant='outline' size='sm' />}>
-                                        <ui.icon.Search />
-                                    </ui.DropdownMenuTrigger>
-                                    <ui.DropdownMenuContent
-                                        sideOffset={4}
-                                        align='end'
-                                        className='w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg p-0'
-                                    >
-                                        <ui.Input
-                                            placeholder={searchOption.placeholder || {'en': 'Search...', 'zh': '搜索...'}[language]}
-                                            value={searchValue}
-                                            onInput={e => {setSearchValue(e.currentTarget.value)}}
-                                            className='bg-transparent border-0 shadow-none focus-visible:ring-0'
-                                        />
-                                    </ui.DropdownMenuContent>
-                                </ui.DropdownMenu>
+                                <div className='block lg:hidden'>
+                                    <ui.DropdownMenu>
+                                        <ui.DropdownMenuTrigger render={<ui.Button variant='outline' size='sm' />}>
+                                            <ui.icon.Search />
+                                        </ui.DropdownMenuTrigger>
+                                        <ui.DropdownMenuContent
+                                            sideOffset={4}
+                                            align='end'
+                                            className='w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg p-0'
+                                        >
+                                            <div onKeyDown={(e) => {e.stopPropagation()}}>
+                                                <ui.Input
+                                                    placeholder={searchOption.placeholder || {'en': 'Search...', 'zh': '搜索...'}[language]}
+                                                    value={searchValue}
+                                                    onInput={e => {
+                                                        setSearchValue(e.currentTarget.value)
+                                                        setPage(1)
+                                                    }}
+                                                    className='bg-transparent border-0 shadow-none focus-visible:ring-0'
+                                                />
+                                            </div>
+                                        </ui.DropdownMenuContent>
+                                    </ui.DropdownMenu>
+                                </div>
                             </>
                         )
                     )
@@ -611,7 +674,7 @@ function TableMenu<Row extends Record<string, any>>(
  * 
  * @param pageData - Table now page data.
  * @param setData - Function of set table data state value.
- * @param headerOption - Header option.
+ * @param fieldOption - Header option.
  * @param selectRows - Selected rows state value.
  * @param setSelectRows - Function of selected rows state value.
  * @param rowOption - Each row option.
@@ -621,7 +684,7 @@ function TableMain<Row extends Record<string, any>>(
 {
     pageData,
     setData,
-    headerOption,
+    fieldOption,
     selectRows,
     setSelectRows,
     rowOption,
@@ -629,7 +692,7 @@ function TableMain<Row extends Record<string, any>>(
 }: {
     pageData: Row[],
     setData: (value: Row[] | ((value: Row[]) => Row[])) => void,
-    headerOption: HeaderOption<Row>,
+    fieldOption: FieldOption<Row>,
     selectRows?: Row[],
     setSelectRows: (value: Row[]) => void,
     rowOption?: RowOption<Row>,
@@ -665,7 +728,7 @@ function TableMain<Row extends Record<string, any>>(
                             )
                         }
                         {
-                            headerOption.map(({ key, name, isHide, isSort, sortMethod }, index) => (
+                            fieldOption.map(({ key, name, isHide, isSort, sortMethod }, index) => (
                                 !isHide && (
                                     <ui.TableHead key={index} className='overflow-hidden'>
                                         {
@@ -745,16 +808,20 @@ function TableMain<Row extends Record<string, any>>(
                                     )
                                 }
                                 {
-                                    headerOption.map(({ key, isHide }, index) => (
+                                    fieldOption.map(({ key, isHide, defaultValue }, index) => (
                                         !isHide && (
                                             <ui.TableCell key={index} className='overflow-hidden whitespace-nowrap max-w-xs truncate'>
                                                 <PopupBox>
                                                     <PopupBoxTrigger>
-                                                        {formatValue(row[key])}
+                                                        {formatValue(row[key] ?? defaultValue)}
                                                     </PopupBoxTrigger>
-                                                    <PopupBoxContent align='start' sideOffset={-34} alignOffset={-16} className='break-all'>
-                                                        {formatValue(row[key])}
-                                                    </PopupBoxContent>
+                                                    {
+                                                        row[key] !== undefined && row[key] !== null && (
+                                                            <PopupBoxContent align='start' sideOffset={-34} alignOffset={-16} className='break-all'>
+                                                                {formatValue(row[key])}
+                                                            </PopupBoxContent>
+                                                        )
+                                                    }
                                                 </PopupBox>
                                             </ui.TableCell>
                                         )
@@ -867,6 +934,14 @@ function TablePagination<Row>(
     const pageSizeOptionsStr = pageSizeOptions.map((value) => String(value))
     const pageItems = rangeArr(1, totalPage + 1).map((value) => String(value))
 
+    // Effect.
+    useEffect(
+        () => {
+            setPageInput(String(page))
+        },
+        [page]
+    )
+
     return (
         <div className='flex items-center justify-between px-4'>
             <div className='hidden flex-1 text-sm text-muted-foreground lg:flex'>
@@ -937,7 +1012,6 @@ function TablePagination<Row>(
                             value={`${page}`}
                             onValueChange={(value) => {
                                 if (value) {
-                                    setPageInput(value)
                                     setPage(Number(value))
                                 }
                             }}
