@@ -49304,7 +49304,7 @@ function sk({
         ] }),
         /* @__PURE__ */ E.jsx(Ys, { align: "start", className: "w-auto", children: /* @__PURE__ */ E.jsxs(E.Fragment, { children: [
           (V = typeof C == "function" ? C(T) : C).options && V.options.map(
-            ({ name: _, fn: H }, P) => /* @__PURE__ */ E.jsx(
+            ({ name: _, exe: H }, P) => /* @__PURE__ */ E.jsx(
               cc,
               {
                 onClick: () => {
@@ -49318,7 +49318,7 @@ function sk({
           ),
           V.options && V.destructiveOptions && /* @__PURE__ */ E.jsx(M0, {}),
           V.destructiveOptions && V.destructiveOptions.map(
-            ({ name: _, fn: H }, P) => /* @__PURE__ */ E.jsx(
+            ({ name: _, exe: H }, P) => /* @__PURE__ */ E.jsx(
               cc,
               {
                 variant: "destructive",
@@ -49752,11 +49752,11 @@ function uk({
             ), children: /* @__PURE__ */ E.jsx(U5, {}) }),
             /* @__PURE__ */ E.jsxs(Ys, { align: "end", className: "w-auto", children: [
               (R = typeof g == "function" ? g(N) : g).options && R.options.map(
-                ({ name: M, fn: w }, z) => /* @__PURE__ */ E.jsx(
+                ({ name: M, exe: w }, z) => /* @__PURE__ */ E.jsx(
                   cc,
                   {
                     onClick: () => {
-                      w && w(N);
+                      typeof w == "string" || w && w(N);
                     },
                     disabled: w === null,
                     children: /* @__PURE__ */ E.jsx("span", { className: "whitespace-nowrap", children: M })
@@ -49766,7 +49766,7 @@ function uk({
               ),
               R.options && R.destructiveOptions && /* @__PURE__ */ E.jsx(M0, {}),
               R.destructiveOptions && R.destructiveOptions.map(
-                ({ name: M, fn: w }, z) => /* @__PURE__ */ E.jsx(
+                ({ name: M, exe: w }, z) => /* @__PURE__ */ E.jsx(
                   cc,
                   {
                     variant: "destructive",
