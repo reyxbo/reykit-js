@@ -18,7 +18,6 @@ export {
     type TableFieldOption,
     type TableSearchOption,
     type TableButtonOption,
-    type TableOptionName,
     type TableRowOption,
     type TableSelectRowsOption,
     Table

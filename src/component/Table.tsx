@@ -851,17 +851,23 @@ function TableMain<Row extends Record<string, any>>(
                                                         ).options && (
                                                             iterRowOptions.options.map(
                                                                 ({name, exe}, index) => (
-                                                                    <ui.DropdownMenuItem
-                                                                        key={index}
-                                                                        onClick={() => {
-                                                                            typeof exe === 'string'
-                                                                            ? <a target='_blank' href={exe}>{name}</a>
-                                                                            : exe && exe(row)
-                                                                        }}
-                                                                        disabled={exe === null}
-                                                                    >
-                                                                        <span className='whitespace-nowrap'>{name}</span>
-                                                                    </ui.DropdownMenuItem>
+                                                                    typeof exe === 'string'
+                                                                    ? (
+                                                                        <ui.DropdownMenuItem
+                                                                            key={index}
+                                                                            render={<a target='_blank' href={exe} />}
+                                                                        >
+                                                                            <span className='whitespace-nowrap'>{name}</span>
+                                                                        </ui.DropdownMenuItem>
+                                                                    ) : (
+                                                                        <ui.DropdownMenuItem
+                                                                            key={index}
+                                                                            onClick={() => {exe && exe(row)}}
+                                                                            disabled={exe === null}
+                                                                        >
+                                                                            <span className='whitespace-nowrap'>{name}</span>
+                                                                        </ui.DropdownMenuItem>
+                                                                    )
                                                                 )
                                                             )
                                                         )
@@ -871,12 +877,25 @@ function TableMain<Row extends Record<string, any>>(
                                                         iterRowOptions.destructiveOptions && (
                                                             iterRowOptions.destructiveOptions.map(
                                                                 ({name, exe}, index) => (
-                                                                    <ui.DropdownMenuItem
-                                                                        key={index}
-                                                                        variant='destructive'
-                                                                        onClick={() => {exe && exe(row)}}
-                                                                        disabled={exe === null}
-                                                                    >{name}</ui.DropdownMenuItem>
+                                                                    typeof exe === 'string'
+                                                                    ? (
+                                                                        <ui.DropdownMenuItem
+                                                                            key={index}
+                                                                            variant='destructive'
+                                                                            render={<a target='_blank' href={exe} />}
+                                                                        >
+                                                                            <span className='whitespace-nowrap'>{name}</span>
+                                                                        </ui.DropdownMenuItem>
+                                                                    ) : (
+                                                                        <ui.DropdownMenuItem
+                                                                            key={index}
+                                                                            variant='destructive'
+                                                                            onClick={() => {exe && exe(row)}}
+                                                                            disabled={exe === null}
+                                                                        >
+                                                                            <span className='whitespace-nowrap'>{name}</span>
+                                                                        </ui.DropdownMenuItem>
+                                                                    )
                                                                 )
                                                             )
                                                         )
