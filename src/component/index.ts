@@ -15,7 +15,7 @@ export { Form } from './Form'
 export { Loading, useLoading } from './Loading'
 export { Notice, notice } from './Notice'
 export {
-    type HeaderOption,
+    type FieldOption,
     type SearchOption,
     type ButtonOption,
     type OptionName,

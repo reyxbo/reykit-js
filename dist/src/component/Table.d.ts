@@ -1,11 +1,12 @@
 import { ReactNode } from 'react';
-export type HeaderOption<Row extends Record<string, any>> = {
+export type FieldOption<Row extends Record<string, any>> = {
     key: string;
     name: string;
     isHide?: boolean;
     isSort?: boolean;
     isGroup?: boolean;
     sortMethod?: (a: Row, b: Row) => number;
+    defaultValue?: any;
 }[];
 export type SearchOption<Row extends Record<string, any>> = {
     method: (value: string, row: Row) => boolean;
@@ -43,7 +44,7 @@ export type SelectRowsOption<Row extends Record<string, any>> = {
  *
  * @param data - Table data state value.
  * @param setData - Function of set table data state value.
- * @param headerOption - Header option.
+ * @param fieldOption - Header option.
  * @param searchOption - Search option.
  * @param buttonOption - Custom buttons option.
  * @param rowOption - Each row option.
@@ -52,10 +53,10 @@ export type SelectRowsOption<Row extends Record<string, any>> = {
  * @param mobilePageSize - Page rows size on mobile devices.
  * @param language - Language type.
  */
-export declare function Table<Row extends Record<string, any>>({ data, setData, headerOption, searchOption, buttonOption, rowOption, selectRowsOption, pageSize, mobilePageSize, language }: {
+export declare function Table<Row extends Record<string, any>>({ data, setData, fieldOption, searchOption, buttonOption, rowOption, selectRowsOption, pageSize, mobilePageSize, language }: {
     data: Row[];
     setData: (value: Row[] | ((value: Row[]) => Row[])) => void;
-    headerOption?: HeaderOption<Row>;
+    fieldOption?: FieldOption<Row>;
     searchOption?: SearchOption<Row>;
     buttonOption?: ButtonOption;
     rowOption?: RowOption<Row>;

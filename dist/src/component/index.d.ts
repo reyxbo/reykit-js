@@ -12,6 +12,6 @@ export { CycleButton } from './Button';
 export { Form } from './Form';
 export { Loading, useLoading } from './Loading';
 export { Notice, notice } from './Notice';
-export { type HeaderOption, type SearchOption, type ButtonOption, type OptionName, type RowOption, type SelectRowsOption, Table } from './Table';
+export { type FieldOption, type SearchOption, type ButtonOption, type OptionName, type RowOption, type SelectRowsOption, Table } from './Table';
 export { IconText } from './Text';
 export { IconToggle } from './Toggle';
