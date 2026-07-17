@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-export type FieldOption<Row extends Record<string, any>> = {
+export type TableFieldOption<Row extends Record<string, any>> = {
     key: string;
     name: string;
     isHide?: boolean;
@@ -8,20 +8,20 @@ export type FieldOption<Row extends Record<string, any>> = {
     sortMethod?: (a: Row, b: Row) => number;
     defaultValue?: any;
 }[];
-export type SearchOption<Row extends Record<string, any>> = {
+export type TableSearchOption<Row extends Record<string, any>> = {
     method: (value: string, row: Row) => boolean;
     placeholder?: string;
 };
-export type ButtonOption = {
+export type TableButtonOption = {
     name: ReactNode;
     method: () => void;
 }[];
-export type OptionName = ReactNode;
+export type TableOptionName = ReactNode;
 export type RowOptionItem<Row extends Record<string, any>> = {
     name: ReactNode;
     fn: ((row: Row) => void) | null;
 };
-export type RowOption<Row extends Record<string, any>> = {
+export type TableRowOption<Row extends Record<string, any>> = {
     options?: RowOptionItem<Row>[];
     destructiveOptions?: RowOptionItem<Row>[];
 } | ((row: Row) => {
@@ -32,7 +32,7 @@ export type SelectRowsOptionItem<Row extends Record<string, any>> = {
     name: ReactNode;
     fn: ((selectRows: Row[]) => void) | null;
 };
-export type SelectRowsOption<Row extends Record<string, any>> = {
+export type TableSelectRowsOption<Row extends Record<string, any>> = {
     options?: SelectRowsOptionItem<Row>[];
     destructiveOptions?: SelectRowsOptionItem<Row>[];
 } | ((selectRows: Row[]) => {
@@ -56,11 +56,11 @@ export type SelectRowsOption<Row extends Record<string, any>> = {
 export declare function Table<Row extends Record<string, any>>({ data, setData, fieldOption, searchOption, buttonOption, rowOption, selectRowsOption, pageSize, mobilePageSize, language }: {
     data: Row[];
     setData: (value: Row[] | ((value: Row[]) => Row[])) => void;
-    fieldOption?: FieldOption<Row>;
-    searchOption?: SearchOption<Row>;
-    buttonOption?: ButtonOption;
-    rowOption?: RowOption<Row>;
-    selectRowsOption?: SelectRowsOption<Row>;
+    fieldOption?: TableFieldOption<Row>;
+    searchOption?: TableSearchOption<Row>;
+    buttonOption?: TableButtonOption;
+    rowOption?: TableRowOption<Row>;
+    selectRowsOption?: TableSelectRowsOption<Row>;
     pageSize?: number;
     mobilePageSize?: number;
     language?: 'en' | 'zh';

@@ -12,7 +12,7 @@ import { sort, rangeArr, countArr } from '../lib/data'
 import { useValueByMobile } from '../lib/react'
 import { cn } from '../lib/twc'
 
-export type FieldOption<Row extends Record<string, any>> = {
+export type TableFieldOption<Row extends Record<string, any>> = {
     key: string,
     name: string,
     isHide?: boolean,
@@ -21,20 +21,20 @@ export type FieldOption<Row extends Record<string, any>> = {
     sortMethod?: (a: Row, b: Row) => number,
     defaultValue?: any
 }[]
-export type SearchOption<Row extends Record<string, any>> = {
+export type TableSearchOption<Row extends Record<string, any>> = {
     method: (value: string, row: Row) => boolean,
     placeholder?: string
 }
-export type ButtonOption = {
+export type TableButtonOption = {
     name: ReactNode,
     method: () => void
 }[]
-export type OptionName = ReactNode
+export type TableOptionName = ReactNode
 export type  RowOptionItem<Row extends Record<string, any>> = {
     name: ReactNode,
     fn: ((row: Row) => void) | null
 }
-export type RowOption<Row extends Record<string, any>> = {
+export type TableRowOption<Row extends Record<string, any>> = {
     options?: RowOptionItem<Row>[],
     destructiveOptions?: RowOptionItem<Row>[]
 } | ((row: Row) => {
@@ -45,7 +45,7 @@ export type  SelectRowsOptionItem<Row extends Record<string, any>> = {
     name: ReactNode,
     fn: ((selectRows: Row[]) => void) | null
 }
-export type SelectRowsOption<Row extends Record<string, any>> = {
+export type TableSelectRowsOption<Row extends Record<string, any>> = {
     options?: SelectRowsOptionItem<Row>[],
     destructiveOptions?: SelectRowsOptionItem<Row>[]
 } | ((selectRows: Row[]) => {
@@ -82,11 +82,11 @@ export function Table<Row extends Record<string, any>>(
     }: {
         data: Row[],
         setData: (value: Row[] | ((value: Row[]) => Row[])) => void,
-        fieldOption?: FieldOption<Row>,
-        searchOption?: SearchOption<Row>,
-        buttonOption?: ButtonOption,
-        rowOption?: RowOption<Row>,
-        selectRowsOption?: SelectRowsOption<Row>,
+        fieldOption?: TableFieldOption<Row>,
+        searchOption?: TableSearchOption<Row>,
+        buttonOption?: TableButtonOption,
+        rowOption?: TableRowOption<Row>,
+        selectRowsOption?: TableSelectRowsOption<Row>,
         pageSize?: number,
         mobilePageSize?: number,
         language?: 'en' | 'zh'
@@ -199,13 +199,13 @@ function TableMenu<Row extends Record<string, any>>(
     }: {
         data: Row[],
         setPage: (value: number) => void,
-        fieldOption: FieldOption<Row>,
-        setFieldOption: (value: FieldOption<Row>) => void,
+        fieldOption: TableFieldOption<Row>,
+        setFieldOption: (value: TableFieldOption<Row>) => void,
         searchValue?: string,
         setSearchValue: (value: string) => void,
-        searchOption?: SearchOption<Row>,
-        buttonOption?: ButtonOption,
-        selectRowsOption?: SelectRowsOption<Row>,
+        searchOption?: TableSearchOption<Row>,
+        buttonOption?: TableButtonOption,
+        selectRowsOption?: TableSelectRowsOption<Row>,
         selectRows?: Row[],
         groupFilter: Partial<Record<keyof Row, Row[keyof Row][]>>,
         setGroupFilter: (value: Partial<Record<keyof Row, Row[keyof Row][]>>) => void,
@@ -230,7 +230,7 @@ function TableMenu<Row extends Record<string, any>>(
         ]
     ))
     const [groupOpenKey, setGroupOpenKey] = useState<keyof Row | ''>('')
-    let iterSelectRowsOption: SelectRowsOption<Row>
+    let iterSelectRowsOption: TableSelectRowsOption<Row>
 
     return (
         <div className='flex items-center justify-between'>
@@ -692,16 +692,16 @@ function TableMain<Row extends Record<string, any>>(
 }: {
     pageData: Row[],
     setData: (value: Row[] | ((value: Row[]) => Row[])) => void,
-    fieldOption: FieldOption<Row>,
+    fieldOption: TableFieldOption<Row>,
     selectRows?: Row[],
     setSelectRows: (value: Row[]) => void,
-    rowOption?: RowOption<Row>,
+    rowOption?: TableRowOption<Row>,
     language: 'en' | 'zh'
 }) {
 
     // Parameter.
     const { PopupBox, PopupBoxTrigger, PopupBoxContent } = ui.usePopupBox()
-    let iterRowOptions: RowOption<Row>
+    let iterRowOptions: TableRowOption<Row>
 
     return (
         <div className='rounded-lg border overflow-hidden'>

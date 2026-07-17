@@ -15,12 +15,12 @@ export { Form } from './Form'
 export { Loading, useLoading } from './Loading'
 export { Notice, notice } from './Notice'
 export {
-    type FieldOption,
-    type SearchOption,
-    type ButtonOption,
-    type OptionName,
-    type RowOption,
-    type SelectRowsOption,
+    type TableFieldOption,
+    type TableSearchOption,
+    type TableButtonOption,
+    type TableOptionName,
+    type TableRowOption,
+    type TableSelectRowsOption,
     Table
 } from './Table'
 export { IconText } from './Text'
