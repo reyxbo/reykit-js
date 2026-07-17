@@ -19,4 +19,4 @@ declare function ItemDescription({ className, ...props }: React.ComponentProps<'
 declare function ItemActions({ className, ...props }: React.ComponentProps<'div'>): import("react/jsx-runtime").JSX.Element;
 declare function ItemHeader({ className, ...props }: React.ComponentProps<'div'>): import("react/jsx-runtime").JSX.Element;
 declare function ItemFooter({ className, ...props }: React.ComponentProps<'div'>): import("react/jsx-runtime").JSX.Element;
-export { Item, ItemMedia, ItemContent, ItemActions, ItemGroup, ItemSeparator, ItemTitle, ItemDescription, ItemHeader, ItemFooter, };
+export { Item, ItemMedia, ItemContent, ItemActions, ItemGroup, ItemSeparator, ItemTitle, ItemDescription, ItemHeader, ItemFooter, itemVariants, itemMediaVariants, };

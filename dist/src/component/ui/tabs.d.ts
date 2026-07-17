@@ -7,4 +7,4 @@ declare const tabsListVariants: (props?: ({
 declare function TabsList({ className, variant, ...props }: TabsPrimitive.List.Props & VariantProps<typeof tabsListVariants>): import("react/jsx-runtime").JSX.Element;
 declare function TabsTrigger({ className, ...props }: TabsPrimitive.Tab.Props): import("react/jsx-runtime").JSX.Element;
 declare function TabsContent({ className, ...props }: TabsPrimitive.Panel.Props): import("react/jsx-runtime").JSX.Element;
-export { Tabs, TabsList, TabsTrigger, TabsContent, tabsListVariants };
+export { Tabs, TabsList, TabsTrigger, TabsContent, tabsListVariants, };

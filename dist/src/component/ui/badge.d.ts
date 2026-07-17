@@ -4,4 +4,4 @@ declare const badgeVariants: (props?: ({
     variant?: "default" | "outline" | "secondary" | "ghost" | "destructive" | "link" | null | undefined;
 } & import('class-variance-authority/dist/types').ClassProp) | undefined) => string;
 declare function Badge({ className, variant, render, ...props }: useRender.ComponentProps<'span'> & VariantProps<typeof badgeVariants>): import('react').ReactElement<unknown, string | import('react').JSXElementConstructor<any>>;
-export { Badge, badgeVariants };
+export { Badge, badgeVariants, };

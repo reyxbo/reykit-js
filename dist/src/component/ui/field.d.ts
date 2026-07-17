@@ -21,4 +21,4 @@ declare function FieldError({ className, children, errors, ...props }: React.Com
         message?: string;
     } | undefined>;
 }): import("react/jsx-runtime").JSX.Element | null;
-export { Field, FieldLabel, FieldDescription, FieldError, FieldGroup, FieldLegend, FieldSeparator, FieldSet, FieldContent, FieldTitle, };
+export { Field, FieldLabel, FieldDescription, FieldError, FieldGroup, FieldLegend, FieldSeparator, FieldSet, FieldContent, FieldTitle, fieldVariants, };

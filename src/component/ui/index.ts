@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom'
 
 import { useIsMobile } from '../../lib/react'
-import { Button } from './button'
-import { Badge } from './badge'
+import { Button, buttonVariants } from './button'
+import { Badge, badgeVariants } from './badge'
 import { Label } from './label'
 import { Input } from './input'
 import { Textarea } from './textarea'
 import { Checkbox } from './checkbox'
 import { RadioGroup, RadioGroupItem } from './radio-group'
 import { Switch } from './switch'
-import { Toggle } from './toggle'
+import { Toggle, toggleVariants } from './toggle'
 import { Kbd } from './kbd'
 import { Progress } from './progress'
 import { Slider } from './slider'
@@ -17,8 +17,17 @@ import { Calendar } from './calendar'
 import { Spinner } from './spinner'
 import { Separator } from './separator'
 import { Skeleton } from './skeleton'
-import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea } from './input-group'
-import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from './button-group'
+import {
+    InputGroup,
+    InputGroupAddon,
+    InputGroupButton,
+    InputGroupInput,
+    InputGroupText,
+    InputGroupTextarea,
+    inputGroupAddonVariants,
+    inputGroupButtonVariants
+} from './input-group'
+import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText, buttonGroupVariants } from './button-group'
 import { ToggleGroup, ToggleGroupItem } from './toggle-group'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectSeparator, SelectTrigger, SelectValue } from './select'
 import {
@@ -56,7 +65,7 @@ import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from './inpu
 import { Avatar, AvatarBadge, AvatarFallback, AvatarGroup, AvatarGroupCount, AvatarImage } from './avatar'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './collapsible'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './accordion'
-import { Alert, AlertDescription, AlertTitle } from './alert'
+import { Alert, AlertDescription, AlertTitle, alertVariants } from './alert'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from './hover-card'
 import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from './command'
@@ -100,7 +109,7 @@ import {
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from './navigation-menu'
 import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from './breadcrumb'
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from './pagination'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './tabs'
+import { Tabs, TabsContent, TabsList, TabsTrigger, tabsListVariants } from './tabs'
 import { ScrollArea, ScrollBar } from './scroll-area'
 import { AspectRatio } from './aspect-ratio'
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from './resizable'
@@ -119,9 +128,9 @@ import {
     ContextMenuSubTrigger,
     ContextMenuTrigger
 } from './context-menu'
-import { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemSeparator, ItemTitle } from './item'
-import { Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSeparator, FieldSet, FieldTitle } from './field'
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from './empty'
+import { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemSeparator, ItemTitle, itemVariants, itemMediaVariants } from './item'
+import { Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSeparator, FieldSet, FieldTitle, fieldVariants } from './field'
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle, emptyMediaVariants } from './empty'
 import {
     SidebarProvider,
     SidebarInset,
@@ -146,6 +155,7 @@ import {
     SidebarMenuSub,
     SidebarMenuSubItem,
     SidebarMenuSubButton,
+    sidebarMenuButtonVariants,
     useSidebar
 }  from './sidebar'
 import * as icon from './icon'
@@ -176,7 +186,9 @@ export {
     icon,
     Link,
     Button,
+    buttonVariants,
     Badge,
+    badgeVariants,
     Label,
     Input,
     Textarea,
@@ -185,6 +197,7 @@ export {
     RadioGroupItem,
     Switch,
     Toggle,
+    toggleVariants,
     Kbd,
     Progress,
     Slider,
@@ -198,9 +211,12 @@ export {
     InputGroupInput,
     InputGroupText,
     InputGroupTextarea,
+    inputGroupAddonVariants,
+    inputGroupButtonVariants,
     ButtonGroup,
     ButtonGroupSeparator,
     ButtonGroupText,
+    buttonGroupVariants,
     ToggleGroup,
     ToggleGroupItem,
     Select,
@@ -258,6 +274,7 @@ export {
     Alert,
     AlertDescription,
     AlertTitle,
+    alertVariants,
     Card,
     CardContent,
     CardDescription,
@@ -371,6 +388,7 @@ export {
     TabsContent,
     TabsList,
     TabsTrigger,
+    tabsListVariants,
     ScrollArea,
     ScrollBar,
     AspectRatio,
@@ -398,6 +416,8 @@ export {
     ItemMedia,
     ItemSeparator,
     ItemTitle,
+    itemVariants,
+    itemMediaVariants,
     Field,
     FieldContent,
     FieldDescription,
@@ -408,12 +428,14 @@ export {
     FieldSeparator,
     FieldSet,
     FieldTitle,
+    fieldVariants,
     Empty,
     EmptyContent,
     EmptyDescription,
     EmptyHeader,
     EmptyMedia,
     EmptyTitle,
+    emptyMediaVariants,
     SidebarProvider,
     SidebarInset,
     SidebarTrigger,
@@ -437,6 +459,7 @@ export {
     SidebarMenuSub,
     SidebarMenuSubItem,
     SidebarMenuSubButton,
+    sidebarMenuButtonVariants,
     useSidebar,
     usePopupBox
 }

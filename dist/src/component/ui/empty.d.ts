@@ -8,4 +8,4 @@ declare function EmptyMedia({ className, variant, ...props }: React.ComponentPro
 declare function EmptyTitle({ className, ...props }: React.ComponentProps<'div'>): import("react/jsx-runtime").JSX.Element;
 declare function EmptyDescription({ className, ...props }: React.ComponentProps<'p'>): import("react/jsx-runtime").JSX.Element;
 declare function EmptyContent({ className, ...props }: React.ComponentProps<'div'>): import("react/jsx-runtime").JSX.Element;
-export { Empty, EmptyHeader, EmptyTitle, EmptyDescription, EmptyContent, EmptyMedia, };
+export { Empty, EmptyHeader, EmptyTitle, EmptyDescription, EmptyContent, EmptyMedia, emptyMediaVariants, };

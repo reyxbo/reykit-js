@@ -5,4 +5,4 @@ declare const buttonVariants: (props?: ({
     size?: "default" | "xs" | "sm" | "lg" | "icon" | "icon-xs" | "icon-sm" | "icon-lg" | null | undefined;
 } & import('class-variance-authority/dist/types').ClassProp) | undefined) => string;
 declare function Button({ className, variant, size, ...props }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>): import("react/jsx-runtime").JSX.Element;
-export { Button, buttonVariants };
+export { Button, buttonVariants, };

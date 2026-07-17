@@ -15,4 +15,4 @@ declare function InputGroupButton({ className, type, variant, size, ...props }: 
 declare function InputGroupText({ className, ...props }: React.ComponentProps<'span'>): import("react/jsx-runtime").JSX.Element;
 declare function InputGroupInput({ className, ...props }: React.ComponentProps<'input'>): import("react/jsx-runtime").JSX.Element;
 declare function InputGroupTextarea({ className, ...props }: React.ComponentProps<'textarea'>): import("react/jsx-runtime").JSX.Element;
-export { InputGroup, InputGroupAddon, InputGroupButton, InputGroupText, InputGroupInput, InputGroupTextarea, };
+export { InputGroup, InputGroupAddon, InputGroupButton, InputGroupText, InputGroupInput, InputGroupTextarea, inputGroupAddonVariants, inputGroupButtonVariants, };

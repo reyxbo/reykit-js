@@ -197,4 +197,6 @@ export {
   ItemDescription,
   ItemHeader,
   ItemFooter,
+  itemVariants,
+  itemMediaVariants,
 }

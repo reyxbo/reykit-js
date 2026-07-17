@@ -5,4 +5,4 @@ declare const toggleVariants: (props?: ({
     size?: "default" | "sm" | "lg" | null | undefined;
 } & import('class-variance-authority/dist/types').ClassProp) | undefined) => string;
 declare function Toggle({ className, variant, size, ...props }: TogglePrimitive.Props & VariantProps<typeof toggleVariants>): import("react/jsx-runtime").JSX.Element;
-export { Toggle, toggleVariants };
+export { Toggle, toggleVariants, };
