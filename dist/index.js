@@ -49737,8 +49737,8 @@ function uk({
               }
             }
           ) }),
-          u.map(({ key: M, isHide: w, defaultValue: z }, D) => !w && /* @__PURE__ */ E.jsx(aE, { className: "overflow-hidden whitespace-nowrap max-w-xs truncate", children: /* @__PURE__ */ E.jsxs(b, { children: [
-            /* @__PURE__ */ E.jsx(C, { children: IA(N[M] ?? z) }),
+          u.map(({ key: M, isHide: w, defaultValue: z }, D) => !w && /* @__PURE__ */ E.jsx(aE, { children: /* @__PURE__ */ E.jsxs(b, { children: [
+            /* @__PURE__ */ E.jsx(C, { render: /* @__PURE__ */ E.jsx("span", { className: "block max-w-xs truncate" }), children: IA(N[M] ?? z) }),
             N[M] !== void 0 && N[M] !== null && /* @__PURE__ */ E.jsx(T, { align: "start", sideOffset: -34, alignOffset: -16, className: "break-all", children: IA(N[M]) })
           ] }) }, D)),
           g && /* @__PURE__ */ E.jsx(aE, { className: "overflow-hidden", children: /* @__PURE__ */ E.jsxs(sc, { modal: !1, children: [

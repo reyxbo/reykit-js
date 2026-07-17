@@ -810,9 +810,9 @@ function TableMain<Row extends Record<string, any>>(
                                 {
                                     fieldOption.map(({ key, isHide, defaultValue }, index) => (
                                         !isHide && (
-                                            <ui.TableCell key={index} className='overflow-hidden whitespace-nowrap max-w-xs truncate'>
+                                            <ui.TableCell key={index}>
                                                 <PopupBox>
-                                                    <PopupBoxTrigger>
+                                                    <PopupBoxTrigger render={<span className='block max-w-xs truncate' />}>
                                                         {formatValue(row[key] ?? defaultValue)}
                                                     </PopupBoxTrigger>
                                                     {
