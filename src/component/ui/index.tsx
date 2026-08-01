@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { PreviewCard as PreviewCardPrimitive } from '@base-ui/react/preview-card'
 
 import { useIsMobile } from '../../lib/react'
 import { Button, buttonVariants } from './button'
@@ -175,7 +176,16 @@ function usePopupBox() {
         PopupBoxContent: PopoverContent
     } : {
         PopupBox: HoverCard,
-        PopupBoxTrigger: HoverCardTrigger,
+        PopupBoxTrigger: function PopupBoxTrigger(
+            {
+                nativeButton,
+                ...props
+            }: {
+                nativeButton?: boolean | undefined
+            } & PreviewCardPrimitive.Trigger.Props
+        ) {
+            return <HoverCardTrigger {...props} />
+        },
         PopupBoxContent: HoverCardContent
     }
 
