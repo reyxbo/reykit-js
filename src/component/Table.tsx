@@ -812,7 +812,7 @@ function TableMain<Row extends Record<string, any>>(
                                         !isHide && (
                                             <ui.TableCell key={index}>
                                                 <PopupBox>
-                                                    <PopupBoxTrigger render={<span className='block max-w-xs truncate' />}>
+                                                    <PopupBoxTrigger nativeButton={false} render={<span className='block max-w-xs truncate' />}>
                                                         {formatValue(row[key] ?? defaultValue)}
                                                     </PopupBoxTrigger>
                                                     {
