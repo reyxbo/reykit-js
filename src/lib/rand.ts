@@ -5,6 +5,8 @@
  * @Explain : Random methods.
  */
 
+import { digits, asciiLetters, punctuation } from './text'
+
 /**
  * Generate random characters.
  * 
@@ -21,25 +23,25 @@ export function randChar(
     let charRange: string
     switch (style) {
         case 'd':
-            charRange = '0123456789'
+            charRange = digits
             break
         case 'l':
-            charRange = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+            charRange = asciiLetters
             break
         case 'p':
-            charRange = '~!@#$%^&*()_+-={}[]|\\:;"\'<>,.?/'
+            charRange = punctuation
             break
         case 'dl':
-            charRange = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+            charRange = digits + asciiLetters
             break
         case 'dp':
-            charRange = '0123456789~!@#$%^&*()_+-={}[]|\\:;"\'<>,.?/'
+            charRange = digits + punctuation
             break
         case 'lp':
-            charRange = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+-={}[]|\\:;"\'<>,.?/'
+            charRange = asciiLetters + punctuation
             break
         case 'dlp':
-            charRange = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+-={}[]|\\:;"\'<>,.?/'
+            charRange = digits + asciiLetters + punctuation
             break
     }
 

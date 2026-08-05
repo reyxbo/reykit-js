@@ -16,6 +16,7 @@ import {
     rand,
     re,
     react,
+    text,
     time,
     twc,
     window
@@ -32,6 +33,7 @@ export default {
     rand,
     re,
     react,
+    text,
     time,
     twc,
     window
@@ -47,6 +49,7 @@ export {
     rand,
     re,
     react,
+    text,
     time,
     twc,
     window

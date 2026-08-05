@@ -6,6 +6,7 @@ import * as net from './net'
 import * as rand from './rand'
 import * as re from './re'
 import * as react from './react'
+import * as text from './text'
 import * as time from './time'
 import * as twc from './twc'
 import * as window from './window'
@@ -19,6 +20,7 @@ export {
     rand,
     re,
     react,
+    text,
     time,
     twc,
     window
