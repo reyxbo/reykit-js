@@ -12,7 +12,7 @@
  * @param style - Character style.
  * @returns Random characters.
  */
-function randChar(
+export function randChar(
     length: number = 32,
     style: 'd' | 'l' | 'p' | 'dl' | 'dp' | 'lp' | 'dlp' = 'dlp'
 ): string {

@@ -3,6 +3,7 @@ import * as base from './base'
 import * as data from './data'
 import * as image from './image'
 import * as net from './net'
+import * as rand from './rand'
 import * as re from './re'
 import * as react from './react'
 import * as time from './time'
@@ -15,6 +16,7 @@ export {
     data,
     image,
     net,
+    rand,
     re,
     react,
     time,

@@ -1,4 +1,4 @@
-import { captcha, base, data, image, net, re, react, time, twc, window } from './lib';
+import { captcha, base, data, image, net, rand, re, react, time, twc, window } from './lib';
 /**
  * @Time    : 2026-03-11
  * @Author  : Rey
@@ -15,6 +15,7 @@ declare const _default: {
     data: typeof data;
     image: typeof image;
     net: typeof net;
+    rand: typeof rand;
     re: typeof re;
     react: typeof react;
     time: typeof time;
@@ -22,4 +23,4 @@ declare const _default: {
     window: typeof window;
 };
 export default _default;
-export { component, ui, captcha, base, data, image, net, re, react, time, twc, window };
+export { component, ui, captcha, base, data, image, net, rand, re, react, time, twc, window };

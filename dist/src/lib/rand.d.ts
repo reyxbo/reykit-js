@@ -11,4 +11,4 @@
  * @param style - Character style.
  * @returns Random characters.
  */
-declare function randChar(length?: number, style?: 'd' | 'l' | 'p' | 'dl' | 'dp' | 'lp' | 'dlp'): string;
+export declare function randChar(length?: number, style?: 'd' | 'l' | 'p' | 'dl' | 'dp' | 'lp' | 'dlp'): string;

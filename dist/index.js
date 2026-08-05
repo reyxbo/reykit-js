@@ -50522,22 +50522,58 @@ async function Ok(a, i) {
 const wk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   request: Ok
-}, Symbol.toStringTag, { value: "Module" })), Nk = /^((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$/, Mk = /^https?:\/\/[^\s/$.?#].[^\s]*$/, Ak = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/, Dk = /^1[3-9]\d{9}$/, zk = /^[\u4e00-\u9fa5]+$/, _k = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  PATTERN_CN: zk,
-  PATTERN_EMAIL: Ak,
-  PATTERN_IP: Nk,
-  PATTERN_PHONE: Dk,
-  PATTERN_URL: Mk
 }, Symbol.toStringTag, { value: "Module" }));
-function jk() {
+function Nk(a = 32, i = "dlp") {
+  let u;
+  switch (i) {
+    case "d":
+      u = "0123456789";
+      break;
+    case "l":
+      u = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      break;
+    case "p":
+      u = `~!@#$%^&*()_+-={}[]|\\:;"'<>,.?/`;
+      break;
+    case "dl":
+      u = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      break;
+    case "dp":
+      u = `0123456789~!@#$%^&*()_+-={}[]|\\:;"'<>,.?/`;
+      break;
+    case "lp":
+      u = `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+-={}[]|\\:;"'<>,.?/`;
+      break;
+    case "dlp":
+      u = `0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+-={}[]|\\:;"'<>,.?/`;
+      break;
+  }
+  const d = [];
+  for (let g = 0; g < a; g++) {
+    const y = Math.floor(Math.random() * u.length);
+    d.push(u[y]);
+  }
+  return d.join("");
+}
+const Mk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  randChar: Nk
+}, Symbol.toStringTag, { value: "Module" })), Ak = /^((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$/, Dk = /^https?:\/\/[^\s/$.?#].[^\s]*$/, zk = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/, _k = /^1[3-9]\d{9}$/, jk = /^[\u4e00-\u9fa5]+$/, Uk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  PATTERN_CN: jk,
+  PATTERN_EMAIL: zk,
+  PATTERN_IP: Ak,
+  PATTERN_PHONE: _k,
+  PATTERN_URL: Dk
+}, Symbol.toStringTag, { value: "Module" }));
+function Vk() {
   const a = /* @__PURE__ */ new Date();
   return a.getFullYear() + "-" + String(a.getMonth() + 1).padStart(2, "0") + "-" + String(a.getDate()).padStart(2, "0") + "T" + String(a.getHours()).padStart(2, "0") + ":" + String(a.getMinutes()).padStart(2, "0");
 }
-const Uk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Hk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  datetimeLocal: jk
-}, Symbol.toStringTag, { value: "Module" })), Jk = {
+  datetimeLocal: Vk
+}, Symbol.toStringTag, { value: "Module" })), eY = {
   component: pk,
   ui: Bj,
   captcha: gk,
@@ -50545,9 +50581,10 @@ const Uk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   data: ik,
   image: Ck,
   net: wk,
-  re: _k,
+  rand: Mk,
+  re: Uk,
   react: r6,
-  time: Uk,
+  time: Hk,
   twc: H6,
   window: Sk
 };
@@ -50556,12 +50593,13 @@ export {
   gk as captcha,
   pk as component,
   ik as data,
-  Jk as default,
+  eY as default,
   Ck as image,
   wk as net,
-  _k as re,
+  Mk as rand,
+  Uk as re,
   r6 as react,
-  Uk as time,
+  Hk as time,
   H6 as twc,
   Bj as ui,
   Sk as window
