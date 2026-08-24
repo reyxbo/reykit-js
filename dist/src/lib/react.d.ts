@@ -38,9 +38,23 @@ export declare function useIndex(array: any[], loop?: boolean): [number, () => v
  */
 export declare function useRender(): () => void;
 /**
- * Whether is mobile.
+ * Whether is mobile client.
  *
  * @returns Judgement.
  */
 export declare function useIsMobile(): boolean;
+/**
+ * Get value by client type.
+ *
+ * @param value - Value of non mobile client.
+ * @param mobileValue - Value of mobile client.
+ * @returns Value.
+ */
 export declare function useValueByMobile<Value, MobileValue>(value: Value, mobileValue: MobileValue): Value | MobileValue;
+/**
+ * Execute once after rendering.
+ *
+ * @param func - Execute function.
+ * @param args - Execute arguments.
+ */
+export declare function useExec<T extends any>(func: (...args: T[]) => void, ...args: T[]): void;

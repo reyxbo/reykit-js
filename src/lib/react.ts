@@ -119,7 +119,7 @@ export function useRender() {
 }
 
 /**
- * Whether is mobile.
+ * Whether is mobile client.
  * 
  * @returns Judgement.
  */
@@ -145,6 +145,13 @@ export function useIsMobile() {
     return isMobile
 }
 
+/**
+ * Get value by client type.
+ * 
+ * @param value - Value of non mobile client.
+ * @param mobileValue - Value of mobile client.
+ * @returns Value.
+ */
 export function useValueByMobile<Value, MobileValue>(
     value: Value,
     mobileValue: MobileValue
@@ -154,4 +161,25 @@ export function useValueByMobile<Value, MobileValue>(
     const isMobile = useIsMobile()
 
     return isMobile ? mobileValue : value
+}
+
+/**
+ * Execute once after rendering.
+ * 
+ * @param func - Execute function.
+ * @param args - Execute arguments.
+ */
+export function useExec<T extends any>(
+    func: (...args: T[]) => void,
+    ...args: T[]
+) {
+
+    // Execute.
+    useEffect(
+        () => {
+            func(...args)
+        },
+        []
+    )
+
 }
