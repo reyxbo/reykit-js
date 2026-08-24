@@ -49973,7 +49973,7 @@ function xk({
     d && m || (typeof i == "string" ? /* @__PURE__ */ E.jsx("span", { className: "whitespace-nowrap", children: i }) : i)
   ] });
 }
-function Sk({ text: a }) {
+function Sk({ children: a }) {
   return /* @__PURE__ */ E.jsx(Wj, { remarkPlugins: [e6], children: a });
 }
 function Ek({

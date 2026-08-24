@@ -55,12 +55,12 @@ export function IconText(
 /**
  * Text component of support Markdown.
  * 
- * @param text - Markdown text.
+ * @param children - Markdown text.
  */
-export function MarkdownText({ text }: { text: string }) {
+export function MarkdownText({ children }: { children: string }) {
     return (
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {text}
+            {children}
         </ReactMarkdown>
     )
 }
