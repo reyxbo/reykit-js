@@ -170,7 +170,7 @@ export function useValueByMobile<Value, MobileValue>(
  * @param args - Execute arguments.
  */
 export function useExec<T extends any>(
-    func: (...args: T[]) => void,
+    func: (...args: T[]) => void | Promise<void>,
     ...args: T[]
 ) {
 
