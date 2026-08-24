@@ -57,4 +57,4 @@ export declare function useValueByMobile<Value, MobileValue>(value: Value, mobil
  * @param func - Execute function.
  * @param args - Execute arguments.
  */
-export declare function useExec<T extends any>(func: (...args: T[]) => void | Promise<void>, ...args: T[]): void;
+export declare function useExec<T extends any>(func: (...args: T[]) => any | Promise<any>, ...args: T[]): void;
