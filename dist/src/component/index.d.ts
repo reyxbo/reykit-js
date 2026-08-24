@@ -13,5 +13,5 @@ export { Form } from './Form';
 export { Loading, useLoading } from './Loading';
 export { Notice, notice } from './Notice';
 export { type TableFieldOption, type TableSearchOption, type TableButtonOption, type TableRowOption, type TableSelectRowsOption, Table } from './Table';
-export { IconText } from './Text';
+export { IconText, MarkdownText } from './Text';
 export { IconToggle } from './Toggle';

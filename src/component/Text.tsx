@@ -6,6 +6,8 @@
  */
 
 import { ReactNode } from 'react'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 import { useIsMobile } from '../lib/react'
 
@@ -47,5 +49,18 @@ export function IconText(
                 )
             }
         </div>
+    )
+}
+
+/**
+ * Text component of support Markdown.
+ * 
+ * @param text - Markdown text.
+ */
+export function MarkdownText({ text }: { text: string }) {
+    return (
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {text}
+        </ReactMarkdown>
     )
 }

@@ -13,3 +13,11 @@ export declare function IconText({ icon, text, hideMobileIcon, hideMobileText }:
     hideMobileIcon?: boolean;
     hideMobileText?: boolean;
 }): import("react/jsx-runtime").JSX.Element;
+/**
+ * Text component of support Markdown.
+ *
+ * @param text - Markdown text.
+ */
+export declare function MarkdownText({ text }: {
+    text: string;
+}): import("react/jsx-runtime").JSX.Element;
