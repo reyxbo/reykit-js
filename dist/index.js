@@ -27549,7 +27549,7 @@ function _0() {
   }, []), i;
 }
 function PC(a, i) {
-  return _0() ? i : a;
+  return _0() ? a : i;
 }
 function T6(a, ...i) {
   wE(
@@ -49139,7 +49139,9 @@ function K4({
         render: /* @__PURE__ */ x.jsx(
           "img",
           {
-            src: a
+            src: a,
+            loading: "lazy",
+            className: "size-full object-cover"
           }
         ),
         ...i,
@@ -49154,7 +49156,6 @@ function K4({
           "img",
           {
             src: a,
-            loading: "lazy",
             className: "block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain"
           }
         )
@@ -49176,7 +49177,8 @@ function $4({
           {
             src: a,
             preload: "metadata",
-            playsInline: !0
+            playsInline: !0,
+            className: "size-full object-cover"
           }
         ),
         ...i,
@@ -49205,23 +49207,30 @@ function $4({
 function vk({
   data: a,
   orientation: i = "auto",
-  showCount: u = !0,
-  language: d = "en"
+  showNum: u = 1,
+  showCount: d = !0,
+  language: m = "en"
 }) {
   i === "auto" && (i = PC(
-    "horizontal",
-    "vertical"
+    "vertical",
+    "horizontal"
   ));
-  const [m, g] = Zo(1), [v, b] = Zo(), C = Dj(!1);
+  const g = {
+    1: "basis-1/2",
+    2: "basis-1/3",
+    3: "basis-1/4",
+    4: "basis-1/5",
+    5: "basis-1/6"
+  }[u], [v, b] = Zo(1), [C, T] = Zo(), R = Dj(!1);
   return wE(() => {
-    if (!v) return;
-    const T = () => {
-      g(v.selectedScrollSnap() + 1);
+    if (!C) return;
+    const N = () => {
+      b(C.selectedScrollSnap() + 1);
     };
-    return T(), v.on("select", T), () => {
-      v.off("select", T);
+    return N(), C.on("select", N), () => {
+      C.off("select", N);
     };
-  }, [v]), /* @__PURE__ */ x.jsxs("div", { className: "flex flex-col place-items-center gap-4", children: [
+  }, [C]), /* @__PURE__ */ x.jsxs("div", { className: "flex flex-col place-items-center gap-4 size-full", children: [
     /* @__PURE__ */ x.jsxs(
       O_,
       {
@@ -49229,32 +49238,39 @@ function vk({
           align: "center",
           loop: !0
         },
-        setApi: b,
-        onWheel: (T) => {
-          C.current || (C.current = !0, T.deltaY > 0 ? v?.scrollNext() : v?.scrollPrev(), setTimeout(() => {
-            C.current = !1;
+        setApi: T,
+        onWheel: (N) => {
+          R.current || (R.current = !0, N.deltaY > 0 ? C?.scrollNext() : C?.scrollPrev(), setTimeout(() => {
+            R.current = !1;
           }, 300));
         },
         orientation: i,
-        className: "w-3/4",
+        className: ie(
+          "size-full",
+          '[&_[data-slot="carousel-content"]]:absolute',
+          '[&_[data-slot="carousel-content"]]:inset-0',
+          'md:[&_[data-slot="carousel-content"]>div]:h-full',
+          'min-md:[&_[data-slot="carousel-content"]>div]:w-full'
+        ),
         children: [
           /* @__PURE__ */ x.jsx(A_, { size: "icon" }),
-          /* @__PURE__ */ x.jsx(N_, { className: "place-items-center m-1 md:m-2 max-h-[70vh]", children: a.map(({ type: T, path: R }, N) => /* @__PURE__ */ x.jsx(
+          /* @__PURE__ */ x.jsx(N_, { className: "place-items-center m-1 md:m-2 max-h-1/1", children: a.map(({ type: N, path: A }, M) => /* @__PURE__ */ x.jsx(
             M_,
             {
               className: ie(
-                "basis-1/2 overflow-hidden border max-h-[50vh] place-items-center flex p-0 rounded-2xl shadow-md",
-                "my-1 md:mx-2"
+                g,
+                "overflow-hidden border md:h-[90%] md:max-h-[90%]",
+                "place-items-center flex p-0 rounded-2xl shadow-md my-1 md:mx-2"
               ),
-              children: T === "image" ? /* @__PURE__ */ x.jsx(K4, { path: R }) : T === "video" ? /* @__PURE__ */ x.jsx($4, { path: R }) : void 0
+              children: N === "image" ? /* @__PURE__ */ x.jsx(K4, { path: A }) : N === "video" ? /* @__PURE__ */ x.jsx($4, { path: A }) : void 0
             },
-            N
+            M
           )) }),
           /* @__PURE__ */ x.jsx(D_, { size: "icon" })
         ]
       }
     ),
-    /* @__PURE__ */ x.jsx("div", { className: "flex-1 text-sm text-muted-foreground hidden md:flex", children: { en: `${m} / ${a.length} item(s)`, zh: `第 ${m} / ${a.length} 个` }[d] })
+    d && /* @__PURE__ */ x.jsx("div", { className: "flex-1 text-sm text-muted-foreground hidden md:flex", children: { en: `${v} / ${a.length} item(s)`, zh: `第 ${v} / ${a.length} 个` }[m] })
   ] });
 }
 function yk({
@@ -49354,7 +49370,7 @@ function Sk({
   mobilePageSize: C = 10,
   language: T = "en"
 }) {
-  const R = PC(b, C), [N, A] = Zo(R), [M, O] = Zo(1);
+  const R = PC(C, b), [N, A] = Zo(R), [M, O] = Zo(1);
   u || (u = Array.from(
     new Set(
       a.flatMap((ne) => Object.keys(ne))

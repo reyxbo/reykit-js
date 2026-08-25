@@ -94,7 +94,7 @@ export function Table<Row extends Record<string, any>>(
 ) {
 
     // Parameter.
-    const pageSizeByMobile = useValueByMobile(pageSize, mobilePageSize)
+    const pageSizeByMobile = useValueByMobile(mobilePageSize, pageSize)
     const [pageSizeState, setPageSizeState] = useState(pageSizeByMobile)
     const [page, setPage] = useState(1)
     if (!fieldOption) {

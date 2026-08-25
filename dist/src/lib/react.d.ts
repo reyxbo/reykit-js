@@ -46,11 +46,11 @@ export declare function useIsMobile(): boolean;
 /**
  * Get value by client type.
  *
- * @param value - Value of non mobile client.
  * @param mobileValue - Value of mobile client.
+ * @param value - Value of non mobile client.
  * @returns Value.
  */
-export declare function useValueByMobile<Value, MobileValue>(value: Value, mobileValue: MobileValue): Value | MobileValue;
+export declare function useValueByMobile<Value, MobileValue>(mobileValue: MobileValue, value: Value): Value | MobileValue;
 /**
  * Execute once after rendering.
  *
