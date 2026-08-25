@@ -49136,8 +49136,14 @@ function K4({
       Lw,
       {
         className: "size-full block",
-        render: /* @__PURE__ */ x.jsx("img", { src: a }),
-        ...i
+        render: /* @__PURE__ */ x.jsx(
+          "img",
+          {
+            src: a
+          }
+        ),
+        ...i,
+        nativeButton: !1
       }
     ),
     /* @__PURE__ */ x.jsx(
@@ -49172,7 +49178,8 @@ function $4({
             playsInline: !0
           }
         ),
-        ...i
+        ...i,
+        nativeButton: !1
       }
     ),
     /* @__PURE__ */ x.jsx(
@@ -49197,22 +49204,23 @@ function $4({
 function vk({
   data: a,
   orientation: i = "auto",
-  language: u = "en"
+  showCount: u = !0,
+  language: d = "en"
 }) {
   i === "auto" && (i = PC(
     "horizontal",
     "vertical"
   ));
-  const [d, m] = Zo(1), [g, v] = Zo(), b = Dj(!1);
+  const [m, g] = Zo(1), [v, b] = Zo(), C = Dj(!1);
   return wE(() => {
-    if (!g) return;
-    const C = () => {
-      m(g.selectedScrollSnap() + 1);
+    if (!v) return;
+    const T = () => {
+      g(v.selectedScrollSnap() + 1);
     };
-    return C(), g.on("select", C), () => {
-      g.off("select", C);
+    return T(), v.on("select", T), () => {
+      v.off("select", T);
     };
-  }, [g]), /* @__PURE__ */ x.jsxs("div", { className: "flex flex-col place-items-center gap-4", children: [
+  }, [v]), /* @__PURE__ */ x.jsxs("div", { className: "flex flex-col place-items-center gap-4", children: [
     /* @__PURE__ */ x.jsxs(
       O_,
       {
@@ -49220,32 +49228,32 @@ function vk({
           align: "center",
           loop: !0
         },
-        setApi: v,
-        onWheel: (C) => {
-          b.current || (b.current = !0, C.deltaY > 0 ? g?.scrollNext() : g?.scrollPrev(), setTimeout(() => {
-            b.current = !1;
+        setApi: b,
+        onWheel: (T) => {
+          C.current || (C.current = !0, T.deltaY > 0 ? v?.scrollNext() : v?.scrollPrev(), setTimeout(() => {
+            C.current = !1;
           }, 300));
         },
         orientation: i,
         className: "w-3/4",
         children: [
           /* @__PURE__ */ x.jsx(A_, { size: "icon" }),
-          /* @__PURE__ */ x.jsx(N_, { className: "place-items-center m-1 md:m-2 max-h-[70vh]", children: a.map(({ type: C, path: T }, R) => /* @__PURE__ */ x.jsx(
+          /* @__PURE__ */ x.jsx(N_, { className: "place-items-center m-1 md:m-2 max-h-[70vh]", children: a.map(({ type: T, path: R }, N) => /* @__PURE__ */ x.jsx(
             M_,
             {
               className: ie(
                 "basis-1/2 overflow-hidden border max-h-[50vh] place-items-center flex p-0 rounded-2xl shadow-md",
                 "my-1 md:mx-2"
               ),
-              children: C === "image" ? /* @__PURE__ */ x.jsx(K4, { path: T }) : C === "video" ? /* @__PURE__ */ x.jsx($4, { path: T }) : void 0
+              children: T === "image" ? /* @__PURE__ */ x.jsx(K4, { path: R }) : T === "video" ? /* @__PURE__ */ x.jsx($4, { path: R }) : void 0
             },
-            R
+            N
           )) }),
           /* @__PURE__ */ x.jsx(D_, { size: "icon" })
         ]
       }
     ),
-    /* @__PURE__ */ x.jsx("div", { className: "flex-1 text-sm text-muted-foreground hidden md:flex", children: { en: `${d} / ${a.length} item(s)`, zh: `第 ${d} / ${a.length} 个` }[u] })
+    /* @__PURE__ */ x.jsx("div", { className: "flex-1 text-sm text-muted-foreground hidden md:flex", children: { en: `${m} / ${a.length} item(s)`, zh: `第 ${m} / ${a.length} 个` }[d] })
   ] });
 }
 function yk({

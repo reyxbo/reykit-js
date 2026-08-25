@@ -24,11 +24,12 @@ export declare function PopupVideo({ path, ...args }: {
  *     - `auto` : Automatic set, when is mobile, then is `vertical`, otherwise is `horizontal`.
  * @param language - Language type.
  */
-export declare function CarouselMedia({ data, orientation, language }: {
+export declare function CarouselMedia({ data, orientation, showCount, language }: {
     data: {
         type: 'image' | 'video';
         path: string;
     }[];
     orientation?: 'auto' | 'horizontal' | 'vertical';
-    language: 'en' | 'zh';
+    showCount?: boolean;
+    language?: 'en' | 'zh';
 }): import("react/jsx-runtime").JSX.Element;

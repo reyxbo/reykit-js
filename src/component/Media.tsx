@@ -28,8 +28,11 @@ export function PopupImage(
         <ui.Dialog>
             <ui.DialogTrigger
                 className='size-full block'
-                render={<img src={path} />}
+                render={
+                    <img src={path}
+                />}
                 {...args}
+                nativeButton={false}
             />
             <ui.DialogContent
                 className='!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none'
@@ -62,12 +65,13 @@ export function PopupVideo(
                 className='size-full block'
                 render={
                     <video
-                        src={path}
-                        preload='metadata'
-                        playsInline
+                    src={path}
+                    preload='metadata'
+                    playsInline
                     />
                 }
                 {...args}
+                nativeButton={false}
             />
             <ui.DialogContent
                 className='!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none'
@@ -97,11 +101,13 @@ export function CarouselMedia(
     {
         data,
         orientation = 'auto',
+        showCount = true,
         language = 'en'
     }: {
         data: { type: 'image' | 'video', path: string }[],
         orientation?: 'auto' | 'horizontal' | 'vertical',
-        language: 'en' | 'zh'
+        showCount?: boolean,
+        language?: 'en' | 'zh'
     }
 ) {
 
