@@ -39,6 +39,7 @@ export function PopupImage(
             >
                 <img
                     src={path}
+                    loading='lazy'
                     className='block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain'
                 />
             </ui.DialogContent>

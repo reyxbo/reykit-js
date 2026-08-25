@@ -49154,6 +49154,7 @@ function K4({
           "img",
           {
             src: a,
+            loading: "lazy",
             className: "block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain"
           }
         )
