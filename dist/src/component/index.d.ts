@@ -11,6 +11,7 @@ export { type BreadcrumbDict, Breadcrumb } from './Breadcrumb';
 export { CycleButton } from './Button';
 export { Form } from './Form';
 export { Loading, useLoading } from './Loading';
+export { PopupImage, PopupVideo, CarouselMedia } from './Media';
 export { Notice, notice } from './Notice';
 export { type TableFieldOption, type TableSearchOption, type TableButtonOption, type TableRowOption, type TableSelectRowsOption, Table } from './Table';
 export { IconText, MarkdownText } from './Text';
