@@ -70,7 +70,7 @@ import { Alert, AlertDescription, AlertTitle, alertVariants } from './alert'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from './hover-card'
 import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from './command'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './carousel'
+import { type CarouselApi, Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './carousel'
 import { Popover, PopoverContent, PopoverTrigger } from './popover'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './tooltip'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, DialogTrigger } from './dialog'
@@ -302,6 +302,7 @@ export {
     CommandItem,
     CommandList,
     CommandSeparator,
+    type CarouselApi,
     Carousel,
     CarouselContent,
     CarouselItem,
