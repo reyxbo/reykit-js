@@ -27,26 +27,33 @@ export function PopupImage(
         loading?: 'eager' | 'lazy',
     } & ComponentProps<typeof ui.DialogTrigger>
 ) {
+
+    // Parameter.
+    const [open, setOpen] = useState(false)
+
     return (
-        <ui.Dialog>
+        <ui.Dialog open={open} onOpenChange={setOpen}>
             <ui.DialogTrigger
-                className='size-full block'
+                className='size-full block object-cover cursor-pointer'
                 render={
                     <img
                         src={path}
                         loading={loading}
-                        className='size-full object-cover'
                     />
                 }
                 {...args}
                 nativeButton={false}
             />
             <ui.DialogContent
-                className='!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none'
+                showCloseButton={false}
+                className={cn(
+                    '!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none',
+                    'block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain cursor-pointer'
+                )}
             >
                 <img
                     src={path}
-                    className='block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain'
+                    onClick={() => setOpen(false)}
                 />
             </ui.DialogContent>
         </ui.Dialog>
@@ -72,20 +79,22 @@ export function PopupVideo(
     return (
         <ui.Dialog>
             <ui.DialogTrigger
-                className='size-full block'
+                className='size-full block object-cover cursor-pointer'
                 render={
                     <video
                         src={path}
                         preload={preload}
                         playsInline
-                        className='size-full object-cover'
                     />
                 }
                 {...args}
                 nativeButton={false}
             />
             <ui.DialogContent
-                className='!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none'
+                className={cn(
+                    '!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none',
+                    'block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain cursor-pointer'
+                )}
             >
                 <video
                     src={path}
@@ -93,7 +102,6 @@ export function PopupVideo(
                     muted
                     autoPlay
                     playsInline
-                    className='block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain'
                 />
             </ui.DialogContent>
         </ui.Dialog>
