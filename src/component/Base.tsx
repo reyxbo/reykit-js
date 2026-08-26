@@ -7,6 +7,7 @@
 
 import { ReactNode, useState, createContext, useContext } from 'react'
 
+import * as ui from './ui'
 import { cn } from '../lib/twc'
 
 export type CoverContextParams = { isCovering: boolean, setIsCovering: (value: boolean) => void }
@@ -72,3 +73,9 @@ export function createCover(display: ReactNode) {
 
     return [Cover, useCover] as [typeof Cover, typeof useCover]
 }
+
+export const [Loading, useLoading] = createCover(
+    <div className='flex justify-center items-center size-10 rounded-full bg-white shadow-md'>
+        <ui.icon.Loader2Icon role='status' aria-label='Loading' className='size-full animate-spin' />
+    </div>
+)

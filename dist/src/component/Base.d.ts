@@ -22,3 +22,10 @@ export declare function createCover(display: ReactNode): [({ children }: {
     isCovering: boolean;
     setIsCovering: (value: boolean) => void;
 }];
+export declare const Loading: ({ children }: {
+    children: ReactNode;
+}) => import("react/jsx-runtime").JSX.Element, useLoading: () => {
+    withCover: <T, Args extends any[]>(fn: (...args: Args) => T | Promise<T>, ...args: Args) => Promise<T>;
+    isCovering: boolean;
+    setIsCovering: (value: boolean) => void;
+};

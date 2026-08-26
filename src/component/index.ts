@@ -8,11 +8,10 @@
 import * as ui from './ui'
 
 export { ui }
-export { type CoverContextParams, createCover } from './Base'
+export { type CoverContextParams, createCover, Loading, useLoading } from './Base'
 export { type BreadcrumbDict, Breadcrumb } from './Breadcrumb'
-export { CycleButton } from './Button'
+export { CycleButton, ScrollToTopButton } from './Button'
 export { Form } from './Form'
-export { Loading, useLoading } from './Loading'
 export { PopupImage, PopupVideo, CarouselMedia } from './Media'
 export { Notice, notice } from './Notice'
 export {
