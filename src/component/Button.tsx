@@ -142,7 +142,7 @@ export function ScrollToTopButton(
                     })
                 }}
             >
-                <ui.icon.ArrowUpToLine
+                <ui.icon.ArrowBigUp
                     color={buttonColor}
                     strokeWidth={iconStrokeWidth}
                 />
