@@ -50140,8 +50140,24 @@ function Ck({
     f && m || (typeof i == "string" ? /* @__PURE__ */ x.jsx("span", { className: "whitespace-nowrap", children: i }) : i)
   ] });
 }
-function wk({ children: a }) {
-  return /* @__PURE__ */ x.jsx(s6, { remarkPlugins: [u6], children: a });
+function wk({ ...a }) {
+  return /* @__PURE__ */ x.jsx(
+    s6,
+    {
+      remarkPlugins: [u6],
+      components: {
+        pre: ({ children: i, ...u }) => /* @__PURE__ */ x.jsx(
+          "pre",
+          {
+            ...u,
+            className: "whitespace-pre-wrap [overflow-wrap:anywhere] max-w-full",
+            children: i
+          }
+        )
+      },
+      ...a
+    }
+  );
 }
 function Ok({
   openIcon: a,

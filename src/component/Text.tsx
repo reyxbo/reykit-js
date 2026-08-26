@@ -5,7 +5,7 @@
  * @Explain : Text components.
  */
 
-import { ReactNode } from 'react'
+import { ReactNode, ComponentProps } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
@@ -54,13 +54,22 @@ export function IconText(
 
 /**
  * Text component of support Markdown.
- * 
- * @param children - Markdown text.
  */
-export function MarkdownText({ children }: { children: string }) {
+export function MarkdownText({ ...args }: ComponentProps<typeof ReactMarkdown>) {
     return (
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {children}
-        </ReactMarkdown>
+        <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+                pre: ({ children, ...props }) => (
+                    <pre
+                        {...props}
+                        className='whitespace-pre-wrap [overflow-wrap:anywhere] max-w-full'
+                    >
+                        {children}
+                    </pre>
+                ),
+            }}
+            {...args}
+        />
     )
 }
