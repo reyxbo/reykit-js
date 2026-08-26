@@ -49129,7 +49129,8 @@ const [hk, gk] = Z4(
 );
 function K4({
   path: a,
-  ...i
+  loading: i,
+  ...u
 }) {
   return /* @__PURE__ */ x.jsxs(pR, { children: [
     /* @__PURE__ */ x.jsx(
@@ -49140,11 +49141,11 @@ function K4({
           "img",
           {
             src: a,
-            loading: "lazy",
+            loading: i,
             className: "size-full object-cover"
           }
         ),
-        ...i,
+        ...u,
         nativeButton: !1
       }
     ),
@@ -49165,7 +49166,8 @@ function K4({
 }
 function $4({
   path: a,
-  ...i
+  preload: i,
+  ...u
 }) {
   return /* @__PURE__ */ x.jsxs(pR, { children: [
     /* @__PURE__ */ x.jsx(
@@ -49176,12 +49178,12 @@ function $4({
           "video",
           {
             src: a,
-            preload: "metadata",
+            preload: i,
             playsInline: !0,
             className: "size-full object-cover"
           }
         ),
-        ...i,
+        ...u,
         nativeButton: !1
       }
     ),
@@ -49207,41 +49209,46 @@ function $4({
 function vk({
   data: a,
   orientation: i = "auto",
-  showNum: u = 1,
-  showCount: d = !0,
-  language: m = "en"
+  width: u = 2,
+  showButton: d = !0,
+  showControl: m = !0,
+  language: g = "en"
 }) {
   i === "auto" && (i = PC(
     "vertical",
     "horizontal"
   ));
-  const g = {
-    1: "basis-1/2",
-    2: "basis-1/3",
-    3: "basis-1/4",
-    4: "basis-1/5",
-    5: "basis-1/6"
-  }[u], [v, b] = Zo(1), [C, T] = Zo(), R = Dj(!1);
+  const [v, b] = {
+    1: ["basis-1/1", 2],
+    2: ["basis-1/2", 3],
+    3: ["basis-1/3", 3],
+    4: ["basis-1/4", 4],
+    5: ["basis-1/5", 4],
+    6: ["basis-1/6", 5]
+  }[u], [C, T] = Zo(1), [R, N] = Zo(), A = Dj(!1), M = /* @__PURE__ */ x.jsx("div", { className: "flex-1 text-sm md:text-base text-muted-foreground flex absolute max-md:-top-8 md:-bottom-8", children: { en: `${C} / ${a.length} item(s)`, zh: `第 ${C} / ${a.length} 个` }[g] });
   return wE(() => {
-    if (!C) return;
-    const N = () => {
-      b(C.selectedScrollSnap() + 1);
+    if (!R) return;
+    const O = () => {
+      T(R.selectedScrollSnap() + 1);
     };
-    return N(), C.on("select", N), () => {
-      C.off("select", N);
+    return O(), R.on("select", O), () => {
+      R.off("select", O);
     };
-  }, [C]), /* @__PURE__ */ x.jsxs("div", { className: "flex flex-col place-items-center gap-4 size-full", children: [
+  }, [R]), /* @__PURE__ */ x.jsxs("div", { className: "relative flex flex-col place-items-center gap-4 size-full", children: [
+    m && i == "vertical" && M,
     /* @__PURE__ */ x.jsxs(
       O_,
       {
         opts: {
           align: "center",
-          loop: !0
+          loop: !0,
+          skipSnaps: !0,
+          duration: 25
         },
-        setApi: T,
-        onWheel: (N) => {
-          R.current || (R.current = !0, N.deltaY > 0 ? C?.scrollNext() : C?.scrollPrev(), setTimeout(() => {
-            R.current = !1;
+        setApi: N,
+        onWheel: (O) => {
+          A.current || (A.current = !0, O.deltaY > 0 ? R?.scrollNext() : R?.scrollPrev(), setTimeout(() => {
+            A.current = !1;
           }, 300));
         },
         orientation: i,
@@ -49249,31 +49256,35 @@ function vk({
           "size-full",
           '[&_[data-slot="carousel-content"]]:absolute',
           '[&_[data-slot="carousel-content"]]:inset-0',
-          'md:[&_[data-slot="carousel-content"]>div]:h-full',
-          'min-md:[&_[data-slot="carousel-content"]>div]:w-full'
+          '[&_[data-slot="carousel-content"]>div]:size-full'
         ),
         children: [
-          /* @__PURE__ */ x.jsx(A_, { size: "icon" }),
-          /* @__PURE__ */ x.jsx(N_, { className: "place-items-center m-1 md:m-2 max-h-1/1", children: a.map(({ type: N, path: A }, M) => /* @__PURE__ */ x.jsx(
-            M_,
-            {
-              className: ie(
-                g,
-                "overflow-hidden border md:h-[90%] md:max-h-[90%]",
-                "place-items-center flex p-0 rounded-2xl shadow-md my-1 md:mx-2"
-              ),
-              children: Math.min(
-                Math.abs(M - v + 1),
-                a.length - Math.abs(M - v + 1)
-              ) > 5 ? null : N === "image" ? /* @__PURE__ */ x.jsx(K4, { path: A }) : N === "video" ? /* @__PURE__ */ x.jsx($4, { path: A }) : null
-            },
-            M
-          )) }),
-          /* @__PURE__ */ x.jsx(D_, { size: "icon" })
+          /* @__PURE__ */ x.jsx(N_, { className: "place-items-center m-1 md:m-2 size-full", children: a.map(({ type: O, path: z }, D) => {
+            const U = Math.abs(D - C + 1);
+            return /* @__PURE__ */ x.jsx(
+              M_,
+              {
+                className: ie(
+                  v,
+                  "overflow-hidden border md:h-[90%] md:max-h-[95%] max-md:w-[90%] max-md:max-w-[95%]",
+                  "place-items-center flex p-0 rounded-2xl shadow-md my-1 md:mx-2"
+                ),
+                children: Math.min(
+                  U,
+                  a.length - U
+                ) > b ? null : O === "image" ? /* @__PURE__ */ x.jsx(K4, { path: z }) : O === "video" ? /* @__PURE__ */ x.jsx($4, { path: z }) : null
+              },
+              D
+            );
+          }) }),
+          d && /* @__PURE__ */ x.jsxs(x.Fragment, { children: [
+            /* @__PURE__ */ x.jsx(A_, { size: "icon", className: "max-md:top-auto max-md:-bottom-12 max-md:left-1/3" }),
+            /* @__PURE__ */ x.jsx(D_, { size: "icon", className: "max-md:-bottom-12 max-md:left-2/3" })
+          ] })
         ]
       }
     ),
-    d && /* @__PURE__ */ x.jsx("div", { className: "flex-1 text-sm text-muted-foreground hidden md:flex", children: { en: `${v} / ${a.length} item(s)`, zh: `第 ${v} / ${a.length} 个` }[m] })
+    m && i == "horizontal" && M
   ] });
 }
 function yk({

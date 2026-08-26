@@ -15,13 +15,16 @@ import { cn } from '../lib/twc'
  * Media component of pop up show image.
  * 
  * @param path - Image path.
+ * @param loading - Loading scheme.
  */
 export function PopupImage(
     {
         path,
+        loading,
         ...args
     }: {
-        path: string
+        path: string,
+        loading?: 'eager' | 'lazy',
     } & ComponentProps<typeof ui.DialogTrigger>
 ) {
     return (
@@ -31,7 +34,7 @@ export function PopupImage(
                 render={
                     <img
                         src={path}
-                        loading='lazy'
+                        loading={loading}
                         className='size-full object-cover'
                     />
                 }
@@ -54,13 +57,16 @@ export function PopupImage(
  * Media component of pop up show video.
  * 
  * @param path - Video path.
+ * @param preload - Preload scheme.
  */
 export function PopupVideo(
     {
         path,
+        preload,
         ...args
     }: {
-        path: string
+        path: string,
+        preload?: 'metadata' | 'aotu' | 'none'
     } & ComponentProps<typeof ui.DialogTrigger>
 ) {
     return (
@@ -70,7 +76,7 @@ export function PopupVideo(
                 render={
                     <video
                         src={path}
-                        preload='metadata'
+                        preload={preload}
                         playsInline
                         className='size-full object-cover'
                     />
@@ -100,22 +106,25 @@ export function PopupVideo(
  * @param data - Media data.
  * @param orientation - Carousel orientation.
  *     - `auto` : Automatic set, when is mobile, then is `vertical`, otherwise is `horizontal`.
- * @param showNum - Show content number.
- * @param showCount - Whether show count text on non mobile client.
+ * @param width - Show content width.
+ * @param showButton - Whether show button.
+ * @param showControl - Whether show controls.
  * @param language - Language type.
  */
 export function CarouselMedia(
     {
         data,
         orientation = 'auto',
-        showNum = 1,
-        showCount = true,
+        width = 2,
+        showButton = true,
+        showControl = true,
         language = 'en'
     }: {
         data: { type: 'image' | 'video', path: string }[],
         orientation?: 'auto' | 'horizontal' | 'vertical',
-        showNum?: 1 | 2 | 3 | 4 | 5,
-        showCount?: boolean,
+        width?: 1 | 2 | 3 | 4 | 5 | 6,
+        showButton?: boolean,
+        showControl?: boolean,
         language?: 'en' | 'zh'
     }
 ) {
@@ -127,16 +136,24 @@ export function CarouselMedia(
             'horizontal'
         )
     }
-    const classNameShowNum = {
-        1: 'basis-1/2',
-        2: 'basis-1/3',
-        3: 'basis-1/4',
-        4: 'basis-1/5',
-        5: 'basis-1/6',
-    }[showNum]
+    const [classNameShowNum, renderRange] = {
+        1: ['basis-1/1', 2],
+        2: ['basis-1/2', 3],
+        3: ['basis-1/3', 3],
+        4: ['basis-1/4', 4],
+        5: ['basis-1/5', 4],
+        6: ['basis-1/6', 5],
+    }[width] as [string, number]
     const [current, setCurrent] = useState(1)
     const [api, setApi] = useState<ui.CarouselApi>()
     const wheelLock = useRef(false)
+    const CountText = (
+        <div className='flex-1 text-sm md:text-base text-muted-foreground flex absolute max-md:-top-8 md:-bottom-8'>
+            {
+                { 'en': `${current} / ${data.length} item(s)`, 'zh': `第 ${current} / ${data.length} 个` }[language]
+            }
+        </div>
+    )
 
     //Handle.
     useEffect(() => {
@@ -152,11 +169,14 @@ export function CarouselMedia(
     }, [api])
 
     return (
-        <div className='flex flex-col place-items-center gap-4 size-full'>
+        <div className='relative flex flex-col place-items-center gap-4 size-full'>
+            {showControl && orientation == 'vertical' && CountText}
             <ui.Carousel
                 opts={{
                     align: 'center',
-                    loop: true
+                    loop: true,
+                    skipSnaps: true,
+                    duration: 25
                 }}
                 setApi={setApi}
                 onWheel={e => {
@@ -176,28 +196,27 @@ export function CarouselMedia(
                     'size-full',
                     '[&_[data-slot="carousel-content"]]:absolute',
                     '[&_[data-slot="carousel-content"]]:inset-0',
-                    'md:[&_[data-slot="carousel-content"]>div]:h-full',
-                    'min-md:[&_[data-slot="carousel-content"]>div]:w-full'
+                    '[&_[data-slot="carousel-content"]>div]:size-full'
                 )}
             >
-                <ui.CarouselPrevious size='icon' />
-                <ui.CarouselContent className='place-items-center m-1 md:m-2 max-h-1/1'>
+                <ui.CarouselContent className='place-items-center m-1 md:m-2 size-full'>
                     {
-                        data.map(({ type, path }, index) => (
-                            <ui.CarouselItem
-                                key={index}
-                                className={cn(
-                                    classNameShowNum,
-                                    'overflow-hidden border md:h-[90%] md:max-h-[90%]',
-                                    'place-items-center flex p-0 rounded-2xl shadow-md my-1 md:mx-2'
-                                )}
+                        data.map(({ type, path }, index) => {
+                            const diff = Math.abs(index - current + 1)
+                            return <ui.CarouselItem
+                            key={index}
+                            className={cn(
+                                classNameShowNum,
+                                'overflow-hidden border md:h-[90%] md:max-h-[95%] max-md:w-[90%] max-md:max-w-[95%]',
+                                'place-items-center flex p-0 rounded-2xl shadow-md my-1 md:mx-2'
+                            )}
                             >
                                 {
                                     (
                                         Math.min(
-                                            Math.abs(index - current + 1),
-                                            data.length - Math.abs(index - current + 1)
-                                        ) > 5
+                                            diff,
+                                            data.length - diff
+                                        ) > renderRange
                                     )
                                     ? null
                                     : type === 'image'
@@ -207,20 +226,19 @@ export function CarouselMedia(
                                     : null
                                 }
                             </ui.CarouselItem>
-                        ))
+                        })
                     }
                 </ui.CarouselContent>
-                <ui.CarouselNext size='icon' />
+                {
+                    showButton && (
+                        <>
+                            <ui.CarouselPrevious size='icon' className='max-md:top-auto max-md:-bottom-12 max-md:left-1/3' />
+                            <ui.CarouselNext size='icon' className='max-md:-bottom-12 max-md:left-2/3' />
+                        </>
+                    )
+                }
             </ui.Carousel>
-            {
-                showCount && (
-                    <div className='flex-1 text-sm text-muted-foreground hidden md:flex'>
-                        {
-                            { 'en': `${current} / ${data.length} item(s)`, 'zh': `第 ${current} / ${data.length} 个` }[language]
-                        }
-                    </div>
-                )
-            }
+            {showControl && orientation == 'horizontal' && CountText}
         </div>
     )
 }
