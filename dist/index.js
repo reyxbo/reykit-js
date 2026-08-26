@@ -49262,7 +49262,10 @@ function vk({
                 "overflow-hidden border md:h-[90%] md:max-h-[90%]",
                 "place-items-center flex p-0 rounded-2xl shadow-md my-1 md:mx-2"
               ),
-              children: N === "image" ? /* @__PURE__ */ x.jsx(K4, { path: A }) : N === "video" ? /* @__PURE__ */ x.jsx($4, { path: A }) : null
+              children: Math.min(
+                Math.abs(M - v + 1),
+                a.length - Math.abs(M - v + 1)
+              ) > 5 ? null : N === "image" ? /* @__PURE__ */ x.jsx(K4, { path: A }) : N === "video" ? /* @__PURE__ */ x.jsx($4, { path: A }) : null
             },
             M
           )) }),

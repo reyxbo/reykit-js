@@ -193,7 +193,14 @@ export function CarouselMedia(
                                 )}
                             >
                                 {
-                                    type === 'image'
+                                    (
+                                        Math.min(
+                                            Math.abs(index - current + 1),
+                                            data.length - Math.abs(index - current + 1)
+                                        ) > 5
+                                    )
+                                    ? null
+                                    : type === 'image'
                                     ? <PopupImage path={path} />
                                     : type === 'video'
                                     ? <PopupVideo path={path} />
