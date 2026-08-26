@@ -49153,15 +49153,13 @@ function K4({
       mR,
       {
         showCloseButton: !1,
-        className: ie(
-          "!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none",
-          "block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain cursor-pointer"
-        ),
+        className: "!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none cursor-pointer",
         children: /* @__PURE__ */ x.jsx(
           "img",
           {
             src: a,
-            onClick: () => m(!1)
+            onClick: () => m(!1),
+            className: "block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain"
           }
         )
       }
@@ -49190,25 +49188,17 @@ function $4({
         nativeButton: !1
       }
     ),
-    /* @__PURE__ */ x.jsx(
-      mR,
+    /* @__PURE__ */ x.jsx(mR, { className: "!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none cursor-pointer", children: /* @__PURE__ */ x.jsx(
+      "video",
       {
-        className: ie(
-          "!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none",
-          "block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain cursor-pointer"
-        ),
-        children: /* @__PURE__ */ x.jsx(
-          "video",
-          {
-            src: a,
-            controls: !0,
-            muted: !0,
-            autoPlay: !0,
-            playsInline: !0
-          }
-        )
+        src: a,
+        controls: !0,
+        muted: !0,
+        autoPlay: !0,
+        playsInline: !0,
+        className: "block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain"
       }
-    )
+    ) })
   ] });
 }
 function vk({

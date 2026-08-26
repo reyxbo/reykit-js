@@ -46,14 +46,12 @@ export function PopupImage(
             />
             <ui.DialogContent
                 showCloseButton={false}
-                className={cn(
-                    '!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none',
-                    'block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain cursor-pointer'
-                )}
+                className='!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none cursor-pointer'
             >
                 <img
                     src={path}
                     onClick={() => setOpen(false)}
+                    className='block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain'
                 />
             </ui.DialogContent>
         </ui.Dialog>
@@ -90,18 +88,14 @@ export function PopupVideo(
                 {...args}
                 nativeButton={false}
             />
-            <ui.DialogContent
-                className={cn(
-                    '!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none',
-                    'block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain cursor-pointer'
-                )}
-            >
+            <ui.DialogContent className='!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none cursor-pointer'>
                 <video
                     src={path}
                     controls
                     muted
                     autoPlay
                     playsInline
+                    className='block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain'
                 />
             </ui.DialogContent>
         </ui.Dialog>
