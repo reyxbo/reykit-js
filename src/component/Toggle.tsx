@@ -76,14 +76,14 @@ export function IconToggle(
         >
             <div className={cn(
                     'grid place-content-center size-full transition group-data-[open=false]:opacity-0 absolute',
-                    rotate ? 'group-data-[open=false]:-rotate-90' : undefined
+                    rotate ? 'group-data-[open=false]:-rotate-90' : null
                 )}
             >
                 {openIcon}
             </div>
             <div className={cn(
                     'grid place-content-center size-full transition group-data-[open=true]:opacity-0 absolute',
-                    rotate ? 'group-data-[open=true]:rotate-90' : undefined
+                    rotate ? 'group-data-[open=true]:rotate-90' : null
                 )}
             >
                 {closeIcon}

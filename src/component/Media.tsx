@@ -197,7 +197,7 @@ export function CarouselMedia(
                                     ? <PopupImage path={path} />
                                     : type === 'video'
                                     ? <PopupVideo path={path} />
-                                    : undefined
+                                    : null
                                 }
                             </ui.CarouselItem>
                         ))

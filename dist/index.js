@@ -49262,7 +49262,7 @@ function vk({
                 "overflow-hidden border md:h-[90%] md:max-h-[90%]",
                 "place-items-center flex p-0 rounded-2xl shadow-md my-1 md:mx-2"
               ),
-              children: N === "image" ? /* @__PURE__ */ x.jsx(K4, { path: A }) : N === "video" ? /* @__PURE__ */ x.jsx($4, { path: A }) : void 0
+              children: N === "image" ? /* @__PURE__ */ x.jsx(K4, { path: A }) : N === "video" ? /* @__PURE__ */ x.jsx($4, { path: A }) : null
             },
             M
           )) }),
@@ -50161,7 +50161,7 @@ function Ok({
           {
             className: ie(
               "grid place-content-center size-full transition group-data-[open=false]:opacity-0 absolute",
-              m ? "group-data-[open=false]:-rotate-90" : void 0
+              m ? "group-data-[open=false]:-rotate-90" : null
             ),
             children: a
           }
@@ -50171,7 +50171,7 @@ function Ok({
           {
             className: ie(
               "grid place-content-center size-full transition group-data-[open=true]:opacity-0 absolute",
-              m ? "group-data-[open=true]:rotate-90" : void 0
+              m ? "group-data-[open=true]:rotate-90" : null
             ),
             children: i
           }
