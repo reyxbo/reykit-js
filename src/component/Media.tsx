@@ -138,6 +138,10 @@ export function CarouselMedia(
             'horizontal'
         )
     }
+    const buttonSize = useValueByMobile(
+        'icon',
+        'icon-lg'
+    )
     const [classNameShowNum, renderRange] = {
         1: ['basis-1/1', 2],
         2: ['basis-1/2', 3],
@@ -209,7 +213,7 @@ export function CarouselMedia(
                             key={index}
                             className={cn(
                                 classNameShowNum,
-                                'overflow-hidden border md:h-[90%] md:max-h-[95%] max-md:w-[90%] max-md:max-w-[95%]',
+                                'overflow-hidden border md:h-[95%] md:max-h-[95%] max-md:w-[95%] max-md:max-w-[95%]',
                                 'place-items-center flex p-0 rounded-2xl shadow-md my-1 md:mx-2'
                             )}
                             >
@@ -234,8 +238,8 @@ export function CarouselMedia(
                 {
                     showButton && (
                         <>
-                            <ui.CarouselPrevious size='icon' className='max-md:top-auto max-md:-bottom-12 max-md:left-1/3' />
-                            <ui.CarouselNext size='icon' className='max-md:-bottom-12 max-md:left-2/3' />
+                            <ui.CarouselPrevious size={buttonSize} className='max-md:top-auto max-md:-bottom-12 max-md:left-1/3' />
+                            <ui.CarouselNext size={buttonSize} className='max-md:-bottom-12 max-md:left-2/3' />
                         </>
                     )
                 }
