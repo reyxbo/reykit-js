@@ -97,21 +97,22 @@ export function Table<Row extends Record<string, any>>(
     const pageSizeByMobile = useValueByMobile(mobilePageSize, pageSize)
     const [pageSizeState, setPageSizeState] = useState(pageSizeByMobile)
     const [page, setPage] = useState(1)
-    if (!fieldOption) {
-        fieldOption = Array.from(
+    const defaultFieldOption = (
+        fieldOption && fieldOption.length !== 0
+        ? fieldOption
+        : Array.from(
             new Set(
                 data.flatMap(row => Object.keys(row))
             )
-        ).map((key) => {return {
+        ).map(key => ({
             key: key,
             name: key,
-            sort: undefined,
             isHide: false,
             isSort: false,
             isGroup: false
-        }})
-    }
-    const [fieldOptionState, setFieldOptionState] = useState(fieldOption)
+        }))
+    )
+    const [fieldOptionState, setFieldOptionState] = useState(defaultFieldOption)
     const [searchValue, setSearchValue] = useState('')
     const [groupFilter, setGroupFilter] = useState<Partial<Record<keyof Row, Row[keyof Row][]>>>({})
     const filteredData = data.filter(row => (
@@ -125,6 +126,25 @@ export function Table<Row extends Record<string, any>>(
     ))
     const pageData = filteredData.slice((page - 1) * pageSizeState, page * pageSizeState) as Row[]
     const [selectRows, setSelectRows] = useState<Row[] | undefined>(selectRowsOption && [])
+
+    // Handle.
+    useEffect(() => {
+        if ((!fieldOption || fieldOption.length === 0) && data.length > 0) {
+            setFieldOptionState(
+                Array.from(
+                    new Set(
+                        data.flatMap(row => Object.keys(row))
+                    )
+                ).map(key => ({
+                    key: key,
+                    name: key,
+                    isHide: false,
+                    isSort: false,
+                    isGroup: false
+                }))
+            )
+        }
+    }, [data])
 
     return (
         <div className='relative flex flex-col gap-4 size-full'>
