@@ -22,5 +22,5 @@ export {
     type TableSelectRowsOption,
     Table
 } from './Table'
-export { IconText, MarkdownText } from './Text'
+export { IconText, TextBadges, MarkdownText } from './Text'
 export { IconToggle } from './Toggle'

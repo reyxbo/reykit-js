@@ -50240,7 +50240,7 @@ function Ok({
   className: g,
   ...v
 }) {
-  const y = U0(), C = /* @__PURE__ */ x.jsxs("div", { className: "flex content-center items-center gap-1 leading-none", children: [
+  const y = U0(), C = /* @__PURE__ */ x.jsxs("div", { className: "flex content-center items-center gap-1", children: [
     f && y || a,
     m && y || (typeof i == "string" ? /* @__PURE__ */ x.jsx("div", { className: "whitespace-nowrap", children: i }) : i)
   ] });
@@ -50249,7 +50249,7 @@ function Ok({
     {
       variant: "link",
       onClick: () => open(u),
-      className: "flex content-center items-center h-auto min-h-0 p-0 m-0 border-none leading-none",
+      className: "flex content-center items-center h-auto min-h-0 p-0 m-0 border-none",
       children: C
     }
   ) : C });

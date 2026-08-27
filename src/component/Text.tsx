@@ -43,7 +43,7 @@ export function IconText(
     // Parameter.
     const isMobile = useIsMobile()
     const Content = (
-        <div className='flex content-center items-center gap-1 leading-none'>
+        <div className='flex content-center items-center gap-1'>
             {
                 hideMobileIcon && isMobile || icon
             }
@@ -65,12 +65,39 @@ export function IconText(
                     <ui.Button
                         variant='link'
                         onClick={() => open(url)}
-                        className='flex content-center items-center h-auto min-h-0 p-0 m-0 border-none leading-none'
+                        className='flex content-center items-center h-auto min-h-0 p-0 m-0 border-none'
                     >
                         {Content}
                     </ui.Button>
                 )
                 : Content
+            }
+        </div>
+    )
+}
+
+/**
+ * Text component of with multiple badges.
+ * 
+ * @param texts - Text list.
+ */
+export function TextBadges(
+    {
+        texts,
+        className,
+        ...args
+    }: {
+        texts: string[]
+    } & ComponentProps<'div'>
+) {
+    return (
+        <div className={cn('size-full flex gap-0.5 [flex-wrap:inherit]', className)} {...args}>
+            {
+                texts.map((text, index) => (
+                    <ui.Badge key={index} variant='outline'>
+                        {text}
+                    </ui.Badge>
+                ))
             }
         </div>
     )
