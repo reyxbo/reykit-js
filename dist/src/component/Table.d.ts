@@ -5,6 +5,7 @@ export type TableFieldOption<Row extends Record<string, any>> = {
     isHide?: boolean;
     isSort?: boolean;
     isGroup?: boolean;
+    isGroupSearch?: boolean;
     sortMethod?: (a: Row, b: Row) => number;
     defaultValue?: any;
 }[];

@@ -181,5 +181,4 @@ export function useExec<T extends any>(
         },
         []
     )
-
 }
