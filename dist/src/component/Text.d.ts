@@ -9,13 +9,13 @@ import { default as ReactMarkdown } from 'react-markdown';
  * @param mobileHideIcon - Whether hide icon content on mobile devices.
  * @param mobileHideText - Whether hide text content on mobile devices.
  */
-export declare function IconText({ icon, text, url, hideMobileIcon, hideMobileText }: {
+export declare function IconText({ icon, text, url, hideMobileIcon, hideMobileText, className, ...args }: {
     icon: ReactNode;
     text: string | ReactNode;
     url?: string;
     hideMobileIcon?: boolean;
     hideMobileText?: boolean;
-}): import("react/jsx-runtime").JSX.Element;
+} & ComponentProps<'div'>): import("react/jsx-runtime").JSX.Element;
 /**
  * Text component of support Markdown.
  */

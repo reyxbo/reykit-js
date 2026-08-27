@@ -835,13 +835,23 @@ function TableMain<Row extends Record<string, any>>(
                                                     <PopupBoxTrigger
                                                         delay={1500}
                                                         nativeButton={false}
-                                                        render={<span className='block max-w-xs truncate' />}
+                                                        render={
+                                                            <div className={cn(
+                                                                'flex justify-start content-center items-center max-w-xs',
+                                                                'truncate break-normal'
+                                                            )}/>
+                                                        }
                                                     >
                                                         {formatValue(row[key] ?? defaultValue)}
                                                     </PopupBoxTrigger>
                                                     {
                                                         row[key] !== undefined && row[key] !== null && (
-                                                            <PopupBoxContent align='start' sideOffset={-34} alignOffset={-16} className='break-all'>
+                                                            <PopupBoxContent
+                                                                align='start'
+                                                                sideOffset={-34}
+                                                                alignOffset={-16}
+                                                                className='flex-wrap max-w-xs whitespace-pre-line break-all'
+                                                            >
                                                                 {formatValue(row[key])}
                                                             </PopupBoxContent>
                                                         )

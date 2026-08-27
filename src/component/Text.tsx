@@ -11,6 +11,7 @@ import remarkGfm from 'remark-gfm'
 
 import * as ui from './ui'
 import { useIsMobile } from '../lib/react'
+import { cn } from '../lib/twc'
 
 /**
  * Text component of with icon.
@@ -27,42 +28,49 @@ export function IconText(
         text,
         url,
         hideMobileIcon = false,
-        hideMobileText = false
+        hideMobileText = false,
+        className,
+        ...args
     }: {
         icon: ReactNode,
         text: string | ReactNode,
         url?: string,
         hideMobileIcon?: boolean,
         hideMobileText?: boolean
-    }
+    } & ComponentProps<'div'>
 ) {
 
     // Parameter.
     const isMobile = useIsMobile()
     const Content = (
-        <>
+        <div className='flex content-center items-center gap-1 leading-none'>
             {
                 hideMobileIcon && isMobile || icon
             }
             {
                 hideMobileText && isMobile || (
                     typeof text === 'string'
-                    ? <span className='whitespace-nowrap'>{text}</span>
+                    ? <div className='whitespace-nowrap'>{text}</div>
                     : text
                 )
             }
-        </>
+        </div>
     )
 
     return (
-        <div className='flex items-center gap-1'>
+        <div className={cn('flex content-center items-center', className)} {...args}>
             {
                 url
                 ? (
-                    <ui.Button variant='link' onClick={() => open(url)}>
+                    <ui.Button
+                        variant='link'
+                        onClick={() => open(url)}
+                        className='flex content-center items-center h-auto min-h-0 p-0 m-0 border-none leading-none'
+                    >
                         {Content}
                     </ui.Button>
-                ) : Content
+                )
+                : Content
             }
         </div>
     )
