@@ -499,7 +499,7 @@ function TableMenu<Row extends Record<string, any>>(
                                     </ui.DropdownMenuTrigger>
                                     <ui.DropdownMenuContent className='w-48'>
                                         {
-                                            fieldOption.map(({ key, name, isGroup, defaultValue }, index) => (
+                                            fieldOption.map(({ key, name, isGroup, isGroupSearch, defaultValue }, index) => (
                                                 isGroup && (
                                                     <ui.DropdownMenuSub
                                                         key={index}
@@ -540,27 +540,33 @@ function TableMenu<Row extends Record<string, any>>(
                                                                     <ui.CommandEmpty>
                                                                         {{ 'en': 'No content', 'zh': '无内容' }[language]}
                                                                     </ui.CommandEmpty>
-                                                                    <ui.CommandItem className='relative py-0.5'>
-                                                                        <div onKeyDown={(e) => {e.stopPropagation()}}>
-                                                                            <ui.Input
-                                                                                placeholder={{'en': 'Search...', 'zh': '搜索...'}[language]}
-                                                                                value={groupSearchData[key] ?? ''}
-                                                                                onInput={e => {
-                                                                                    setGroupSearchData({
-                                                                                        ...groupSearchData,
-                                                                                        [key]: e.currentTarget.value
-                                                                                    })
-                                                                                }}
-                                                                                className='pl-6 bg-transparent border-0 shadow-none focus-visible:ring-0'
-                                                                            />
-                                                                        </div>
-                                                                        <ui.icon.Search className={cn(
-                                                                                'group-data-[collapsible=icon]:hidden pointer-events-none size-4 -translate-y-1/2 opacity-50 select-none',
-                                                                                'absolute top-1/2 left-2'
-                                                                        )} />
-                                                                    </ui.CommandItem>
-                                                                    <ui.CommandSeparator className='mb-1'/>
-                                                                    <ui.CommandGroup className='max-h-[50vh] overflow-y-auto scrollbar-thin p-0'>
+                                                                    {
+                                                                        (isGroupSearch !== false) && (
+                                                                            <>
+                                                                                <ui.CommandItem className='relative py-0.5'>
+                                                                                    <div onKeyDown={(e) => {e.stopPropagation()}}>
+                                                                                        <ui.Input
+                                                                                            placeholder={{'en': 'Search...', 'zh': '搜索...'}[language]}
+                                                                                            value={groupSearchData[key] ?? ''}
+                                                                                            onInput={e => {
+                                                                                                setGroupSearchData({
+                                                                                                    ...groupSearchData,
+                                                                                                    [key]: e.currentTarget.value
+                                                                                                })
+                                                                                            }}
+                                                                                            className='pl-6 bg-transparent border-0 shadow-none focus-visible:ring-0'
+                                                                                        />
+                                                                                    </div>
+                                                                                    <ui.icon.Search className={cn(
+                                                                                            'group-data-[collapsible=icon]:hidden pointer-events-none size-4 -translate-y-1/2 opacity-50 select-none',
+                                                                                            'absolute top-1/2 left-2'
+                                                                                    )} />
+                                                                                </ui.CommandItem>
+                                                                                <ui.CommandSeparator />
+                                                                            </>
+                                                                        )
+                                                                    }
+                                                                    <ui.CommandGroup className='max-h-[50vh] overflow-y-auto scrollbar-thin p-0 mt-1'>
                                                                         {
                                                                             [...groupData[key]].sort(
                                                                                 (([_, aCount], [__, bCount]) => bCount - aCount)
@@ -568,7 +574,7 @@ function TableMenu<Row extends Record<string, any>>(
                                                                                 ([value, count], index) => (
                                                                                     <ui.CommandItem
                                                                                         key={index}
-                                                                                        value={String(value ?? '')}
+                                                                                        value={String(isValidElement(value) ? index : value)}
                                                                                         onSelect={() => {
                                                                                             const checked = !!groupFilter[key]?.includes(value)
                                                                                             setGroupFilter({
