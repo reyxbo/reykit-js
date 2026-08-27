@@ -9,6 +9,7 @@ import { ReactNode, ComponentProps } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
+import * as ui from './ui'
 import { useIsMobile } from '../lib/react'
 
 /**
@@ -16,6 +17,7 @@ import { useIsMobile } from '../lib/react'
  * 
  * @param icon - Icon content.
  * @param text - Text content.
+ * @param url - Click to open URL.
  * @param mobileHideIcon - Whether hide icon content on mobile devices.
  * @param mobileHideText - Whether hide text content on mobile devices.
  */
@@ -23,11 +25,13 @@ export function IconText(
     {
         icon,
         text,
+        url,
         hideMobileIcon = false,
         hideMobileText = false
     }: {
         icon: ReactNode,
         text: string | ReactNode,
+        url?: string,
         hideMobileIcon?: boolean,
         hideMobileText?: boolean
     }
@@ -35,9 +39,8 @@ export function IconText(
 
     // Parameter.
     const isMobile = useIsMobile()
-
-    return (
-        <div className='flex items-center gap-1'>
+    const Content = (
+        <>
             {
                 hideMobileIcon && isMobile || icon
             }
@@ -47,6 +50,19 @@ export function IconText(
                     ? <span className='whitespace-nowrap'>{text}</span>
                     : text
                 )
+            }
+        </>
+    )
+
+    return (
+        <div className='flex items-center gap-1'>
+            {
+                url
+                ? (
+                    <ui.Button variant='link' onClick={() => open(url)}>
+                        {Content}
+                    </ui.Button>
+                ) : Content
             }
         </div>
     )

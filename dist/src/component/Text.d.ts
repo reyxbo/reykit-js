@@ -5,12 +5,14 @@ import { default as ReactMarkdown } from 'react-markdown';
  *
  * @param icon - Icon content.
  * @param text - Text content.
+ * @param url - Click to open URL.
  * @param mobileHideIcon - Whether hide icon content on mobile devices.
  * @param mobileHideText - Whether hide text content on mobile devices.
  */
-export declare function IconText({ icon, text, hideMobileIcon, hideMobileText }: {
+export declare function IconText({ icon, text, url, hideMobileIcon, hideMobileText }: {
     icon: ReactNode;
     text: string | ReactNode;
+    url?: string;
     hideMobileIcon?: boolean;
     hideMobileText?: boolean;
 }): import("react/jsx-runtime").JSX.Element;

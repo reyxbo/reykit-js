@@ -424,7 +424,7 @@ function TableMenu<Row extends Record<string, any>>(
                                                                         ([value, count], index) => (
                                                                             <ui.CommandItem
                                                                                 key={index}
-                                                                                value={String(value ?? '')}
+                                                                                value={String(index)}
                                                                                 onSelect={() => {
                                                                                     const checked = !!groupFilter[key]?.includes(value)
                                                                                     setGroupFilter({
