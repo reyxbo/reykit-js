@@ -13,5 +13,5 @@ export { Form } from './Form';
 export { PopupImage, PopupVideo, CarouselMedia } from './Media';
 export { Notice, notice } from './Notice';
 export { type TableFieldOption, type TableSearchOption, type TableButtonOption, type TableRowOption, type TableSelectRowsOption, Table } from './Table';
-export { IconText, MarkdownText } from './Text';
+export { IconText, TextBadges, MarkdownText } from './Text';
 export { IconToggle } from './Toggle';

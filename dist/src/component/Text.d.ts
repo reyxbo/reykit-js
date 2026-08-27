@@ -17,6 +17,14 @@ export declare function IconText({ icon, text, url, hideMobileIcon, hideMobileTe
     hideMobileText?: boolean;
 } & ComponentProps<'div'>): import("react/jsx-runtime").JSX.Element;
 /**
+ * Text component of with multiple badges.
+ *
+ * @param texts - Text list.
+ */
+export declare function TextBadges({ texts, className, ...args }: {
+    texts: string[];
+} & ComponentProps<'div'>): import("react/jsx-runtime").JSX.Element;
+/**
  * Text component of support Markdown.
  */
 export declare function MarkdownText({ ...args }: ComponentProps<typeof ReactMarkdown>): import("react/jsx-runtime").JSX.Element;
