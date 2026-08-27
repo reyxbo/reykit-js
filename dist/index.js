@@ -49998,7 +49998,15 @@ function Ck({
             }
           ) }),
           u.map(({ key: M, isHide: O, defaultValue: z }, D) => !O && /* @__PURE__ */ x.jsx(uE, { children: /* @__PURE__ */ x.jsxs(b, { children: [
-            /* @__PURE__ */ x.jsx(C, { nativeButton: !1, render: /* @__PURE__ */ x.jsx("span", { className: "block max-w-xs truncate" }), children: ZA(N[M] ?? z) }),
+            /* @__PURE__ */ x.jsx(
+              C,
+              {
+                delay: 1500,
+                nativeButton: !1,
+                render: /* @__PURE__ */ x.jsx("span", { className: "block max-w-xs truncate" }),
+                children: ZA(N[M] ?? z)
+              }
+            ),
             N[M] !== void 0 && N[M] !== null && /* @__PURE__ */ x.jsx(T, { align: "start", sideOffset: -34, alignOffset: -16, className: "break-all", children: ZA(N[M]) })
           ] }) }, D)),
           g && /* @__PURE__ */ x.jsx(uE, { className: "overflow-hidden", children: /* @__PURE__ */ x.jsxs(uc, { modal: !1, children: [
