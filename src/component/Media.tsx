@@ -120,7 +120,8 @@ export function CarouselMedia(
         width = 2,
         showButton = true,
         showControl = true,
-        language = 'en'
+        language = 'en',
+        ...args
     }: {
         data: { type: 'image' | 'video', path: string }[],
         orientation?: 'auto' | 'horizontal' | 'vertical',
@@ -128,7 +129,7 @@ export function CarouselMedia(
         showButton?: boolean,
         showControl?: boolean,
         language?: 'en' | 'zh'
-    }
+    } & ComponentProps<'div'>
 ) {
 
     // Parameter.
@@ -175,79 +176,81 @@ export function CarouselMedia(
     }, [api])
 
     return (
-        <div className='relative flex flex-col place-items-center gap-4 size-full'>
-            {showControl && orientation == 'vertical' && CountText}
-            <ui.Carousel
-                opts={{
-                    align: 'center',
-                    loop: true,
-                    skipSnaps: true,
-                    duration: 25
-                }}
-                setApi={setApi}
-                onWheel={e => {
-                    if (wheelLock.current) return
-                    wheelLock.current = true
-                    if (e.deltaY > 0) {
-                        api?.scrollNext()
-                    } else {
-                        api?.scrollPrev()
-                    }
-                    setTimeout(() => {
-                        wheelLock.current = false
-                    }, 300)
-                }}
-                orientation={orientation}
-                className={cn(
-                    'size-full',
-                    '[&_[data-slot="carousel-content"]]:absolute',
-                    '[&_[data-slot="carousel-content"]]:inset-0',
-                    '[&_[data-slot="carousel-content"]]:size-full',
-                    '[&_[data-slot="carousel-content"]]:flex',
-                    '[&_[data-slot="carousel-content"]]:place-content-center',
-                    '[&_[data-slot="carousel-content"]]:place-items-center'
-                )}
-            >
-                <ui.CarouselContent className='flex place-items-center m-1 md:m-2 size-full'>
+        <div {...args}>
+            <div className='relative flex flex-col place-items-center gap-4 size-full'>
+                {showControl && orientation == 'vertical' && CountText}
+                <ui.Carousel
+                    opts={{
+                        align: 'center',
+                        loop: true,
+                        skipSnaps: true,
+                        duration: 25
+                    }}
+                    setApi={setApi}
+                    onWheel={e => {
+                        if (wheelLock.current) return
+                        wheelLock.current = true
+                        if (e.deltaY > 0) {
+                            api?.scrollNext()
+                        } else {
+                            api?.scrollPrev()
+                        }
+                        setTimeout(() => {
+                            wheelLock.current = false
+                        }, 300)
+                    }}
+                    orientation={orientation}
+                    className={cn(
+                        'size-full',
+                        '[&_[data-slot="carousel-content"]]:absolute',
+                        '[&_[data-slot="carousel-content"]]:inset-0',
+                        '[&_[data-slot="carousel-content"]]:size-full',
+                        '[&_[data-slot="carousel-content"]]:flex',
+                        '[&_[data-slot="carousel-content"]]:place-content-center',
+                        '[&_[data-slot="carousel-content"]]:place-items-center'
+                    )}
+                >
+                    <ui.CarouselContent className='flex place-items-center m-1 md:m-2 size-full'>
+                        {
+                            data.map(({ type, path }, index) => {
+                                const diff = Math.abs(index - current + 1)
+                                return <ui.CarouselItem
+                                key={index}
+                                className={cn(
+                                    classNameShowNum,
+                                    'overflow-hidden border md:h-[95%] md:max-h-[95%] max-md:w-[95%] max-md:max-w-[95%]',
+                                    'place-items-center flex p-0 rounded-2xl shadow-md my-1 md:mx-2'
+                                )}
+                                >
+                                    {
+                                        (
+                                            Math.min(
+                                                diff,
+                                                data.length - diff
+                                            ) > renderRange
+                                        )
+                                        ? null
+                                        : type === 'image'
+                                        ? <PopupImage path={path} />
+                                        : type === 'video'
+                                        ? <PopupVideo path={path} />
+                                        : null
+                                    }
+                                </ui.CarouselItem>
+                            })
+                        }
+                    </ui.CarouselContent>
                     {
-                        data.map(({ type, path }, index) => {
-                            const diff = Math.abs(index - current + 1)
-                            return <ui.CarouselItem
-                            key={index}
-                            className={cn(
-                                classNameShowNum,
-                                'overflow-hidden border md:h-[95%] md:max-h-[95%] max-md:w-[95%] max-md:max-w-[95%]',
-                                'place-items-center flex p-0 rounded-2xl shadow-md my-1 md:mx-2'
-                            )}
-                            >
-                                {
-                                    (
-                                        Math.min(
-                                            diff,
-                                            data.length - diff
-                                        ) > renderRange
-                                    )
-                                    ? null
-                                    : type === 'image'
-                                    ? <PopupImage path={path} />
-                                    : type === 'video'
-                                    ? <PopupVideo path={path} />
-                                    : null
-                                }
-                            </ui.CarouselItem>
-                        })
+                        showButton && (
+                            <>
+                                <ui.CarouselPrevious size={buttonSize} className='max-md:top-auto max-md:-bottom-12 max-md:left-1/3' />
+                                <ui.CarouselNext size={buttonSize} className='max-md:-bottom-12 max-md:left-2/3' />
+                            </>
+                        )
                     }
-                </ui.CarouselContent>
-                {
-                    showButton && (
-                        <>
-                            <ui.CarouselPrevious size={buttonSize} className='max-md:top-auto max-md:-bottom-12 max-md:left-1/3' />
-                            <ui.CarouselNext size={buttonSize} className='max-md:-bottom-12 max-md:left-2/3' />
-                        </>
-                    )
-                }
-            </ui.Carousel>
-            {showControl && orientation == 'horizontal' && CountText}
+                </ui.Carousel>
+                {showControl && orientation == 'horizontal' && CountText}
+            </div>
         </div>
     )
 }

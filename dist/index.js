@@ -49275,33 +49275,34 @@ function bk({
   width: u = 2,
   showButton: f = !0,
   showControl: m = !0,
-  language: g = "en"
+  language: g = "en",
+  ...v
 }) {
   i === "auto" && (i = C0(
     "vertical",
     "horizontal"
   ));
-  const v = C0(
+  const b = C0(
     "icon",
     "icon-lg"
-  ), [b, C] = {
+  ), [C, T] = {
     1: ["basis-1/1", 2],
     2: ["basis-1/2", 3],
     3: ["basis-1/3", 3],
     4: ["basis-1/4", 4],
     5: ["basis-1/5", 4],
     6: ["basis-1/6", 5]
-  }[u], [T, R] = co(1), [N, A] = co(), M = KA(!1), O = /* @__PURE__ */ x.jsx("div", { className: "flex-1 text-sm md:text-base text-muted-foreground flex absolute max-md:-top-8 md:-bottom-8", children: { en: `${T} / ${a.length} item(s)`, zh: `第 ${T} / ${a.length} 个` }[g] });
+  }[u], [R, N] = co(1), [A, M] = co(), O = KA(!1), z = /* @__PURE__ */ x.jsx("div", { className: "flex-1 text-sm md:text-base text-muted-foreground flex absolute max-md:-top-8 md:-bottom-8", children: { en: `${R} / ${a.length} item(s)`, zh: `第 ${R} / ${a.length} 个` }[g] });
   return OE(() => {
-    if (!N) return;
-    const z = () => {
-      R(N.selectedScrollSnap() + 1);
+    if (!A) return;
+    const D = () => {
+      N(A.selectedScrollSnap() + 1);
     };
-    return z(), N.on("select", z), () => {
-      N.off("select", z);
+    return D(), A.on("select", D), () => {
+      A.off("select", D);
     };
-  }, [N]), /* @__PURE__ */ x.jsxs("div", { className: "relative flex flex-col place-items-center gap-4 size-full", children: [
-    m && i == "vertical" && O,
+  }, [A]), /* @__PURE__ */ x.jsx("div", { ...v, children: /* @__PURE__ */ x.jsxs("div", { className: "relative flex flex-col place-items-center gap-4 size-full", children: [
+    m && i == "vertical" && z,
     /* @__PURE__ */ x.jsxs(
       M_,
       {
@@ -49311,10 +49312,10 @@ function bk({
           skipSnaps: !0,
           duration: 25
         },
-        setApi: A,
-        onWheel: (z) => {
-          M.current || (M.current = !0, z.deltaY > 0 ? N?.scrollNext() : N?.scrollPrev(), setTimeout(() => {
-            M.current = !1;
+        setApi: M,
+        onWheel: (D) => {
+          O.current || (O.current = !0, D.deltaY > 0 ? A?.scrollNext() : A?.scrollPrev(), setTimeout(() => {
+            O.current = !1;
           }, 300));
         },
         orientation: i,
@@ -49328,33 +49329,33 @@ function bk({
           '[&_[data-slot="carousel-content"]]:place-items-center'
         ),
         children: [
-          /* @__PURE__ */ x.jsx(A_, { className: "flex place-items-center m-1 md:m-2 size-full", children: a.map(({ type: z, path: D }, U) => {
-            const V = Math.abs(U - T + 1);
+          /* @__PURE__ */ x.jsx(A_, { className: "flex place-items-center m-1 md:m-2 size-full", children: a.map(({ type: D, path: U }, V) => {
+            const _ = Math.abs(V - R + 1);
             return /* @__PURE__ */ x.jsx(
               D_,
               {
                 className: ie(
-                  b,
+                  C,
                   "overflow-hidden border md:h-[95%] md:max-h-[95%] max-md:w-[95%] max-md:max-w-[95%]",
                   "place-items-center flex p-0 rounded-2xl shadow-md my-1 md:mx-2"
                 ),
                 children: Math.min(
-                  V,
-                  a.length - V
-                ) > C ? null : z === "image" ? /* @__PURE__ */ x.jsx(F4, { path: D }) : z === "video" ? /* @__PURE__ */ x.jsx(J4, { path: D }) : null
+                  _,
+                  a.length - _
+                ) > T ? null : D === "image" ? /* @__PURE__ */ x.jsx(F4, { path: U }) : D === "video" ? /* @__PURE__ */ x.jsx(J4, { path: U }) : null
               },
-              U
+              V
             );
           }) }),
           f && /* @__PURE__ */ x.jsxs(x.Fragment, { children: [
-            /* @__PURE__ */ x.jsx(z_, { size: v, className: "max-md:top-auto max-md:-bottom-12 max-md:left-1/3" }),
-            /* @__PURE__ */ x.jsx(__, { size: v, className: "max-md:-bottom-12 max-md:left-2/3" })
+            /* @__PURE__ */ x.jsx(z_, { size: b, className: "max-md:top-auto max-md:-bottom-12 max-md:left-1/3" }),
+            /* @__PURE__ */ x.jsx(__, { size: b, className: "max-md:-bottom-12 max-md:left-2/3" })
           ] })
         ]
       }
     ),
-    m && i == "horizontal" && O
-  ] });
+    m && i == "horizontal" && z
+  ] }) });
 }
 function xk({
   children: a,

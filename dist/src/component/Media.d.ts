@@ -31,7 +31,7 @@ export declare function PopupVideo({ path, preload, ...args }: {
  * @param showControl - Whether show controls.
  * @param language - Language type.
  */
-export declare function CarouselMedia({ data, orientation, width, showButton, showControl, language }: {
+export declare function CarouselMedia({ data, orientation, width, showButton, showControl, language, ...args }: {
     data: {
         type: 'image' | 'video';
         path: string;
@@ -41,4 +41,4 @@ export declare function CarouselMedia({ data, orientation, width, showButton, sh
     showButton?: boolean;
     showControl?: boolean;
     language?: 'en' | 'zh';
-}): import("react/jsx-runtime").JSX.Element;
+} & ComponentProps<'div'>): import("react/jsx-runtime").JSX.Element;
