@@ -49322,10 +49322,13 @@ function bk({
           "size-full",
           '[&_[data-slot="carousel-content"]]:absolute',
           '[&_[data-slot="carousel-content"]]:inset-0',
-          '[&_[data-slot="carousel-content"]>div]:size-full'
+          '[&_[data-slot="carousel-content"]]:size-full',
+          '[&_[data-slot="carousel-content"]]:flex',
+          '[&_[data-slot="carousel-content"]]:place-content-center',
+          '[&_[data-slot="carousel-content"]]:place-items-center'
         ),
         children: [
-          /* @__PURE__ */ x.jsx(A_, { className: "place-items-center m-1 md:m-2 size-full", children: a.map(({ type: z, path: D }, U) => {
+          /* @__PURE__ */ x.jsx(A_, { className: "flex place-items-center m-1 md:m-2 size-full", children: a.map(({ type: z, path: D }, U) => {
             const V = Math.abs(U - T + 1);
             return /* @__PURE__ */ x.jsx(
               D_,

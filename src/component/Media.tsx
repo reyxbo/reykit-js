@@ -202,10 +202,13 @@ export function CarouselMedia(
                     'size-full',
                     '[&_[data-slot="carousel-content"]]:absolute',
                     '[&_[data-slot="carousel-content"]]:inset-0',
-                    '[&_[data-slot="carousel-content"]>div]:size-full'
+                    '[&_[data-slot="carousel-content"]]:size-full',
+                    '[&_[data-slot="carousel-content"]]:flex',
+                    '[&_[data-slot="carousel-content"]]:place-content-center',
+                    '[&_[data-slot="carousel-content"]]:place-items-center'
                 )}
             >
-                <ui.CarouselContent className='place-items-center m-1 md:m-2 size-full'>
+                <ui.CarouselContent className='flex place-items-center m-1 md:m-2 size-full'>
                     {
                         data.map(({ type, path }, index) => {
                             const diff = Math.abs(index - current + 1)
