@@ -71,7 +71,7 @@ export type TableSelectRowsOption<Row extends Record<string, any>> = {
  * @param mobilePageSize - Page rows size on mobile devices.
  * @param language - Language type.
  */
-export declare function Table<Row extends Record<string, ReactNode>>({ data, setData, fieldOption, searchOption, buttonOption, rowOption, selectRowsOption, pageSize, mobilePageSize, language }: {
+export declare function Table<Row extends Record<string, any>>({ data, setData, fieldOption, searchOption, buttonOption, rowOption, selectRowsOption, pageSize, mobilePageSize, language }: {
     data: Row[];
     setData: (value: Row[] | ((value: Row[]) => Row[])) => void;
     fieldOption?: TableFieldOption<Row>;
