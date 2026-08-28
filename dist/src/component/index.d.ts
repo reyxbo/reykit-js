@@ -6,6 +6,7 @@
  */
 import * as ui from './ui';
 export { ui };
+export { TextBadges } from './Badge';
 export { type CoverContextParams, createCover, Loading, useLoading } from './Base';
 export { type BreadcrumbDict, Breadcrumb } from './Breadcrumb';
 export { CycleButton, ScrollToTopButton } from './Button';
@@ -13,5 +14,5 @@ export { Form } from './Form';
 export { PopupImage, PopupVideo, CarouselMedia } from './Media';
 export { Notice, notice } from './Notice';
 export { type TableFieldOption, type TableSearchOption, type TableButtonOption, type TableRowOption, type TableSelectRowsOption, Table } from './Table';
-export { IconText, TextBadges, MarkdownText } from './Text';
+export { IconText, MarkdownText } from './Text';
 export { IconToggle } from './Toggle';

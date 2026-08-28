@@ -8,6 +8,13 @@ import { ReactNode } from 'react';
  */
 export declare function renderReact(app: ReactNode, elementId?: string): void;
 /**
+ * Is it a valid react node.
+ *
+ * @param value - Judgement value.
+ * @returns Judgement result.
+ */
+export declare function isReactNode(value: unknown): value is ReactNode;
+/**
  * Hook of toggle.
  *
  * @param array - Array.

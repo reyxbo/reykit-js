@@ -77,33 +77,6 @@ export function IconText(
 }
 
 /**
- * Text component of with multiple badges.
- * 
- * @param texts - Text list.
- */
-export function TextBadges(
-    {
-        texts,
-        className,
-        ...args
-    }: {
-        texts: string[]
-    } & ComponentProps<'div'>
-) {
-    return (
-        <div className={cn('size-full flex gap-0.5 [flex-wrap:inherit]', className)} {...args}>
-            {
-                texts.map((text, index) => (
-                    <ui.Badge key={index} variant='outline'>
-                        {text}
-                    </ui.Badge>
-                ))
-            }
-        </div>
-    )
-}
-
-/**
  * Text component of support Markdown.
  */
 export function MarkdownText({ ...args }: ComponentProps<typeof ReactMarkdown>) {

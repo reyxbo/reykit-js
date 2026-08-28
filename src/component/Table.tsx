@@ -8,6 +8,7 @@
 import { ReactNode, useState, isValidElement, useEffect } from 'react'
 
 import * as ui from './ui'
+import { TextBadges } from './Badge'
 import { sort, rangeArr, countArr } from '../lib/data'
 import { useValueByMobile } from '../lib/react'
 import { cn } from '../lib/twc'
@@ -136,9 +137,11 @@ export function Table<Row extends Record<string, any>>(
     const filteredData = data.filter(row => (
             (searchValue === '' || searchOption === undefined || searchOption.method(searchValue, row))
             && Object.entries(row).every(([key, value]) => (
-                groupFilter[key] && groupFilter[key].length !== 0
-                ? groupFilter[key]?.includes(value as Row[keyof Row])
-                : true
+                !groupFilter[key] || groupFilter[key].length === 0
+                ? true
+                : Array.isArray(value)
+                ? value.some(i => groupFilter[key]?.includes(i))
+                : groupFilter[key]?.includes(value)
             )
         )
     ))
@@ -254,10 +257,17 @@ function TableMenu<Row extends Record<string, any>>(
     // Parameter.
     const [groupSearchData, setGroupSearchData] = useState<Partial<Record<keyof Row, string>>>({})
     const groupData = Object.fromEntries(fieldOption.filter(item => item.isGroup).map(
-        ({ key, defaultValue }) => [
+        ({ key }) => [
             key,
             new Map(
-                [...countArr(data.map(item => item[key]))].filter(
+                [...countArr(data.flatMap(item => {
+                    const value = item[key]
+                    return (
+                        Array.isArray(value)
+                        ? value
+                        : [value]
+                    )
+                }))].filter(
                     ([value, _]) => (
                         groupSearchData[key]
                         ? String(value).includes(groupSearchData[key])
@@ -421,7 +431,11 @@ function TableMenu<Row extends Record<string, any>>(
                                                                             <div onKeyDown={(e) => {e.stopPropagation()}}>
                                                                                 <ui.Input
                                                                                     placeholder={{'en': 'Search...', 'zh': '搜索...'}[language]}
-                                                                                    value={groupSearchData[key] ?? ''}
+                                                                                    value={
+                                                                                        Array.isArray(groupSearchData[key])
+                                                                                        ? groupSearchData[key].map(i => String(i)).join(' ')
+                                                                                        : groupSearchData[key] ?? ''
+                                                                                    }
                                                                                     onInput={e => {
                                                                                         setGroupSearchData({
                                                                                             ...groupSearchData,
@@ -455,8 +469,8 @@ function TableMenu<Row extends Record<string, any>>(
                                                                                         ...groupFilter,
                                                                                         [key]: (
                                                                                             checked
-                                                                                                ? (groupFilter[key] ?? []).filter(v => v != value)
-                                                                                                : [...(groupFilter[key] ?? []), value]
+                                                                                            ? (groupFilter[key] ?? []).filter(v => v != value)
+                                                                                            : [...(groupFilter[key] ?? []), value]
                                                                                         )
                                                                                     })
                                                                                     setPage(1)
@@ -564,7 +578,11 @@ function TableMenu<Row extends Record<string, any>>(
                                                                                     <div onKeyDown={(e) => {e.stopPropagation()}}>
                                                                                         <ui.Input
                                                                                             placeholder={{'en': 'Search...', 'zh': '搜索...'}[language]}
-                                                                                            value={groupSearchData[key] ?? ''}
+                                                                                            value={
+                                                                                                Array.isArray(groupSearchData[key])
+                                                                                                ? groupSearchData[key].map(i => String(i)).join(' ')
+                                                                                                : groupSearchData[key] ?? ''
+                                                                                            }
                                                                                             onInput={e => {
                                                                                                 setGroupSearchData({
                                                                                                     ...groupSearchData,
@@ -598,8 +616,8 @@ function TableMenu<Row extends Record<string, any>>(
                                                                                                 ...groupFilter,
                                                                                                 [key]: (
                                                                                                     checked
-                                                                                                        ? (groupFilter[key] ?? []).filter(v => v != value)
-                                                                                                        : [...(groupFilter[key] ?? []), value]
+                                                                                                    ? (groupFilter[key] ?? []).filter(v => v != value)
+                                                                                                    : [...(groupFilter[key] ?? []), value]
                                                                                                 )
                                                                                             })
                                                                                             setPage(1)
@@ -1188,17 +1206,26 @@ function TablePagination<Row>(
  */
 function formatValue(value: any): React.ReactNode {
 
-    // React element.
+    // Format.
     if (isValidElement(value)) {
         return value
     }
-
-    // Format.
     if (value instanceof Date) {
         return value.toLocaleString()
     }
     if (value == null) {
         return ''
+    }
+    if (Array.isArray(value)) {
+        return (
+            <TextBadges
+                contents={value.map(i => (
+                    isValidElement(i)
+                    ? i
+                    : String(i)
+                ))}
+            />
+        )
     }
     if (typeof value === 'object') {
         return JSON.stringify(value)

@@ -8,6 +8,7 @@
 import * as ui from './ui'
 
 export { ui }
+export { TextBadges } from './Badge'
 export { type CoverContextParams, createCover, Loading, useLoading } from './Base'
 export { type BreadcrumbDict, Breadcrumb } from './Breadcrumb'
 export { CycleButton, ScrollToTopButton } from './Button'
@@ -22,5 +23,5 @@ export {
     type TableSelectRowsOption,
     Table
 } from './Table'
-export { IconText, TextBadges, MarkdownText } from './Text'
+export { IconText, MarkdownText } from './Text'
 export { IconToggle } from './Toggle'

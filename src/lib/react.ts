@@ -5,7 +5,7 @@
  * @Explain : React methods.
  */
 
-import { ReactNode, useState, useEffect } from 'react'
+import { ReactNode, useState, useEffect, isValidElement } from 'react'
 import { createRoot, Root } from 'react-dom/client'
 
 const MOBILE_BREAKPOINT = 768
@@ -28,6 +28,28 @@ export function renderReact(app: ReactNode, elementId: string = 'root') {
         root = createRoot(element)
     }
     root.render(app)
+}
+
+/**
+ * Is it a valid react node.
+ * 
+ * @param value - Judgement value.
+ * @returns Judgement result.
+ */
+export function isReactNode(value: unknown): value is ReactNode {
+
+    // Judge.
+    const reuslt = (
+        value === null ||
+        value === undefined ||
+        typeof value === 'string' ||
+        typeof value === 'number' ||
+        typeof value === 'boolean' ||
+        isValidElement(value) ||
+        Array.isArray(value)
+    )
+
+    return reuslt
 }
 
 /**
