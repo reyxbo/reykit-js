@@ -20,7 +20,7 @@ export type TableButtonOption = {
 export type TableRowOptionItemLink = string;
 export type TableRowOptionItem<Row extends Record<string, any>> = {
     name: ReactNode;
-    exe: ((row: Row) => void) | TableRowOptionItemLink | null;
+    method: ((row: Row) => void) | TableRowOptionItemLink | null;
 };
 export type TableRowOption<Row extends Record<string, any>> = {
     options?: TableRowOptionItem<Row>[];
@@ -31,7 +31,7 @@ export type TableRowOption<Row extends Record<string, any>> = {
 });
 export type TableSelectRowsOptionItem<Row extends Record<string, any>> = {
     name: ReactNode;
-    exe: ((selectRows: Row[]) => void) | null;
+    method: ((selectRows: Row[]) => void) | null;
 };
 export type TableSelectRowsOption<Row extends Record<string, any>> = {
     options?: TableSelectRowsOptionItem<Row>[];
@@ -44,17 +44,34 @@ export type TableSelectRowsOption<Row extends Record<string, any>> = {
  * Table component.
  *
  * @param data - Table data state value.
+ *     - `Array` : Convert elements to `Badge` component.
  * @param setData - Function of set table data state value.
  * @param fieldOption - Header option.
+ *     - `Attribute key` : Field key.
+ *     - `Attribute name` : Field show name.
+ *     - `Attribute isHide` : Whether hide field.
+ *     - `Attribute isSort` : Whether show sort button.
+ *     - `Attribute isGroup` : Whether show group button.
+ *     - `Attribute isGroupSearch` : Whether show search input in group button.
+ *     - `Attribute sortMethod` : Sort method.
+ *     - `Attribute defaultValue` : Replace none value.
  * @param searchOption - Search option.
+ *     - `Attribute method` : Search method.
+ *     - `Attribute placeholder` : Search input placeholder.
  * @param buttonOption - Custom buttons option.
- * @param rowOption - Each row option.
+ *     - `Attribute name` : Button name.
+ *     - `Attribute method` : Execute method.
+ * @param rowOption - Each row buttons option.
+ *     - `Attribute options` : Normal buttons option.
+ *     - `Attribute destructiveOptions` : Important buttons option.
  * @param selectRowsOption - Selected rows option.
+ *     - `Attribute options` : Normal buttons option.
+ *     - `Attribute destructiveOptions` : Important buttons option.
  * @param pageSize - Page rows size.
  * @param mobilePageSize - Page rows size on mobile devices.
  * @param language - Language type.
  */
-export declare function Table<Row extends Record<string, any>>({ data, setData, fieldOption, searchOption, buttonOption, rowOption, selectRowsOption, pageSize, mobilePageSize, language }: {
+export declare function Table<Row extends Record<string, ReactNode>>({ data, setData, fieldOption, searchOption, buttonOption, rowOption, selectRowsOption, pageSize, mobilePageSize, language }: {
     data: Row[];
     setData: (value: Row[] | ((value: Row[]) => Row[])) => void;
     fieldOption?: TableFieldOption<Row>;

@@ -49564,7 +49564,7 @@ function Tk({
         ] }),
         /* @__PURE__ */ x.jsx(Gs, { align: "start", className: "w-auto", children: /* @__PURE__ */ x.jsxs(x.Fragment, { children: [
           (V = typeof C == "function" ? C(T) : C).options && V.options.map(
-            ({ name: _, exe: H }, P) => /* @__PURE__ */ x.jsx(
+            ({ name: _, method: H }, P) => /* @__PURE__ */ x.jsx(
               $r,
               {
                 onClick: () => {
@@ -49578,7 +49578,7 @@ function Tk({
           ),
           V.options && V.destructiveOptions && /* @__PURE__ */ x.jsx(_0, {}),
           V.destructiveOptions && V.destructiveOptions.map(
-            ({ name: _, exe: H }, P) => /* @__PURE__ */ x.jsx(
+            ({ name: _, method: H }, P) => /* @__PURE__ */ x.jsx(
               $r,
               {
                 variant: "destructive",
@@ -50036,7 +50036,7 @@ function Ck({
             ), children: /* @__PURE__ */ x.jsx(Wj, {}) }),
             /* @__PURE__ */ x.jsxs(Gs, { align: "end", className: "w-auto", children: [
               (R = typeof g == "function" ? g(N) : g).options && R.options.map(
-                ({ name: M, exe: O }, z) => typeof O == "string" ? /* @__PURE__ */ x.jsx(
+                ({ name: M, method: O }, z) => typeof O == "string" ? /* @__PURE__ */ x.jsx(
                   $r,
                   {
                     render: /* @__PURE__ */ x.jsx("a", { target: "_blank", href: O }),
@@ -50057,7 +50057,7 @@ function Ck({
               ),
               R.options && R.destructiveOptions && /* @__PURE__ */ x.jsx(_0, {}),
               R.destructiveOptions && R.destructiveOptions.map(
-                ({ name: M, exe: O }, z) => typeof O == "string" ? /* @__PURE__ */ x.jsx(
+                ({ name: M, method: O }, z) => typeof O == "string" ? /* @__PURE__ */ x.jsx(
                   $r,
                   {
                     variant: "destructive",
