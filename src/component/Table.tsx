@@ -125,7 +125,25 @@ export function Table<Row extends Record<string, any>>(
     const pageSizeByMobile = useValueByMobile(mobilePageSize, pageSize)
     const [pageSizeState, setPageSizeState] = useState(pageSizeByMobile)
     const [page, setPage] = useState(1)
-    const [fieldOptionState, setFieldOptionState] = useState<TableFieldOption<Row>>([])
+    defaultFieldOption = defaultFieldOption || {
+        isHide: false,
+        isSort: false,
+        isGroup: false,
+        isGroupSearch: false
+    }
+    const [fieldOptionState, setFieldOptionState] = useState(
+        fieldOption && fieldOption.length !== 0
+        ? fieldOption
+        : Array.from(
+            new Set(
+                data.flatMap(row => Object.keys(row))
+            )
+        ).map(key => ({
+            key: key,
+            name: key,
+            ...defaultFieldOption
+        }))
+    )
     const [searchValue, setSearchValue] = useState('')
     const [groupFilter, setGroupFilter] = useState<Partial<Record<keyof Row, Row[keyof Row][]>>>({})
     const filteredData = data.filter(row => (
@@ -141,12 +159,6 @@ export function Table<Row extends Record<string, any>>(
     ))
     const pageData = filteredData.slice((page - 1) * pageSizeState, page * pageSizeState) as Row[]
     const [selectRows, setSelectRows] = useState<Row[] | undefined>(selectRowsOption && [])
-    defaultFieldOption = defaultFieldOption || {
-        isHide: false,
-        isSort: false,
-        isGroup: false,
-        isGroupSearch: false
-    }
 
     // Handle.
     useEffect(() => {
