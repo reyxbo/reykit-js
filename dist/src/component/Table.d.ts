@@ -9,6 +9,13 @@ export type TableFieldOption<Row extends Record<string, any>> = {
     sortMethod?: (a: Row, b: Row) => number;
     defaultValue?: any;
 }[];
+export type DefaultTableFieldOption = {
+    isHide?: boolean;
+    isSort?: boolean;
+    isGroup?: boolean;
+    isGroupSearch?: boolean;
+    defaultValue?: any;
+};
 export type TableSearchOption<Row extends Record<string, any>> = {
     method: (value: string, row: Row) => boolean;
     placeholder?: string;
@@ -71,7 +78,7 @@ export type TableSelectRowsOption<Row extends Record<string, any>> = {
  * @param mobilePageSize - Page rows size on mobile devices.
  * @param language - Language type.
  */
-export declare function Table<Row extends Record<string, any>>({ data, setData, fieldOption, searchOption, buttonOption, rowOption, selectRowsOption, pageSize, mobilePageSize, language }: {
+export declare function Table<Row extends Record<string, any>>({ data, setData, fieldOption, searchOption, buttonOption, rowOption, selectRowsOption, pageSize, mobilePageSize, language, defaultFieldOption, }: {
     data: Row[];
     setData: (value: Row[] | ((value: Row[]) => Row[])) => void;
     fieldOption?: TableFieldOption<Row>;
@@ -82,4 +89,5 @@ export declare function Table<Row extends Record<string, any>>({ data, setData, 
     pageSize?: number;
     mobilePageSize?: number;
     language?: 'en' | 'zh';
+    defaultFieldOption?: DefaultTableFieldOption;
 }): import("react/jsx-runtime").JSX.Element;

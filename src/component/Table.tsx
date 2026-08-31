@@ -23,6 +23,13 @@ export type TableFieldOption<Row extends Record<string, any>> = {
     sortMethod?: (a: Row, b: Row) => number,
     defaultValue?: any
 }[]
+export type DefaultTableFieldOption = {
+    isHide?: boolean,
+    isSort?: boolean,
+    isGroup?: boolean,
+    isGroupSearch?: boolean,
+    defaultValue?: any
+}
 export type TableSearchOption<Row extends Record<string, any>> = {
     method: (value: string, row: Row) => boolean,
     placeholder?: string
@@ -97,7 +104,8 @@ export function Table<Row extends Record<string, any>>(
         selectRowsOption,
         pageSize = 20,
         mobilePageSize = 10,
-        language = 'en'
+        language = 'en',
+        defaultFieldOption,
     }: {
         data: Row[],
         setData: (value: Row[] | ((value: Row[]) => Row[])) => void,
@@ -108,7 +116,8 @@ export function Table<Row extends Record<string, any>>(
         selectRowsOption?: TableSelectRowsOption<Row>,
         pageSize?: number,
         mobilePageSize?: number,
-        language?: 'en' | 'zh'
+        language?: 'en' | 'zh',
+        defaultFieldOption?: DefaultTableFieldOption
     }
 ) {
 
@@ -116,22 +125,7 @@ export function Table<Row extends Record<string, any>>(
     const pageSizeByMobile = useValueByMobile(mobilePageSize, pageSize)
     const [pageSizeState, setPageSizeState] = useState(pageSizeByMobile)
     const [page, setPage] = useState(1)
-    const defaultFieldOption = (
-        fieldOption && fieldOption.length !== 0
-        ? fieldOption
-        : Array.from(
-            new Set(
-                data.flatMap(row => Object.keys(row))
-            )
-        ).map(key => ({
-            key: key,
-            name: key,
-            isHide: false,
-            isSort: false,
-            isGroup: false
-        }))
-    )
-    const [fieldOptionState, setFieldOptionState] = useState(defaultFieldOption)
+    const [fieldOptionState, setFieldOptionState] = useState<TableFieldOption<Row>>([])
     const [searchValue, setSearchValue] = useState('')
     const [groupFilter, setGroupFilter] = useState<Partial<Record<keyof Row, Row[keyof Row][]>>>({})
     const filteredData = data.filter(row => (
@@ -147,6 +141,12 @@ export function Table<Row extends Record<string, any>>(
     ))
     const pageData = filteredData.slice((page - 1) * pageSizeState, page * pageSizeState) as Row[]
     const [selectRows, setSelectRows] = useState<Row[] | undefined>(selectRowsOption && [])
+    defaultFieldOption = defaultFieldOption || {
+        isHide: false,
+        isSort: false,
+        isGroup: false,
+        isGroupSearch: false
+    }
 
     // Handle.
     useEffect(() => {
@@ -159,9 +159,7 @@ export function Table<Row extends Record<string, any>>(
                 ).map(key => ({
                     key: key,
                     name: key,
-                    isHide: false,
-                    isSort: false,
-                    isGroup: false
+                    ...defaultFieldOption
                 }))
             )
         }
