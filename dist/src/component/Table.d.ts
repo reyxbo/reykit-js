@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 export type TableFieldOption<Row extends Record<string, any>> = {
     key: string;
     name: string;
+    isBadge?: boolean;
     isHide?: boolean;
     isSort?: boolean;
     isGroup?: boolean;
@@ -10,6 +11,7 @@ export type TableFieldOption<Row extends Record<string, any>> = {
     defaultValue?: any;
 }[];
 export type DefaultTableFieldOption = {
+    isBadge?: boolean;
     isHide?: boolean;
     isSort?: boolean;
     isGroup?: boolean;
@@ -53,9 +55,10 @@ export type TableSelectRowsOption<Row extends Record<string, any>> = {
  * @param data - Table data state value.
  *     - `Array` : Convert elements to `Badge` component.
  * @param setData - Function of set table data state value.
- * @param fieldOption - Header option.
+ * @param fieldOption - Field option.
  *     - `Attribute key` : Field key.
  *     - `Attribute name` : Field show name.
+ *     - `Attribute isBadge` : Whether show to badge element.
  *     - `Attribute isHide` : Whether hide field.
  *     - `Attribute isSort` : Whether show sort button.
  *     - `Attribute isGroup` : Whether show group button.
@@ -77,6 +80,7 @@ export type TableSelectRowsOption<Row extends Record<string, any>> = {
  * @param pageSize - Page rows size.
  * @param mobilePageSize - Page rows size on mobile devices.
  * @param language - Language type.
+ * @param defaultFieldOption - Default field option.
  */
 export declare function Table<Row extends Record<string, any>>({ data, setData, fieldOption, searchOption, buttonOption, rowOption, selectRowsOption, pageSize, mobilePageSize, language, defaultFieldOption, }: {
     data: Row[];

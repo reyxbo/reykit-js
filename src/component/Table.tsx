@@ -5,7 +5,7 @@
  * @Explain : Table components.
  */
 
-import { ReactNode, useState, isValidElement, useEffect } from 'react'
+import { ReactNode, useState, isValidElement, useEffect, ReactElement } from 'react'
 
 import * as ui from './ui'
 import { TextBadges } from './Badge'
@@ -16,6 +16,7 @@ import { cn } from '../lib/twc'
 export type TableFieldOption<Row extends Record<string, any>> = {
     key: string,
     name: string,
+    isBadge?: boolean,
     isHide?: boolean,
     isSort?: boolean,
     isGroup?: boolean,
@@ -24,6 +25,7 @@ export type TableFieldOption<Row extends Record<string, any>> = {
     defaultValue?: any
 }[]
 export type DefaultTableFieldOption = {
+    isBadge?: boolean,
     isHide?: boolean,
     isSort?: boolean,
     isGroup?: boolean,
@@ -68,9 +70,10 @@ export type TableSelectRowsOption<Row extends Record<string, any>> = {
  * @param data - Table data state value.
  *     - `Array` : Convert elements to `Badge` component.
  * @param setData - Function of set table data state value.
- * @param fieldOption - Header option.
+ * @param fieldOption - Field option.
  *     - `Attribute key` : Field key.
  *     - `Attribute name` : Field show name.
+ *     - `Attribute isBadge` : Whether show to badge element.
  *     - `Attribute isHide` : Whether hide field.
  *     - `Attribute isSort` : Whether show sort button.
  *     - `Attribute isGroup` : Whether show group button.
@@ -92,6 +95,7 @@ export type TableSelectRowsOption<Row extends Record<string, any>> = {
  * @param pageSize - Page rows size.
  * @param mobilePageSize - Page rows size on mobile devices.
  * @param language - Language type.
+ * @param defaultFieldOption - Default field option.
  */
 export function Table<Row extends Record<string, any>>(
     {
@@ -125,12 +129,6 @@ export function Table<Row extends Record<string, any>>(
     const pageSizeByMobile = useValueByMobile(mobilePageSize, pageSize)
     const [pageSizeState, setPageSizeState] = useState(pageSizeByMobile)
     const [page, setPage] = useState(1)
-    defaultFieldOption = defaultFieldOption || {
-        isHide: false,
-        isSort: false,
-        isGroup: false,
-        isGroupSearch: false
-    }
     const [fieldOptionState, setFieldOptionState] = useState(
         fieldOption && fieldOption.length !== 0
         ? fieldOption
@@ -141,7 +139,7 @@ export function Table<Row extends Record<string, any>>(
         ).map(key => ({
             key: key,
             name: key,
-            ...defaultFieldOption
+            ...(defaultFieldOption || {})
         }))
     )
     const [searchValue, setSearchValue] = useState('')
@@ -171,7 +169,7 @@ export function Table<Row extends Record<string, any>>(
                 ).map(key => ({
                     key: key,
                     name: key,
-                    ...defaultFieldOption
+                    ...(defaultFieldOption || {})
                 }))
             )
         }
@@ -220,13 +218,28 @@ export function Table<Row extends Record<string, any>>(
  * Table top menu component.
  * 
  * @param data - Table data state value.
- * @param fieldOption - Header option state value.
+ * @param fieldOption - Field option state value.
+ *     - `Attribute key` : Field key.
+ *     - `Attribute name` : Field show name.
+ *     - `Attribute isBadge` : Whether show to badge element.
+ *     - `Attribute isHide` : Whether hide field.
+ *     - `Attribute isSort` : Whether show sort button.
+ *     - `Attribute isGroup` : Whether show group button.
+ *     - `Attribute isGroupSearch` : Whether show search input in group button.
+ *     - `Attribute sortMethod` : Sort method.
+ *     - `Attribute defaultValue` : Replace none value.
  * @param setFieldOption - Function of set field option state value.
  * @param searchValue - Search state value.
  * @param setSearchValue - Function of set Search state value.
  * @param searchOption - Search option.
+ *     - `Attribute method` : Search method.
+ *     - `Attribute placeholder` : Search input placeholder.
  * @param buttonOption - Custom buttons option.
+ *     - `Attribute name` : Button name.
+ *     - `Attribute method` : Execute method.
  * @param selectRowsOption - Selected rows option.
+ *     - `Attribute options` : Normal buttons option.
+ *     - `Attribute destructiveOptions` : Important buttons option.
  * @param selectRows - Selected rows state value.
  * @param groupFilter - Group filter field values state value.
  * @param setGroupFilter - Fcuntion of group filter field values state value.
@@ -752,10 +765,21 @@ function TableMenu<Row extends Record<string, any>>(
  * 
  * @param pageData - Table now page data.
  * @param setData - Function of set table data state value.
- * @param fieldOption - Header option.
+ * @param fieldOption - Field option state value.
+ *     - `Attribute key` : Field key.
+ *     - `Attribute name` : Field show name.
+ *     - `Attribute isBadge` : Whether show to badge element.
+ *     - `Attribute isHide` : Whether hide field.
+ *     - `Attribute isSort` : Whether show sort button.
+ *     - `Attribute isGroup` : Whether show group button.
+ *     - `Attribute isGroupSearch` : Whether show search input in group button.
+ *     - `Attribute sortMethod` : Sort method.
+ *     - `Attribute defaultValue` : Replace none value.
  * @param selectRows - Selected rows state value.
  * @param setSelectRows - Function of selected rows state value.
- * @param rowOption - Each row option.
+ * @param rowOption - Each row buttons option.
+ *     - `Attribute options` : Normal buttons option.
+ *     - `Attribute destructiveOptions` : Important buttons option.
  * @param language - Language type.
  */
 function TableMain<Row extends Record<string, any>>(
@@ -886,7 +910,7 @@ function TableMain<Row extends Record<string, any>>(
                                     )
                                 }
                                 {
-                                    fieldOption.map(({ key, isHide, defaultValue }, index) => (
+                                    fieldOption.map(({ key, isBadge, isHide, defaultValue }, index) => (
                                         !isHide && (
                                             <ui.TableCell key={index}>
                                                 <PopupBox>
@@ -900,17 +924,17 @@ function TableMain<Row extends Record<string, any>>(
                                                             )}/>
                                                         }
                                                     >
-                                                        {formatValue(row[key] ?? defaultValue)}
+                                                        {row[key] == null ? defaultValue : formatValue(row[key], isBadge)}
                                                     </PopupBoxTrigger>
                                                     {
-                                                        row[key] !== undefined && row[key] !== null && (
+                                                        row[key] != null && (
                                                             <PopupBoxContent
                                                                 align='start'
                                                                 sideOffset={-34}
                                                                 alignOffset={-16}
                                                                 className='flex-wrap max-w-xs whitespace-pre-line break-all'
                                                             >
-                                                                {formatValue(row[key])}
+                                                                {formatValue(row[key], isBadge)}
                                                             </PopupBoxContent>
                                                         )
                                                     }
@@ -1212,11 +1236,24 @@ function TablePagination<Row>(
  * Format value to React note element.
  * 
  * @param value - Value.
+ * @param isBadge - Whether show to badge element.
  * @returns - React note element.
  */
-function formatValue(value: any): React.ReactNode {
+function formatValue(value: any, isBadge: boolean = false): string | ReactElement {
 
     // Format.
+    if (isBadge) {
+        const arrayAvalue = (
+            Array.isArray(value)
+            ? value
+            : [value]
+        )
+        return (
+            <TextBadges
+                contents={arrayAvalue.map(i => formatValue(i))}
+            />
+        )
+    }
     if (isValidElement(value)) {
         return value
     }
@@ -1225,17 +1262,6 @@ function formatValue(value: any): React.ReactNode {
     }
     if (value == null) {
         return ''
-    }
-    if (Array.isArray(value)) {
-        return (
-            <TextBadges
-                contents={value.map(i => (
-                    isValidElement(i)
-                    ? i
-                    : String(i)
-                ))}
-            />
-        )
     }
     if (typeof value === 'object') {
         return JSON.stringify(value)
