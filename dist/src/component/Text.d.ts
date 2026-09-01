@@ -1,5 +1,4 @@
 import { ReactNode, ComponentProps } from 'react';
-import { default as ReactMarkdown } from 'react-markdown';
 /**
  * Text component of with icon.
  *
@@ -17,6 +16,8 @@ export declare function IconText({ icon, text, url, hideMobileIcon, hideMobileTe
     hideMobileText?: boolean;
 } & ComponentProps<'div'>): import("react/jsx-runtime").JSX.Element;
 /**
- * Text component of support Markdown.
+ * Text component of supporting Markdown.
  */
-export declare function MarkdownText({ ...args }: ComponentProps<typeof ReactMarkdown>): import("react/jsx-runtime").JSX.Element;
+export declare function MarkdownText({ className, children, ...args }: {
+    children?: string | null;
+} & ComponentProps<'article'>): import("react/jsx-runtime").JSX.Element;

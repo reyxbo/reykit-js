@@ -77,23 +77,32 @@ export function IconText(
 }
 
 /**
- * Text component of support Markdown.
+ * Text component of supporting Markdown.
  */
-export function MarkdownText({ ...args }: ComponentProps<typeof ReactMarkdown>) {
+export function MarkdownText(
+    {
+        className,
+        children,
+        ...args
+    }: {
+        children?: string | null
+    } & ComponentProps<'article'>
+) {
     return (
-        <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            components={{
-                pre: ({ children, ...props }) => (
-                    <pre
-                        {...props}
-                        className='whitespace-pre-wrap [overflow-wrap:anywhere] max-w-full'
-                    >
-                        {children}
-                    </pre>
-                ),
-            }}
-            {...args}
-        />
+        <article className={cn('markdown-body', className)} {...args} >
+            <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                    input: ({ ...props }) => (
+                        <input
+                            {...props}
+                            disabled
+                        />
+                    ),
+                }}
+            >
+                {children}
+            </ReactMarkdown>
+        </article>
     )
 }
