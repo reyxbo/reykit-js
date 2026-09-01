@@ -13,6 +13,7 @@ Menu accent: Bold.
 @import "@fontsource-variable/inter";
 @import 'github-markdown-css/github-markdown.css';
 
+/* Tailwind CSS */
 :root {
     --background: oklch(1 0 0);
     --foreground: oklch(0.141 0.005 285.823);
@@ -47,7 +48,6 @@ Menu accent: Bold.
     --sidebar-border: oklch(0.92 0.004 286.32);
     --sidebar-ring: oklch(0.705 0.015 286.067);
 }
-
 .dark {
     --background: oklch(0.141 0.005 285.823);
     --foreground: oklch(0.985 0 0);
@@ -81,7 +81,6 @@ Menu accent: Bold.
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.552 0.016 285.938);
 }
-
 @theme inline {
     --font-sans: 'Inter Variable', sans-serif;
     --color-sidebar-ring: var(--sidebar-ring);
@@ -123,7 +122,6 @@ Menu accent: Bold.
     --radius-3xl: calc(var(--radius) + 12px);
     --radius-4xl: calc(var(--radius) + 16px);
 }
-
 @layer base {
     * {
         @apply border-border outline-ring/50;
@@ -134,4 +132,12 @@ Menu accent: Bold.
     html {
         @apply font-sans;
     }
+}
+
+/* GitHub task list */
+.markdown-body ul {
+    list-style: disc;
+}
+.markdown-body ol {
+    list-style: decimal;
 }
