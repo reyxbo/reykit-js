@@ -411,4 +411,4 @@ Main runtime dependencies:
 
 ## Keywords
 
-`rey` · `reyxbo` · `kit` · `component` · `ui` · `style` · `react` · `tailwind` · `shadcn` · `captcha` · `image` · `net` · `random` · `regex` · `text` · `time` · `window`
+`rey` · `reyxbo` · `kit` · `component` · `ui` · `style` · `react` · `tailwindcss` · `shadcn` · `captcha` · `image` · `net` · `random` · `regex` · `text` · `time` · `window`

@@ -407,4 +407,4 @@ reykit 按功能划分为多个模块，各模块负责不同的 UI、组件及�
 
 ## 关键词
 
-`rey` · `reyxbo` · `kit` · `component` · `ui` · `style` · `react` · `tailwind` · `shadcn` · `captcha` · `image` · `net` · `random` · `regex` · `text` · `time` · `window`
+`rey` · `reyxbo` · `kit` · `component` · `ui` · `style` · `react` · `tailwindcss` · `shadcn` · `captcha` · `image` · `net` · `random` · `regex` · `text` · `time` · `window`

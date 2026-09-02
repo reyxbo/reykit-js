@@ -1,6 +1,6 @@
 {
     "name": "reykit",
-    "version": "1.0.249",
+    "version": "1.0.250",
     "description": "General-purpose JavaScript utility method package.",
     "author": "reyxbo",
     "keywords": [
@@ -11,7 +11,7 @@
         "ui",
         "style",
         "react",
-        "tailwind",
+        "tailwindcss",
         "shadcn",
         "captcha",
         "image",
