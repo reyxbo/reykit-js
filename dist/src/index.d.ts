@@ -3,7 +3,7 @@ import { captcha, base, data, image, net, rand, re, react, text, time, twc, wind
  * @Time    : 2026-03-11
  * @Author  : Rey
  * @Contact : reyxbo@163.com
- * @Explain : Main index file.
+ * @Explain : General-purpose JavaScript utility method package.
  */
 import * as component from './component';
 import * as ui from './component/ui';

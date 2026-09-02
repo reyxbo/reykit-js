@@ -1,3 +1,9 @@
+/**
+ * @Time    : 2026-09-02
+ * @Author  : Rey
+ * @Contact : reyxbo@163.com
+ * @Explain : Library utilities.
+ */
 import * as captcha from './captcha';
 import * as base from './base';
 import * as data from './data';

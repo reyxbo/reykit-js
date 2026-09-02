@@ -2,7 +2,7 @@
  * @Time    : 2026-06-10
  * @Author  : Rey
  * @Contact : reyxbo@163.com
- * @Explain : Time methods.
+ * @Explain : Time processing module.
  */
 /**
  * Return local date time string.

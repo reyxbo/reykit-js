@@ -402,8 +402,8 @@ reykit 按功能划分为多个模块，各模块负责不同的 UI、组件及�
 | 模块类型       | `ES Module`  |
 | 作者         | `reyxbo`     |
 | 许可证        | `MIT`        |
-| Homepage   | `reyxbo.com` |
-| Repository | `reykit-js`  |
+| Homepage   | [REYXBO](https://www.reyxbo.com/release/javascript/reykit) |
+| Repository | [reykit-js](https://github.com/reyxbo/reykit-js.git)       |
 
 ## 关键词
 

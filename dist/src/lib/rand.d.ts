@@ -2,7 +2,7 @@
  * @Time    : 2026-08-05
  * @Author  : Rey
  * @Contact : reyxbo@163.com
- * @Explain : Random methods.
+ * @Explain : Random value module.
  */
 /**
  * Generate random characters.

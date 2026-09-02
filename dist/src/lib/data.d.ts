@@ -2,7 +2,7 @@
  * @Time    : 2026-03-17
  * @Author  : Rey
  * @Contact : reyxbo@163.com
- * @Explain : Data methods.
+ * @Explain : Data processing module.
  */
 export declare function range(stop: number): Generator<number>;
 export declare function range(start: number, stop: number, step?: number): Generator<number>;

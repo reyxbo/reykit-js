@@ -2,7 +2,7 @@
  * @Time    : 2026-08-05
  * @Author  : Rey
  * @Contact : reyxbo@163.com
- * @Explain : Text methods.
+ * @Explain : Text processing module.
  */
 export declare const whitespace = " \t\n\r\v\f";
 export declare const asciiLowercase = "abcdefghijklmnopqrstuvwxyz";

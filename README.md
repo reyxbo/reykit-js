@@ -406,8 +406,8 @@ Main runtime dependencies:
 | Module type | `ES Module`  |
 | Author      | `reyxbo`     |
 | License     | `MIT`        |
-| Homepage    | `reyxbo.com` |
-| Repository  | `reykit-js`  |
+| Homepage   | [REYXBO](https://www.reyxbo.com/release/javascript/reykit) |
+| Repository | [reykit-js](https://github.com/reyxbo/reykit-js.git)       |
 
 ## Keywords
 
