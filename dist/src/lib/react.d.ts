@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, DependencyList } from 'react';
 /**
  * Render react note.
  * Note: `react` and `react-dom` packages version must be `19.2.4`.
@@ -59,9 +59,10 @@ export declare function useIsMobile(): boolean;
  */
 export declare function useValueByMobile<Value, MobileValue>(mobileValue: MobileValue, value: Value): Value | MobileValue;
 /**
- * Execute once after rendering.
+ * Execute after rendering or effecting.
  *
  * @param func - Execute function.
+ * @param deps - Effect dependency list.
  * @param args - Execute arguments.
  */
-export declare function useExec<T extends any>(func: (...args: T[]) => any | Promise<any>, ...args: T[]): void;
+export declare function useExec<T extends any[]>(func: (...args: T) => any | Promise<any>, deps?: DependencyList, args?: T): void;

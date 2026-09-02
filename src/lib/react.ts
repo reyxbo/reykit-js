@@ -5,7 +5,7 @@
  * @Explain : React methods.
  */
 
-import { ReactNode, useState, useEffect, isValidElement } from 'react'
+import { ReactNode, useState, useEffect, DependencyList, isValidElement } from 'react'
 import { createRoot, Root } from 'react-dom/client'
 
 const MOBILE_BREAKPOINT = 768
@@ -186,21 +186,21 @@ export function useValueByMobile<Value, MobileValue>(
 }
 
 /**
- * Execute once after rendering.
+ * Execute after rendering or effecting.
  * 
  * @param func - Execute function.
+ * @param deps - Effect dependency list.
  * @param args - Execute arguments.
  */
-export function useExec<T extends any>(
-    func: (...args: T[]) => any | Promise<any>,
-    ...args: T[]
+export function useExec<T extends any[]>(
+    func: (...args: T) => any | Promise<any>,
+    deps: DependencyList = [],
+    args: T = [] as unknown as T
 ) {
 
     // Execute.
     useEffect(
-        () => {
-            func(...args)
-        },
-        []
+        () => {func(...args)},
+        deps
     )
 }

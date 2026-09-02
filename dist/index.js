@@ -27554,12 +27554,12 @@ function U0() {
 function C0(a, i) {
   return U0() ? a : i;
 }
-function lD(a, ...i) {
+function lD(a, i = [], u = []) {
   j0(
     () => {
-      a(...i);
+      a(...u);
     },
-    []
+    i
   );
 }
 const M6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
