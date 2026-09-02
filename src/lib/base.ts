@@ -2,7 +2,7 @@
  * @Time    : 2026-03-11
  * @Author  : Rey
  * @Contact : reyxbo@163.com
- * @Explain : Base methods.
+ * @Explain : Base methods module.
  */
 
 export type Key<T> = keyof T

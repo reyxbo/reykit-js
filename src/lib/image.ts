@@ -2,7 +2,7 @@
  * @Time    : 2026-06-01
  * @Author  : Rey
  * @Contact : reyxbo@163.com
- * @Explain : Image methods.
+ * @Explain : Image processing module.
  */
 
 import QRCode from 'qrcode'

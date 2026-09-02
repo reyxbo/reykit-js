@@ -2,7 +2,7 @@
  * @Time    : 2026-03-11
  * @Author  : Rey
  * @Contact : reyxbo@163.com
- * @Explain : Window methods.
+ * @Explain : Browser utility module.
  */
 
 import { Key, Value, KeyByValue } from '../lib/base'

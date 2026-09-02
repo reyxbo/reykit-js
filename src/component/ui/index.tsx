@@ -1,3 +1,10 @@
+/**
+ * @Time    : 2026-09-02
+ * @Author  : Rey
+ * @Contact : reyxbo@163.com
+ * @Explain : Low-level UI component module.
+ */
+
 import { Link } from 'react-router-dom'
 import { PreviewCard as PreviewCardPrimitive } from '@base-ui/react/preview-card'
 

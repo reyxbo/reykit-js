@@ -2,7 +2,7 @@
  * @Time    : 2026-03-11
  * @Author  : Rey
  * @Contact : reyxbo@163.com
- * @Explain : Regular expression methods.
+ * @Explain : Regular expression module.
  */
 
 export const PATTERN_IP = /^((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$/

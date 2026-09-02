@@ -1,16 +1,26 @@
 {
     "name": "reykit",
-    "version": "1.0.247",
-    "description": "Kit method set.",
+    "version": "1.0.248",
+    "description": "General-purpose JavaScript utility method package.",
     "author": "reyxbo",
     "keywords": [
         "rey",
         "reyxbo",
         "kit",
-        "tool",
+        "component",
+        "ui",
+        "style",
         "react",
         "tailwind",
-        "shadcn"
+        "shadcn",
+        "captcha",
+        "image",
+        "net",
+        "random",
+        "regex",
+        "text",
+        "time",
+        "window"
     ],
     "repository": {
         "type": "git",
