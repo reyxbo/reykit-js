@@ -50291,6 +50291,8 @@ function Ak({
       style: {
         "--bgColor-default": "transparent",
         "--fgColor-default": "var(--foreground)",
+        "--bgColor-muted": "var(--muted)",
+        "--fgColor-muted": "var(--muted-foreground)",
         color: "inherit",
         ...a.style
       },
