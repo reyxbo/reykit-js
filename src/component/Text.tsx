@@ -81,15 +81,22 @@ export function IconText(
  */
 export function MarkdownText(
     {
-        className,
-        children,
         ...args
     }: {
         children?: string | null
-    } & ComponentProps<'article'>
+    } & Omit<ComponentProps<'article'>, 'children'>
 ) {
     return (
-        <article className={cn('markdown-body', className)} {...args} >
+        <article
+            {...args}
+            className={cn('markdown-body', args.className)}
+            style={{
+                '--bgColor-default': 'transparent',
+                '--fgColor-default': 'var(--foreground)',
+                color: 'inherit',
+                ...args.style,
+            } as React.CSSProperties}
+        >
             <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{
@@ -99,9 +106,15 @@ export function MarkdownText(
                             disabled
                         />
                     ),
+                    ul: ({ ...props }) => (
+                        <ul {...props} style={{ listStyleType: 'disc', ...props.style }} />
+                    ),
+                    ol: ({ ...props }) => (
+                        <ol {...props} style={{ listStyleType: 'decimal', ...props.style }} />
+                    )
                 }}
             >
-                {children}
+                {args.children}
             </ReactMarkdown>
         </article>
     )

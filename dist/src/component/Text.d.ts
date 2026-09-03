@@ -18,6 +18,6 @@ export declare function IconText({ icon, text, url, hideMobileIcon, hideMobileTe
 /**
  * Text component of supporting Markdown.
  */
-export declare function MarkdownText({ className, children, ...args }: {
+export declare function MarkdownText({ ...args }: {
     children?: string | null;
-} & ComponentProps<'article'>): import("react/jsx-runtime").JSX.Element;
+} & Omit<ComponentProps<'article'>, 'children'>): import("react/jsx-runtime").JSX.Element;
