@@ -1,8 +1,10 @@
 import { ReactNode } from 'react';
+export type Language = 'en' | 'zh';
 export type CoverContextParams = {
     isCovering: boolean;
     setIsCovering: (value: boolean) => void;
 };
+export declare const useDefaultLanguage: () => Language, setDefaultLanguage: (newValue: Language) => void;
 /**
  * Create cover component and hook.
  *

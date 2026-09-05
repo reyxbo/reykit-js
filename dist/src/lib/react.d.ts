@@ -41,17 +41,17 @@ export declare function useCount(start?: number, step?: number, stop?: number, l
  */
 export declare function useIndex(array: any[], loop?: boolean): [number, () => void];
 /**
- * Force update render.
+ * Hook of force update render.
  */
 export declare function useRender(): () => void;
 /**
- * Whether is mobile client.
+ * Hook of whether is mobile client.
  *
  * @returns Judgement.
  */
 export declare function useIsMobile(): boolean;
 /**
- * Get value by client type.
+ * Hook of get value by client type.
  *
  * @param mobileValue - Value of mobile client.
  * @param value - Value of non mobile client.
@@ -59,10 +59,17 @@ export declare function useIsMobile(): boolean;
  */
 export declare function useValueByMobile<Value, MobileValue>(mobileValue: MobileValue, value: Value): Value | MobileValue;
 /**
- * Execute after rendering or effecting.
+ * Hook of execute after rendering or effecting.
  *
  * @param func - Execute function.
  * @param deps - Effect dependency list.
  * @param args - Execute arguments.
  */
 export declare function useExec<T extends any[]>(func: (...args: T) => any | Promise<any>, deps?: DependencyList, args?: T): void;
+/**
+ * Get state value that can be updated externally.
+ *
+ * @param initialValue - Initial state value.
+ * @returns Get state value hook function and set state value general function.
+ */
+export declare function createExternalState<State>(initialValue: State): [() => State, (newValue: State) => void];

@@ -5,8 +5,11 @@
  * @Explain : React utility module.
  */
 
-import { ReactNode, useState, useEffect, DependencyList, isValidElement } from 'react'
+import { ReactNode, useState, useEffect, useSyncExternalStore, DependencyList, isValidElement } from 'react'
 import { createRoot, Root } from 'react-dom/client'
+
+type Listener = () => void
+type Listeners = Set<Listener>
 
 const MOBILE_BREAKPOINT = 768
 
@@ -130,7 +133,7 @@ export function useIndex(
 }
 
 /**
- * Force update render.
+ * Hook of force update render.
  */
 export function useRender() {
 
@@ -141,7 +144,7 @@ export function useRender() {
 }
 
 /**
- * Whether is mobile client.
+ * Hook of whether is mobile client.
  * 
  * @returns Judgement.
  */
@@ -168,7 +171,7 @@ export function useIsMobile() {
 }
 
 /**
- * Get value by client type.
+ * Hook of get value by client type.
  * 
  * @param mobileValue - Value of mobile client.
  * @param value - Value of non mobile client.
@@ -186,7 +189,7 @@ export function useValueByMobile<Value, MobileValue>(
 }
 
 /**
- * Execute after rendering or effecting.
+ * Hook of execute after rendering or effecting.
  * 
  * @param func - Execute function.
  * @param deps - Effect dependency list.
@@ -203,4 +206,36 @@ export function useExec<T extends any[]>(
         () => {func(...args)},
         deps
     )
+}
+
+/**
+ * Get state value that can be updated externally.
+ * 
+ * @param initialValue - Initial state value.
+ * @returns Get state value hook function and set state value general function.
+ */
+export function createExternalState<State>(
+    initialValue: State
+): [() => State, (newValue: State) => void] {
+
+    // Create.
+    let value = initialValue
+    const listeners: Listeners = new Set()
+    const useExternalState = () => {
+        const state = useSyncExternalStore(
+            (onStoreChange) => {
+                listeners.add(onStoreChange)
+                return () => listeners.delete(onStoreChange)
+            },
+            () => value
+        )
+
+        return state
+    }
+    const setExternalState = (newValue: State) => {
+        value = newValue
+        listeners.forEach(listener => listener())
+    }
+
+    return [useExternalState, setExternalState]
 }

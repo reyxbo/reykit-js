@@ -9,6 +9,7 @@ import { ReactNode, useState, isValidElement, useEffect, ReactElement } from 're
 
 import * as ui from './ui'
 import { TextBadges } from './Badge'
+import { useDefaultLanguage } from './Base'
 import { sort, rangeArr, countArr } from '../lib/data'
 import { useValueByMobile } from '../lib/react'
 import { cn } from '../lib/twc'
@@ -108,7 +109,7 @@ export function Table<Row extends Record<string, any>>(
         selectRowsOption,
         pageSize = 20,
         mobilePageSize = 10,
-        language = 'en',
+        language,
         defaultFieldOption,
     }: {
         data: Row[],
@@ -157,6 +158,7 @@ export function Table<Row extends Record<string, any>>(
     ))
     const pageData = filteredData.slice((page - 1) * pageSizeState, page * pageSizeState) as Row[]
     const [selectRows, setSelectRows] = useState<Row[] | undefined>(selectRowsOption && [])
+    language = language || useDefaultLanguage()
 
     // Handle.
     useEffect(() => {
@@ -910,38 +912,53 @@ function TableMain<Row extends Record<string, any>>(
                                     )
                                 }
                                 {
-                                    fieldOption.map(({ key, isBadge, isHide, defaultValue }, index) => (
-                                        !isHide && (
+                                    fieldOption.map(({ key, isBadge, isHide, defaultValue }, index) => {
+                                        const value = row[key]
+                                        return !isHide && (
                                             <ui.TableCell key={index}>
                                                 <PopupBox>
                                                     <PopupBoxTrigger
                                                         delay={1500}
+                                                        closeDelay={1000}
                                                         nativeButton={false}
                                                         render={
-                                                            <div className={cn(
-                                                                'flex justify-start content-center items-center max-w-xs',
-                                                                'truncate break-normal'
-                                                            )}/>
+                                                            <div className='max-w-xs truncate break-normal min-w-0'>
+                                                                {value == null ? defaultValue : formatValue(value, isBadge)}
+                                                            </div>
                                                         }
-                                                    >
-                                                        {row[key] == null ? defaultValue : formatValue(row[key], isBadge)}
-                                                    </PopupBoxTrigger>
+                                                    />
                                                     {
-                                                        row[key] != null && (
+                                                        value != null && (
                                                             <PopupBoxContent
                                                                 align='start'
                                                                 sideOffset={-34}
                                                                 alignOffset={-16}
-                                                                className='flex-wrap max-w-xs whitespace-pre-line break-all'
+                                                                className='w-max min-w-[min(300px,calc(100vw-2rem))] max-w-[calc(100vw-2rem)] sm:max-w-[50vw] p-0 m-0 whitespace-pre-line break-all'
                                                             >
-                                                                {formatValue(row[key], isBadge)}
+                                                                {
+                                                                    (
+                                                                        isBadge
+                                                                        || isValidElement(value)
+                                                                        || value instanceof Date
+                                                                        || value == null
+                                                                        || typeof value !== 'object'
+                                                                        ? <div className='flex-wrap p-2'>{formatValue(value, isBadge)}</div>
+                                                                        : <ui.JsonViewer
+                                                                            data={value}
+                                                                            title={{ 'en': 'Value', 'zh': '值' }[language]}
+                                                                            showLineNumbers={false}
+                                                                            language={language}
+                                                                            className='border-none p-0 m-0'
+                                                                        />
+                                                                    )
+                                                                }
                                                             </PopupBoxContent>
                                                         )
                                                     }
                                                 </PopupBox>
                                             </ui.TableCell>
                                         )
-                                    ))
+                                    })
                                 }
                                 {
                                     rowOption && (

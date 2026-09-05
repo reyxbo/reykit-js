@@ -28,7 +28,7 @@ export function TextBadges(
         <div className={cn('size-full flex gap-0.5 [flex-wrap:inherit]', className)} {...args}>
             {
                 contents.map((content, index) => (
-                    <ui.Badge key={index} variant='outline' className='items-start whitespace-normal break-all'>
+                    <ui.Badge key={index} variant='outline' className='items-start break-all truncate break-normal min-w-0'>
                         {content}
                     </ui.Badge>
                 ))

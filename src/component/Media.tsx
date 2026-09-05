@@ -7,6 +7,7 @@
 
 import { ComponentProps, useState, useEffect, useRef } from 'react'
 
+import { useDefaultLanguage } from './Base'
 import * as ui from './ui'
 import { useValueByMobile } from '../lib/react'
 import { cn } from '../lib/twc'
@@ -120,7 +121,7 @@ export function CarouselMedia(
         width = 2,
         showButton = true,
         showControl = true,
-        language = 'en',
+        language,
         ...args
     }: {
         data: { type: 'image' | 'video', path: string }[],
@@ -154,6 +155,7 @@ export function CarouselMedia(
     const [current, setCurrent] = useState(1)
     const [api, setApi] = useState<ui.CarouselApi>()
     const wheelLock = useRef(false)
+    language = language || useDefaultLanguage()
     const CountText = (
         <div className='flex-1 text-sm md:text-base text-muted-foreground flex absolute max-md:-top-8 md:-bottom-8'>
             {

@@ -166,6 +166,7 @@ import {
     sidebarMenuButtonVariants,
     useSidebar
 }  from './sidebar'
+import { JsonViewer } from './json-viewer'
 import * as icon from './icon'
 
 /**
@@ -478,6 +479,7 @@ export {
     SidebarMenuSubItem,
     SidebarMenuSubButton,
     sidebarMenuButtonVariants,
+    JsonViewer,
     useSidebar,
     usePopupBox
 }

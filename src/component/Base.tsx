@@ -8,9 +8,13 @@
 import { ReactNode, useState, createContext, useContext } from 'react'
 
 import * as ui from './ui'
+import { createExternalState } from '../lib/react'
 import { cn } from '../lib/twc'
 
+export type Language = 'en' | 'zh'
 export type CoverContextParams = { isCovering: boolean, setIsCovering: (value: boolean) => void }
+
+export const [useDefaultLanguage, setDefaultLanguage] = createExternalState<Language>('en')
 
 /**
  * Create cover component and hook.
