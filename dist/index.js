@@ -50240,20 +50240,22 @@ function QI({
   defaultFieldOption: R
 }) {
   const N = M0(C, b), [M, A] = Ia(N), [O, z] = Ia(1), [D, j] = Ia(
-    u && u.length !== 0 ? u : Array.from(
+    (u ?? Array.from(
       new Set(
         a.flatMap((X) => Object.keys(X))
       )
     ).map((X) => ({
       key: X,
-      name: X,
-      ...R || {}
+      name: X
+    }))).map((X) => ({
+      ...R || {},
+      ...X
     }))
   ), [V, _] = Ia(""), [H, q] = Ia({}), k = a.filter((X) => (V === "" || f === void 0 || f.method(V, X)) && Object.entries(X).every(
     ([ee, te]) => !H[ee] || H[ee].length === 0 ? !0 : Array.isArray(te) ? te.some((F) => H[ee]?.includes(F)) : H[ee]?.includes(te)
   )), $ = k.slice((O - 1) * M, O * M), [K, J] = Ia(y && []);
   return T = T || OR(), B0(() => {
-    (!u || u.length === 0) && a.length > 0 && j(
+    u || j(
       Array.from(
         new Set(
           a.flatMap((X) => Object.keys(X))

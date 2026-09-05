@@ -131,16 +131,20 @@ export function Table<Row extends Record<string, any>>(
     const [pageSizeState, setPageSizeState] = useState(pageSizeByMobile)
     const [page, setPage] = useState(1)
     const [fieldOptionState, setFieldOptionState] = useState(
-        fieldOption && fieldOption.length !== 0
-        ? fieldOption
-        : Array.from(
-            new Set(
-                data.flatMap(row => Object.keys(row))
+        (
+            fieldOption ?? (
+                Array.from(
+                    new Set(
+                        data.flatMap(row => Object.keys(row))
+                    )
+                ).map(key => ({
+                    key: key,
+                    name: key,
+                }))
             )
-        ).map(key => ({
-            key: key,
-            name: key,
-            ...(defaultFieldOption || {})
+        ).map(item => ({
+            ...(defaultFieldOption || {}),
+            ...item
         }))
     )
     const [searchValue, setSearchValue] = useState('')
@@ -162,7 +166,7 @@ export function Table<Row extends Record<string, any>>(
 
     // Handle.
     useEffect(() => {
-        if ((!fieldOption || fieldOption.length === 0) && data.length > 0) {
+        if (!fieldOption) {
             setFieldOptionState(
                 Array.from(
                     new Set(
