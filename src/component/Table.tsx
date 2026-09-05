@@ -915,14 +915,14 @@ function TableMain<Row extends Record<string, any>>(
                                     fieldOption.map(({ key, isBadge, isHide, defaultValue }, index) => {
                                         const value = row[key]
                                         return !isHide && (
-                                            <ui.TableCell key={index}>
+                                            <ui.TableCell key={index} className='max-w-xs'>
                                                 <PopupBox>
                                                     <PopupBoxTrigger
                                                         delay={1500}
                                                         closeDelay={1000}
                                                         nativeButton={false}
                                                         render={
-                                                            <div className='max-w-xs truncate break-normal min-w-0'>
+                                                            <div className='truncate break-normal min-w-0'>
                                                                 {value == null ? defaultValue : formatValue(value, isBadge)}
                                                             </div>
                                                         }
@@ -933,7 +933,7 @@ function TableMain<Row extends Record<string, any>>(
                                                                 align='start'
                                                                 sideOffset={-34}
                                                                 alignOffset={-16}
-                                                                className='w-max min-w-[min(300px,calc(100vw-2rem))] max-w-[calc(100vw-2rem)] sm:max-w-[50vw] p-0 m-0 whitespace-pre-line break-all'
+                                                                className='w-max max-w-[100vw] md:max-w-[50vw] p-0 m-0 whitespace-pre-line break-all'
                                                             >
                                                                 {
                                                                     (

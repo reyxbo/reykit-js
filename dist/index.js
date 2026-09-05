@@ -50789,14 +50789,14 @@ function $I({
           ) }),
           u.map(({ key: A, isBadge: O, isHide: z, defaultValue: D }, j) => {
             const V = N[A];
-            return !z && /* @__PURE__ */ v.jsx(fE, { children: /* @__PURE__ */ v.jsxs(b, { children: [
+            return !z && /* @__PURE__ */ v.jsx(fE, { className: "max-w-xs", children: /* @__PURE__ */ v.jsxs(b, { children: [
               /* @__PURE__ */ v.jsx(
                 C,
                 {
                   delay: 1500,
                   closeDelay: 1e3,
                   nativeButton: !1,
-                  render: /* @__PURE__ */ v.jsx("div", { className: "max-w-xs truncate break-normal min-w-0", children: V == null ? D : JC(V, O) })
+                  render: /* @__PURE__ */ v.jsx("div", { className: "truncate break-normal min-w-0", children: V == null ? D : JC(V, O) })
                 }
               ),
               V != null && /* @__PURE__ */ v.jsx(
@@ -50805,7 +50805,7 @@ function $I({
                   align: "start",
                   sideOffset: -34,
                   alignOffset: -16,
-                  className: "w-max min-w-[min(300px,calc(100vw-2rem))] max-w-[calc(100vw-2rem)] sm:max-w-[50vw] p-0 m-0 whitespace-pre-line break-all",
+                  className: "w-max max-w-[100vw] md:max-w-[50vw] p-0 m-0 whitespace-pre-line break-all",
                   children: O || N0(V) || V instanceof Date || V == null || typeof V != "object" ? /* @__PURE__ */ v.jsx("div", { className: "flex-wrap p-2", children: JC(V, O) }) : /* @__PURE__ */ v.jsx(
                     f4,
                     {
