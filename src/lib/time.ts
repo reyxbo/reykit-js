@@ -5,12 +5,16 @@
  * @Explain : Time processing module.
  */
 
+export {
+    datetimeLocal
+}
+
 /**
  * Return local date time string.
  * 
  * @returns Local date time string.
  */
-export function datetimeLocal() {
+function datetimeLocal() {
 
     // Generate.
     const now = new Date()

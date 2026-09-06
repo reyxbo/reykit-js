@@ -7,6 +7,10 @@
 
 import { digits, asciiLetters, punctuation } from './text'
 
+export {
+    randChar
+}
+
 /**
  * Generate random characters.
  * 
@@ -14,7 +18,7 @@ import { digits, asciiLetters, punctuation } from './text'
  * @param style - Character style.
  * @returns Random characters.
  */
-export function randChar(
+function randChar(
     length: number = 32,
     style: 'd' | 'l' | 'p' | 'dl' | 'dp' | 'lp' | 'dlp' = 'dlp'
 ): string {

@@ -8,13 +8,15 @@
 import { ComponentProps, SubmitEvent } from 'react';
 import { useNavigate } from 'react-router-dom'
 
+export { Form }
+
 /**
  * Form component of prevent access link.
  * 
  * @param props.handleFormData - Handle submited form data.
  * @param props.link - Access router link.
  */
-export function Form(
+function Form(
     {
         handleFormData,
         link,

@@ -14,7 +14,20 @@ import { sort, rangeArr, countArr } from '../lib/data'
 import { useValueByMobile } from '../lib/react'
 import { cn } from '../lib/twc'
 
-export type TableFieldOption<Row extends Record<string, any>> = {
+export {
+    type TableFieldOption,
+    type DefaultTableFieldOption,
+    type TableSearchOption,
+    type TableButtonOption,
+    type TableRowOptionItemLink,
+    type TableRowOptionItem,
+    type TableRowOption,
+    type TableSelectRowsOptionItem,
+    type TableSelectRowsOption,
+    Table
+}
+
+type TableFieldOption<Row extends Record<string, any>> = {
     key: string,
     name: string,
     isBadge?: boolean,
@@ -25,7 +38,7 @@ export type TableFieldOption<Row extends Record<string, any>> = {
     sortMethod?: (a: Row, b: Row) => number,
     defaultValue?: any
 }[]
-export type DefaultTableFieldOption = {
+type DefaultTableFieldOption = {
     isBadge?: boolean,
     isHide?: boolean,
     isSort?: boolean,
@@ -33,31 +46,31 @@ export type DefaultTableFieldOption = {
     isGroupSearch?: boolean,
     defaultValue?: any
 }
-export type TableSearchOption<Row extends Record<string, any>> = {
+type TableSearchOption<Row extends Record<string, any>> = {
     method: (value: string, row: Row) => boolean,
     placeholder?: string
 }
-export type TableButtonOption = {
+type TableButtonOption = {
     name: ReactNode,
     method: () => void
 }[]
-export type TableRowOptionItemLink = string
-export type  TableRowOptionItem<Row extends Record<string, any>> = {
+type TableRowOptionItemLink = string
+type  TableRowOptionItem<Row extends Record<string, any>> = {
     name: ReactNode,
     method: ((row: Row) => void) | TableRowOptionItemLink | null
 }
-export type TableRowOption<Row extends Record<string, any>> = {
+type TableRowOption<Row extends Record<string, any>> = {
     options?: TableRowOptionItem<Row>[],
     destructiveOptions?: TableRowOptionItem<Row>[]
 } | ((row: Row) => {
     options?: TableRowOptionItem<Row>[],
     destructiveOptions?: TableRowOptionItem<Row>[]
 })
-export type  TableSelectRowsOptionItem<Row extends Record<string, any>> = {
+type  TableSelectRowsOptionItem<Row extends Record<string, any>> = {
     name: ReactNode,
     method: ((selectRows: Row[]) => void) | null
 }
-export type TableSelectRowsOption<Row extends Record<string, any>> = {
+type TableSelectRowsOption<Row extends Record<string, any>> = {
     options?: TableSelectRowsOptionItem<Row>[],
     destructiveOptions?: TableSelectRowsOptionItem<Row>[]
 } | ((selectRows: Row[]) => {
@@ -98,7 +111,7 @@ export type TableSelectRowsOption<Row extends Record<string, any>> = {
  * @param language - Language type.
  * @param defaultFieldOption - Default field option.
  */
-export function Table<Row extends Record<string, any>>(
+function Table<Row extends Record<string, any>>(
     {
         data,
         setData,
@@ -162,7 +175,7 @@ export function Table<Row extends Record<string, any>>(
     ))
     const pageData = filteredData.slice((page - 1) * pageSizeState, page * pageSizeState) as Row[]
     const [selectRows, setSelectRows] = useState<Row[] | undefined>(selectRowsOption && [])
-    language = language || useDefaultLanguage()
+    language = language ?? useDefaultLanguage()
 
     // Handle.
     useEffect(() => {

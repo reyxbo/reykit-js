@@ -1,11 +1,12 @@
 import { ReactNode, ComponentProps, MouseEvent } from 'react';
+export { CycleButton, ScrollToTopButton };
 /**
  * Button component of cycle display children.
  *
  * @param props.childrens - Children array.
  * @param props.handleCycle - Handle cycle.
  */
-export declare function CycleButton({ childrens, handleCycle, onClick, ...props }: {
+declare function CycleButton({ childrens, handleCycle, onClick, ...props }: {
     childrens: ReactNode[];
     handleCycle: (index: number) => any | Promise<any>;
     data: {
@@ -19,6 +20,6 @@ export declare function CycleButton({ childrens, handleCycle, onClick, ...props 
  *
  * @param buttonColor - Button color, need hexadecimal color value.
  */
-export declare function ScrollToTopButton({ buttonColor, className, style, ...args }: {
+declare function ScrollToTopButton({ buttonColor, className, style, ...args }: {
     buttonColor?: string;
 } & ComponentProps<'div'>): import("react/jsx-runtime").JSX.Element | null;

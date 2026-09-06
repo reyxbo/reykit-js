@@ -11,10 +11,20 @@ import * as ui from './ui'
 import { createExternalState } from '../lib/react'
 import { cn } from '../lib/twc'
 
-export type Language = 'en' | 'zh'
-export type CoverContextParams = { isCovering: boolean, setIsCovering: (value: boolean) => void }
+export {
+    type Language,
+    type CoverContextParams,
+    useDefaultLanguage,
+    setDefaultLanguage,
+    createCover,
+    Loading,
+    useLoading
+}
 
-export const [useDefaultLanguage, setDefaultLanguage] = createExternalState<Language>('en')
+type Language = 'en' | 'zh'
+type CoverContextParams = { isCovering: boolean, setIsCovering: (value: boolean) => void }
+
+const [useDefaultLanguage, setDefaultLanguage] = createExternalState<Language>('en')
 
 /**
  * Create cover component and hook.
@@ -28,7 +38,7 @@ export const [useDefaultLanguage, setDefaultLanguage] = createExternalState<Lang
  *     <button onClick={() => withCover(console, 'test')}>Button</button>
  * </Cover>
  */
-export function createCover(display: ReactNode) {
+function createCover(display: ReactNode) {
 
     // Parameter.
     const CoverContext = createContext<CoverContextParams | null >(null)
@@ -78,7 +88,7 @@ export function createCover(display: ReactNode) {
     return [Cover, useCover] as [typeof Cover, typeof useCover]
 }
 
-export const [Loading, useLoading] = createCover(
+const [Loading, useLoading] = createCover(
     <div className='flex justify-center items-center size-10 rounded-full bg-white shadow-md'>
         <ui.icon.Loader2Icon role='status' aria-label='Loading' className='size-full animate-spin' />
     </div>

@@ -4,12 +4,13 @@
  * @Contact : reyxbo@163.com
  * @Explain : Text processing module.
  */
-export declare const whitespace = " \t\n\r\v\f";
-export declare const asciiLowercase = "abcdefghijklmnopqrstuvwxyz";
-export declare const asciiUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-export declare const asciiLetters: string;
-export declare const digits = "0123456789";
-export declare const hexdigits: string;
-export declare const octdigits = "01234567";
-export declare const punctuation = "!\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
-export declare const printable: string;
+export { whitespace, asciiLowercase, asciiUppercase, asciiLetters, digits, hexdigits, octdigits, punctuation, printable };
+declare const whitespace = " \t\n\r\v\f";
+declare const asciiLowercase = "abcdefghijklmnopqrstuvwxyz";
+declare const asciiUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+declare const asciiLetters: string;
+declare const digits = "0123456789";
+declare const hexdigits: string;
+declare const octdigits = "01234567";
+declare const punctuation = "!\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+declare const printable: string;

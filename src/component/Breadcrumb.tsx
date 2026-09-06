@@ -10,14 +10,16 @@ import { useLocation } from 'react-router-dom'
 
 import * as ui from './ui'
 
-export type BreadcrumbDict = Record<string, { label: string; href?: string }[]>
+export { type BreadcrumbDict, Breadcrumb }
+
+type BreadcrumbDict = Record<string, { label: string; href?: string }[]>
 
 /**
  * Breadcrumb components.
  * 
  * @param props.dict - Breadcrumb data dictionary.
  */
-export function Breadcrumb({ dict } : { dict: BreadcrumbDict }) {
+function Breadcrumb({ dict } : { dict: BreadcrumbDict }) {
 
     // Parameter.
     const { pathname } = useLocation()

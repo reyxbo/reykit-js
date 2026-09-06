@@ -5,6 +5,13 @@
  * @Explain : Image processing module.
  */
 
+export {
+    getQrcode,
+    openQrcode,
+    downloadQrcode,
+    setQrcode
+}
+
 import QRCode from 'qrcode'
 
 import { openFile, downloadFile } from '../lib/window'
@@ -17,7 +24,7 @@ import { openFile, downloadFile } from '../lib/window'
  * @param options.margin - Number of margin blank square.
  * @returns QR code URL.
  */
-export async function getQrcode(
+async function getQrcode(
     text: string,
     options?: {
         width?: number,
@@ -43,7 +50,7 @@ export async function getQrcode(
  * @param options.margin - Number of margin blank square.
  * @returns QR code URL.
  */
-export async function openQrcode(
+async function openQrcode(
     text: string,
     options?: {
         width?: number,
@@ -71,7 +78,7 @@ export async function openQrcode(
  * @param options.margin - Number of margin blank square.
  * @returns QR code URL.
  */
-export async function downloadQrcode(
+async function downloadQrcode(
     text: string,
     options?: {
         fileName?: string,
@@ -101,7 +108,7 @@ export async function downloadQrcode(
  * @param options.margin - Number of margin blank square.
  * @returns QR code URL.
  */
-export async function setQrcode(
+async function setQrcode(
     text: string,
     element: HTMLElement  | string,
     options?: {

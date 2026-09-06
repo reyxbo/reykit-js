@@ -12,13 +12,15 @@ import * as ui from './ui'
 import { useValueByMobile } from '../lib/react'
 import { cn } from '../lib/twc'
 
+export { PopupImage, PopupVideo, CarouselMedia, Video }
+
 /**
  * Media component of pop up show image.
  * 
  * @param path - Image path.
  * @param loading - Loading scheme.
  */
-export function PopupImage(
+function PopupImage(
     {
         path,
         loading,
@@ -52,7 +54,7 @@ export function PopupImage(
                 <img
                     src={path}
                     onClick={() => setOpen(false)}
-                    className='block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain'
+                    className='max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain'
                 />
             </ui.DialogContent>
         </ui.Dialog>
@@ -65,7 +67,7 @@ export function PopupImage(
  * @param path - Video path.
  * @param preload - Preload scheme.
  */
-export function PopupVideo(
+function PopupVideo(
     {
         path,
         preload,
@@ -82,6 +84,7 @@ export function PopupVideo(
                 render={
                     <video
                         src={path}
+                        controls={false}
                         preload={preload}
                         playsInline
                     />
@@ -89,14 +92,12 @@ export function PopupVideo(
                 {...args}
                 nativeButton={false}
             />
-            <ui.DialogContent className='!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none cursor-pointer'>
-                <video
-                    src={path}
-                    controls
-                    muted
-                    autoPlay
-                    playsInline
-                    className='block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain'
+            <ui.DialogContent className='!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none'>
+                <Video
+                    path={path}
+                    fit='contain'
+                    auto={true}
+                    className='max-w-[90vw] max-h-[90vh] w-auto h-auto'
                 />
             </ui.DialogContent>
         </ui.Dialog>
@@ -114,7 +115,7 @@ export function PopupVideo(
  * @param showControl - Whether show controls.
  * @param language - Language type.
  */
-export function CarouselMedia(
+function CarouselMedia(
     {
         data,
         orientation = 'auto',
@@ -155,7 +156,7 @@ export function CarouselMedia(
     const [current, setCurrent] = useState(1)
     const [api, setApi] = useState<ui.CarouselApi>()
     const wheelLock = useRef(false)
-    language = language || useDefaultLanguage()
+    language = language ?? useDefaultLanguage()
     const CountText = (
         <div className='flex-1 text-sm md:text-base text-muted-foreground flex absolute max-md:-top-8 md:-bottom-8'>
             {
@@ -254,5 +255,40 @@ export function CarouselMedia(
                 {showControl && orientation == 'horizontal' && CountText}
             </div>
         </div>
+    )
+}
+
+/**
+ * Video player component.
+ * 
+ * @param path - Video path.
+ */
+function Video(
+    {
+        path,
+        fit = 'cover',
+        language,
+        ...args
+    }: {
+        path: string,
+        fit?: ComponentProps<typeof ui.VideoViewport>['fit']
+        language?: 'en' | 'zh'
+    } & ui.VideoRootProps
+) {
+
+    // Parameter.
+    language = language ?? useDefaultLanguage()
+
+    return (
+        <ui.VideoRoot {...args} className={cn('overflow-hidden rounded-xl', args.className)}>
+        <ui.VideoViewport src={path} fit={fit} />
+        <ui.VideoControls className='flex items-center justify-between gap-4'>
+            <ui.VideoPlayTrigger language={language} />
+            <ui.VideoSoundControl language={language} />
+            <ui.VideoProgressBar />
+            <ui.VideoPipTrigger language={language} />
+            <ui.VideoFullscreenTrigger language={language} />
+        </ui.VideoControls>
+        </ui.VideoRoot>
     )
 }

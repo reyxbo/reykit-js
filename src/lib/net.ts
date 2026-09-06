@@ -5,6 +5,10 @@
  * @Explain : Network module.
  */
 
+export {
+    request
+}
+
 /**
  * Send request.
  * 
@@ -24,7 +28,7 @@
  *     Note: `Error.message` is response body string, `Error.cause` is `Response` instance.
  *     - `undefined` : False.
  */
-export async function request(
+async function request(
     url: string,
     option?: {
         params?: Record<string, string | number | boolean>,

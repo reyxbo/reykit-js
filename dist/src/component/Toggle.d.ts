@@ -1,4 +1,5 @@
 import { ReactNode, ComponentProps } from 'react';
+export { IconToggle };
 /**
  * Toggle component of with icon.
  *
@@ -11,7 +12,7 @@ import { ReactNode, ComponentProps } from 'react';
  * @param props.onChangeOpen - Open callback function.
  * @param props.defaultOpen - Default open state.
  */
-export declare function IconToggle({ openIcon, closeIcon, tooltip, tooltipSide, rotate, open, onChangeOpen, defaultOpen, onClick, className, ...props }: {
+declare function IconToggle({ openIcon, closeIcon, tooltip, tooltipSide, rotate, open, onChangeOpen, defaultOpen, onClick, className, ...props }: {
     openIcon: ReactNode;
     closeIcon: ReactNode;
     tooltip?: string;

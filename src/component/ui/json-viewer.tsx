@@ -426,7 +426,7 @@ function JsonViewer({
     title,
     language
 }: JsonViewerProps) {
-    language = language || useDefaultLanguage()
+    language = language ?? useDefaultLanguage()
     const isMobile = useIsMobile()
     const [expandedPaths, setExpandedPaths] = React.useState<Set<string>>(() => {
         if (typeof defaultExpanded === 'number') {

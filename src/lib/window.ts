@@ -7,10 +7,16 @@
 
 import { Key, Value, KeyByValue } from '../lib/base'
 
+export {
+    Storager,
+    openFile,
+    downloadFile
+}
+
 /**
  * Manage local storage data.
  */
-export class Storager<Data extends Record<string, any>> {
+class Storager<Data extends Record<string, any>> {
 
     /**
      * Build instance.
@@ -151,7 +157,7 @@ export class Storager<Data extends Record<string, any>> {
  * 
  * @param obj - Data or URL of with data.
  */
-export function openFile(obj: Blob | string) {
+function openFile(obj: Blob | string) {
 
     // Download.
     const url = obj instanceof Blob ? window.URL.createObjectURL(obj) : obj
@@ -174,7 +180,7 @@ export function openFile(obj: Blob | string) {
  * @param obj - Data or URL of with data.
  * @param fileName - File name.
  */
-export function downloadFile(obj: Blob | string, fileName: string) {
+function downloadFile(obj: Blob | string, fileName: string) {
 
     // Download.
     const url = obj instanceof Blob ? window.URL.createObjectURL(obj) : obj

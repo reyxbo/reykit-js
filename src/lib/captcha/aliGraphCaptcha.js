@@ -1,4 +1,4 @@
-"v1.0.0 Captcha4 Inc.";
+// "v1.0.0 Captcha4 Inc.";
 
 (function (window) {
     "use strict";

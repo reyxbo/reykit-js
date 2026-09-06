@@ -12,13 +12,14 @@ import * as ui from './ui'
 import { cn } from '../lib/twc'
 
 export { toast as notice } from 'sonner'
+export { Notice }
 
 /**
  * Top banner notice component.
  * 
  * @param props.children - The node tree of the mounting context.
  */
-export function Notice(
+function Notice(
     {
         children,
         position='top-center',

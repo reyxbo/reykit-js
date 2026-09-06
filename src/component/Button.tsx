@@ -11,13 +11,15 @@ import * as ui from './ui'
 import { useIndex, useValueByMobile, useExec } from '../lib/react'
 import { cn } from '../lib/twc'
 
+export { CycleButton, ScrollToTopButton }
+
 /**
  * Button component of cycle display children.
  * 
  * @param props.childrens - Children array.
  * @param props.handleCycle - Handle cycle.
  */
-export function CycleButton(
+function CycleButton(
     {
         childrens,
         handleCycle,
@@ -57,7 +59,7 @@ export function CycleButton(
  *
  * @param buttonColor - Button color, need hexadecimal color value.
  */
-export function ScrollToTopButton(
+function ScrollToTopButton(
     {
         buttonColor = '#8470FF',
         className,

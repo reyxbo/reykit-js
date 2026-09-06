@@ -4,6 +4,7 @@
  * @Contact : reyxbo@163.com
  * @Explain : Random value module.
  */
+export { randChar };
 /**
  * Generate random characters.
  *
@@ -11,4 +12,4 @@
  * @param style - Character style.
  * @returns Random characters.
  */
-export declare function randChar(length?: number, style?: 'd' | 'l' | 'p' | 'dl' | 'dp' | 'lp' | 'dlp'): string;
+declare function randChar(length?: number, style?: 'd' | 'l' | 'p' | 'dl' | 'dp' | 'lp' | 'dlp'): string;

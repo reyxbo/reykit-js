@@ -1,10 +1,11 @@
 import { ReactNode } from 'react';
-export type Language = 'en' | 'zh';
-export type CoverContextParams = {
+export { type Language, type CoverContextParams, useDefaultLanguage, setDefaultLanguage, createCover, Loading, useLoading };
+type Language = 'en' | 'zh';
+type CoverContextParams = {
     isCovering: boolean;
     setIsCovering: (value: boolean) => void;
 };
-export declare const useDefaultLanguage: () => Language, setDefaultLanguage: (newValue: Language) => void;
+declare const useDefaultLanguage: () => Language, setDefaultLanguage: (newValue: Language) => void;
 /**
  * Create cover component and hook.
  *
@@ -17,14 +18,14 @@ export declare const useDefaultLanguage: () => Language, setDefaultLanguage: (ne
  *     <button onClick={() => withCover(console, 'test')}>Button</button>
  * </Cover>
  */
-export declare function createCover(display: ReactNode): [({ children }: {
+declare function createCover(display: ReactNode): [({ children }: {
     children: ReactNode;
 }) => import("react/jsx-runtime").JSX.Element, () => {
     withCover: <T, Args extends any[]>(fn: (...args: Args) => T | Promise<T>, ...args: Args) => Promise<T>;
     isCovering: boolean;
     setIsCovering: (value: boolean) => void;
 }];
-export declare const Loading: ({ children }: {
+declare const Loading: ({ children }: {
     children: ReactNode;
 }) => import("react/jsx-runtime").JSX.Element, useLoading: () => {
     withCover: <T, Args extends any[]>(fn: (...args: Args) => T | Promise<T>, ...args: Args) => Promise<T>;

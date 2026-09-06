@@ -8,6 +8,21 @@
 import { ReactNode, useState, useEffect, useSyncExternalStore, DependencyList, isValidElement } from 'react'
 import { createRoot, Root } from 'react-dom/client'
 
+export {
+    Listener,
+    Listeners,
+    renderReact,
+    isReactNode,
+    useOpen,
+    useCount,
+    useIndex,
+    useRender,
+    useIsMobile,
+    useValueByMobile,
+    useExec,
+    createExternalState
+}
+
 type Listener = () => void
 type Listeners = Set<Listener>
 
@@ -22,7 +37,7 @@ let root: Root | null = null
  * @param app - React note.
  * @param elementId - Render HTML element ID.
  */
-export function renderReact(app: ReactNode, elementId: string = 'root') {
+function renderReact(app: ReactNode, elementId: string = 'root') {
 
     // Render.
     const element = document.getElementById(elementId)
@@ -39,7 +54,7 @@ export function renderReact(app: ReactNode, elementId: string = 'root') {
  * @param value - Judgement value.
  * @returns Judgement result.
  */
-export function isReactNode(value: unknown): value is ReactNode {
+function isReactNode(value: unknown): value is ReactNode {
 
     // Judge.
     const reuslt = (
@@ -62,7 +77,7 @@ export function isReactNode(value: unknown): value is ReactNode {
  * @param loop - Whether to loop count.
  * @returns Returns a stateful open value, and a function to automatic count it.
  */
-export function useOpen(defaultOpen: boolean = true) {
+function useOpen(defaultOpen: boolean = true) {
 
     // Parameter.
     const [state, setState] = useState(defaultOpen)
@@ -87,7 +102,7 @@ export function useOpen(defaultOpen: boolean = true) {
  * @param loop - Whether to loop count.
  * @returns Returns a stateful count value, and a function to automatic count it.
  */
-export function useCount(
+function useCount(
     start: number = 0,
     step: number = 1,
     stop: number = Infinity,
@@ -120,7 +135,7 @@ export function useCount(
  * @param loop - Whether to loop count.
  * @returns Returns a stateful index value, and a function to automatic count it.
  */
-export function useIndex(
+function useIndex(
     array: any[],
     loop: boolean = true
 ) {
@@ -135,7 +150,7 @@ export function useIndex(
 /**
  * Hook of force update render.
  */
-export function useRender() {
+function useRender() {
 
     // Parameter.
     const [, setRenderCount] = useCount()
@@ -148,7 +163,7 @@ export function useRender() {
  * 
  * @returns Judgement.
  */
-export function useIsMobile() {
+function useIsMobile() {
 
     // Parameter.
     const mq = `(max-width: ${MOBILE_BREAKPOINT - 1}px)`
@@ -177,7 +192,7 @@ export function useIsMobile() {
  * @param value - Value of non mobile client.
  * @returns Value.
  */
-export function useValueByMobile<Value, MobileValue>(
+function useValueByMobile<Value, MobileValue>(
     mobileValue: MobileValue,
     value: Value
 ): Value | MobileValue {
@@ -195,7 +210,7 @@ export function useValueByMobile<Value, MobileValue>(
  * @param deps - Effect dependency list.
  * @param args - Execute arguments.
  */
-export function useExec<T extends any[]>(
+function useExec<T extends any[]>(
     func: (...args: T) => any | Promise<any>,
     deps: DependencyList = [],
     args: T = [] as unknown as T
@@ -214,7 +229,7 @@ export function useExec<T extends any[]>(
  * @param initialValue - Initial state value.
  * @returns Get state value hook function and set state value general function.
  */
-export function createExternalState<State>(
+function createExternalState<State>(
     initialValue: State
 ): [() => State, (newValue: State) => void] {
 

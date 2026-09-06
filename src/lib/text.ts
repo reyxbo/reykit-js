@@ -5,12 +5,24 @@
  * @Explain : Text processing module.
  */
 
-export const whitespace = ' \t\n\r\v\f'
-export const asciiLowercase = 'abcdefghijklmnopqrstuvwxyz'
-export const asciiUppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-export const asciiLetters = asciiLowercase + asciiUppercase
-export const digits = '0123456789'
-export const hexdigits = digits + 'abcdef' + 'ABCDEF'
-export const octdigits = '01234567'
-export const punctuation = `!"#$%&'()*+,-./:;<=>?@[\]^_\`{|}~`
-export const printable = digits + asciiLetters + punctuation + whitespace
+export {
+    whitespace,
+    asciiLowercase,
+    asciiUppercase,
+    asciiLetters,
+    digits,
+    hexdigits,
+    octdigits,
+    punctuation,
+    printable
+}
+
+const whitespace = ' \t\n\r\v\f'
+const asciiLowercase = 'abcdefghijklmnopqrstuvwxyz'
+const asciiUppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const asciiLetters = asciiLowercase + asciiUppercase
+const digits = '0123456789'
+const hexdigits = digits + 'abcdef' + 'ABCDEF'
+const octdigits = '01234567'
+const punctuation = `!"#$%&'()*+,-./:;<=>?@[\]^_\`{|}~`
+const printable = digits + asciiLetters + punctuation + whitespace

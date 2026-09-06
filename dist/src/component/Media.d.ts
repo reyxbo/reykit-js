@@ -1,12 +1,13 @@
 import { ComponentProps } from 'react';
 import * as ui from './ui';
+export { PopupImage, PopupVideo, CarouselMedia, Video };
 /**
  * Media component of pop up show image.
  *
  * @param path - Image path.
  * @param loading - Loading scheme.
  */
-export declare function PopupImage({ path, loading, ...args }: {
+declare function PopupImage({ path, loading, ...args }: {
     path: string;
     loading?: 'eager' | 'lazy';
 } & ComponentProps<typeof ui.DialogTrigger>): import("react/jsx-runtime").JSX.Element;
@@ -16,7 +17,7 @@ export declare function PopupImage({ path, loading, ...args }: {
  * @param path - Video path.
  * @param preload - Preload scheme.
  */
-export declare function PopupVideo({ path, preload, ...args }: {
+declare function PopupVideo({ path, preload, ...args }: {
     path: string;
     preload?: 'metadata' | 'aotu' | 'none';
 } & ComponentProps<typeof ui.DialogTrigger>): import("react/jsx-runtime").JSX.Element;
@@ -31,7 +32,7 @@ export declare function PopupVideo({ path, preload, ...args }: {
  * @param showControl - Whether show controls.
  * @param language - Language type.
  */
-export declare function CarouselMedia({ data, orientation, width, showButton, showControl, language, ...args }: {
+declare function CarouselMedia({ data, orientation, width, showButton, showControl, language, ...args }: {
     data: {
         type: 'image' | 'video';
         path: string;
@@ -42,3 +43,13 @@ export declare function CarouselMedia({ data, orientation, width, showButton, sh
     showControl?: boolean;
     language?: 'en' | 'zh';
 } & ComponentProps<'div'>): import("react/jsx-runtime").JSX.Element;
+/**
+ * Video player component.
+ *
+ * @param path - Video path.
+ */
+declare function Video({ path, fit, language, ...args }: {
+    path: string;
+    fit?: ComponentProps<typeof ui.VideoViewport>['fit'];
+    language?: 'en' | 'zh';
+} & ui.VideoRootProps): import("react/jsx-runtime").JSX.Element;

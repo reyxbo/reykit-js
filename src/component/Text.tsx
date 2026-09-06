@@ -13,6 +13,8 @@ import * as ui from './ui'
 import { useIsMobile } from '../lib/react'
 import { cn } from '../lib/twc'
 
+export { IconText, MarkdownText }
+
 /**
  * Text component of with icon.
  * 
@@ -22,7 +24,7 @@ import { cn } from '../lib/twc'
  * @param mobileHideIcon - Whether hide icon content on mobile devices.
  * @param mobileHideText - Whether hide text content on mobile devices.
  */
-export function IconText(
+function IconText(
     {
         icon,
         text,
@@ -79,7 +81,7 @@ export function IconText(
 /**
  * Text component of supporting Markdown.
  */
-export function MarkdownText(
+function MarkdownText(
     {
         ...args
     }: {

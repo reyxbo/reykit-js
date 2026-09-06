@@ -1,8 +1,9 @@
 import { Key, Value, KeyByValue } from '../lib/base';
+export { Storager, openFile, downloadFile };
 /**
  * Manage local storage data.
  */
-export declare class Storager<Data extends Record<string, any>> {
+declare class Storager<Data extends Record<string, any>> {
     name: string;
     /**
      * Build instance.
@@ -70,11 +71,11 @@ export declare class Storager<Data extends Record<string, any>> {
  *
  * @param obj - Data or URL of with data.
  */
-export declare function openFile(obj: Blob | string): void;
+declare function openFile(obj: Blob | string): void;
 /**
  * Browser download file from blob data.
  *
  * @param obj - Data or URL of with data.
  * @param fileName - File name.
  */
-export declare function downloadFile(obj: Blob | string, fileName: string): void;
+declare function downloadFile(obj: Blob | string, fileName: string): void;

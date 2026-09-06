@@ -11,6 +11,8 @@ import * as ui from './ui'
 import { useOpen } from '../lib/react'
 import { cn } from '../lib/twc'
 
+export { IconToggle }
+
 /**
  * Toggle component of with icon.
  * 
@@ -23,7 +25,7 @@ import { cn } from '../lib/twc'
  * @param props.onChangeOpen - Open callback function.
  * @param props.defaultOpen - Default open state.
  */
-export function IconToggle(
+function IconToggle(
     {
         openIcon,
         closeIcon,

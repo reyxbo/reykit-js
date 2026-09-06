@@ -4,9 +4,10 @@
  * @Contact : reyxbo@163.com
  * @Explain : Time processing module.
  */
+export { datetimeLocal };
 /**
  * Return local date time string.
  *
  * @returns Local date time string.
  */
-export declare function datetimeLocal(): string;
+declare function datetimeLocal(): string;

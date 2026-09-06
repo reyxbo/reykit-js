@@ -167,6 +167,26 @@ import {
     useSidebar
 }  from './sidebar'
 import { JsonViewer } from './json-viewer'
+import {
+    useVideo,
+    VideoProvider,
+    type VideoRootProps,
+    VideoRoot,
+    type VideoViewportProps,
+    VideoViewport,
+    type VideoControlsProps,
+    VideoControls,
+    type VideoSoundControlProps,
+    VideoSoundControl,
+    type VideoPipTriggerProps,
+    VideoPipTrigger,
+    type VideoPlayTriggerProps,
+    VideoPlayTrigger,
+    type VideoFullscreenTriggerProps,
+    VideoFullscreenTrigger,
+    type VideoProgressBarProps,
+    VideoProgressBar
+} from './video-player'
 import * as icon from './icon'
 
 /**
@@ -480,6 +500,24 @@ export {
     SidebarMenuSubButton,
     sidebarMenuButtonVariants,
     JsonViewer,
+    useVideo,
+    VideoProvider,
+    type VideoRootProps,
+    VideoRoot,
+    type VideoViewportProps,
+    VideoViewport,
+    type VideoControlsProps,
+    VideoControls,
+    type VideoSoundControlProps,
+    VideoSoundControl,
+    type VideoPipTriggerProps,
+    VideoPipTrigger,
+    type VideoPlayTriggerProps,
+    VideoPlayTrigger,
+    type VideoFullscreenTriggerProps,
+    VideoFullscreenTrigger,
+    type VideoProgressBarProps,
+    VideoProgressBar,
     useSidebar,
     usePopupBox
 }

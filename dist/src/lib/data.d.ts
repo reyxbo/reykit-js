@@ -4,10 +4,11 @@
  * @Contact : reyxbo@163.com
  * @Explain : Data processing module.
  */
-export declare function range(stop: number): Generator<number>;
-export declare function range(start: number, stop: number, step?: number): Generator<number>;
-export declare function rangeArr(stop: number): number[];
-export declare function rangeArr(start: number, stop: number, step?: number): number[];
+export { range, rangeArr, toggleArr, compare, sort, countArr };
+declare function range(stop: number): Generator<number>;
+declare function range(start: number, stop: number, step?: number): Generator<number>;
+declare function rangeArr(stop: number): number[];
+declare function rangeArr(start: number, stop: number, step?: number): number[];
 /**
  * Toggle array element value.
  *
@@ -15,7 +16,7 @@ export declare function rangeArr(start: number, stop: number, step?: number): nu
  * @Param value - Element value.
  * @returns Array of toggled element.
  */
-export declare function toggleArr<T>(arr: T[], value: T): T[];
+declare function toggleArr<T>(arr: T[], value: T): T[];
 /**
  * Compare the sizes of two values.
  *
@@ -24,7 +25,7 @@ export declare function toggleArr<T>(arr: T[], value: T): T[];
  * @param order - Sorting type.
  * @returns Sorted result.
  */
-export declare function compare(a: any, b: any, order?: 'asc' | 'desc'): 1 | 0 | -1;
+declare function compare(a: any, b: any, order?: 'asc' | 'desc'): 1 | 0 | -1;
 /**
  * Sorting array.
  *
@@ -33,11 +34,11 @@ export declare function compare(a: any, b: any, order?: 'asc' | 'desc'): 1 | 0 |
  * @param key - Element object index key.
  * @returns Sorted array.
  */
-export declare function sort<T>(arr: T[], order?: 'asc' | 'desc', key?: keyof T): T[];
+declare function sort<T>(arr: T[], order?: 'asc' | 'desc', key?: keyof T): T[];
 /**
  * Count elements of array.
  *
  * @param arr - Array.
  * @returns Count result.
  */
-export declare function countArr<T>(arr: T[]): Map<T, number>;
+declare function countArr<T>(arr: T[]): Map<T, number>;

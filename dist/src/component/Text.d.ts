@@ -1,4 +1,5 @@
 import { ReactNode, ComponentProps } from 'react';
+export { IconText, MarkdownText };
 /**
  * Text component of with icon.
  *
@@ -8,7 +9,7 @@ import { ReactNode, ComponentProps } from 'react';
  * @param mobileHideIcon - Whether hide icon content on mobile devices.
  * @param mobileHideText - Whether hide text content on mobile devices.
  */
-export declare function IconText({ icon, text, url, hideMobileIcon, hideMobileText, className, ...args }: {
+declare function IconText({ icon, text, url, hideMobileIcon, hideMobileText, className, ...args }: {
     icon: ReactNode;
     text: string | ReactNode;
     url?: string;
@@ -18,6 +19,6 @@ export declare function IconText({ icon, text, url, hideMobileIcon, hideMobileTe
 /**
  * Text component of supporting Markdown.
  */
-export declare function MarkdownText({ ...args }: {
+declare function MarkdownText({ ...args }: {
     children?: string | null;
 } & Omit<ComponentProps<'article'>, 'children'>): import("react/jsx-runtime").JSX.Element;

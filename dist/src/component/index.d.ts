@@ -11,7 +11,7 @@ export { type Language, type CoverContextParams, useDefaultLanguage, setDefaultL
 export { type BreadcrumbDict, Breadcrumb } from './Breadcrumb';
 export { CycleButton, ScrollToTopButton } from './Button';
 export { Form } from './Form';
-export { PopupImage, PopupVideo, CarouselMedia } from './Media';
+export { PopupImage, PopupVideo, CarouselMedia, Video } from './Media';
 export { Notice, notice } from './Notice';
 export { type TableFieldOption, type TableSearchOption, type TableButtonOption, type TableRowOption, type TableSelectRowsOption, Table } from './Table';
 export { IconText, MarkdownText } from './Text';

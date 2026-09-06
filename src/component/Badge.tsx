@@ -10,12 +10,14 @@ import { ReactNode, ComponentProps } from 'react'
 import * as ui from './ui'
 import { cn } from '../lib/twc'
 
+export { TextBadges }
+
 /**
  * Text component of with multiple badges.
  * 
  * @param texts - Text list.
  */
-export function TextBadges(
+function TextBadges(
     {
         contents,
         className,

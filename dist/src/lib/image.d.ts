@@ -4,6 +4,7 @@
  * @Contact : reyxbo@163.com
  * @Explain : Image processing module.
  */
+export { getQrcode, openQrcode, downloadQrcode, setQrcode };
 /**
  * Generate QRCode URL.
  *
@@ -12,7 +13,7 @@
  * @param options.margin - Number of margin blank square.
  * @returns QR code URL.
  */
-export declare function getQrcode(text: string, options?: {
+declare function getQrcode(text: string, options?: {
     width?: number;
     margin?: number;
 }): Promise<string>;
@@ -24,7 +25,7 @@ export declare function getQrcode(text: string, options?: {
  * @param options.margin - Number of margin blank square.
  * @returns QR code URL.
  */
-export declare function openQrcode(text: string, options?: {
+declare function openQrcode(text: string, options?: {
     width?: number;
     margin?: number;
 }): Promise<string>;
@@ -37,7 +38,7 @@ export declare function openQrcode(text: string, options?: {
  * @param options.margin - Number of margin blank square.
  * @returns QR code URL.
  */
-export declare function downloadQrcode(text: string, options?: {
+declare function downloadQrcode(text: string, options?: {
     fileName?: string;
     width?: number;
     margin?: number;
@@ -51,7 +52,7 @@ export declare function downloadQrcode(text: string, options?: {
  * @param options.margin - Number of margin blank square.
  * @returns QR code URL.
  */
-export declare function setQrcode(text: string, element: HTMLElement | string, options?: {
+declare function setQrcode(text: string, element: HTMLElement | string, options?: {
     width?: number;
     margin?: number;
 }): Promise<string>;

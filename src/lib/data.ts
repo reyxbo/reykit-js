@@ -5,8 +5,17 @@
  * @Explain : Data processing module.
  */
 
-export function range(stop: number): Generator<number>
-export function range(start: number, stop: number, step?: number): Generator<number>
+export {
+    range,
+    rangeArr,
+    toggleArr,
+    compare,
+    sort,
+    countArr
+}
+
+function range(stop: number): Generator<number>
+function range(start: number, stop: number, step?: number): Generator<number>
 /**
  * Create a generator of generate index value by range.
  * 
@@ -15,7 +24,7 @@ export function range(start: number, stop: number, step?: number): Generator<num
  * @param step - Iteration step size.
  * @returns Generator.
  */
-export function* range(start_or_stop: number, stop?: number, step?: number) {
+function* range(start_or_stop: number, stop?: number, step?: number) {
 
     // Check.
     if (step === 0) throw new Error('the parameter "step" cannot be 0')
@@ -44,8 +53,8 @@ export function* range(start_or_stop: number, stop?: number, step?: number) {
     }
 }
 
-export function rangeArr(stop: number): number[]
-export function rangeArr(start: number, stop: number, step?: number): number[]
+function rangeArr(stop: number): number[]
+function rangeArr(start: number, stop: number, step?: number): number[]
 /**
  * Create an array of generate index value by range.
  * 
@@ -54,7 +63,7 @@ export function rangeArr(start: number, stop: number, step?: number): number[]
  * @param step - Iteration step size.
  * @returns Array.
  */
-export function rangeArr(start_or_stop: number, stop?: number, step?: number) {
+function rangeArr(start_or_stop: number, stop?: number, step?: number) {
 
     // Create.
     let generator: Generator<number>
@@ -76,7 +85,7 @@ export function rangeArr(start_or_stop: number, stop?: number, step?: number) {
  * @Param value - Element value.
  * @returns Array of toggled element.
  */
-export function toggleArr<T>(arr: T[], value: T): T[]  {
+function toggleArr<T>(arr: T[], value: T): T[]  {
 
     // Toggle.
     const newArr = (
@@ -96,7 +105,7 @@ export function toggleArr<T>(arr: T[], value: T): T[]  {
  * @param order - Sorting type.
  * @returns Sorted result.
  */
-export function compare(
+function compare(
     a: any,
     b: any,
     order: 'asc' | 'desc' = 'asc'
@@ -170,7 +179,7 @@ export function compare(
  * @param key - Element object index key.
  * @returns Sorted array.
  */
-export function sort<T>(
+function sort<T>(
     arr: T[],
     order: 'asc' | 'desc' = 'asc',
     key?: keyof T
@@ -194,7 +203,7 @@ export function sort<T>(
  * @param arr - Array.
  * @returns Count result.
  */
-export function countArr<T>(arr: T[]) {
+function countArr<T>(arr: T[]) {
 
     // Count.
     const map = new Map<T, number>()
