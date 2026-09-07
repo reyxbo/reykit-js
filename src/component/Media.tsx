@@ -37,24 +37,25 @@ function PopupImage(
     return (
         <ui.Dialog open={open} onOpenChange={setOpen}>
             <ui.DialogTrigger
-                className='size-full block object-cover cursor-pointer'
+                {...args}
+                className={cn('size-full block object-cover', args.className)}
                 render={
                     <img
                         src={path}
                         loading={loading}
+                        className='cursor-pointer'
                     />
                 }
-                {...args}
                 nativeButton={false}
             />
             <ui.DialogContent
                 showCloseButton={false}
-                className='!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none cursor-pointer'
+                className='block !max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none cursor-pointer'
             >
                 <img
                     src={path}
                     onClick={() => setOpen(false)}
-                    className='max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain'
+                    className='block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain'
                 />
             </ui.DialogContent>
         </ui.Dialog>
@@ -80,24 +81,25 @@ function PopupVideo(
     return (
         <ui.Dialog>
             <ui.DialogTrigger
-                className='size-full block object-cover cursor-pointer'
+                {...args}
+                className={cn('size-full block object-cover', args.className)}
                 render={
                     <video
                         src={path}
                         controls={false}
                         preload={preload}
                         playsInline
+                        className='cursor-pointer'
                     />
                 }
-                {...args}
                 nativeButton={false}
             />
-            <ui.DialogContent className='!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none'>
+            <ui.DialogContent className='block !max-w-none w-max h-auto p-0 border-0 bg-transparent shadow-none rounded-none'>
                 <Video
                     path={path}
                     fit='contain'
                     auto={true}
-                    className='max-w-[90vw] max-h-[90vh] w-auto h-auto'
+                    className='block max-w-[90vw] max-h-[90vh] w-auto h-auto'
                 />
             </ui.DialogContent>
         </ui.Dialog>
@@ -280,15 +282,15 @@ function Video(
     language = language ?? useDefaultLanguage()
 
     return (
-        <ui.VideoRoot {...args} className={cn('overflow-hidden rounded-xl', args.className)}>
-        <ui.VideoViewport src={path} fit={fit} />
-        <ui.VideoControls className='flex items-center justify-between gap-4'>
-            <ui.VideoPlayTrigger language={language} />
-            <ui.VideoSoundControl language={language} />
-            <ui.VideoProgressBar />
-            <ui.VideoPipTrigger language={language} />
-            <ui.VideoFullscreenTrigger language={language} />
-        </ui.VideoControls>
+        <ui.VideoRoot {...args}>
+            <ui.VideoViewport src={path} fit={fit} />
+            <ui.VideoControls className='flex items-center justify-between gap-4'>
+                <ui.VideoPlayTrigger language={language} />
+                <ui.VideoSoundControl language={language} />
+                <ui.VideoProgressBar />
+                <ui.VideoPipTrigger language={language} />
+                <ui.VideoFullscreenTrigger language={language} />
+            </ui.VideoControls>
         </ui.VideoRoot>
     )
 }

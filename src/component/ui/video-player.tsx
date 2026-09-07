@@ -286,7 +286,7 @@ function VideoRoot({
             autoHideControls={autoHideControls}
             showCenterControls={showCenterControls}
         >
-            <VideoContainer className={className} {...props}>
+            <VideoContainer className={cn('h-full w-full', className)} {...props}>
                 {children}
             </VideoContainer>
         </VideoProvider>

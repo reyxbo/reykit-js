@@ -49695,7 +49695,7 @@ function T4({
       auto: c,
       autoHideControls: p,
       showCenterControls: h,
-      children: /* @__PURE__ */ g.jsx(pY, { className: r, ...y, children: a })
+      children: /* @__PURE__ */ g.jsx(pY, { className: ne("h-full w-full", r), ...y, children: a })
     }
   );
 }
@@ -50684,15 +50684,16 @@ function U4({
     /* @__PURE__ */ g.jsx(
       lN,
       {
-        className: "size-full block object-cover cursor-pointer",
+        ...u,
+        className: ne("size-full block object-cover", u.className),
         render: /* @__PURE__ */ g.jsx(
           "img",
           {
             src: a,
-            loading: r
+            loading: r,
+            className: "cursor-pointer"
           }
         ),
-        ...u,
         nativeButton: !1
       }
     ),
@@ -50700,13 +50701,13 @@ function U4({
       CR,
       {
         showCloseButton: !1,
-        className: "!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none cursor-pointer",
+        className: "block !max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none cursor-pointer",
         children: /* @__PURE__ */ g.jsx(
           "img",
           {
             src: a,
             onClick: () => p(!1),
-            className: "max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain"
+            className: "block max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain"
           }
         )
       }
@@ -50722,27 +50723,28 @@ function V4({
     /* @__PURE__ */ g.jsx(
       lN,
       {
-        className: "size-full block object-cover cursor-pointer",
+        ...u,
+        className: ne("size-full block object-cover", u.className),
         render: /* @__PURE__ */ g.jsx(
           "video",
           {
             src: a,
             controls: !1,
             preload: r,
-            playsInline: !0
+            playsInline: !0,
+            className: "cursor-pointer"
           }
         ),
-        ...u,
         nativeButton: !1
       }
     ),
-    /* @__PURE__ */ g.jsx(CR, { className: "!max-w-none w-auto h-auto p-0 border-0 bg-transparent shadow-none rounded-none", children: /* @__PURE__ */ g.jsx(
+    /* @__PURE__ */ g.jsx(CR, { className: "block !max-w-none w-max h-auto p-0 border-0 bg-transparent shadow-none rounded-none", children: /* @__PURE__ */ g.jsx(
       H4,
       {
         path: a,
         fit: "contain",
         auto: !0,
-        className: "max-w-[90vw] max-h-[90vh] w-auto h-auto"
+        className: "block max-w-[90vw] max-h-[90vh] w-auto h-auto"
       }
     ) })
   ] });
@@ -50843,7 +50845,7 @@ function H4({
   language: u,
   ...c
 }) {
-  return u = u ?? yx(), /* @__PURE__ */ g.jsxs(T4, { ...c, className: ne("overflow-hidden rounded-xl", c.className), children: [
+  return u = u ?? yx(), /* @__PURE__ */ g.jsxs(T4, { ...c, children: [
     /* @__PURE__ */ g.jsx(C4, { src: a, fit: r }),
     /* @__PURE__ */ g.jsxs(w4, { className: "flex items-center justify-between gap-4", children: [
       /* @__PURE__ */ g.jsx(M4, { language: u }),
