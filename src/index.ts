@@ -7,6 +7,7 @@
 
 import * as component from './component'
 import * as ui from './component/ui'
+import * as icon from './component/ui/icon'
 import {
     captcha,
     base,
@@ -26,6 +27,7 @@ export {
     modules as default,
     component,
     ui,
+    icon,
     captcha,
     base,
     data,
@@ -43,6 +45,7 @@ export {
 const modules = {
     component,
     ui,
+    icon,
     captcha,
     base,
     data,
