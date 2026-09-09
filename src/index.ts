@@ -22,7 +22,8 @@ import {
     window
 } from './lib'
 
-export default {
+export {
+    modules as default,
     component,
     ui,
     captcha,
@@ -38,7 +39,8 @@ export default {
     twc,
     window
 }
-export {
+
+const modules = {
     component,
     ui,
     captcha,

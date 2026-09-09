@@ -7,7 +7,8 @@ import { captcha, base, data, image, net, rand, re, react, text, time, twc, wind
  */
 import * as component from './component';
 import * as ui from './component/ui';
-declare const _default: {
+export { modules as default, component, ui, captcha, base, data, image, net, rand, re, react, text, time, twc, window };
+declare const modules: {
     component: typeof component;
     ui: typeof component.ui;
     captcha: typeof captcha;
@@ -23,5 +24,3 @@ declare const _default: {
     twc: typeof twc;
     window: typeof window;
 };
-export default _default;
-export { component, ui, captcha, base, data, image, net, rand, re, react, text, time, twc, window };
