@@ -11,6 +11,7 @@ export {
     toggleArr,
     compare,
     sort,
+    unique,
     countArr
 }
 
@@ -195,6 +196,30 @@ function sort<T>(
     )
 
     return sortedArr
+}
+
+/**
+ * De duplication of array.
+ * 
+ * @param array - Array data.
+ * @returns Array data after de duplication.
+ */
+function unique<T>(array: T[]): T[] {
+
+    // Unique.
+    const keys = new Set<unknown>()
+    const uniqueArray =  array.filter(item => {
+        const key = typeof item === 'object' && item !== null && 'id' in item
+            ? item.id
+            : item
+        if (keys.has(key)) {
+            return false
+        }
+        keys.add(key)
+        return true
+    })
+
+    return uniqueArray
 }
 
 /**
