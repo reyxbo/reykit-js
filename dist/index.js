@@ -51391,7 +51391,7 @@ function CY({
             }
           ),
           /* @__PURE__ */ g.jsx(I1, { className: ne(
-            "group-data-[collapsible=icon]:hidden pointer-events-none size-4 -translate-y-1/2 opacity-50 select-none",
+            "pointer-events-none size-4 -translate-y-1/2 opacity-50 select-none",
             "absolute top-1/2 left-2"
           ) })
         ] }),

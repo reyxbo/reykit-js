@@ -742,7 +742,7 @@ function TableMenu<Row extends Record<string, any>>(
                                         className='h-8 pl-[1.95rem]'
                                     />
                                     <ui.icon.Search className={cn(
-                                            'group-data-[collapsible=icon]:hidden pointer-events-none size-4 -translate-y-1/2 opacity-50 select-none',
+                                            'pointer-events-none size-4 -translate-y-1/2 opacity-50 select-none',
                                             'absolute top-1/2 left-2'
                                     )} />
                                 </div>
