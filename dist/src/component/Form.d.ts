@@ -1,0 +1,12 @@
+import { ComponentProps } from 'react';
+export { Form };
+/**
+ * Form component of prevent access link.
+ *
+ * @param props.handleFormData - Handle submited form data.
+ * @param props.link - Access router link.
+ */
+declare function Form({ handleFormData, link, onSubmit, ...props }: {
+    handleFormData?: (formData: FormData) => any | Promise<any>;
+    link?: string;
+} & ComponentProps<'form'>): import("react/jsx-runtime").JSX.Element;

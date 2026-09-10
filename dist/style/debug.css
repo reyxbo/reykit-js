@@ -1,0 +1,18 @@
+/* base */
+html.debug * {
+    box-shadow: inset 0 0 0 1px rgb(0, 0, 0);
+}
+
+/* grid */
+html.debug .grid,
+html.debug [class^="grid-"],
+html.debug [class*=" grid-"] {
+    box-shadow: inset 0 0 0 1.5px rgb(255, 0, 0);
+}
+
+/* flex */
+html.debug .flex,
+html.debug [class^="flex-"],
+html.debug [class*=" flex-"] {
+    box-shadow: inset 0 0 0 1.5px rgb(0, 0, 255);
+}
