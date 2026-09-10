@@ -19,6 +19,7 @@ export { IconToggle }
  * @param props.openIcon - Open icon.
  * @param props.closeIcon - Close icon.
  * @param props.tooltip - Tooltip text.
+ * @param props.closeTooltip - Closed tooltip text.
  * @param props.tooltipSide - Tooltip text popup side.
  * @param props.rotate - Whether to use rotating icon animation.
  * @param props.open - Open state value.
@@ -30,6 +31,7 @@ function IconToggle(
         openIcon,
         closeIcon,
         tooltip,
+        closeTooltip,
         tooltipSide = 'bottom',
         rotate = false,
         open,
@@ -42,6 +44,7 @@ function IconToggle(
         openIcon: ReactNode,
         closeIcon: ReactNode,
         tooltip?: string,
+        closeTooltip?: string,
         tooltipSide?: 'top' | 'bottom' | 'left' | 'right',
         rotate?: boolean,
         open?: boolean,
@@ -51,6 +54,8 @@ function IconToggle(
 ) {
 
     // Parameter.
+    tooltip = tooltip ?? closeTooltip
+    closeTooltip = closeTooltip ?? tooltip
     const [initOpen, setInitOpen] = useOpen(defaultOpen)
     const isControlled = open !== undefined
     const currentOpen = isControlled ? open : initOpen
@@ -96,7 +101,13 @@ function IconToggle(
         return (
             <ui.Tooltip>
                 <ui.TooltipTrigger render={buttonElement} />
-                <ui.TooltipContent side={tooltipSide}>{tooltip}</ui.TooltipContent>
+                <ui.TooltipContent side={tooltipSide}>
+                    {
+                        currentOpen
+                        ? closeTooltip
+                        : tooltip
+                    }
+                </ui.TooltipContent>
             </ui.Tooltip>
         )
     }
