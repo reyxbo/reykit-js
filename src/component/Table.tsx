@@ -5,7 +5,7 @@
  * @Explain : Table components.
  */
 
-import { ReactNode, useState, isValidElement, useEffect, ReactElement } from 'react'
+import { ReactNode, SetStateAction, useState, isValidElement, useEffect, ReactElement } from 'react'
 
 import * as ui from './ui'
 import { TextBadges } from './Badge'
@@ -126,7 +126,7 @@ function Table<Row extends Record<string, any>>(
         language
     }: {
         data: Row[],
-        setData: (value: Row[] | ((value: Row[]) => Row[])) => void,
+        setData: (value: SetStateAction<Row[]>) => void,
         fieldOption?: TableFieldOption<Row>,
         defaultFieldOption?: DefaultTableFieldOption,
         searchOption?: TableSearchOption<Row>,
@@ -812,7 +812,7 @@ function TableMain<Row extends Record<string, any>>(
     language
 }: {
     pageData: Row[],
-    setData: (value: Row[] | ((value: Row[]) => Row[])) => void,
+    setData: (value: SetStateAction<Row[]>) => void,
     fieldOption: TableFieldOption<Row>,
     selectRows?: Row[],
     setSelectRows: (value: Row[]) => void,
