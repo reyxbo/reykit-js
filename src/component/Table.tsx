@@ -94,6 +94,7 @@ type TableSelectRowsOption<Row extends Record<string, any>> = {
  *     - `Attribute isGroupSearch` : Whether show search input in group button.
  *     - `Attribute sortMethod` : Sort method.
  *     - `Attribute defaultValue` : Replace none value.
+ * @param defaultFieldOption - Default field option.
  * @param searchOption - Search option.
  *     - `Attribute method` : Search method.
  *     - `Attribute placeholder` : Search input placeholder.
@@ -109,33 +110,32 @@ type TableSelectRowsOption<Row extends Record<string, any>> = {
  * @param pageSize - Page rows size.
  * @param mobilePageSize - Page rows size on mobile devices.
  * @param language - Language type.
- * @param defaultFieldOption - Default field option.
  */
 function Table<Row extends Record<string, any>>(
     {
         data,
         setData,
         fieldOption,
+        defaultFieldOption,
         searchOption,
         buttonOption,
         rowOption,
         selectRowsOption,
         pageSize = 20,
         mobilePageSize = 10,
-        language,
-        defaultFieldOption,
+        language
     }: {
         data: Row[],
         setData: (value: Row[] | ((value: Row[]) => Row[])) => void,
         fieldOption?: TableFieldOption<Row>,
+        defaultFieldOption?: DefaultTableFieldOption,
         searchOption?: TableSearchOption<Row>,
         buttonOption?: TableButtonOption,
         rowOption?: TableRowOption<Row>,
         selectRowsOption?: TableSelectRowsOption<Row>,
         pageSize?: number,
         mobilePageSize?: number,
-        language?: 'en' | 'zh',
-        defaultFieldOption?: DefaultTableFieldOption
+        language?: 'en' | 'zh'
     }
 ) {
 
